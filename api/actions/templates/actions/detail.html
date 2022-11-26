@@ -1,0 +1,64 @@
+{% extends 'layouts/application.html' %}
+
+{% load headings %}
+{% load markdown %}
+{% load svg %}
+
+{% block 'title' %}
+  <div class="action-header">
+    <p class="action-header__id text-muted">Action <span aria-hidden="true">#</span>{{action.id}}</p>
+    <h1 class="m-0">
+      <span>{{action.help_type|title}}</span>
+      ­-
+      <span>{{action.ward|title}}
+    </h1>
+    <p class="text-center text-muted ">{{action.requested_datetime|date:"D d M H:i"}}</p>
+  </div>
+{% endblock%}
+
+{% block 'content' %}
+
+{% if volunteer in action.assigned_volunteers.all and action.can_reveal_private_information %}
+  {# FIXED assigned_volunteer #}
+  <h2 class="maf-2">Resident details</h2>
+  {% include './_resident_detail.html' with resident=action.resident %}
+{% endif %}
+
+<h2 class="maf-2">Action details</h2>
+<div class="card">
+  {% if volunteer in action.assigned_volunteers.all and action.can_reveal_private_information %}
+    {# FIXED assigned_volunteer #}
+    {% if action.private_description %}
+    <div class="border-bottom p-3 space-3">
+      {{action.private_description|escape|markdown|heading_level:3}}
+    </div>
+    {% endif %}
+  {% endif %}
+  {% if action.public_description %}
+    <div class="p-3">
+      {{action.public_description|escape|markdown|heading_level:3}}
+    </div>
+  {% endif %}
+    {% if not action.is_fully_assigned %}
+      <div class="p-3">
+      {% include './_action_footer_unassigned.html' with action=action volunteer=volunteer%}
+      </div>
+    {%else %}
+      {# FIXED assigned_volunteer #}
+      {% if volunteer not in action.assigned_volunteers.all %}
+        <p class="text-center p-3">Someone's on it, but thanks for thinking of it!</p>
+      {% else %}
+        {% if action.has_interest %}
+          <p class="text-center p-3">Thanks for volunteering! We'll be back in touch soon!</p>
+        {% elif action.can_give_feedback %}
+          <div class="p-3">
+            {% include './_action_footer_assigned_to_user.html'%}
+          </div>
+        {% else %}
+          <p class="alert alert-success text-center border-0 rounded-inside-card">Thanks for helping!<br><a href="{% url 'actions:available' %}" class="btn btn-secondary mt-2">Back to Tasks</a></p>
+        {% endif %}
+      {% endif%}
+    {% endif %}
+</div>
+{% include './_problem_help.html' with action=action volunteer=volunteer%}
+{% endblock %}
