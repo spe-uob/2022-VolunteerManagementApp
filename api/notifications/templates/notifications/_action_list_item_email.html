@@ -1,0 +1,26 @@
+{% load humanize %}
+{% load svg %}
+{% load actions %}
+{% load links %}
+
+<tr>
+  <td>
+    <a href="{{ request | base_url }}{% url 'actions:detail' action.action_uuid %}" title="">
+      <div class="action">
+        
+        <h4 class="action-title">
+          {{action.help_type}} - <span class="action-location">{{action.ward}}</span>
+        </h4>
+        <div class="action-date">
+          {{ action.requested_datetime|date:"D d M" }}
+        </div>
+        <p class="action-desc">
+          {{ action.public_description|truncatewords:15 }}
+        </p>
+      </div>
+        <div class="more-detail">
+          Tap for more details  
+        </div>
+    </a>
+  </td>
+</tr>
