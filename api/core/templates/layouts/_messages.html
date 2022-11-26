@@ -1,0 +1,9 @@
+{% load bootstrap %}
+{% if messages %}
+<ul class="list-unstyled">
+    {% for message in messages %}
+    <li{% if message.tags %} class="alert {{ message.tags|boostrap_theme_color:"alert" }}" {% endif %}>{{ message }}
+        </li>
+        {% endfor %}
+</ul>
+{% endif %}

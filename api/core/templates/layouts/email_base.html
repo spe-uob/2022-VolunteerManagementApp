@@ -1,0 +1,57 @@
+{% load i18n %}
+{% load static %}
+{% load svg %}
+{% load sitetree %}
+{% load links %}
+
+{% load inlinecss %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To-Fro - {{title}}</title>
+  <style type="text/css">
+    a:visited .action-title {
+      color: #555  !important;
+    }
+
+    a:visited .action {
+      border-color: #555 !important;
+    }
+
+    a:visited {
+      color: #555 !important;
+    }
+
+    .action-table a:visited {
+      color: inherit !important;
+    }
+    @media (prefers-color-scheme: dark){
+      a:visited .action-title {
+        color: #ccc !important;
+      }
+    }
+    #wrapper {
+      background-image: url('{{ request | base_url }}{% static 'img/svg/TO_FRO_kites_01-04.svg' %}');
+    }
+  </style>
+</head>
+{% inlinecss "email-base.css" %}
+<body style="margin: 0; padding: 0;">
+  <div id="wrapper" width="100%" style="">
+    {% block 'content'%}{% endblock %}
+    <table id="footer" role="presentation" cellpadding="0" cellspacing="0" style="max-width: 590px; background-color:#d4edf9;" border="0" align="center">
+      <tr>
+        <td width="100%" align="left" style="padding: 30px 20px 60px 20px;">
+          <p style="margin: 0;">If you no longer want to recieve these emails change your notification settings to <a href="#">unsubscribe here</a></p>
+          <p style="">&copy; 2020 To/Fro. </p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+{% endinlinecss %}
+</html>

@@ -1,0 +1,6 @@
+{{ action.assigned_volunteers.all.0.first_name }} has made contact with {{ action.resident.first_name }}.
+
+See more information here:
+{{ admin_action_url }}
+
+Many thanks and best wishes from the KW Support Hub Team

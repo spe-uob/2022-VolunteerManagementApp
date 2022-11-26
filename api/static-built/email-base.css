@@ -1,0 +1,189 @@
+/*https://coolors.co/08415c-6b818c-d1dd75-cc2936-fee079-037171-d4edf9-364958-1c1c1c*/
+#wrapper {
+    color: #1c1c1c;
+    background-color: #d4edf9;
+    background-repeat: none;
+    background-size: cover;
+}
+#content {
+    max-width:590px;
+    font-family:'Arial', sans-serif;
+}
+.action-column{
+    width: 50%;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.action-column.is-wide {
+    display: block;
+    width: 100%;
+}
+
+.list-heading {
+    text-align: center;
+    background-color: #D1DD75;
+    padding:10px 0px;
+    margin: 0;
+    color: #1C1C1C;
+}
+.list-heading.alt{
+  background-color: #FEE079;
+}
+
+.list-heading .day{
+    font-weight: normal;
+}
+
+.action-table {
+    width: 100%;
+}
+
+.action-table tr {
+
+}
+
+.action-table td {
+    padding: 5px 5px;
+}
+
+.action-table a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    color: #08415C;
+}
+
+
+button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+
+.action {
+    border: 3px solid;
+    padding: 10px;
+    position:relative;
+    border-color: #08415C;
+}
+
+.action-title {
+    color: #08415C;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.action-location {
+    font-weight: normal;
+}
+
+.action-date {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.action-time {
+    float: right;
+}
+
+.more-detail{
+    float: right;
+    font-size: 0.6em;
+    margin-top: 3px;
+}
+
+.action-summary{
+}
+
+.action-summary h2 {
+    font-size: 1.6em;
+    margin: 10px 0;
+}
+.pills {
+    font-size: 0;
+    width: 102%;
+    min-width: 350px;
+    margin-left: -1%;
+}
+.pills > div {
+    width: 33%;
+    display: inline-block;
+}
+.sum-pill {
+    background-color: #adaaff;
+    border-radius: 50% 50% 0 0;
+    width: 97%;
+    min-width: 100px;
+    padding: 3px 0;
+    font-size: 0.8rem;
+}
+
+.sum-number {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+@media only screen and (min-width: 375px) {
+    #wrapper {
+        padding: 0px 5px !important;
+    }
+    #content {
+        padding: 20px 0 0px 0 !important;
+    }
+}
+/*Dark mode colors*/
+@media (prefers-color-scheme: dark) {
+    #wrapper {
+      background-color: #6B818C !important;
+      color: white !important;
+    }
+
+    #mainHeader{
+      background-color: #222 !important;
+      color: white !important;
+    }
+
+    #mainBody{
+      background-color: #222 !important;
+      color: white !important;
+    }
+
+    #footer {
+      background-color: #666 !important;
+      color: white !important;
+    }
+
+    .list-heading{
+      background-color: #037171 !important;
+      color: white !important;
+    }
+    .list-heading.alt{
+      background-color: #55828B !important;
+    }
+    .action-summary{
+    }
+
+    .action{
+      color: white;
+      border-color: #d4edf9 !important;
+    }
+
+    .action-title {
+      color: #d4edf9 !important;
+    }
+
+    a {
+      color: #d4edf9 !important;
+    }
+
+    .sum-pill {
+      background-color: #08415C !important;
+      color: white !important;
+    }
+
+    .sum-number {
+      color: inherit !important;
+    }
+}

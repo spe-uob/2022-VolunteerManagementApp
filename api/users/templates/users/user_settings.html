@@ -1,0 +1,45 @@
+{% extends 'layouts/application.html' %}
+
+{#% load humanize %#}
+{#% load actions %#}
+{#% load bootstrap %#}
+{% load svg %}
+
+{% block extra_head %}
+<!-- include bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block 'title' %}
+  <div class="">
+    <h1 class="m-0">
+      Account Settings
+    </h1>
+  </div>
+{% endblock %}
+{% block 'content' %}
+<hr/><!-- 
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="contact-tab" aria-selected="true">Contact Details</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="email-pref-tab" aria-selected="false">Email Preferences</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="password-tab" aria-selected="false">Change Password</a>
+  </li>
+</ul> -->
+
+<div class="tab-content" id="myTabContent">
+{% crispy form form.helper %}
+</div>
+<style type="text/css">
+  /*.tab-pane {
+    position: absolute;
+  }*/
+</style>
+
+{% endblock %}
