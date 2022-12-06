@@ -43,6 +43,7 @@ admin_path = settings.DJANGO_ADMIN_LOCATION + '/'
 urlpatterns = [
     path('', homepage, name="home"),
     path('vue-test/', myapp_views.vue_test),
+    path('one_one', myapp_views.one_one),
     re_path(r'static-path/(?P<path>.+)', resolve_static_path_view),
     path(admin_path, admin.site.urls, name="admin"),
     # Take over the password reset confirmation with our own view
