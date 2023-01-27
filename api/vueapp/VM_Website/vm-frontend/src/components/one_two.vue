@@ -6,40 +6,38 @@
 				Select Feedback to change
 			</span>
       <el-button
-          style="float: right;width: 160px;height: 20px;padding-top:3px;font-size: 10px;padding-left: 15px;margin-top: 20px;"
+          style="float: right;width: 13em;height: 2em;padding-top:0.25em;font-size: 1em;padding-left: 1em;margin-top: 2em;"
           type="info" round @click="Toadd()">ADD FEEDBACK<i style="font-weight: bolder"
-                                                                class="el-icon-plus"></i></el-button>
+                                                            class="el-icon-plus button"></i></el-button>
 
       <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
                 @selection-change="handleSelectionChange" :cell-style="columnStyle">
         <el-table-column type="selection" width="55">
         </el-table-column>
-        <el-table-column label="NAME">
+        <el-table-column label="Action">
           <template slot-scope="scope">
             <el-link style="color: rgb(68, 126, 155);" @click="handleEdit(scope.$index, scope.row)">
               {{ scope.row.name }}
             </el-link>
           </template>
         </el-table-column>
-        <el-table-column prop="addressline1" label="ADDRESSLINE1">
+        <el-table-column prop="Volunteer" label="VOLUNTEER">
         </el-table-column>
-        <el-table-column prop="postcode" label="POSTCODE" show-overflow-tooltip>
+        <el-table-column prop="Resident" label="RESIDENT" show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="contactname" label="CONTACT NAME" show-overflow-tooltip>
+        <el-table-column prop="Time" label="TIME" show-overflow-tooltip>
         </el-table-column>
-        <el-table-column prop="email" label="EMAIL" show-overflow-tooltip>
-        </el-table-column>
-        <el-table-column prop="phonenumber" label="PHONE NUMBER" show-overflow-tooltip>
+        <el-table-column prop="Created date time" label="CREATED DATE TIME" show-overflow-tooltip>
         </el-table-column>
         <el-table-column align="center" label="OPTION">
           <template slot-scope="scope">
-            <el-button style="color: white;background-color: #aa0000;font-size: 12px;" @click="handleDelete(scope.$index, scope.row)">Delete
+            <el-button style="color: white;background-color: #aa0000;font-size: 1em;" @click="handleDelete(scope.$index, scope.row)">Delete
             </el-button>
           </template>
         </el-table-column>
       </el-table>
       <span
-          style="display: inline-block;margin-left: 10px;margin-top: 20px;font-size: 15px;color: #909399;">{{tableData.length}}
+          style="display: inline-block;margin-left: 1em;margin-top: 2em;font-size: 1em;color: #909399;">{{tableData.length}}
 				organisations</span>
     </div>
   </div>
@@ -79,7 +77,7 @@ export default {
       this.$store.commit('receiveStatus', {
         status: 0
       })
-      this.$router.push("/addorganisations")
+      this.$router.push("/addFeedbacks")
     },
     columnStyle({
                   row,
@@ -95,18 +93,17 @@ export default {
       this.$store.commit('receiveBMsg', {
         formData: {
           index: index,
-          name: row.name,
-          addressline1: row.addressline1,
-          postcode: row.postcode,
-          contactname: row.contactname,
-          email: row.email,
-          phonenumber: row.phonenumber
+          Action: row.Action,
+          Volunteer: row.Volunteer,
+          Resident: row.Resident,
+          Time: row.Time,
+          Createddatetime: row.Createddatetime,
         },
       })
       this.$store.commit('receiveStatus', {
         status: -1
       })
-      this.$router.push("/addorganisations")
+      this.$router.push("/addFeedbacks")
     },
     handleDelete(index, row) { //删除数据（Delete data）
       this.tableData.splice(index, 1);
@@ -128,34 +125,23 @@ export default {
 
 <style scoped>
 #main {
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 4em;
+  margin-right: 4em;
 
 }
 
 .title {
   color: black;
-  font-size: 30px;
-  margin-top: 0px;
-  margin-bottom: 40px;
+  font-size: 2em;
+  margin-top: 0em;
+  margin-bottom: 3em;
   display: inline-block;
 }
 
 .select {
-  width: 350px;
-  max-height: 20px;
-  margin-bottom: 20px;
+  width: 30em;
+  max-height: 2em;
+  margin-bottom: 2em;
 }
 
-/deep/ .el-breadcrumb__item:first-child .el-breadcrumb__inner {
-  color: white;
-}
-
-/deep/ .el-breadcrumb__item .el-breadcrumb__inner {
-  color: white;
-}
-
-/deep/ .el-breadcrumb__item:last-child .el-breadcrumb__inner {
-  color: white;
-}
 </style>
