@@ -9,18 +9,7 @@
           style="float: right;width: 160px;height: 20px;padding-top:3px;font-size: 10px;padding-left: 15px;margin-top: 20px;"
           type="info" round @click="Toadd()">ADD FEEDBACK<i style="font-weight: bolder"
                                                                 class="el-icon-plus"></i></el-button>
-      <div>
-				<span
-            style="display: inline-block;margin-left: 10px;margin-right: 20px;font-size: 15px;color: #909399;">Action:</span>
-        <el-select v-model="value" placeholder="please select" class="select">
-          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-          </el-option>
-        </el-select>
-        <el-button type="info" plain style="width: 40px;padding-left: 10px;padding-top: 13px;">GO</el-button>
-        <span
-            style="display: inline-block;margin-left: 10px;margin-right: 20px;font-size: 15px;color: #909399;">{{multipleSelection.length}}
-					of {{tableData.length}} selected</span>
-      </div>
+
       <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
                 @selection-change="handleSelectionChange" :cell-style="columnStyle">
         <el-table-column type="selection" width="55">
