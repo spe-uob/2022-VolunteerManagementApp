@@ -1,11 +1,35 @@
 2022 | To/Fro - Volunteer Management App
 
+[1. Project Description](#1)
+
+[2. Stakeholders](#2)
+
+[3. User Stories](#3)
+
+[4. Team members](#4)
+
+[5. To-Fro](#5)
+
+[6. In API directory](#6)
+
+[7. Frontend](#7)
+
+[8. Testing](#8)
+
+[9. Gantt Chart](#9)
+
+
+
+
+<p id="1"></p> 
+
 ## Project Description:
 
 At the beginning of the pandemic, To/Fro was created during a hackathon to support the Knowle West Alliance's work. They were previously manually matching up volunteers with people who needed help (like dog walking, picking up prescriptions, food shopping), but taking inspiration from things like Deliveroo and Uber, an open source Django application was developed to streamline the process.
 Since then, the process has been codified into an API with additional features such as allowing for 1:Many actions (for things like event support) as well as tracking referrals to GPs, Food Banks and more, which needn't go out to individual volunteers.
 The focus of this project would be to create in Vue, a rounded Co-ordinator front-end that moves entirely away from the default Django admin dashboard. The main areas for learning would be interfacing with the API, learning about HCI, and effectively working on an existing product and repository. There is a prototype of one section of the dashboard, which can be used as a jumping off point, but the finished solution should refactor this into clean and reusable code to be used across the interface. 
 
+<p id="2"></p> 
 
 ## Stakeholders:
 
@@ -13,13 +37,14 @@ The focus of this project would be to create in Vue, a rounded Co-ordinator fron
 * Volunteers
 * person being helped
 
-
+<p id="3"></p> 
 
 ## User Stories:
 
 * For administrators, they want a good app to manage every event
 * For volunteers, they can quickly search and filter what they want to do
 
+<p id="4"></p> 
 
 ## Team members:
 
@@ -29,6 +54,13 @@ The focus of this project would be to create in Vue, a rounded Co-ordinator fron
 * LinFeng Cai
 * Zhiming Liu
 
+<p id="9"></p> 
+
+## Gantt Chart:
+
+* [Gantt Chart](https://github.com/spe-uob/2022-VolunteerManagementApp/tree/LZMBill-patch-1/Gantt%20Chart)
+
+<p id="5"></p> 
 
 # To-Fro
 
@@ -55,6 +87,8 @@ There are a couple of key benefits to mounting the source code as a volume.
 1. Local changes to code get copied to the running container, enabling Django to hot-reload the application.
 2. Changes to the filesystem in the container get copied to your local filesystem. This becomes useful when [adding apps to Django](https://docs.djangoproject.com/en/3.1/intro/tutorial01/#creating-the-polls-app).
 
+<p id="6"></p> 
+
 # In API directory
     $ npm i 
     $ npm i postcss-preset-env
@@ -69,6 +103,8 @@ To execute a python command on the docker container, use a command like this:
     docker exec -it tofro-django python manage.py startapp test
 
 You can see the names of the running containers with `docker ps`.
+
+<p id="7"></p> 
 
 ## Frontend
 
@@ -97,6 +133,8 @@ To override a piece of text coming from a 3rd party package:
 4. Compile the messages with:
 
     docker exec -it tofro-django python3 manage.py compilemessages
+
+<p id="8"></p> 
 
 ## Testing
 
