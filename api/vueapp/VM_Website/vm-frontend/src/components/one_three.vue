@@ -1,12 +1,6 @@
 <template>
 	<div style="width: 100%;">
-		<el-breadcrumb separator-class="el-icon-arrow-right"
-			style="background-color: rgb(68, 126, 155);height: 50px;line-height: 50px;color: white;">
-			<el-breadcrumb-item :to="{ path: '/' }" style="margin-left: 50px;color: white;">Home</el-breadcrumb-item>
-			<el-breadcrumb-item>Action and Referrals</el-breadcrumb-item>
-			<el-breadcrumb-item style="color:white">Organisations</el-breadcrumb-item>
 
-		</el-breadcrumb>
 		<div id="main">
 			<span class="title">
 				Select organisation to change
@@ -104,11 +98,11 @@
 				rowIndex,
 				columnIndex
 			}) {
-				if (columnIndex == 1) { //第1的背景色就改变了1都是列数的下标
+				if (columnIndex == 1) { //第1的背景色就改变了1都是列数的下标（The background colour of the 1st changes 1 is the subscript of the column number）
 					return 'color: rgb(68, 126, 155);'
 				}
 			},
-			handleEdit(index, row) { //编辑信息
+			handleEdit(index, row) { //编辑信息（Editorial information）
 				this.$store.commit('receiveBMsg', {
 					formData: {
 						index: index,
@@ -125,19 +119,19 @@
 				})
 				this.$router.push("/addorganisations")
 			},
-			handleDelete(index, row) { //删除数据
+			handleDelete(index, row) { //删除数据（Delete data）
 				this.tableData.splice(index, 1);
 			},
 			getDeleteVisible(index, row) {
-				this.visible = false; //隐藏弹出框
+				this.visible = false; //隐藏弹出框（Hide pop-up boxes）
 			},
 			handleSizeChange: function(size) {
 				this.pagesize = size;
-				console.log(this.pagesize) //每页下拉显示数据
+				console.log(this.pagesize) //每页下拉显示数据（Drop-down display of data per page）
 			},
 			handleCurrentChange: function(currentPage) {
 				this.currentPage = currentPage;
-				console.log(this.currentPage) //点击第几页
+				console.log(this.currentPage) //点击第几页（Click on the pages）
 			},
 		},
 	}
@@ -147,13 +141,14 @@
 	#main {
 		margin-left: 50px;
 		margin-right: 50px;
+
 	}
 
 	.title {
-		color: #909399;
-		font-size: 25px;
-		margin-top: 25px;
-		margin-bottom: 25px;
+		color: black;
+		font-size: 30px;
+		margin-top: 0px;
+		margin-bottom: 40px;
 		display: inline-block;
 	}
 
