@@ -1,290 +1,161 @@
 <template>
- <div class="text">
-   <div class="font">
-     <span>Select Feedback to change</span>
-     <el-button class="fix" @click="addFeedback">Add Feedback</el-button>
+  <div style="width: 100%;">
 
-  <el-table
-      class="border"
-      ref="multipleTable"
-      :data="tableData"
-      tooltip-effect="dark"
-      style="width:1000px"
-      @selection-change="handleSelectionChange">
-    <el-table-column
-        type="selection"
-        width="55">
-    </el-table-column>
-    <el-table-column
-        label="ID"
-        width="50">
-      <template slot-scope="scope">{{ scope.row.id }}</template>
-    </el-table-column>
-    <el-table-column
-        prop="action"
-        label="ACTION"
-        show-overflow-tooltip>
-    </el-table-column>
-    <el-table-column
-        prop="volunteer"
-        label="VOLUNTEER"
-        width="120">
-    </el-table-column>
+    <div id="main">
+			<span class="title">
+				Select Feedback to change
+			</span>
+      <el-button
+          style="float: right;width: 160px;height: 20px;padding-top:3px;font-size: 10px;padding-left: 15px;margin-top: 20px;"
+          type="info" round @click="Toadd()">ADD FEEDBACK<i style="font-weight: bolder"
+                                                                class="el-icon-plus"></i></el-button>
 
-    <el-table-column
-        label="RESIDENT"
-        prop="resident"
-        width="120">
-    </el-table-column>
-    <el-table-column
-        label="TIME TAKEN"
-        prop="time"
-        width="120">
-    </el-table-column>
-    <el-table-column
-        label="CREATED DATE"
-        prop="create"
-        show-overflow-tooltip>
-    </el-table-column>
-    <el-table-column
-        align="right">
-      <template slot="header" slot-scope="scope">
-        <el-input
-            v-model="search"
-            size="mini"
-            placeholder="search"/>
-      </template>
-      <template slot-scope="scope">
-        <el-button
-            size="mini"
-            @click="updateFeedback(scope.row)">Update
-        </el-button>
-        <el-button
-            slot="reference"
-            @click="deleteFeedback()" size="mini">Delete
-        </el-button>
-      </template>
-    </el-table-column>
-  </el-table>
-
-     <div style="margin-top: 20px">
-       <el-button @click="deleteFeedback()" class="button2">Delete</el-button>
-       <el-button @click="toggleSelection()" class="button3">Cancel</el-button>
-     </div>
-   </div>
-
-   <el-dialog title="Add Feedback" :visible.sync="dialogFormVisible1" width="40%">
-     <el-form label-width="8em" size="small">
-       <el-form-item label="First Name">
-         <el-input v-model="feedback.action" autocomplete="off"
-                   placeholder="FirstName cannot be empty"></el-input>
-       </el-form-item>
-       <el-form-item label="Last Name">
-         <el-input v-model="feedback.volunteer" autocomplete="off"
-                   placeholder="LastName cannot be empty"></el-input>
-       </el-form-item>
-       <el-form-item label="time">
-         <el-input v-model="feedback.time" autocomplete="off"
-                   placeholder="The Phone Number cannot be empty"></el-input>
-       </el-form-item>
-       <el-form-item label="created date time">
-         <el-input v-model="feedback.create" autocomplete="off"
-                   placeholder="Please input the email"></el-input>
-       </el-form-item>
-     </el-form>
-     <div slot="footer" class="dialog-footer">
-       <el-button @click="dialogFormVisible1 = false">Cancel</el-button>
-       <el-button type="primary" @click="addFeedbackInfo">Add</el-button>
-     </div>
-   </el-dialog>
-
-   <el-dialog title="Update Feedback Info" :visible.sync="dialogFormVisible2" width="40%">
-
-     <el-form label-width="8em" size="small">
-       <el-form-item label="Action">
-         <el-input v-model="feedback.action" autocomplete="off"
-                   placeholder="First Name cannot be empty"></el-input>
-       </el-form-item>
-       <el-form-item label="Volunteer">
-         <el-input v-model="feedback.volunteer" autocomplete="off"
-                   placeholder="Last Name cannot be empty"></el-input>
-       </el-form-item>
-       <el-form-item label="Resident">
-         <el-input v-model="feedback.resident" autocomplete="off"
-                   placeholder="The Phone Number cannot be empty"></el-input>
-       </el-form-item>
-       <el-form-item label="Time">
-         <el-input v-model="feedback.time" autocomplete="off"
-                   placeholder="Last Name cannot be empty"></el-input>
-       </el-form-item>
-       <el-form-item label="Created date time">
-         <el-input v-model="feedback.create" autocomplete="off"
-                   placeholder="Last Name cannot be empty"></el-input>
-       </el-form-item>
-     </el-form>
-
-     <div slot="footer" class="dialog-footer">
-       <el-button @click="dialogFormVisible2 = false">Cancel</el-button>
-       <el-button type="primary" @click="updateFeedbackInfo">Update</el-button>
-     </div>
-   </el-dialog>
- </div>
+      <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
+                @selection-change="handleSelectionChange" :cell-style="columnStyle">
+        <el-table-column type="selection" width="55">
+        </el-table-column>
+        <el-table-column label="NAME">
+          <template slot-scope="scope">
+            <el-link style="color: rgb(68, 126, 155);" @click="handleEdit(scope.$index, scope.row)">
+              {{ scope.row.name }}
+            </el-link>
+          </template>
+        </el-table-column>
+        <el-table-column prop="addressline1" label="ADDRESSLINE1">
+        </el-table-column>
+        <el-table-column prop="postcode" label="POSTCODE" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="contactname" label="CONTACT NAME" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="email" label="EMAIL" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column prop="phonenumber" label="PHONE NUMBER" show-overflow-tooltip>
+        </el-table-column>
+        <el-table-column align="center" label="OPTION">
+          <template slot-scope="scope">
+            <el-button style="color: white;background-color: #aa0000;font-size: 12px;" @click="handleDelete(scope.$index, scope.row)">Delete
+            </el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      <span
+          style="display: inline-block;margin-left: 10px;margin-top: 20px;font-size: 15px;color: #909399;">{{tableData.length}}
+				organisations</span>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-name: "one_two",
   data() {
     return {
-      dialogFormVisible1: false,
-      dialogFormVisible2: false,
-
-      feedback: {},
-      tableData: [
-        {
-        id: '1',
-        action: 'Action 21',
-        volunteer: 'Luke Sweeney',
-        resident: 'Noel Wester',
-        time: '0:15:00',
-        create: 'March 2,2022,10:59 a.m.'
+      tableData: [],
+      multipleSelection: '',
+      options: [{
+        value: '选项1',
+        label: "St.John's Surgery"
       }, {
-        id: '2',
-        action: 'Action 21',
-        volunteer: 'Luke Sweeney',
-        resident: 'Noel Wester',
-        time: '0:15:00',
-        create: 'March 2,2022,10:59 a.m.'
+        value: '选项2',
+        label: 'Fliwood Food Centre'
       }, {
-        id: '3',
-        action: 'Action 21',
-        volunteer: 'Luke Sweeney',
-        resident: 'Noel Wester',
-        time: '0:15:00',
-        create: 'March 2,2022,10:59 a.m.'
-      }, {
-        id: '4',
-        action: 'Action 21',
-        volunteer: 'Luke Sweeney',
-        resident: 'Noel Wester',
-        time: '0:15:00',
-        create: 'March 2,2022,10:59 a.m.'
-      }
-      ],
-    }
-    return {
-      pickerOptions: {
-        shortcuts: [{
-          text: 'Today',
-          onClick(picker) {
-            picker.$emit('pick', new Date());
-          }
-        }, {
-          text: 'Yesterday',
-          onClick(picker) {
-            const date = new Date();
-            date.setTime(date.getTime() - 3600 * 1000 * 24);
-            picker.$emit('pick', date);
-          }
-        }, {
-          text: 'last week',
-          onClick(picker) {
-            const date = new Date();
-            date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-            picker.$emit('pick', date);
-          }
-        }]
-      },
-      value1: '',
-      value2: '',
-      value3: ''
-    };
-    return {
-      count: 0
+        value: '选项3',
+        label: 'Test referal org 1'
+      }],
+      value: '',
     }
   },
+  created() {
+    this.tableData = this.$store.state.tableData
+
+  },
   methods: {
-    load () {
-      this.count += 2
-    },
-    deleteFeedback() {
-      this.$confirm('Are you sure you want to delete the selected Feedback?', 'Sign', {
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No',
-        type: 'warning'
-      }).then(() => {
-        this.$message({
-          type: 'success',
-          message: 'Delete Successfully!'
-        });
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: 'Delete canceled'
-        });
-      });
-    },
-    toggleSelection(rows) {
-      if (rows) {
-        rows.forEach(row => {
-          this.$refs.multipleTable.toggleRowSelection(row);
-        });
-      } else {
-        this.$refs.multipleTable.clearSelection();
-      }
-    },
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
-    updateFeedback(row) {
-      this.dialogFormVisible2 = true
-      this.resident = Object.assign({}, row)
+    Toadd() {
+      this.$store.commit('receiveBMsg', {
+        formData: {}
+      })
+      this.$store.commit('receiveStatus', {
+        status: 0
+      })
+      this.$router.push("/addorganisations")
     },
-    updateFeedbackInfo() {
+    columnStyle({
+                  row,
+                  column,
+                  rowIndex,
+                  columnIndex
+                }) {
+      if (columnIndex == 1) { //第1的背景色就改变了1都是列数的下标（The background colour of the 1st changes 1 is the subscript of the column number）
+        return 'color: rgb(68, 126, 155);'
+      }
     },
-    addFeedback() {
-      this.dialogFormVisible1 = true
-      this.resident = {}
+    handleEdit(index, row) { //编辑信息（Editorial information）
+      this.$store.commit('receiveBMsg', {
+        formData: {
+          index: index,
+          name: row.name,
+          addressline1: row.addressline1,
+          postcode: row.postcode,
+          contactname: row.contactname,
+          email: row.email,
+          phonenumber: row.phonenumber
+        },
+      })
+      this.$store.commit('receiveStatus', {
+        status: -1
+      })
+      this.$router.push("/addorganisations")
     },
-    addFeedbackInfo() {
+    handleDelete(index, row) { //删除数据（Delete data）
+      this.tableData.splice(index, 1);
+    },
+    getDeleteVisible(index, row) {
+      this.visible = false; //隐藏弹出框（Hide pop-up boxes）
+    },
+    handleSizeChange: function(size) {
+      this.pagesize = size;
+      console.log(this.pagesize) //每页下拉显示数据（Drop-down display of data per page）
+    },
+    handleCurrentChange: function(currentPage) {
+      this.currentPage = currentPage;
+      console.log(this.currentPage) //点击第几页（Click on the pages）
     },
   },
 }
 </script>
+
 <style scoped>
- .border{
-   margin-top: 100px;
-   /*position: absolute;*/
-   position: absolute;
-   top: 100px;
-   left: 20px;
- }
+#main {
+  margin-left: 50px;
+  margin-right: 50px;
 
- .button1{
-   position: absolute;
-   top:100px;
-   right: 100px;
- }
- .button2{
-   position: absolute;
-   top: 500px;
-   left:20px;
- }
- .button3{
-   position: absolute;
-   top:500px;
-   left:100px;
- }
- .font {
-   font-size: 30px;
-   color: black;
-   padding-bottom: 100px;
- }
- span {
-   margin-right: 1000px;
- }
- .fix {
-   margin-left: 800px;
- }
+}
 
+.title {
+  color: black;
+  font-size: 30px;
+  margin-top: 0px;
+  margin-bottom: 40px;
+  display: inline-block;
+}
+
+.select {
+  width: 350px;
+  max-height: 20px;
+  margin-bottom: 20px;
+}
+
+/deep/ .el-breadcrumb__item:first-child .el-breadcrumb__inner {
+  color: white;
+}
+
+/deep/ .el-breadcrumb__item .el-breadcrumb__inner {
+  color: white;
+}
+
+/deep/ .el-breadcrumb__item:last-child .el-breadcrumb__inner {
+  color: white;
+}
 </style>
