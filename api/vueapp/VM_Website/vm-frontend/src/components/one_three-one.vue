@@ -62,7 +62,8 @@
 						<div class="sub-title">Main phone number for organisation contact</div>
 					</div>
 				</el-form-item>
-				</el-form-item>
+       ///el-form-item>
+
 				<div style="position: fixed;bottom: 10px;z-index: 100;right: 20px;">
 					<el-button class="btn" style="color: white;background-color: #aa0000;font-size: 12px;margin-right: 910px;"
 						@click="Delete()">Delete
@@ -112,7 +113,7 @@
 		  	<el-button class="btn" style="color: white;background-color: rgb(79 141 171);font-size: 12px;"
 		  		@click="No()">No,take me back </el-button>
 		  </div>
-		  </span>
+		  ///span>
 		</el-dialog>
 	</div>
 </template>
