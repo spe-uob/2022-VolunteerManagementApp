@@ -11,6 +11,8 @@ import three_one from "@/components/three_one";
 import three_one_one from "@/components/three_one_one";
 import three_two from "@/components/three_two";
 import three_two_one from "@/components/three_two_one";
+import one_two_one from "@/components/one_two_one.vue";
+import two_two from "@/components/two_two.vue";
 
 
 
@@ -34,6 +36,11 @@ const routes = [
                 component: one_two
             },
             {
+                path: 'addFeedbacks',
+                name: "one_two_one",
+                component: one_two_one
+            },
+            {
                 path: '/header/1-3',
                 name: "one_three",
                 component: one_three,
@@ -43,7 +50,11 @@ const routes = [
                 name: "one_three_one",
                 component: one_three_one,
             },
-
+            {
+                path: '/header/2-2',
+                name: "two_two",
+                component: two_two,
+            },
             {
                 path: '/header/1-4',
                 name: "one_four",
