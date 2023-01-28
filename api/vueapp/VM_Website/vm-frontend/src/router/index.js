@@ -3,16 +3,19 @@ import VueRouter from 'vue-router'
 import Header from "@/components/Header";
 import one_one from "@/components/one_one";
 import one_two from "@/components/one_two";
+import one_two_one from "@/components/one_two_one.vue";
 import one_three from "@/components/one_three";
 import one_three_one from '@/components/one_three-one.vue';
 import one_four from "@/components/one_four";
 import one_four_one from "@/components/one_four_one";
+import two_one from "@/components/two_one";
+import two_two from "@/components/two_two.vue";
 import three_one from "@/components/three_one";
 import three_one_one from "@/components/three_one_one";
 import three_two from "@/components/three_two";
 import three_two_one from "@/components/three_two_one";
-import one_two_one from "@/components/one_two_one.vue";
-import two_two from "@/components/two_two.vue";
+
+
 
 
 
@@ -49,6 +52,11 @@ const routes = [
                 path: '/addorganisations',
                 name: "one_three_one",
                 component: one_three_one,
+            },
+            {
+                path: '/header/2-1',
+                name: "two_one",
+                component: two_one,
             },
             {
                 path: '/header/2-2',

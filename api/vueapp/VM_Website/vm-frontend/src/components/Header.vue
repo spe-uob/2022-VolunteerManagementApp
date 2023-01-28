@@ -1,10 +1,10 @@
 <!--header-->
 <template>
-    <div>
+    <div style="width: 100%">
 
         <el-menu
                 :default-active="this.$route.path"
-                class="el-menu-demo header"
+                class="header"
                 mode="horizontal"
                 background-color="#447e9b"
                 text-color="#fff"
@@ -47,8 +47,10 @@
 
 <style>
     .box {
-        margin: 20px;
-        display: flex;
+        margin-bottom: 3%;
+        margin-left: 10%;
+        margin-top: 2%;
+        display: block;
         justify-content: center;
         align-items: center;
     }
@@ -57,26 +59,38 @@
         padding: 0;
         box-sizing: border-box;
         font-family: "Arial";
-        font-weight: 700;
+        font-weight: 600;
 
     }
-
-    .header li {
-        font-size: 23px;
+    .header {
+        display: block;
     }
 
-    .header li div {
-        font-size: 23px;
+    @media only screen and (max-width: 620px) {
+        .header {
+            display: none;
+        }
     }
-
-    .subheader {
-        font-size: 23px;
-    }
-
 
     .el-menu--horizontal ul li {
-        font-size: 23px;
+        font-size: 1.5vw;
     }
+
+        .header li {
+            font-size: 1.5vw;
+        }
+
+        .header li div {
+            font-size: 1.5vw;
+        }
+
+        .subheader {
+            font-size: 1.5vw;
+        }
+
+
+
+
 
 
 
