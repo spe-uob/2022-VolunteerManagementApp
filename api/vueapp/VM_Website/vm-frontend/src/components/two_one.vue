@@ -1,97 +1,40 @@
 <template>
-    <div class="position">
-
-        <div class="residentBox">
-            <span class="font">Resident</span>
-            <el-table
-                    :data="tableData"
-                    max-height="250"
+    <div class="residentBox">
+        <span class="font">Coordinators</span>
+        <el-table
+                :data="tableData"
+                max-height="500"
+        >
+            <el-table-column
+                    label="First Name"
+                    prop="FirstName"
+                    sortable
             >
-                <el-table-column
-                        label="First Name"
-                        prop="FirstName"
-                        sortable
-                >
-                </el-table-column>
+            </el-table-column>
 
-                <el-table-column
-                        label="Last Name"
-                        prop="LastName"
-                        sortable>
-                </el-table-column>
-                <el-table-column
-                        label="Phone"
-                        prop="Phone"
-                        sortable>
-                </el-table-column>
+            <el-table-column
+                    label="Last Name"
+                    prop="LastName"
+                    sortable>
+            </el-table-column>
+            <el-table-column
+                    label="Phone"
+                    prop="Phone"
+                    sortable>
+            </el-table-column>
 
-                <el-table-column
-                        label="Email"
-                        prop="Email"
-                        sortable>
-                </el-table-column>
+            <el-table-column
+                    label="Email"
+                    prop="Email"
+                    sortable>
+            </el-table-column>
 
-                <el-table-column
-                        label="Time Received"
-                        prop="Time Received"
-                        sortable>
-                </el-table-column>
-
-                <el-table-column
-                        label="Due"
-                        prop="Due"
-                        sortable>
-                </el-table-column>
-            </el-table>
-        </div>
-        <div class="space"></div>
-        <div class="VolunteerBox">
-            <span class="font">Volunteers</span>
-            <el-table
-                    :data="tableData"
-                    max-height="250"
-
-            >
-                <el-table-column
-                        label="First Name"
-                        prop="FirstName"
-                        sortable
-                >
-                </el-table-column>
-
-                <el-table-column
-                        label="Last Name"
-                        prop="LastName"
-                        sortable>
-                </el-table-column>
-                <el-table-column
-                        label="Phone"
-                        prop="Phone"
-                        sortable>
-                </el-table-column>
-
-                <el-table-column
-                        label="Email"
-                        prop="Email"
-                        sortable>
-                </el-table-column>
-
-                <el-table-column
-                        label="Time Received"
-                        prop="Time Received"
-                        sortable>
-                </el-table-column>
-
-            </el-table>
-        </div>
+        </el-table>
     </div>
-
 </template>
-
 <script>
     export default {
-        name: "one_one",
-
+        name: "two_one",
         data() {
             return {
 
@@ -158,19 +101,18 @@
 
             }
         },
-
     }
 </script>
 
-<style lang="less" scoped>
+<style scoped>
     .residentBox {
         width: 75vw;
     }
-
-    .VolunteerBox {
-        width: 75vw;
+    .font {
+        font-size: 2vw;
+        color: Black;
+        padding-bottom: 1vw;
     }
-
     ::v-deep .el-table th {
         font-size: 1vw;
     }
@@ -196,9 +138,5 @@
         padding-bottom: 1vw;
     }
 
-    .space {
-        margin-top: 2vw;
-        margin-bottom: 2vw;
-    }
 
 </style>
