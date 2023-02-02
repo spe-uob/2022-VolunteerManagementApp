@@ -1,24 +1,16 @@
 2022 | To/Fro - Volunteer Management App
 
-[1. Project Description](#1)
-
-[2. Stakeholders](#2)
-
-[3. User Stories](#3)
-
-[4. Team members](#4)
-
-[5. To-Fro](#5)
-
-[6. In API directory](#6)
-
-[7. Frontend](#7)
-
-[8. Testing](#8)
-
-[9. Gantt Chart](#9)
-
-
+## Table of contents
+* [Project Description](#1)
+* [Stakeholders](#2)
+* [User Stories](#3)
+* [Team members](#4)
+* [To-Fro](#5)
+    * [In API directory](#6)
+    * [Frontend](#7)
+    * [Testing](#8)
+* [Gantt Chart](#9)
+* [Kanban](#10)
 
 
 <p id="1"></p> 
@@ -41,8 +33,7 @@ The focus of this project would be to create in Vue, a rounded Co-ordinator fron
 
 ## User Stories:
 
-* For administrators, they want a good app to manage every event
-* For volunteers, they can quickly search and filter what they want to do
+
 
 <p id="4"></p> 
 
@@ -58,7 +49,13 @@ The focus of this project would be to create in Vue, a rounded Co-ordinator fron
 
 ## Gantt Chart:
 
-* [Gantt Chart](https://github.com/spe-uob/2022-VolunteerManagementApp/tree/LZMBill-patch-1/Gantt%20Chart)
+* [Gantt Chart](https://github.com/spe-uob/2022-VolunteerManagementApp/blob/main/Gantt%20Chart/Software%20Engineering%20Project%20Gantt%20chart.xlsx)
+
+<p id="10"></p>
+
+## Kanban:
+
+* [Kanban](https://github.com/spe-uob/2022-VolunteerManagementApp/projects/1)
 
 <p id="5"></p> 
 
