@@ -66,11 +66,11 @@
         display: block;
     }
 
-    @media only screen and (max-width: 620px) {
-        .header {
-            display: none;
-        }
-    }
+    /*@media only screen and (max-width: 620px) {*/
+    /*    .header {*/
+    /*        display: none;*/
+    /*    }*/
+    /*}*/
 
     .el-menu--horizontal ul li {
         font-size: 1.5vw;
