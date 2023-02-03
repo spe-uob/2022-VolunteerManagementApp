@@ -5,7 +5,7 @@
       <el-button class="fix" @click="addResident">Add New Resident</el-button>
       <el-table
           :data="tableData"
-          style="width: 90vw"
+          style="width: 85vw"
           max-height="28em">
         <el-table-column
             label="First Name"

@@ -10,7 +10,7 @@
           type="info" round @click="Toadd()">ADD FEEDBACK<i style="font-weight: bolder"
                                                             class="el-icon-plus button"></i></el-button>
 
-      <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 100%"
+      <el-table ref="multipleTable" :data="tableData" tooltip-effect="dark" style="width: 90vw"
                 @selection-change="handleSelectionChange" :cell-style="columnStyle">
         <el-table-column type="selection" width="55">
         </el-table-column>
