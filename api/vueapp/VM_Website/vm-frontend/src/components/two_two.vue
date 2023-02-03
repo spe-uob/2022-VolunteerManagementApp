@@ -5,7 +5,7 @@
       <el-button class="fix" @click="addResident">Add New Resident</el-button>
       <el-table
           :data="tableData"
-          style="width: 90em"
+          style="width: 90vw"
           max-height="28em">
         <el-table-column
             label="First Name"
@@ -283,7 +283,7 @@ export default {
 
 <style scoped>
 .margin {
-  margin-top: 2em;
+  margin-top: 2vw;
 }
 
 
@@ -294,27 +294,46 @@ export default {
 }
 
 .InputWidth {
-  width: 17em;
+  width: 17vw;
 }
 
 .font {
-  font-size: 3em;
+  font-size: 3vw;
   color: black;
-  padding-bottom: 2em;
+  padding-bottom: 2vw;
 }
 
 .p1 {
   position: absolute;
-  top: 7em;
-  right: 4em;
+  top: 7vw;
+  right: 4vw;
 }
 
 span {
-  margin-right: 10em;
+  margin-right: 10vw;
 }
 
 .fix {
-  margin-left: 4em;
+  margin-left: 4vw;
 }
+
+::v-deep .el-table th {
+         font-size: 1vw;
+     }
+
+     ::v-deep .el-table tr {
+         font-size: 1vw;
+     }
+
+     ::v-deep .el-table td, .el-table th {
+         font-size: 1vw;
+     }
+
+     ::v-deep.el-table thead {
+         font-size: 1vw;
+     }
+     ::v-deep .el-table td, .el-table th {
+         font-size: 1vw;
+     }
 
 </style>
