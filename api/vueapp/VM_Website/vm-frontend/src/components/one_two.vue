@@ -125,23 +125,42 @@ export default {
 
 <style scoped>
 #main {
-  margin-left: 4em;
-  margin-right: 4em;
+  margin-left: 4vw;
+  margin-right: 4vw;
 
 }
 
 .title {
   color: black;
-  font-size: 2em;
-  margin-top: 0em;
-  margin-bottom: 3em;
+  font-size: 2vw;
+  margin-top: 0vw;
+  margin-bottom: 3vw;
   display: inline-block;
 }
 
 .select {
-  width: 30em;
-  max-height: 2em;
-  margin-bottom: 2em;
+  width: 30vw;
+  max-height: 2vw;
+  margin-bottom: 2vw;
 }
+
+::v-deep .el-table th {
+         font-size: 1vw;
+     }
+
+     ::v-deep .el-table tr {
+         font-size: 1vw;
+     }
+
+     ::v-deep .el-table td, .el-table th {
+         font-size: 1vw;
+     }
+
+     ::v-deep.el-table thead {
+         font-size: 1vw;
+     }
+     ::v-deep .el-table td, .el-table th {
+         font-size: 1vw;
+     }
 
 </style>
