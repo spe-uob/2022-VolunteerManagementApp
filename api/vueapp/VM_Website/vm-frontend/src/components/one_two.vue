@@ -6,7 +6,7 @@
 				Select Feedback to change
 			</span>
       <el-button
-          style="float: right;width: 13em;height: 2em;padding-top:0.25em;font-size: 1em;padding-left: 1em;margin-top: 2em;"
+          style="float: right;width: 150px;height: 2vw;padding-top:0.25vw;font-size: 1px;padding-left: 1vw;margin-top: 2vw;"
           type="info" round @click="Toadd()">ADD FEEDBACK<i style="font-weight: bolder"
                                                             class="el-icon-plus button"></i></el-button>
 
@@ -31,7 +31,7 @@
         </el-table-column>
         <el-table-column align="center" label="OPTION">
           <template slot-scope="scope">
-            <el-button style="color: white;background-color: #aa0000;font-size: 1em;" @click="handleDelete(scope.$index, scope.row)">Delete
+            <el-button style="color: white;background-color: #aa0000;font-size: 1vw;" @click="handleDelete(scope.$index, scope.row)">Delete
             </el-button>
           </template>
         </el-table-column>

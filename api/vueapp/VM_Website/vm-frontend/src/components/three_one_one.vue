@@ -1,7 +1,7 @@
 <template>
 
 <div class="whole">
-  <span>Add action</span>
+  <span style="font-size: 20px">Add action</span>
 
   <el-table
       class="border"
@@ -20,7 +20,7 @@
       ref="multipleTable"
       :data="form"
       tooltip-effect="dark"
-      style="width:1000px">
+      style="width:1000vw">
 
     <el-table-column
         prop="link"
@@ -35,7 +35,7 @@
       ref="multipleTable"
       :data="form"
       tooltip-effect="dark"
-      style="width:1000px">
+      style="width:1000vw">
 
     <el-table-column
         prop="description"
@@ -92,15 +92,31 @@ span {
 }
 
 h1{
-  font-size:14px;
+  font-size:2vw;
 }
 
 .border{
-  margin-top: 20px;
+  margin-top: 5vw;
 }
 
-.template{
+::v-deep .el-table th {
+  font-size: 1vw;
+}
 
+::v-deep .el-table tr {
+  font-size: 1vw;
+}
+
+::v-deep .el-table td, .el-table th {
+  font-size: 1vw;
+}
+
+::v-deep.el-table thead {
+  font-size: 1vw;
+}
+
+::v-deep .el-table td, .el-table th {
+  font-size: 1vw;
 }
 
 </style>
