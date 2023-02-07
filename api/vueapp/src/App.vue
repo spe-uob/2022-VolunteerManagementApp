@@ -1,15 +1,24 @@
 <template>
-  <div id="app"><!--<router-view></router-view>-->
+  <div id="app">
+   <!-- <router-link to="/one_one">one_one</router-link>-->
+    <div class="nav">
+      <nav>      
+        <navbar/>
+      </nav>
+    </div>
+    <!--<el-button>hello</el-button>
+    <router-view></router-view>
     <aHeader/>
     <my-button></my-button>
-    <button :onclick="postAction()">button</button>
+    <button :onclick="postAction()">button</button>-->
   </div>
 </template>
 
 <script>
 import $ from 'jquery';
 import myButton from "@/components/myButton";
-import aHeader from './components/aHeader.vue';
+import navbar from './components/navbar.vue';
+import sidebar from './components/navbar.vue';
 
 export default {
   name: 'App',
@@ -18,7 +27,8 @@ export default {
   },
   components: {
     myButton,
-    aHeader
+    sidebar,
+    navbar
   },
   methods: {
     postAction: async function () {
@@ -130,5 +140,10 @@ export default {
 </script>
 
 <style>
+  .left-aligned-component {
+    float: top;
+    width: 20%;
+  }
 
+  @import 'element-ui/lib/theme-chalk/index.css';
 </style>
