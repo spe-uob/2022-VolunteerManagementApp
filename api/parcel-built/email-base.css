@@ -125,6 +125,55 @@ button {
     font-size: 1.6rem;
     font-weight: bold;
 }
+
+.margin {
+    margin-top: 20px;
+}
+
+.left {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    display: block;
+    margin-right: 20px;
+}
+
+.right {
+    margin-left: 20px;
+    position: absolute;
+    top: 100px;
+    right: 0px;
+}
+
+.position {
+    /*position: absolute;*/
+    /*top: 100px;*/
+    /*left: 30px;*/
+}
+
+.InputWidth {
+    width: 200px;
+}
+
+.font {
+    font-size: 30px;
+    color: black;
+    padding-bottom: 20px;
+}
+
+.p1 {
+    position: absolute;
+    top: 80px;
+    right: 50px;
+}
+
+span {
+    margin-right: 1200px;
+}
+
+.fix {
+    margin-left: 50px;
+}
 @media only screen and (min-width: 375px) {
     #wrapper {
         padding: 0px 5px !important;
