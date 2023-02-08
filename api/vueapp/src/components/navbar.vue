@@ -50,6 +50,9 @@ export default {
     'el-menu-item': MenuItem
   },
   name: 'navbar',
+  methods: {
+
+  }
 }
 </script>
 
