@@ -1,15 +1,28 @@
 <template>
-  <div id="app"><!--<router-view></router-view>-->
+  <div id="app">
+    <button @click="postAction" style="color: blue;">postAction</button>
+    <button @click="postResident">postResident</button>
+    <button @click="updateAction">updateAction</button>
+    <button @click="deleteResident">deleteResident</button>
+   <!-- <router-link to="/one_one">one_one</router-link>-->
+    <div class="nav">
+      <nav>      
+        <navbar/>
+      </nav>
+    </div>
+    <!--<el-button>hello</el-button>
+    <router-view></router-view>
     <aHeader/>
     <my-button></my-button>
-    <button :onclick="postAction()">button</button>
+    <button :onclick="postAction()">button</button>-->
   </div>
 </template>
 
 <script>
 import $ from 'jquery';
 import myButton from "@/components/myButton";
-import aHeader from './components/aHeader.vue';
+import navbar from './components/navbar.vue';
+import sidebar from './components/navbar.vue';
 
 export default {
   name: 'App',
@@ -18,13 +31,14 @@ export default {
   },
   components: {
     myButton,
-    aHeader
+    sidebar,
+    navbar
   },
   methods: {
     postAction: async function () {
       //TODO: build this obj with a form
       let action = {
-          "id": 6,
+          "id": 7,
           "external_action_id": null,
           "added_by": 2,
           "coordinator": 2,
@@ -41,7 +55,7 @@ export default {
           "volunteer_made_contact_on": null,
           "assigned_date": "2022-11-27T13:26:15.887669Z",
           "completed_date": null,
-          "action_uuid": "5e57f148-758d-11ed-a1eb-0242ac120002",
+          "action_uuid": "37b9d03a-a7a9-11ed-afa1-0242ac120002",
           "time_taken": null,
           "minimum_volunteers": 1,
           "maximum_volunteers": 1,
@@ -52,20 +66,6 @@ export default {
           ],
           "interested_volunteers": []
       }
-      //{
-        //     "resident": 1,
-        //     "volunteers_needed": 1,
-        //     "requested_datetime": "2021-04-21 06:05",
-        //     "interested_volunteers": [],
-        //     "assigned_voluneteers": [],
-        //     "action_status": "1",
-        //     "action_priority": "2",
-        //     "public_description":"",
-        //     "private_description":"",
-        //     "help_type":2,
-        //     "created_datetime":"",
-        //     "total_time_taken":""
-        // }
         const csrftoken = this.getCookie('csrftoken')
         const json = await $.ajax({
             url: "http://localhost:8000/" + "api/actions/",
@@ -86,10 +86,72 @@ export default {
             }).catch((err) => { console.err(JSON.stringify(err))})
             console.log(JSON.stringify(json))
         },
+    postResident: async function(){
+      let resident = {
+          "id": 3,
+          "first_name": "Lin",
+          "last_name": "Bench",
+          "phone": "111111111111111",
+          "phone_secondary": null,
+          "email": "bencharefismael@protonmail.com",
+          "notes": "",
+          "address_line_1": "foo",
+          "address_line_2": "bar",
+          "address_line_3": null,
+          "postcode": "W",
+          "internet_access": false,
+          "smart_device": false,
+          "confident_online_shopping": false,
+          "confident_online_comms": false,
+          "shielded": false,
+          "time_received": null,
+          "data_consent_date": "2023-02-08",
+          "ward": 1
+      }
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+            url: "http://localhost:8000/" + "api/residents/",
+            beforeSend: function(xhr) {
+              xhr.setRequestHeader('X-CSRFToken', csrftoken)
+            },
+            method: "POST",
+            type:"POST",
+            contentType:'application/json',
+            data :JSON.stringify(resident),
+            success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+            },
+            error: (err) => {
+                console.error(JSON.stringify(err))
+            }
+            }).catch((err) => { console.err(JSON.stringify(err))})
+            console.log(JSON.stringify(json))
+        },
+    deleteResident: async function(){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+            url: "http://localhost:8000/" + "api/residents/37/",
+            beforeSend: function(xhr) {
+              xhr.setRequestHeader('X-CSRFToken', csrftoken)
+            },
+            method: "DELETE",
+            type:"DELETE",
+            contentType:'application/json',
+            success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+            },
+            error: (err) => {
+                console.error(JSON.stringify(err))
+            }
+            }).catch((err) => { console.err(JSON.stringify(err))})
+            console.log(JSON.stringify(json))
+    },
     getAction: async function(action_id) {
       const csrftoken = this.getCookie('csrftoken')
         const json = await $.ajax({
-            url: "http://localhost:8000/" + "api/actions/" + action_id + "/",
+            url: "http://localhost:8000/" + "api/actions/6/",
             beforeSend: function(xhr) {
               xhr.setRequestHeader('X-CSRFToken', csrftoken)
             },
@@ -97,6 +159,27 @@ export default {
             type:"GET",
             contentType:'application/json',
             data:JSON.stringify({'action_status':'7'}),
+            success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+            },
+            error: (err) => {
+                console.error(JSON.stringify(err))
+            }
+            }).catch((err) => { console.err(JSON.stringify(err))})
+            console.log(JSON.stringify(json))
+    },
+    updateAction: async function(){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+            url: "http://localhost:8000/" + "api/actions/7/",
+            beforeSend: function(xhr) {
+              xhr.setRequestHeader('X-CSRFToken', csrftoken)
+            },
+            method: "PATCH",
+            type:"PATCH",
+            contentType:'application/json',
+            data:JSON.stringify({"action_priority": "2"}),
             success: () => {
                 //this.$emit('removed-action', response)
                 console.log("success")
@@ -130,5 +213,9 @@ export default {
 </script>
 
 <style>
-
+  .left-aligned-component {
+    float: top;
+    width: 20%;
+  }
+  @import 'element-ui/lib/theme-chalk/index.css';
 </style>

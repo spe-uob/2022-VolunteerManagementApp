@@ -6,6 +6,7 @@ module.exports = {
     filenameHashing: false, // Django will hash file names, not webpack
     runtimeCompiler: true, // See: https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
     devServer: {
+      hot: true,
       devMiddleware: {
         writeToDisk: true,
       }
