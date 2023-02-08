@@ -424,7 +424,7 @@ __webpack_require__.r(__webpack_exports__);
     postAction: async function () {
       //TODO: build this obj with a form
       let action = {
-        "id": 6,
+        "id": 7,
         "external_action_id": null,
         "added_by": 2,
         "coordinator": 2,
@@ -441,7 +441,7 @@ __webpack_require__.r(__webpack_exports__);
         "volunteer_made_contact_on": null,
         "assigned_date": "2022-11-27T13:26:15.887669Z",
         "completed_date": null,
-        "action_uuid": "5e57f148-758d-11ed-a1eb-0242ac120002",
+        "action_uuid": "37b9d03a-a7a9-11ed-afa1-0242ac120002",
         "time_taken": null,
         "minimum_volunteers": 1,
         "maximum_volunteers": 1,
@@ -450,20 +450,6 @@ __webpack_require__.r(__webpack_exports__);
         "requirements": [1],
         "interested_volunteers": []
       };
-      //{
-      //     "resident": 1,
-      //     "volunteers_needed": 1,
-      //     "requested_datetime": "2021-04-21 06:05",
-      //     "interested_volunteers": [],
-      //     "assigned_voluneteers": [],
-      //     "action_status": "1",
-      //     "action_priority": "2",
-      //     "public_description":"",
-      //     "private_description":"",
-      //     "help_type":2,
-      //     "created_datetime":"",
-      //     "total_time_taken":""
-      // }
       const csrftoken = this.getCookie('csrftoken');
       const json = await jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
         url: "http://localhost:8000/" + "api/actions/",
@@ -486,10 +472,76 @@ __webpack_require__.r(__webpack_exports__);
       });
       console.log(JSON.stringify(json));
     },
+    postResident: async function () {
+      let resident = {
+        "id": 3,
+        "first_name": "Lin",
+        "last_name": "Bench",
+        "phone": "111111111111111",
+        "phone_secondary": null,
+        "email": "bencharefismael@protonmail.com",
+        "notes": "",
+        "address_line_1": "foo",
+        "address_line_2": "bar",
+        "address_line_3": null,
+        "postcode": "W",
+        "internet_access": false,
+        "smart_device": false,
+        "confident_online_shopping": false,
+        "confident_online_comms": false,
+        "shielded": false,
+        "time_received": null,
+        "data_consent_date": "2023-02-08",
+        "ward": 1
+      };
+      const csrftoken = this.getCookie('csrftoken');
+      const json = await jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
+        url: "http://localhost:8000/" + "api/residents/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        },
+        method: "POST",
+        type: "POST",
+        contentType: 'application/json',
+        data: JSON.stringify(resident),
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success");
+        },
+        error: err => {
+          console.error(JSON.stringify(err));
+        }
+      }).catch(err => {
+        console.err(JSON.stringify(err));
+      });
+      console.log(JSON.stringify(json));
+    },
+    deleteResident: async function () {
+      const csrftoken = this.getCookie('csrftoken');
+      const json = await jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
+        url: "http://localhost:8000/" + "api/residents/37/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        },
+        method: "DELETE",
+        type: "DELETE",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success");
+        },
+        error: err => {
+          console.error(JSON.stringify(err));
+        }
+      }).catch(err => {
+        console.err(JSON.stringify(err));
+      });
+      console.log(JSON.stringify(json));
+    },
     getAction: async function (action_id) {
       const csrftoken = this.getCookie('csrftoken');
       const json = await jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
-        url: "http://localhost:8000/" + "api/actions/" + action_id + "/",
+        url: "http://localhost:8000/" + "api/actions/6/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken);
         },
@@ -498,6 +550,31 @@ __webpack_require__.r(__webpack_exports__);
         contentType: 'application/json',
         data: JSON.stringify({
           'action_status': '7'
+        }),
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success");
+        },
+        error: err => {
+          console.error(JSON.stringify(err));
+        }
+      }).catch(err => {
+        console.err(JSON.stringify(err));
+      });
+      console.log(JSON.stringify(json));
+    },
+    updateAction: async function () {
+      const csrftoken = this.getCookie('csrftoken');
+      const json = await jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
+        url: "http://localhost:8000/" + "api/actions/7/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        },
+        method: "PATCH",
+        type: "PATCH",
+        contentType: 'application/json',
+        data: JSON.stringify({
+          "action_priority": "2"
         }),
         success: () => {
           //this.$emit('removed-action', response)
@@ -607,7 +684,8 @@ __webpack_require__.r(__webpack_exports__);
     'el-submenu': element_ui__WEBPACK_IMPORTED_MODULE_0__.Submenu,
     'el-menu-item': element_ui__WEBPACK_IMPORTED_MODULE_0__.MenuItem
   },
-  name: 'navbar'
+  name: 'navbar',
+  methods: {}
 });
 
 /***/ }),
@@ -691,9 +769,91 @@ __webpack_require__.r(__webpack_exports__);
     formatter(row, column) {
       return row.address;
     },
-    addResident() {
+    getCookie: function (name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === name + '=') {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    },
+    addResident: async function () {
       this.dialogFormVisible1 = true;
       this.resident = {};
+      let resident = {
+        "id": 4,
+        "first_name": "Ismael",
+        "last_name": "Bencharef",
+        "phone": "111111111111111",
+        "phone_secondary": null,
+        "email": "bencharefismael@protonmail.com",
+        "notes": "",
+        "address_line_1": "foo",
+        "address_line_2": "bar",
+        "address_line_3": null,
+        "postcode": "W",
+        "internet_access": false,
+        "smart_device": false,
+        "confident_online_shopping": false,
+        "confident_online_comms": false,
+        "shielded": false,
+        "time_received": null,
+        "data_consent_date": "2023-02-08",
+        "ward": 1
+      };
+      const csrftoken = this.getCookie('csrftoken');
+      const json = await $.ajax({
+        url: "http://localhost:8000/" + "api/residents/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        },
+        method: "POST",
+        type: "POST",
+        contentType: 'application/json',
+        data: JSON.stringify(resident),
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success");
+        },
+        error: err => {
+          console.error(JSON.stringify(err));
+        }
+      }).catch(err => {
+        console.err(JSON.stringify(err));
+      });
+      console.log(JSON.stringify(json));
+    },
+    getAction: async function (action_id) {
+      const csrftoken = this.getCookie('csrftoken');
+      const json = await $.ajax({
+        url: "http://localhost:8000/" + "api/actions/" + action_id + "/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken);
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        data: JSON.stringify({
+          'action_status': '7'
+        }),
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success");
+        },
+        error: err => {
+          console.error(JSON.stringify(err));
+        }
+      }).catch(err => {
+        console.err(JSON.stringify(err));
+      });
+      console.log(JSON.stringify(json));
     },
     addResidentInfo() {},
     deleteResident() {
@@ -769,7 +929,26 @@ var render = function render() {
     attrs: {
       id: "app"
     }
-  }, [_c("div", {
+  }, [_c("button", {
+    staticStyle: {
+      color: "blue"
+    },
+    on: {
+      click: _vm.postAction
+    }
+  }, [_vm._v("postAction")]), _c("button", {
+    on: {
+      click: _vm.postResident
+    }
+  }, [_vm._v("postResident")]), _c("button", {
+    on: {
+      click: _vm.updateAction
+    }
+  }, [_vm._v("updateAction")]), _c("button", {
+    on: {
+      click: _vm.deleteResident
+    }
+  }, [_vm._v("deleteResident")]), _c("div", {
     staticClass: "nav"
   }, [_c("nav", [_c("navbar")], 1)])]);
 };
@@ -941,7 +1120,11 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "position"
-  }, [_c("div", {
+  }, [_c("button", {
+    on: {
+      click: _vm.addResident
+    }
+  }, [_vm._v("addHardRes")]), _c("div", {
     staticClass: "font"
   }, [_c("span", [_vm._v("Resident")]), _c("el-button", {
     staticClass: "fix",
@@ -1989,7 +2172,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZ
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "d53af75181f6d2e9"; }
+/******/ 		__webpack_require__.h = function() { return "611359383cb7f255"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

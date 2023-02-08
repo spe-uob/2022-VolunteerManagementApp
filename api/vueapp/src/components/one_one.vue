@@ -1,5 +1,6 @@
 <template>
     <div class="position">
+        <button @click="addResident">addHardRes</button>
         <div class="font">
             <span>Resident</span>
             <el-button class="fix" @click="addResident">Add New Resident</el-button>
@@ -338,9 +339,86 @@
             formatter(row, column) {
                 return row.address;
             },
-            addResident() {
+            getCookie: function(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            },
+            addResident: async function() {
                 this.dialogFormVisible1 = true
                 this.resident = {}
+
+            let resident = {
+                    "id": 4,
+                    "first_name": "Ismael",
+                    "last_name": "Bencharef",
+                    "phone": "111111111111111",
+                    "phone_secondary": null,
+                    "email": "bencharefismael@protonmail.com",
+                    "notes": "",
+                    "address_line_1": "foo",
+                    "address_line_2": "bar",
+                    "address_line_3": null,
+                    "postcode": "W",
+                    "internet_access": false,
+                    "smart_device": false,
+                    "confident_online_shopping": false,
+                    "confident_online_comms": false,
+                    "shielded": false,
+                    "time_received": null,
+                    "data_consent_date": "2023-02-08",
+                    "ward": 1
+                }
+                const csrftoken = this.getCookie('csrftoken')
+                const json = await $.ajax({
+                url: "http://localhost:8000/" + "api/residents/",
+                beforeSend: function(xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken)
+                },
+                method: "POST",
+                type:"POST",
+                contentType:'application/json',
+                data :JSON.stringify(resident),
+                success: () => {
+                    //this.$emit('removed-action', response)
+                    console.log("success")
+                },
+                error: (err) => {
+                    console.error(JSON.stringify(err))
+                }
+                }).catch((err) => { console.err(JSON.stringify(err))})
+                console.log(JSON.stringify(json))
+        },
+    getAction: async function(action_id) {
+      const csrftoken = this.getCookie('csrftoken')
+        const json = await $.ajax({
+            url: "http://localhost:8000/" + "api/actions/" + action_id + "/",
+            beforeSend: function(xhr) {
+              xhr.setRequestHeader('X-CSRFToken', csrftoken)
+            },
+            method: "GET",
+            type:"GET",
+            contentType:'application/json',
+            data:JSON.stringify({'action_status':'7'}),
+            success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+            },
+            error: (err) => {
+                console.error(JSON.stringify(err))
+            }
+            }).catch((err) => { console.err(JSON.stringify(err))})
+            console.log(JSON.stringify(json))
             },
             addResidentInfo() {
             },
@@ -398,7 +476,7 @@
             },
             updateVolunteerInfo() {
             },
-
+        
         }
     }
 </script>
