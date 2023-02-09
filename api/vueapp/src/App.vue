@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <button @click="postAction" style="color: blue;">postAction</button>
+    <!-- <button @click="postAction" style="color: blue;">postAction</button>
     <button @click="postResident">postResident</button>
     <button @click="updateAction">updateAction</button>
-    <button @click="deleteResident">deleteResident</button>
+    <button @click="deleteResident">deleteResident</button> -->
    <!-- <router-link to="/one_one">one_one</router-link>-->
-    <div class="nav">
+    <head>
+      <title>Coordinator Dashboard</title>
+    </head>
+    <header class="nav">
       <nav>      
         <navbar/>
       </nav>
-    </div>
-    <!--<el-button>hello</el-button>
-    <router-view></router-view>
-    <aHeader/>
-    <my-button></my-button>
-    <button :onclick="postAction()">button</button>-->
+      <header class="title">
+        Coordinator
+      </header>
+      <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
+    </header>
   </div>
 </template>
 
@@ -22,19 +24,28 @@
 import $ from 'jquery';
 import myButton from "@/components/myButton";
 import navbar from './components/navbar.vue';
-import sidebar from './components/navbar.vue';
 
 export default {
   name: 'App',
   data(){
-    return{}
+    return{
+      buttons: [
+        { label: 'All Activity', left: '373px', selected: false },
+        { label: 'Actions', left: '526px',selected: false },
+        { label: 'Referrals', left: '679px',selected: false },
+      ]
+    }
   },
   components: {
     myButton,
-    sidebar,
     navbar
   },
   methods: {
+    selectButton(index) {
+      this.buttons.forEach((item, i) => {
+        item.selected = (i === index)
+      })
+    },
     postAction: async function () {
       //TODO: build this obj with a form
       let action = {
@@ -217,5 +228,21 @@ export default {
     float: top;
     width: 20%;
   }
-  @import 'element-ui/lib/theme-chalk/index.css';
+  .title {
+        position: absolute;
+        width: 169px;
+        height: 36px;
+        left: 1221px;
+        top: 21px;
+
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 36px;
+        display: flex;
+        align-items: center;
+
+        color: #FFFFFF;
+    }
 </style>
