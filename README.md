@@ -7,13 +7,13 @@ The application uses a Django project integrated with a vue application.
 ## UX design
 To design an interactive user interface we employed general UX design methods, such as Journey Mapping, listing user personas and requirements. We aim to follow a UX design pattern.
 
-    ![My Image](images/image1.jpg)
+![My Image](images/image1.jpg)
 
-    ![My Image](images/image2.jpg)
+![My Image](images/image2.jpg)
 
-    ![My Image](images/image3.jpg)
+![My Image](images/image3.jpg)
 
-    ![My Image](images/image4.jpg)
+![My Image](images/image4.jpg)
 
 ## Deployment
 
