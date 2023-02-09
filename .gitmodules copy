@@ -1,3 +1,0 @@
-[submodule "api/coordinatorvue"]
-	path = api/coordinatorvue
-	url = https://github.com/josh-connor/action-vue
