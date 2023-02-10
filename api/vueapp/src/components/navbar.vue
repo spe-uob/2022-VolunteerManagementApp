@@ -1,32 +1,51 @@
 <!--header-->
 <template>
-    <head>
-        <title>Coordinator</title>
-    </head>
-    <nav></nav>
+  <div>
+
+  </div>
+
 </template>
 
 <script>
 export default {
     components: {
   },
-  name: 'navbar',
+  name: "nav-bar",
   methods: {
-
   }
 }
 </script>
 
 <style>
+
+
     .nav {
         position: absolute;
-        width: 1512px;
-        height: 78px;
-        left: 0px;
-        top: 0px;
-
+        width: 100vw;
+        height: 5.5vw;
+        left: 0;
+        top: 0;
         background: #3A4857;
+        transition: height 0.2s ease-in-out;
     }
+
+    @media (max-width: 720px) {
+        .nav {
+            height: 40px;
+            transition: height 0.2s ease-in-out;
+        }
+    }
+
+    @media (min-width: 920px){
+        .nav {
+            height: 4.5vw;
+            transition: height 0.2s ease-in-out;
+        }
+    }
+
+
+
+
 </style>
 
 

@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import aHeader from "@/components/aHeader";
-//import one_one from "@/components/one_one";
-//import one_four from "@/components/one_four";
 
 
 Vue.use(VueRouter)
