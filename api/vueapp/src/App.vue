@@ -20,6 +20,16 @@
                     </div>
                 </div>
             </nav>
+
+            <div class="buttons">
+                <span class="btn">All Activity</span>
+                <span class="btn">Actions</span>
+                <span class="btn">Referrals</span>
+                <span class="btn">Residents</span>
+                <span class="btn">Volunteers</span>
+                <span class="btn">Organisations</span>
+                <span class="btn">Phone Call</span>
+            </div>
         </header>
 
     </div>
@@ -248,7 +258,36 @@
 </script>
 
 <style>
+    .buttons .btn{
+        font-weight: 500;
+    }
+    .buttons{
+        margin: 6vw;
+        display: flex;
+        justify-content: center;
 
+    }
+
+    .btn{
+        margin: 1.5vw;
+        font-size: 1.5vw;
+        color: black;
+        /*text-transform: uppercase;*/
+
+        /*transition: all 0.3s ease-in-out;*/
+    }
+    .btn:hover{
+        background-color: white;
+        color: white;
+        border: 2px solid #3A4857;
+        background-color: #3A4857;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    .btn:active {
+        transform: scale(0.98);
+    }
     .dropbtn {
         background-color: #3A4857;
         color: white;
@@ -269,7 +308,7 @@
         position: absolute;
         background-color: white;
         min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
         transition: all 0.3s ease-out;
     }
@@ -331,7 +370,8 @@
         align-items: center;
         color: #FFFFFF;
     }
-    .gap{
+
+    .gap {
         padding-left: 0.4vw;
         padding-right: 0.4vw;
     }
