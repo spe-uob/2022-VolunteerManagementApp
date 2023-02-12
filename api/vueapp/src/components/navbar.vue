@@ -22,7 +22,8 @@ export default {
     .nav {
         position: absolute;
         width: 100vw;
-        height: 5.5vw;
+        min-height:40px ;
+        height: 4.5vw;
         left: 0;
         top: 0;
         background: #3A4857;
@@ -36,12 +37,12 @@ export default {
         }
     }
 
-    @media (min-width: 920px){
-        .nav {
-            height: 4.5vw;
-            transition: height 0.2s ease-in-out;
-        }
-    }
+    /*@media (min-width: 920px){*/
+    /*    .nav {*/
+    /*        height: 4.5vw;*/
+    /*        transition: height 0.2s ease-in-out;*/
+    /*    }*/
+    /*}*/
 
 
 
