@@ -14,16 +14,21 @@
         </tr>
         <tr class="info">
             <td>
-              <div class="on">
-                <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Help types
-                  <i class="angle_top"></i>
-                  <i class="angle_bottom"></i>
-                </a>
+              <div class="right"
+                   @click="change(item,index)"
+                   v-for="(item, index) in btnList"
+                   :key="index">{{item.lable}}
+                <div class="box-icon">
+                  <div class="up"
+                       :class="item.status === 1 ? 'opacity-5' : ''"></div>
+                  <div class="down"
+                       :class="item.status === 1 ? 'opacity-1' : ''"></div>
+                </div>
               </div>
             </td>
           <td>
             <div class="on">
-              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">ID
+              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Help Type
                 <i class="angle_top"></i>
                 <i class="angle_bottom"></i>
               </a>
@@ -174,12 +179,72 @@
 <script type="text/javascript">
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: "Actions"
+  name: "Actions",
+  data(){
+    return{
+      btnList: [
+        { lable: "ID", status: 0 },
+      ],
+
+    }
+  },
+  methods:{
+    change(item, index) {
+      this.btnList[index].status === 0
+          ? (this.btnList[index].status = 1)
+          : (this.btnList[index].status = 0);}
+  }
 }
 </script>
 
 <style type="text/css">
+.right {
+  padding: 0 20px;
+  height: 32px;
+  font-weight: 400;
+  font-size: 14px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  line-height: 32px;
+  cursor: pointer;
+}
+.up {
+  border-bottom: 6px solid #217aff;
+}
+.down {
+  border-top: 6px solid #217aff;
+}
+.opacity-5 {
+  opacity: 0.5;
+}
+.opacity-1 {
+  opacity: 1 !important;
+}
+.box-icon {
+  height: 30px;
+  margin-top: 7px;}
+.up {
+  width: 0px; /*设置宽高为0，所以div的内容为空，从才能形成三角形尖角*/
+  height: 0px;
+  border-bottom: 6px solid #a3a5b3;
+  border-left: 4px solid transparent; /*transparent 表示透明*/
+  border-right: 4px solid transparent;
+  margin-bottom: 4px;
+}
+.down {
+  width: 0px;
+  height: 0px;
+  opacity: 0.5;
+  border-top: 6px solid #a3a5b3;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
 
+.box-icon div {
+  height: 10px;
+  margin-left: 4px;
+}
 .on {
   width: 150px;
   height: 40px;
