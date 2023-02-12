@@ -22,7 +22,7 @@
             </nav>
 
             <div class="buttons">
-                <span class="btn" @click="All_Activity()">All Activity</span>
+                <span class="btn">All Activity</span>
                 <span class="btn">Actions</span>
                 <span class="btn">Referrals</span>
                 <span class="btn">Residents</span>
