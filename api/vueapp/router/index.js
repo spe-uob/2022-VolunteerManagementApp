@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import aHeader from "@/components/aHeader";
+import All_Activity from "@/components/All_Activity.vue";
 
 
 Vue.use(VueRouter)
@@ -11,16 +12,16 @@ const routes = [
         path: '/static-built/src/vue/dist/',
         component: aHeader,
         children: [
-            /*{
-                path: '/header/1-1',
-                name: "one_one",
-                component: one_one,
-            },
             {
-                path: '/header/1-4',
-                name: "one_four",
-                component: one_four
-            }*/
+                path: '/All_Activity',
+                name: "All_Activity",
+                component: All_Activity,
+            },
+            // {
+            //     path: '/header/1-4',
+            //     name: "one_four",
+            //     component: one_four
+            // }
         ]
         // children: [
         //     {
