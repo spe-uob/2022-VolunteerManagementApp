@@ -23,7 +23,7 @@
 
             <div class="buttons">
                 <span class="btn">All Activity</span>
-                <span class="btn">Actions</span>
+                <span class="btn" @click="Actions">Actions</span>
                 <span class="btn">Referrals</span>
                 <span class="btn">Residents</span>
                 <span class="btn">Volunteers</span>
@@ -31,7 +31,7 @@
                 <span class="btn">Phone Call</span>
             </div>
         </header>
-      <Actions/>
+      <router-view></router-view>
     </div>
 
 
@@ -68,9 +68,15 @@
           myReferrals
         },
         methods: {
+<<<<<<< HEAD
           All_Activity() {
             this.$router.push("/All_Activity")
           },
+=======
+            Actions(){
+                this.$router.push({path: 'Actions'})
+            },
+>>>>>>> 07db237 (add router)
             doSomething() {
                 console.log('Button was clicked');
             },
@@ -306,12 +312,12 @@
         color: black;
         /*text-transform: uppercase;*/
 
-        /*transition: all 0.3s ease-in-out;*/
+        transition: all 0.1s ease-in-out;
     }
     .btn:hover{
         background-color: white;
         color: white;
-        border: 2px solid #3A4857;
+        /*border: 1px solid #3A4857;*/
         background-color: #3A4857;
         border-radius: 8px;
         font-weight: 500;
