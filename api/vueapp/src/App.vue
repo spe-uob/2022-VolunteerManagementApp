@@ -1,30 +1,19 @@
 <template>
-  <div id="app">
-    <!-- <button @click="postAction" style="color: blue;">postAction</button>
-    <button @click="postResident">postResident</button>
-    <button @click="updateAction">updateAction</button>
-    <button @click="deleteResident">deleteResident</button> -->
-   <!-- <router-link to="/one_one">one_one</router-link>-->
-    <head>
-      <title>Coordinator Dashboard</title>
-    </head>
-    <header class="nav">
-      <nav>      
-        <navbar/>
-      </nav>
-      <header class="title">
-        Coordinator
-      </header>
-      <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
-    </header>
+  <div>
+    <navbar/>
+    <my-button/>
+    <my-referrals/>
   </div>
+
+
 </template>
+.
 
 <script>
 import $ from 'jquery';
 import myButton from "@/components/myButton";
 import navbar from './components/navbar.vue';
-
+import myReferrals from "@/components/myReferrals";
 export default {
   name: 'App',
   data(){
@@ -38,7 +27,8 @@ export default {
   },
   components: {
     myButton,
-    navbar
+    navbar,
+    myReferrals,
   },
   methods: {
     selectButton(index) {
@@ -72,9 +62,7 @@ export default {
           "maximum_volunteers": 1,
           "potential_volunteer_ids": [],
           "actionfeedback_set": [],
-          "requirements": [
-              1
-          ],
+          "requirements": [],
           "interested_volunteers": []
       }
         const csrftoken = this.getCookie('csrftoken')

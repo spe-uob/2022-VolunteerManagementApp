@@ -3,16 +3,16 @@
     <head>
         <title>Coordinator</title>
     </head>
-    <nav></nav>
+
+<!--    <nav></nav>-->
 </template>
 
 <script>
 export default {
     components: {
   },
-  name: 'navbar',
+  name: "nav-bar",
   methods: {
-
   }
 }
 </script>
