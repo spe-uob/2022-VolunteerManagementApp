@@ -1,14 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+<<<<<<< HEAD
 import aHeader from "@/components/aHeader";
 import All_Activity from "@/components/All_Activity.vue";
+=======
+import Router from 'vue-router'
+import App from "@/App";
+import Actions from "@/components/Actions";
+>>>>>>> 07db237 (add router)
 
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
 const routes = [
     //localhost:8080/header means you are going to Header page(probably case sensitive)
     {
+<<<<<<< HEAD
         path: '/static-built/src/vue/dist/',
         component: aHeader,
         children: [
@@ -23,6 +30,15 @@ const routes = [
             //     component: one_four
             // }
         ]
+=======
+        path: '/static-built/src/vue/dist',
+        component: App,
+    },{
+        path: '/static-built/src/vue/dist/Actions',
+        name: "Actions",
+        component: Actions,
+    }
+>>>>>>> 07db237 (add router)
         // children: [
         //     {
         //         path: '/header/2-1',
@@ -55,7 +71,7 @@ const routes = [
         //         component: five
         //     },
         // ]
-    }
+
 
 
 ]
