@@ -5,30 +5,22 @@
                 <navbar/>
                 <img class="symbol" src="../img/CompanyIcon.png"/>
 
-                <div class="title">
-                 <span>
-                    Coordinator
-                </span>
-                    <span class="gap"></span>
-                    <div class="dropdown">
+                <header class="title">
+                  Coordinator
+                </header>
+                <div class="dropdown">
                         <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
                         <div class="dropdown-content">
                             <a href="#">Coordinator</a>
                             <a href="#">Volunteer</a>
                             <a href="#">Log Out</a>
                         </div>
-                    </div>
                 </div>
             </nav>
 
             <div class="buttons">
-                <span class="btn">All Activity</span>
-                <span class="btn">Actions</span>
-                <span class="btn">Referrals</span>
-                <span class="btn">Residents</span>
-                <span class="btn">Volunteers</span>
-                <span class="btn">Organisations</span>
-                <span class="btn">Phone Call</span>
+              <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
+              <button class="callbtn">Start Call</button>
             </div>
         </header>
 
@@ -39,7 +31,7 @@
 
 <script>
     import $ from 'jquery';
-    // import myButton from "@/components/myButton";
+    import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
 
     export default {
@@ -47,18 +39,18 @@
         data() {
             return {
                 buttons: [
-                    {label: 'All Activity', left: '373px', selected: false},
-                    {label: 'Actions', left: '526px', selected: false},
-                    {label: 'Referrals', left: '679px', selected: false},
-                    {label: 'Residents', left: '832px', selected: false},
-                    {label: 'Volunteers', left: '985px', selected: false},
-                    {label: 'Organisations', left: '1138px', selected: false},
+                    {label: 'All Activity', left: '273px', selected: false},
+                    {label: 'Actions', left: '426px', selected: false},
+                    {label: 'Referrals', left: '579px', selected: false},
+                    {label: 'Residents', left: '732px', selected: false},
+                    {label: 'Volunteers', left: '885px', selected: false},
+                    {label: 'Organisations', left: '1038px', selected: false},
                 ],
                 options: ['Account']
             }
         },
         components: {
-            // myButton,
+            myButton,
             navbar
         },
         methods: {
@@ -258,6 +250,17 @@
 </script>
 
 <style>
+    .callbtn {
+      position: absolute;
+      width: 117px;
+      height: 48px;
+      left: 1365px;
+      top: 112px;
+
+      background: #1C405A;
+      border-radius: 5px;
+      color: white;
+    }
     .buttons .btn{
         font-weight: 500;
     }
@@ -288,13 +291,26 @@
     .btn:active {
         transform: scale(0.98);
     }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+  
     .dropbtn {
-        background-color: #3A4857;
+        /* background-color: #3A4857;
         color: white;
         font-size: 1vw;
         border: none;
         display: flex;
-        align-items: center;
+        align-items: center; */
+        background-color: #3A4857;
+        color:white;
+        position: absolute;
+        width: 73px;
+        height: 45px;
+        left: 1300px;
+        top: -1px;
     }
 
     .dropdown-arrow {
@@ -304,14 +320,15 @@
 
     /* Dropdown Content (Hidden by Default) */
     .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        transition: all 0.3s ease-out;
-    }
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 1300px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
 
     /* Links inside the dropdown */
     .dropdown-content a {
@@ -357,15 +374,15 @@
 
     .title {
         position: absolute;
-        width: 4vw;
+        width: 10vw;
         height: 2vw;
         right: 20vw;
-        top: 1vw;
+        top: 1.5vw;
 
         font-family: 'Inter';
         font-style: normal;
-        font-weight: 600;
-        font-size: 1.5vw;
+        font-weight: 300;
+        font-size: 2vw;
         display: flex;
         align-items: center;
         color: #FFFFFF;

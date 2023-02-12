@@ -20,7 +20,7 @@ export default {
 
 
     .nav {
-        position: absolute;
+        /* position: absolute; */
         width: 100vw;
         height: 5.5vw;
         left: 0;
