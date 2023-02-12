@@ -23,10 +23,8 @@
               <button class="callbtn">Start Call</button>
             </div>
         </header>
-
+        <router-view></router-view>
     </div>
-
-
 </template>
 
 <script>
@@ -51,15 +49,21 @@
         },
         components: {
             myButton,
-            navbar
+            navbar,
         },
         methods: {
+          All_Activity() {
+            this.$router.push("/All_Activity")
+          },
             doSomething() {
                 console.log('Button was clicked');
             },
             selectButton(index) {
                 this.buttons.forEach((item, i) => {
                     item.selected = (i === index)
+                    if(i === index){
+                        this.$router.push(`/${item.label}`)
+                    }
                 })
             },
             postAction: async function () {
@@ -250,25 +254,46 @@
 </script>
 
 <style>
-    .callbtn {
+
+.callbtn {
       position: absolute;
       width: 117px;
       height: 48px;
       left: 1365px;
       top: 112px;
-
       background: #1C405A;
       border-radius: 5px;
       color: white;
     }
+/*.container {*/
+/*  font-size: 15vw;*/
+/*  display: grid;*/
+/*  grid-template-columns: 3fr 2fr 1fr; !* 3 columns with equal width *!*/
+/*  !*grid-template-rows: repeat(3, 1fr); !* 4 rows with equal height *!*!*/
+/*  grid-auto-rows: minmax(100px, auto);*/
+/*  gap: 3vw; !* gap between grid cells *!*/
+/*  !*width: 100%;*!*/
+/*  table-layout: fixed;*/
+/*  border-collapse: collapse;*/
+/*  row-gap: 5vw;*/
+/*  border: none;*/
+/*  */
+/*}*/
+
+/*.container2{*/
+/*  grid-column: 3/3;*/
+/*  justify-content: end;*/
+/*  height: 100vw;*/
+/*}*/
+
+
     .buttons .btn{
         font-weight: 500;
     }
     .buttons{
-        margin: 6vw;
+        margin: 5vw;
         display: flex;
         justify-content: center;
-
     }
 
     .btn{
@@ -392,4 +417,5 @@
         padding-left: 0.4vw;
         padding-right: 0.4vw;
     }
+
 </style>
