@@ -11,8 +11,8 @@
                 </span>
                     <span class="gap"></span>
                     <div class="dropdown">
-                        <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
-                        <div class="dropdown-content">
+                        <button class="dropbtn" @click="showDropdown">Switch User <span class="dropdown-arrow">&#9660;</span></button>
+                        <div class="dropdown-content" v-if="showContent">
                             <a href="#">Coordinator</a>
                             <a href="#">Volunteer</a>
                             <a href="#">Log Out</a>
@@ -23,7 +23,7 @@
 
             <div class="buttons">
                 <span class="btn">All Activity</span>
-                <span class="btn">Actions</span>
+                <span class="btn" @click="Actions">Actions</span>
                 <span class="btn">Referrals</span>
                 <span class="btn">Residents</span>
                 <span class="btn">Volunteers</span>
@@ -31,7 +31,7 @@
                 <span class="btn">Phone Call</span>
             </div>
         </header>
-      <Actions/>
+        <router-view></router-view>
     </div>
 
 
@@ -39,15 +39,14 @@
 
 <script>
     import $ from 'jquery';
-    // import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
-    import Actions from "@/components/Actions";
-    import myReferrals from "./components/myReferrals";
+
 
     export default {
         name: 'App',
         data() {
             return {
+                showContent: false,
                 buttons: [
                     {label: 'All Activity', left: '373px', selected: false},
                     {label: 'Actions', left: '526px', selected: false},
@@ -60,17 +59,15 @@
             }
         },
         components: {
-            // myButton,
             navbar,
-          // eslint-disable-next-line vue/no-unused-components
-            Actions,
-          // eslint-disable-next-line vue/no-unused-components
-          myReferrals
         },
         methods: {
-          All_Activity() {
-            this.$router.push("/All_Activity")
-          },
+            showDropdown() {
+                this.showContent = !this.showContent
+            },
+            Actions() {
+                this.$router.push({name: 'Actions'})
+            },
             doSomething() {
                 console.log('Button was clicked');
             },
@@ -268,70 +265,58 @@
 
 <style>
 
-
-/*.container {*/
-/*  font-size: 15vw;*/
-/*  display: grid;*/
-/*  grid-template-columns: 3fr 2fr 1fr; !* 3 columns with equal width *!*/
-/*  !*grid-template-rows: repeat(3, 1fr); !* 4 rows with equal height *!*!*/
-/*  grid-auto-rows: minmax(100px, auto);*/
-/*  gap: 3vw; !* gap between grid cells *!*/
-/*  !*width: 100%;*!*/
-/*  table-layout: fixed;*/
-/*  border-collapse: collapse;*/
-/*  row-gap: 5vw;*/
-/*  border: none;*/
-/*  */
-/*}*/
-
-/*.container2{*/
-/*  grid-column: 3/3;*/
-/*  justify-content: end;*/
-/*  height: 100vw;*/
-/*}*/
-
-
-    .buttons .btn{
+    .buttons .btn {
         font-weight: 500;
     }
-    .buttons{
+
+    .buttons {
         margin: 5vw;
         display: flex;
         justify-content: center;
     }
 
-    .btn{
+    .btn {
         margin: 1.5vw;
         font-size: 1.5vw;
         color: black;
         /*text-transform: uppercase;*/
 
-        /*transition: all 0.3s ease-in-out;*/
+        transition: all 0.1s ease-in-out;
     }
-    .btn:hover{
+
+    .btn:hover {
         background-color: white;
         color: white;
-        border: 2px solid #3A4857;
+        /*border: 1px solid #3A4857;*/
         background-color: #3A4857;
-        border-radius: 8px;
-        font-weight: 500;
+        border-radius: 2px;
         cursor: pointer;
     }
+
     .btn:active {
-        transform: scale(0.98);
+        transform: scale(1.15);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
     }
     .dropbtn {
         background-color: #3A4857;
         color: white;
-        font-size: 1vw;
+        font-size: 1rem;
         border: none;
         display: flex;
         align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+        cursor: pointer;
     }
 
     .dropdown-arrow {
-        margin-left: 0.4vw;
-        font-size: 0.3vw;
+        margin-left: 0.4rem;
+        font-size: 0.5rem;
+        transition: transform 0.2s ease-in-out;
     }
 
     /* Dropdown Content (Hidden by Default) */
@@ -341,21 +326,25 @@
         background-color: white;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
         z-index: 1;
         transition: all 0.3s ease-out;
+        top: 100%;
     }
 
     /* Links inside the dropdown */
-    .dropdown-content a {
+    .dropdown-content a,
+    .dropdown-content a:hover {
         color: black;
         padding: 0.8em 1.5em;
         text-decoration: none;
         display: block;
+        background-color: transparent;
     }
 
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
-        background-color: gray;
+        background-color: #eee;
     }
 
     /* Show the dropdown menu on hover */
@@ -365,16 +354,19 @@
 
     /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown:hover .dropbtn {
-        background-color: lightblue;
+        font-weight: bold;
     }
 
-    @media (max-width: 767px) {
-        .dropdown-content {
-            position: static;
-            display: block;
-            width: 100%;
-            margin-top: 10px;
-        }
+    .dropdown-content a {
+        border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown:hover .dropdown-arrow {
+        transform: rotate(180deg);
     }
 
     .symbol {
