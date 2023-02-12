@@ -31,7 +31,7 @@
                 <span class="btn">Phone Call</span>
             </div>
         </header>
-
+      <Actions/>
     </div>
 
 
@@ -41,6 +41,7 @@
     import $ from 'jquery';
     // import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
+    import Actions from "@/components/Actions";
 
     export default {
         name: 'App',
@@ -59,7 +60,9 @@
         },
         components: {
             // myButton,
-            navbar
+            navbar,
+          // eslint-disable-next-line vue/no-unused-components
+            Actions
         },
         methods: {
             doSomething() {
