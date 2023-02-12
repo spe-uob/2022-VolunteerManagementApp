@@ -42,6 +42,7 @@
     // import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
     import Actions from "@/components/Actions";
+    import myReferrals from "./components/myReferrals";
 
     export default {
         name: 'App',
@@ -62,7 +63,9 @@
             // myButton,
             navbar,
           // eslint-disable-next-line vue/no-unused-components
-            Actions
+            Actions,
+          // eslint-disable-next-line vue/no-unused-components
+          myReferrals
         },
         methods: {
             doSomething() {
