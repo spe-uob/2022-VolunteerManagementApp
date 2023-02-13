@@ -77,7 +77,7 @@
         methods: {
             updateCallStarted(routeName) {
             console.log(routeName)
-            this.CallStarted = (routeName === '/Start_Call')
+            this.CallStarted = (routeName === '/Start_Call' ||  routeName.startsWith('/add'))
         },
             onBeforeUnload(){
                 //code here

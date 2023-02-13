@@ -33,13 +33,15 @@ const routes = [
             {
                 path: '/Start_Call',
                 name: ' Start_call',
-                component: Start_Call
+                component: Start_Call,
+                children: [
+                    {
+                        path: '/add/:id',
+                        name: 'add',
+                        component: residentPage
+                    }
+                ]
             },
-            {
-                path: '/add/:id',
-                name: 'add',
-                component: residentPage
-            }
         ]
     }
 
