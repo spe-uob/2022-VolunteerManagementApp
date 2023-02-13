@@ -22,7 +22,7 @@ const routes = [
   { path: '/Referrals', component: referralTable},
   { path: '/All Activity', component: All_Activity},
   { path: '/Start_Call', component: Start_Call},
-  { path: '/add/:id', component: residentPage}
+  { path: '/add/:id', component: residentPage, name: 'add'}
 ]
 
 const router = new VueRouter({

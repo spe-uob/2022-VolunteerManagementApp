@@ -1,7 +1,8 @@
 <template>
     <div class="container">
-      <ul class="resident-list">
-        <li class="resident-item" v-for="action in actions" :key="action.id">
+        <header>Actions</header>
+      <ul class="action-list">
+        <li class="action-item" v-for="action in filteredActions" :key="action.id">
             <a class="name">{{ action.type}}</a>
             <p class="address">{{ action.date}}</p>
         </li>
@@ -16,20 +17,24 @@ import $ from 'jquery';
 export default {
   data() {
     return {
-        actions: [],
+        actions: [{ resident: 5, date: "your moms"}],
         referrals: [],
     }
   },
+  props: [],
   computed: {
     id() {
       return this.$route.params.id;
-    }
+    },
+    filteredActions() {
+            return this.actions.filter(action => action.resident === parseInt(this.id));
+        },
   },
   methods: {
-    getActionsByResident: async function (id) {
+    getActions: async function (id) {
         const csrftoken = this.getCookie('csrftoken')
           const json = await $.ajax({
-              url: "http://localhost:8000/" + "api/actions/" + id,
+              url: `http://localhost:8000/api/actions/`,
               beforeSend: function (xhr) {
                   xhr.setRequestHeader('X-CSRFToken', csrftoken)
               },
@@ -46,7 +51,6 @@ export default {
           }).catch((err) => {
               console.err(JSON.stringify(err))
           })
-          console.log(JSON.stringify(json))
           return json;
       },
     getCookie: function (name) {
@@ -66,15 +70,19 @@ export default {
         }
   },
   mounted() {
-    this.getActions(this.id).then((response) => {
-        this.residents = response.results.map((result) => {
+    console.log(this.id)
+    this.getActions().then((response) => {
+        console.log("response.results:" + + response.results)
+        this.actions = response.results.map((result) => {
           return {
+            resident: result.resident,
             type: result.help_type,
             date: result.requested_datetime
         }
         })
+    console.log("this.actions: " + JSON.stringify(this.actions))
+    console.log("filtered actions: " + this.filteredActions)
     })
-    console.log(this.actions)
   }
 }
 </script>
@@ -100,8 +108,8 @@ export default {
   text-align: center;
 }
 
-.resident-list {
-    box-shadow: -5px -1px 10px rgba(62, 62, 62, 0.134);
+.action-list {
+    box-shadow: -5px -1px 10px rgba(62, 62, 62, 0.1);
   background-color: white;
   width: 20%;
   list-style: none;
@@ -109,7 +117,7 @@ export default {
   text-align: center;
 }
 
-.resident-item {
+.action-item {
   border: 1px solid #ddd;
   padding: 30px;
   box-sizing: border-box;
