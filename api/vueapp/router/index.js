@@ -4,6 +4,7 @@ import aHeader from "@/components/aHeader";
 import actionTable from '@/components/myTable'
 import All_Activity from "@/components/All_Activity.vue";
 import referralTable from "@/components/referralTable"
+import residentPage from '@/components/residentPage'
 
 
 Vue.use(VueRouter)
@@ -28,45 +29,18 @@ const routes = [
                 path: '/Referrals',
                 name: 'Referrals',
                 component: referralTable
+            },
+            {
+                path: '/Start_Call',
+                name: ' Start_call',
+                component: Start_Call
+            },
+            {
+                path: '/add/:id',
+                name: 'add',
+                component: residentPage
             }
-            // {
-            //     path: '/header/1-4',
-            //     name: "one_four",
-            //     component: one_four
-            // }
         ]
-        // children: [
-        //     {
-        //         path: '/header/2-1',
-        //         name: "two_one",
-        //         component: two_one
-        //     }, {
-        //         path: '/header/3-1',
-        //         name: "three_one",
-        //         component: three_one
-        //     }, {
-        //         path: '/header/3-2',
-        //         name: "three_two",
-        //         component: three_two
-        //     }, {
-        //         path: '/header/3-3',
-        //         name: "three_three",
-        //         component: three_three
-        //     },
-        //     , {
-        //         path: '/header/4-1',
-        //         name: "four_one",
-        //         component: four_one
-        //     }, {
-        //         path: '/header/4-2',
-        //         name: "four_two",
-        //         component: four_two
-        //     }, {
-        //         path: '/header/5',
-        //         name: "five",
-        //         component: five
-        //     },
-        // ]
     }
 
 

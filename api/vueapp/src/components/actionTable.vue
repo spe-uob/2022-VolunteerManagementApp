@@ -1,7 +1,14 @@
 <template>
     <div class="table-container">
       <h1 class="table-title">Actions</h1>
-      <b-table striped hover :items="items" :fields="fields"></b-table>
+      <b-table
+      :items="items"
+      :fields="fields"
+      :sort-by.sync="sortBy"
+      :sort-desc.sync="sortDesc"
+      sort-icon-left
+      responsive="sm"
+    ></b-table>
     </div>
   </template>
   
@@ -10,11 +17,13 @@
     export default {
       data() {
         return {
+          sortBy: 'age',
+          sortDesc: false,
           items: [],
           fields: [
-          { key: 'id', label: 'ID' },
-          { key: 'resident', label: 'Resident' },
-          { key: 'help_type', label: 'Help Type' },
+          { key: 'id', label: 'ID', sortable: true },
+          { key: 'resident', label: 'Resident', sortable: true },
+          { key: 'help_type', label: 'Help Type', sortable: true},
         ],
         }
       },

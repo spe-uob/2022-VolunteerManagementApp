@@ -19,8 +19,8 @@
             </nav>
 
             <div class="buttons">
-              <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
-              <button class="callbtn">Start Call</button>
+              <myButton v-if="!CallStarted" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
+              <button  v-if="!CallStarted" class="callbtn" @click="Start_Call">Start Call</button>
             </div>
         </header>
         <router-view></router-view>
@@ -44,19 +44,53 @@
                     {label: 'Volunteers', left: '885px', selected: false},
                     {label: 'Organisations', left: '1038px', selected: false},
                 ],
+                CallStarted: false,
                 options: ['Account']
             }
+        },
+        // created() {
+        //     this.$watch(
+        //         () => this.$route,
+        //         () => {
+        //             if (this.$route.path === '/All Activity') {
+        //             this.CallStarted = false
+        //             }
+        //         })
+        // },
+        watch: {
+            //TODO: fix gets broken when you refresh on Start Call or forward. Most likely need to run updateCallStarted on more than popstate event
+            $route(to, from) {
+                if(from !== '/Start_Call')
+                    this.updateCallStarted(to.path)
+            }
+        },
+        mounted() {
+            window.addEventListener('popstate', this.onPopState)
+        },
+        beforeDestroy() {
+            window.removeEventListener('popstate', this.onPopState)
         },
         components: {
             myButton,
             navbar,
         },
         methods: {
-          All_Activity() {
-            this.$router.push("/All_Activity")
-          },
-            doSomething() {
-                console.log('Button was clicked');
+            updateCallStarted(routeName) {
+            console.log(routeName)
+            this.CallStarted = (routeName === '/Start_Call')
+        },
+            onBeforeUnload(){
+                //code here
+            },
+            onPopState() {
+            this.updateCallStarted(this.$route.name)
+            },
+            Start_Call() {
+                this.$router.push("/Start_Call")
+            },
+            back(){
+                this.$emit('buttonClick')
+                this.$router.push("/All Activity")
             },
             selectButton(index) {
                 this.buttons.forEach((item, i) => {
@@ -247,9 +281,6 @@
                 return cookieValue;
             },
         },
-        created() {
-
-        }
     }
 </script>
 
