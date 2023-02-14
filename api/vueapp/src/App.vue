@@ -11,8 +11,8 @@
                 </span>
                     <span class="gap"></span>
                     <div class="dropdown">
-                        <button class="dropbtn" @click="showDropdown">Switch User <span class="dropdown-arrow">&#9660;</span></button>
-                        <div class="dropdown-content" v-if="showContent">
+                        <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
+                        <div class="dropdown-content">
                             <a href="#">Coordinator</a>
                             <a href="#">Volunteer</a>
                             <a href="#">Log Out</a>
@@ -22,15 +22,16 @@
             </nav>
 
             <div class="buttons">
-                <span class="btn">All Activity</span>
-                <span class="btn" @click="Actions">Actions</span>
-                <span class="btn">Referrals</span>
+                <span class="btn"><router-link tag="span" to="/allActivity">All Activity</router-link></span>
+                <span class="btn" ><router-link tag="span" to="/Actions">Actions</router-link></span>
+                <span class="btn"><router-link tag="span" to="/referrals">Referrals</router-link></span>
                 <span class="btn">Residents</span>
                 <span class="btn">Volunteers</span>
                 <span class="btn">Organisations</span>
                 <span class="btn">Phone Call</span>
             </div>
         </header>
+        <myReferrals/>
         <router-view></router-view>
     </div>
 
@@ -40,6 +41,7 @@
 <script>
     import $ from 'jquery';
     import navbar from './components/navbar.vue';
+
 
 
     export default {
@@ -264,7 +266,10 @@
 </script>
 
 <style>
-
+    router-link{
+        text-decoration: none;
+        color: inherit;
+    }
     .buttons .btn {
         font-weight: 500;
     }
@@ -340,6 +345,7 @@
         text-decoration: none;
         display: block;
         background-color: transparent;
+        transition: transform 0.2s ease-in-out;
     }
 
     /* Change color of dropdown links on hover */
