@@ -1,7 +1,10 @@
 <template>
     <div>
-        <table>
+        <table style="margin-left: 2rem">
             <thead>
+            <tr>
+                <th colspan="6" class="titleFont">Actions</th>
+            </tr>
             <tr>
                 <th class="sortable">Help Type</th>
                 <th class="sortable">Resident</th>
@@ -28,6 +31,24 @@
                 <td>Assigned To 2</td>
                 <td>Priority 2</td>
             </tr>
+            </tbody>
+        </table>
+
+        <table style="margin-left: 2rem">
+            <thead>
+            <tr>
+                <th colspan="6" class="titleFont">Referrals</th>
+            </tr>
+            <tr>
+                <th class="sortable">Help Type</th>
+                <th class="sortable">Resident</th>
+                <th class="sortable">Due</th>
+                <th class="sortable">Status</th>
+                <th class="sortable">Assigned</th>
+                <th class="sortable">Priority</th>
+            </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>Help Type 3</td>
                 <td>Resident 3</td>
@@ -52,65 +73,102 @@
 <script>
     export default {
         name: "All_Activity"
+
     }
 </script>
 
 <style scoped>
 
+    /*.gap{*/
+    /*    padding: 100px;*/
+    /*}*/
+    :root {
+        --font-size: 16px;
+        --border-radius: 4px;
+        --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
     table {
         border-collapse: collapse;
         width: 100%;
-        text-align: left;
-    }
-
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    tr:hover {
-        background-color: #f5f5f5;
+        max-width: 60rem;
+        margin: 1rem;
+        float: left;
+        font-size: var(--font-size);
+        background-color: #f8f8f8;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        border-radius: 5px;
     }
 
     th {
-        background-color: #4CAF50;
-        color: white;
+        background-color: #F5F5F5;
+        font-weight: bold;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #ddd;
         cursor: pointer;
     }
 
-    .sortable {
-        background-color: #e6f2ff;
-        cursor: pointer;
-        user-select: none;
-        padding-right: 20px;
+    th:hover {
+        background-color:  #e6e6e6;
     }
 
-    .sortable:after {
-        content: "";
-        display: inline-block;
-        width: 0;
-        height: 0;
+    th.sortable:hover {
+        background-color:  #e6e6e6;
+    }
+
+    th.sortable:after {
+        content: "\25B2";
         margin-left: 5px;
-        vertical-align: middle;
-        border-top: 4px solid;
-        border-right: 4px solid transparent;
-        border-left: 4px solid transparent;
     }
 
-    .asc:after {
-        border-top: 0;
-        border-bottom: 4px solid;
+    th.sortable.asc:after {
+        content: "\25BC";
     }
 
-    .desc:after {
-        border-top: 4px solid;
-        border-bottom: 0;
+    td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #ddd;
+        color: #333;
     }
 
-    @media screen and (max-width: 600px) {
+    tr:hover {
+        background-color: #e6e6e6;
+    }
+
+    @media (min-width: 30em) {
         table {
-            font-size: 12px;
+            font-size: 1vw;
+            margin: 2rem auto;
+            max-width: 70%;
         }
     }
+
+    @media (min-width: 48em) {
+        table {
+            font-size: 1.125vw;
+            max-width: 50%;
+        }
+    }
+
+    @media (min-width: 62em) {
+        table {
+            font-size: 1.25vw;
+            max-width: 33.33%;
+        }
+    }
+
+    @media (min-width: 75em) {
+        table {
+            font-size: 1.375vw;
+            max-width: 25%;
+        }
+    }
+    .titleFont{
+        font-size: 2vw;
+    }
+
+
 </style>
