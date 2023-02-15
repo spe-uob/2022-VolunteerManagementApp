@@ -6,6 +6,9 @@ import { loremIpsum } from "lorem-ipsum"
 import Actions from "@/components/Actions";
 import All_Activity from "@/components/All_Activity";
 import myReferrals from "@/components/myReferrals";
+import myOrganisation from "@/components/myOrganisation";
+import myVolunteers from "@/components/MyVolunteers";
+import myResident from "@/components/MyResident";
 
 
 Object.defineProperty(Vue.prototype, '$lorem', { value: loremIpsum });
@@ -18,7 +21,10 @@ const routes = [
   { path: '/vue-test', component: App},
   {path:'/Actions',component: Actions},
   {path:'/allActivity',component: All_Activity},
-  {path:'/referrals',component: myReferrals}
+  {path:'/referrals',component: myReferrals},
+  {path:'/organisation',component: myOrganisation},
+  {path: '/volunteers',component: myVolunteers},
+  {path: '/residents',component: myResident}
 
 
 ]
