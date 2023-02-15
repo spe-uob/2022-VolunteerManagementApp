@@ -25,9 +25,9 @@
                 <span class="btn"><router-link tag="span" to="/allActivity">All Activity</router-link></span>
                 <span class="btn" ><router-link tag="span" to="/Actions">Actions</router-link></span>
                 <span class="btn"><router-link tag="span" to="/referrals">Referrals</router-link></span>
-                <span class="btn">Residents</span>
-                <span class="btn">Volunteers</span>
-                <span class="btn">Organisations</span>
+              <span class="btn"><router-link tag="span" to="/residents">Residents</router-link></span>
+                <span class="btn"><router-link tag="span" to="/volunteers">Volunteers</router-link></span>
+                <span class="btn"><router-link tag="span" to="organisation">Organisations</router-link></span>
                 <span class="btn">Phone Call</span>
             </div>
         </header>
