@@ -20,7 +20,9 @@
           </ul>
           <button class="btn" @click="openActionform">Add New Action</button>
         </div>
-        <addactionform :id="this.id"/>
+        <div class="container-xyz">
+          <addactionform :id="this.id"/>
+        </div>
     </div>
     
 </template>
@@ -154,6 +156,14 @@ export default {
     height: 400px;
     margin: 0 auto;
   }
+
+  .container-xyz {
+  width: 120px;
+  border: 1px solid #ccc;
+  font-weight: bold;
+  margin-top: 30px;
+
+}
   .box-container2 {
     position: relative;
     top: 0px;

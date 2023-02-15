@@ -1,11 +1,11 @@
 <template>
     <div>
 
+        <button :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff', left: left}" class="custom-button" @click="$emit('click', $event)">{{ label }}</button>
     </div>
     <!-- <button :style="{left: left + 'px'}"
             v-bind:class="{'dark-button': clicked, 'light-button': !clicked}"
             v-on:click="clicked=!clicked">{{ label }}</button> -->
-<!--    <button :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff', left: left}" class="custom-button" @click="$emit('click', $event)">{{ label }}</button>-->
 </template>
 
 <script>

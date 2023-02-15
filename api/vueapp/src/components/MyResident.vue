@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container1">
+    <div class="table-container">
       <table class="table">
         <thead>
         <tr style="font-size: 17px;background-color: #f7f7f7;">
@@ -125,116 +125,122 @@
 </template>
 
 <script>
+    import $ from 'jquery';
+
 export default {
   data() {
     return {
       toggle: false,
-      list: [{
-        FirstName: "1",
-        LastName: '1',
-        PhoneNumber: '1',
-        Email: '1',
-        TotalTimeReceived: '1',
-        Consent: '1',
-      },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
+      list: [
+      //   {
+      //   FirstName: "1",
+      //   LastName: '1',
+      //   PhoneNumber: '1',
+      //   Email: '1',
+      //   TotalTimeReceived: '1',
+      //   Consent: '1',
+      // },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
 
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-        {
-          FirstName: "1",
-          LastName: '1',
-          PhoneNumber: '1',
-          Email: '1',
-          TotalTimeReceived: '1',
-          Consent: '1',
-        },
-      ]
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      //   {
+      //     FirstName: "1",
+      //     LastName: '1',
+      //     PhoneNumber: '1',
+      //     Email: '1',
+      //     TotalTimeReceived: '1',
+      //     Consent: '1',
+      //   },
+      
+    
+    
+    ]
     }
   },
   created() {
@@ -243,8 +249,60 @@ export default {
   methods: {
     toggleHide() {
       this.toggle = !this.toggle;
-    }
-  }
+    },
+    getResidents: async function () {
+          const csrftoken = this.getCookie('csrftoken')
+          const json = await $.ajax({
+              url: "http://localhost:8000/" + "api/residents/",
+              beforeSend: function (xhr) {
+                  xhr.setRequestHeader('X-CSRFToken', csrftoken)
+              },
+              method: "GET",
+              type: "GET",
+              contentType: 'application/json',
+              success: () => {
+                  //this.$emit('removed-action', response)
+                  console.log("success")
+              },
+              error: (err) => {
+                  console.error(JSON.stringify(err))
+              }
+          }).catch((err) => {
+              console.err(JSON.stringify(err))
+          })
+          console.log(JSON.stringify(json))
+          return json;
+      },
+      getCookie: function (name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+          },
+  },
+  mounted(){
+        this.getResidents().then((response) => {
+        this.list = response.results.map((result) => {
+          return {
+            FirstName: result.first_name,
+            LastName: result.last_name,
+            PhoneNumber: result.phone,
+            Email: 'n/a',
+            TotalTimeReceived: 'n/a',
+            Consent: 'n/a',
+          }
+        })
+    })
+    },
 }
 
 </script>
@@ -255,6 +313,18 @@ export default {
   width: 70%;
   margin: 0 auto;
 }
+
+.table-container {
+    box-sizing: border-box;
+    position: absolute;
+    width: 1229px;
+    height: 854px;
+    left: 20px;
+    top: 194px;
+    background: rgb(212, 215, 211);
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+  }
 
 .table {
   border: 1px solid #f5f5f5;
