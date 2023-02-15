@@ -3,7 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui';
 import { loremIpsum } from "lorem-ipsum"
-import Actions from "@/components/Actions";
+import myActions from "@/components/myActions";
 import All_Activity from "@/components/All_Activity";
 import myReferrals from "@/components/myReferrals";
 import myOrganisation from "@/components/myOrganisation";
@@ -19,7 +19,7 @@ Vue.use(ElementUI)
 
 const routes = [
   { path: '/vue-test', component: App},
-  {path:'/Actions',component: Actions},
+  {path:'/Actions',component: myActions},
   {path:'/allActivity',component: All_Activity},
   {path:'/referrals',component: myReferrals},
   {path:'/organisation',component: myOrganisation},
