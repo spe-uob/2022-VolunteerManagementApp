@@ -61,8 +61,9 @@ export default {
   display: inline-block;
 }
 .call-title{
-    margin-left: 15%;
-    margin-top: -5%;
+    position: absolute;
+    top: 150px;
+    left: 225px;
 }
 
 .comp-container{
