@@ -48,15 +48,12 @@
                 options: ['Account']
             }
         },
-        // created() {
-        //     this.$watch(
-        //         () => this.$route,
-        //         () => {
-        //             if (this.$route.path === '/All Activity') {
-        //             this.CallStarted = false
-        //             }
-        //         })
-        // },
+        created() {
+            const callStarted = localStorage.getItem('callStarted');
+            if (callStarted !== null) {
+                this.CallStarted = callStarted === 'true';
+            }
+        },
         watch: {
             //TODO: fix gets broken when you refresh on Start Call or forward. Most likely need to run updateCallStarted on more than popstate event
             $route(to, from) {
@@ -65,10 +62,13 @@
             }
         },
         mounted() {
-            window.addEventListener('popstate', this.onPopState)
+            this.updateCallStarted(this.$route.path);
+            window.addEventListener('popstate', this.onPopState);
+            window.addEventListener('beforeunload', this.onBeforeUnload);
         },
         beforeDestroy() {
-            window.removeEventListener('popstate', this.onPopState)
+            window.removeEventListener('popstate', this.onPopState);
+            window.removeEventListener('beforeunload', this.onBeforeUnload);
         },
         components: {
             myButton,
@@ -76,14 +76,14 @@
         },
         methods: {
             updateCallStarted(routeName) {
-            console.log(routeName)
-            this.CallStarted = (routeName === '/Start_Call' ||  routeName.startsWith('/add'))
-        },
+                this.CallStarted = (routeName === '/Start_Call' ||  routeName.startsWith('/add'));
+                localStorage.setItem('callStarted', this.CallStarted);
+            },
             onBeforeUnload(){
                 //code here
             },
             onPopState() {
-            this.updateCallStarted(this.$route.name)
+                this.updateCallStarted(this.$route.name)
             },
             Start_Call() {
                 this.$router.push("/Start_Call")

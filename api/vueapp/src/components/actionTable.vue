@@ -114,7 +114,7 @@
     left: 20px;
     top: 194px;
 
-    background: #F2F2F2;
+    background: rgb(212, 215, 211);
     border: 1px solid #DFDFDF;
     border-radius: 5px;
   }
