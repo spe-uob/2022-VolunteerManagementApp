@@ -32,10 +32,13 @@
     import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
 
+
+
     export default {
         name: 'App',
         data() {
             return {
+                showContent: false,
                 buttons: [
                     {label: 'All Activity', left: '273px', selected: false},
                     {label: 'Actions', left: '426px', selected: false},
@@ -318,7 +321,11 @@
 /*}*/
 
 
-    .buttons .btn{
+    router-link{
+        text-decoration: none;
+        color: inherit;
+    }
+    .buttons .btn {
         font-weight: 500;
     }
     .buttons{
@@ -327,25 +334,31 @@
         justify-content: center;
     }
 
-    .btn{
+    .btn {
         margin: 1.5vw;
         font-size: 1.5vw;
         color: black;
         /*text-transform: uppercase;*/
 
-        /*transition: all 0.3s ease-in-out;*/
+        transition: all 0.1s ease-in-out;
     }
-    .btn:hover{
+
+    .btn:hover {
         background-color: white;
         color: white;
-        border: 2px solid #3A4857;
+        /*border: 1px solid #3A4857;*/
         background-color: #3A4857;
-        border-radius: 8px;
-        font-weight: 500;
+        border-radius: 2px;
         cursor: pointer;
     }
+
     .btn:active {
-        transform: scale(0.98);
+        transform: scale(1.15);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
     }
 
     .dropdown {
@@ -356,7 +369,7 @@
     .dropbtn {
         /* background-color: #3A4857;
         color: white;
-        font-size: 1vw;
+        font-size: 1rem;
         border: none;
         display: flex;
         align-items: center; */
@@ -370,8 +383,9 @@
     }
 
     .dropdown-arrow {
-        margin-left: 0.4vw;
-        font-size: 0.3vw;
+        margin-left: 0.4rem;
+        font-size: 0.5rem;
+        transition: transform 0.2s ease-in-out;
     }
 
     /* Dropdown Content (Hidden by Default) */
@@ -387,16 +401,19 @@
   }
 
     /* Links inside the dropdown */
-    .dropdown-content a {
+    .dropdown-content a,
+    .dropdown-content a:hover {
         color: black;
         padding: 0.8em 1.5em;
         text-decoration: none;
         display: block;
+        background-color: transparent;
+        transition: transform 0.2s ease-in-out;
     }
 
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
-        background-color: gray;
+        background-color: #eee;
     }
 
     /* Show the dropdown menu on hover */
@@ -406,16 +423,19 @@
 
     /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown:hover .dropbtn {
-        background-color: lightblue;
+        font-weight: bold;
     }
 
-    @media (max-width: 767px) {
-        .dropdown-content {
-            position: static;
-            display: block;
-            width: 100%;
-            margin-top: 10px;
-        }
+    .dropdown-content a {
+        border-bottom: 1px solid #eee;
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown:hover .dropdown-arrow {
+        transform: rotate(180deg);
     }
 
     .symbol {
@@ -448,5 +468,6 @@
         padding-left: 0.4vw;
         padding-right: 0.4vw;
     }
+
 
 </style>
