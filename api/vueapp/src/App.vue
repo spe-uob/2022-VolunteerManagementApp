@@ -5,41 +5,31 @@
                 <navbar/>
                 <img class="symbol" src="../img/CompanyIcon.png"/>
 
-                <div class="title">
-                 <span>
-                    Coordinator
-                </span>
-                    <span class="gap"></span>
-                    <div class="dropdown">
+                <header class="title">
+                  Coordinator
+                </header>
+                <div class="dropdown">
                         <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
                         <div class="dropdown-content">
                             <a href="#">Coordinator</a>
                             <a href="#">Volunteer</a>
                             <a href="#">Log Out</a>
                         </div>
-                    </div>
                 </div>
             </nav>
 
             <div class="buttons">
-                <span class="btn"><router-link tag="span" to="/allActivity">All Activity</router-link></span>
-                <span class="btn" ><router-link tag="span" to="/Actions">Actions</router-link></span>
-                <span class="btn"><router-link tag="span" to="/referrals">Referrals</router-link></span>
-              <span class="btn"><router-link tag="span" to="/residents">Residents</router-link></span>
-                <span class="btn"><router-link tag="span" to="/volunteers">Volunteers</router-link></span>
-                <span class="btn"><router-link tag="span" to="organisation">Organisations</router-link></span>
-                <span class="btn">Phone Call</span>
+              <myButton v-if="!CallStarted" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
+              <button  v-if="!CallStarted" class="callbtn" @click="Start_Call">Start Call</button>
             </div>
         </header>
-        <myReferrals/>
         <router-view></router-view>
     </div>
-
-
 </template>
 
 <script>
     import $ from 'jquery';
+    import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
 
 
@@ -50,32 +40,67 @@
             return {
                 showContent: false,
                 buttons: [
-                    {label: 'All Activity', left: '373px', selected: false},
-                    {label: 'Actions', left: '526px', selected: false},
-                    {label: 'Referrals', left: '679px', selected: false},
-                    {label: 'Residents', left: '832px', selected: false},
-                    {label: 'Volunteers', left: '985px', selected: false},
-                    {label: 'Organisations', left: '1138px', selected: false},
+                    {label: 'All Activity', left: '273px', selected: false},
+                    {label: 'Actions', left: '426px', selected: false},
+                    {label: 'Referrals', left: '579px', selected: false},
+                    {label: 'Residents', left: '732px', selected: false},
+                    {label: 'Volunteers', left: '885px', selected: false},
+                    {label: 'Organisations', left: '1038px', selected: false},
                 ],
+                CallStarted: false,
                 options: ['Account']
             }
         },
+        created() {
+            const callStarted = localStorage.getItem('callStarted');
+            if (callStarted !== null) {
+                this.CallStarted = callStarted === 'true';
+            }
+        },
+        watch: {
+            //TODO: fix gets broken when you refresh on Start Call or forward. Most likely need to run updateCallStarted on more than popstate event
+            $route(to, from) {
+                if(from !== '/Start_Call')
+                    this.updateCallStarted(to.path)
+            }
+        },
+        mounted() {
+            this.updateCallStarted(this.$route.path);
+            window.addEventListener('popstate', this.onPopState);
+            window.addEventListener('beforeunload', this.onBeforeUnload);
+        },
+        beforeDestroy() {
+            window.removeEventListener('popstate', this.onPopState);
+            window.removeEventListener('beforeunload', this.onBeforeUnload);
+        },
         components: {
+            myButton,
             navbar,
         },
         methods: {
-            showDropdown() {
-                this.showContent = !this.showContent
+            updateCallStarted(routeName) {
+                this.CallStarted = (routeName === '/Start_Call' ||  routeName.startsWith('/add'));
+                localStorage.setItem('callStarted', this.CallStarted);
             },
-            Actions() {
-                this.$router.push({name: 'Actions'})
+            onBeforeUnload(){
+                //code here
             },
-            doSomething() {
-                console.log('Button was clicked');
+            onPopState() {
+                this.updateCallStarted(this.$route.name)
+            },
+            Start_Call() {
+                this.$router.push("/Start_Call")
+            },
+            back(){
+                this.$emit('buttonClick')
+                this.$router.push("/All Activity")
             },
             selectButton(index) {
                 this.buttons.forEach((item, i) => {
                     item.selected = (i === index)
+                    if(i === index){
+                        this.$router.push(`/${item.label}`)
+                    }
                 })
             },
             postAction: async function () {
@@ -259,13 +284,43 @@
                 return cookieValue;
             },
         },
-        created() {
-
-        }
     }
 </script>
 
 <style>
+
+.callbtn {
+      position: absolute;
+      width: 117px;
+      height: 48px;
+      left: 1365px;
+      top: 112px;
+      background: #1C405A;
+      border-radius: 5px;
+      color: white;
+    }
+/*.container {*/
+/*  font-size: 15vw;*/
+/*  display: grid;*/
+/*  grid-template-columns: 3fr 2fr 1fr; !* 3 columns with equal width *!*/
+/*  !*grid-template-rows: repeat(3, 1fr); !* 4 rows with equal height *!*!*/
+/*  grid-auto-rows: minmax(100px, auto);*/
+/*  gap: 3vw; !* gap between grid cells *!*/
+/*  !*width: 100%;*!*/
+/*  table-layout: fixed;*/
+/*  border-collapse: collapse;*/
+/*  row-gap: 5vw;*/
+/*  border: none;*/
+/*  */
+/*}*/
+
+/*.container2{*/
+/*  grid-column: 3/3;*/
+/*  justify-content: end;*/
+/*  height: 100vw;*/
+/*}*/
+
+
     router-link{
         text-decoration: none;
         color: inherit;
@@ -273,8 +328,7 @@
     .buttons .btn {
         font-weight: 500;
     }
-
-    .buttons {
+    .buttons{
         margin: 5vw;
         display: flex;
         justify-content: center;
@@ -306,16 +360,26 @@
         position: relative;
         display: inline-block;
     }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+  
     .dropbtn {
-        background-color: #3A4857;
+        /* background-color: #3A4857;
         color: white;
         font-size: 1rem;
         border: none;
         display: flex;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-        cursor: pointer;
+        align-items: center; */
+        background-color: #3A4857;
+        color:white;
+        position: absolute;
+        width: 73px;
+        height: 45px;
+        left: 1300px;
+        top: -1px;
     }
 
     .dropdown-arrow {
@@ -326,16 +390,15 @@
 
     /* Dropdown Content (Hidden by Default) */
     .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        border-radius: 4px;
-        z-index: 1;
-        transition: all 0.3s ease-out;
-        top: 100%;
-    }
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 1300px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
 
     /* Links inside the dropdown */
     .dropdown-content a,
@@ -387,15 +450,15 @@
 
     .title {
         position: absolute;
-        width: 4vw;
+        width: 10vw;
         height: 2vw;
         right: 20vw;
-        top: 1vw;
+        top: 1.5vw;
 
         font-family: 'Inter';
         font-style: normal;
-        font-weight: 600;
-        font-size: 1.5vw;
+        font-weight: 300;
+        font-size: 2vw;
         display: flex;
         align-items: center;
         color: #FFFFFF;
@@ -405,5 +468,6 @@
         padding-left: 0.4vw;
         padding-right: 0.4vw;
     }
+
 
 </style>
