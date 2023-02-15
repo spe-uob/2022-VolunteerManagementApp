@@ -5,7 +5,7 @@
           Select Resident
         </h1>
         <div>
-            <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected" style="top: 25%; width: 150px;"/>
+            <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected" style="top: -200px; width: 150px;"/>
         </div>
         <ResidentList v-if="!NewResident"/>
         <newResidentForm class="comp-container" v-if="NewResident"/>

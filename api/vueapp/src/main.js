@@ -5,6 +5,9 @@ import All_Activity from './components/All_Activity'
 import referralTable from './components/referralTable'
 import Start_Call from './components/Start_Call'
 import residentPage from './components/residentPage'
+import MyResident from './components/MyResident'
+import MyVolunteers from './components/MyVolunteers'
+import MyOrganisations from './components/myOrganisation'
 import VueRouter from 'vue-router'
 import { loremIpsum } from "lorem-ipsum"
 import BootstrapVue from 'bootstrap-vue'
@@ -22,7 +25,10 @@ const routes = [
   { path: '/Referrals', component: referralTable},
   { path: '/All Activity', component: All_Activity},
   { path: '/Start_Call', component: Start_Call},
-  { path: '/add/:id', component: residentPage, name: 'add'}
+  { path: '/add/:id', component: residentPage, name: 'add'},
+  { path: '/Residents', component: MyResident},
+  { path: '/Volunteers', component: MyVolunteers },
+  { path: '/Organisations', component: MyOrganisations}
 ]
 
 const router = new VueRouter({
