@@ -1,8 +1,8 @@
 <template>
   <div class="filter-container">
-    <div class="f-title">Referral Filter</div>
+    <div class="f-title">Action Filter</div>
     <div>
-      <div class="filter-head" @click="setToggle1">Referral Type</div>
+      <div class="filter-head" @click="setToggle1">Help Type</div>
       <div v-show="toggle1" class="filter-body">
         <div>
           <label>
@@ -37,6 +37,23 @@
       </div>
     </div>
 
+    <div>
+      <div class="filter-head" @click="setToggle3()">Priority</div>
+      <div v-show="toggle3" class="filter-body">
+        <div>
+          <label>
+            <input type="checkbox">
+            sub type1
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="checkbox">
+            sub type1
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -68,8 +85,7 @@ export default {
   width: 120px;
   border: 1px solid #ccc;
   font-weight: bold;
-  margin-top: 30px;
-
+  margin-top: 20px;
 }
 
 .f-title{
