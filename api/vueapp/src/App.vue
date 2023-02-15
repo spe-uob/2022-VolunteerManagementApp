@@ -18,9 +18,10 @@
                 </div>
             </nav>
 
-            <div class="buttons">
-              <myButton v-if="!CallStarted" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
-              <button  v-if="!CallStarted" class="callbtn" @click="Start_Call">Start Call</button>
+            <div v-if="!CallStarted" class="buttons">
+              <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
+              <button class="callbtn" @click="Start_Call">Start Call</button>
+              <FilterComponent/>
             </div>
         </header>
         <router-view></router-view>
@@ -31,7 +32,7 @@
     import $ from 'jquery';
     import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
-
+    import FilterComponent from './components/FilterComponent.vue';
 
 
     export default {
@@ -74,8 +75,9 @@
             window.removeEventListener('beforeunload', this.onBeforeUnload);
         },
         components: {
-            myButton,
             navbar,
+            myButton,
+            FilterComponent
         },
         methods: {
             updateCallStarted(routeName) {

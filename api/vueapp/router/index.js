@@ -3,8 +3,11 @@ import VueRouter from 'vue-router'
 import aHeader from "@/components/aHeader";
 import actionTable from '@/components/myTable'
 import All_Activity from "@/components/All_Activity.vue";
+import MyVolunteers from '@/components/MyVolunteers'
 import referralTable from "@/components/referralTable"
+import MyOrganisations from './components/myOrganisation'
 import residentPage from '@/components/residentPage'
+import MyResident from '@/component/MyResident'
 
 
 Vue.use(Router)
@@ -42,6 +45,21 @@ const routes = [
                     }
                 ]
             },
+            {
+                path: '/Residents',
+                name: 'Residents',
+                component: MyResident
+            },
+            {
+                path: '/Volunteers',
+                name: 'Volunteers',
+                component: MyVolunteers
+            },
+            { 
+                path: '/Organisations', 
+                name: 'Organisations',
+                component: MyOrganisations
+            }
         ]
     }
 

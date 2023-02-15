@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container1">
+    <div class="table-container">
       <table class="table">
         <thead>
         <tr style="font-size: 17px;background-color: #f7f7f7;">
@@ -59,114 +59,117 @@
 </template>
 
 <script>
+      import $ from 'jquery';
+  
 export default {
   data() {
     return {
       toggle: false,
-      list: [{
-        Name: "1",
-        PhoneNumber: '1',
-        Address: '1',
-        MainContact: '1',
-        Email: '1',
+      list: [
+      //   {
+      //   Name: "1",
+      //   PhoneNumber: '1',
+      //   Address: '1',
+      //   MainContact: '1',
+      //   Email: '1',
 
-      },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      // },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
+      //   },
 
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
-        {
-          Name: "1",
-          PhoneNumber: '1',
-          Address: '1',
-          MainContact: '1',
-          Email: '1',
+      //   },
+      //   {
+      //     Name: "1",
+      //     PhoneNumber: '1',
+      //     Address: '1',
+      //     MainContact: '1',
+      //     Email: '1',
 
-        },
+      //   },
       ]
     }
   },
@@ -176,7 +179,58 @@ created() {
 methods: {
   toggleHide() {
     this.toggle = !this.toggle;
-  }
+  },
+  getOrganisations: async function () {
+          const csrftoken = this.getCookie('csrftoken')
+          const json = await $.ajax({
+              url: "http://localhost:8000/" + "api/organisations/",
+              beforeSend: function (xhr) {
+                  xhr.setRequestHeader('X-CSRFToken', csrftoken)
+              },
+              method: "GET",
+              type: "GET",
+              contentType: 'application/json',
+              success: () => {
+                  //this.$emit('removed-action', response)
+                  console.log("success")
+              },
+              error: (err) => {
+                  console.error(JSON.stringify(err))
+              }
+          }).catch((err) => {
+              console.err(JSON.stringify(err))
+          })
+          console.log(JSON.stringify(json))
+          return json;
+      },
+      getCookie: function (name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+          },
+          mounted(){
+            this.getOrganisations().then((response) => {
+            this.list = response.results.map((result) => {
+              return {
+                Name: result.name,
+                PhoneNumber: result.phone_number,
+                Address: result.address_line_1,
+                MainContact: result.contact_name,
+                Email: result.email
+              }
+            })
+        })
+        },
 }
 }
 </script>
@@ -187,6 +241,18 @@ methods: {
   width: 70%;
   margin: 0 auto;
 }
+
+.table-container {
+    box-sizing: border-box;
+    position: absolute;
+    width: 1229px;
+    height: 854px;
+    left: 20px;
+    top: 194px;
+    background: rgb(212, 215, 211);
+    border: 1px solid #DFDFDF;
+    border-radius: 5px;
+  }
 
 .table {
   border: 1px solid #f5f5f5;
