@@ -7,7 +7,7 @@ import referralTable from "@/components/referralTable"
 import residentPage from '@/components/residentPage'
 
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
 const routes = [
     //localhost:8080/header means you are going to Header page(probably case sensitive)
@@ -54,4 +54,3 @@ const router = new VueRouter({
 })
 
 
-export default router
