@@ -4,11 +4,18 @@
         <h1 class="call-title">
           Select Resident
         </h1>
-        <div>
-            <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected" style="top: -200px; width: 150px;"/>
+        <div class="btn-container">
+            <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected" :style="{width: '300px'}"/>
         </div>
-        <ResidentList v-if="!NewResident"/>
-        <newResidentForm class="comp-container" v-if="NewResident"/>
+        <div class="comp-container">
+            <ResidentList v-if="!NewResident" :style="{ top: '0%', left: '79%'}"/>
+            <div class="form-container">
+                <newResidentForm v-if="NewResident"/>
+            </div>
+        </div>
+        <!-- <div class="comp-container">
+            <newResidentForm v-if="NewResident"/>
+        </div> -->
     </div>
 </template>
 
@@ -27,7 +34,7 @@ export default {
         return {
             NewResident: false,
             buttons: [
-                    {label: 'Existing Resident', left: '273px', selected: true},
+                    {label: 'All Residents', left: '273px', selected: true},
                     {label: 'New Resident', left: '426px', selected: false},
                 ],
         }
@@ -48,6 +55,22 @@ export default {
 </script>
 
 <style>
+.btn-container {
+    background-color: transparent;
+    border:none;
+    margin-bottom: 3px;
+    padding-bottom: 5px;
+    position: absolute;
+    top:100px;
+}
+
+.list-container {
+    background-color: transparent;
+    border:none;
+    margin-bottom: 3px;
+    top:100px;
+    left:200px;
+}
 .back-button {
   background-color: transparent;
   border: none;
@@ -70,13 +93,27 @@ export default {
     box-sizing: border-box;
 
     position: absolute;
-    width: 1229px;
+    width: 200px;
     height: 500px;
     left: 100px;
     top: 300px;
 
-    background: #F2F2F2;
-    border: 1px solid #DFDFDF;
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+}
+
+.form-container{
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 200px;
+    height: 500px;
+    left: 85%;
+    top: 0%;
+
+    background: transparent;
+    border: none;
     border-radius: 5px;
 }
 

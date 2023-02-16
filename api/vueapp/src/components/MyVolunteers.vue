@@ -40,81 +40,6 @@
         </tr>
         </tbody>
       </table>
-      <!--      <div class="table1">-->
-      <!--        <thead>-->
-      <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-      <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;">Filters</td>-->
-      <!--          <td></td>-->
-      <!--        </tr>-->
-      <!--        </thead>-->
-      <!--          <div>-->
-      <!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>Referral Type</td></div>-->
-      <!--          <div v-show="toggle" class="t-body">-->
-      <!--            <p><input type="radio" name="111" id="1">-->
-      <!--              <label for="1">foodbank</label></p >-->
-      <!--            <p><input type="radio" name="111" id="1">-->
-      <!--              <label for="1">gp</label></p >-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--        <div>-->
-      <!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>Status</td></div>-->
-      <!--          <div v-show="toggle" class="t-body">-->
-      <!--&lt;!&ndash;            <p>1</p >&ndash;&gt;-->
-      <!--&lt;!&ndash;            <p>2</p >&ndash;&gt;-->
-      <!--&lt;!&ndash;            <p>3</p >&ndash;&gt;-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--        <div>-->
-      <!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>organisation</td></div>-->
-      <!--          <div v-show="toggle" class="t-body">-->
-      <!--&lt;!&ndash;            <p>1</p >&ndash;&gt;-->
-      <!--&lt;!&ndash;            <p>2</p >&ndash;&gt;-->
-      <!--&lt;!&ndash;            <p>3</p >&ndash;&gt;-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </div>-->
-
-      <!--     <table class="table1">-->
-      <!--        <thead>-->
-      <!--        <tr>-->
-      <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-      <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;">Filters</td>-->
-      <!--        </tr>-->
-      <!--        </thead>-->
-
-      <!--        <tbody>-->
-      <!--        <tr class="info">-->
-      <!--          <td>referral type-->
-      <!--            <select class="classic">-->
-      <!--              <option></option>-->
-      <!--              <option>foodbank</option>-->
-      <!--              <option>gp</option>-->
-      <!--            </select>-->
-
-      <!--          </td>-->
-
-      <!--        </tr>-->
-      <!--        <tr>-->
-      <!--          <td>status-->
-      <!--            <select class="classic">-->
-      <!--              <option></option>-->
-      <!--              <option></option>-->
-      <!--              <option></option>-->
-      <!--            </select>-->
-      <!--          </td>-->
-
-      <!--        </tr>-->
-      <!--        <tr class="info">-->
-      <!--          <td>organisation-->
-      <!--            <select class="classic">-->
-      <!--              <option></option>-->
-      <!--              <option></option>-->
-      <!--              <option></option>-->
-      <!--            </select>-->
-      <!--          </td>-->
-      <!--        </tr>-->
-      <!--        </tbody>-->
-      <!--      </table>-->
     </div>
   </div>
 </template>
@@ -215,7 +140,7 @@ export default {
 .table {
   border: 1px solid #f5f5f5;
   border-radius: 5px;
-//margin: 0 auto;
+  margin: 0 auto;
   border-spacing: 0px;
   width: 100%;
   max-width: 100%;
@@ -226,7 +151,7 @@ export default {
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 5px;
-//margin: 0 auto;
+  margin: 0 auto;
   border: 1px solid #f7f7f7;
   width: 200px;
   position: absolute;
