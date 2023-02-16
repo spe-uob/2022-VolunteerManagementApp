@@ -1,6 +1,6 @@
 <template>
     <div>
-      <div class="table-container">
+      <div class="table-container" :style="{ width: containerSize + 'px', height: containerSize + 'px', left: left + 'px', top: top + 'px'}">
         <table class="table">
           <thead>
           <tr style="font-size: 17px;background-color: #f7f7f7;">
@@ -14,20 +14,30 @@
           <tbody>
   
           <tr>
-            <th>ID<div style="display: inline-block;position: absolute;top:45px;"><span
-                class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+            <th>ID<div style="display: inline-block;position: absolute;top:45px;">
+              <span
+                class="arrow asc"></span><br /><span class="arrow dsc"></span>
+              </div>
             </th>
-            <th>Resident<div style="display: inline-block;position: absolute;top: 45px;"><span
-                class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+            <th>Resident<div style="display: inline-block;position: absolute;top: 45px;">
+              <span
+                class="arrow asc"></span><br /><span class="arrow dsc"></span>
+              </div>
             </th>
-            <th>Help Type<div style="display: inline-block;position: absolute;top: 45px;"><span
-                class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+            <th>Help Type<div style="display: inline-block;position: absolute;top: 45px;">
+              <span
+                class="arrow asc"></span><br /><span class="arrow dsc"></span>
+              </div>
             </th>
-            <th>Organisation<div style="display: inline-block;position: absolute;top: 45px;"><span
-                class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+            <th>Organisation<div style="display: inline-block;position: absolute;top: 45px;">
+              <span
+                class="arrow asc"></span><br /><span class="arrow dsc"></span>
+              </div>
             </th>
-            <th>Completed<div style="display: inline-block;position: absolute;top: 45px;"><span
-                class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+            <th>Completed<div style="display: inline-block;position: absolute;top: 45px;">
+              <span
+                class="arrow asc"></span><br /><span class="arrow dsc"></span>
+              </div>
             </th>
           </tr>
           <!-- 用索引值除以 2 取余 -->
@@ -53,6 +63,20 @@
         toggle: false,
         list: [
         ]
+      }
+    },
+    props: {
+      containerSize: {
+        type: Number,
+        required: true
+      },
+      left: {
+      type: Number,
+      required: false
+      },
+      top: {
+        type: Number,
+        required: false
       }
     },
     created() {
@@ -119,11 +143,6 @@
   </script>
   
   <style>
-  .container1 {
-    position: relative;
-    width: 70%;
-    margin: 0 auto;
-  }
   
   .table-container {
       box-sizing: border-box;
@@ -140,7 +159,7 @@
   .table {
     border: 1px solid #f5f5f5;
     border-radius: 5px;
-  //margin: 0 auto;
+    margin: 0 auto;
     border-spacing: 0px;
     width: 100%;
     max-width: 100%;
@@ -151,7 +170,7 @@
     background: #ebecf0;
     color: rgba(31, 31, 31, 0.7);
     border-radius: 5px;
-  //margin: 0 auto;
+    margin: 0 auto;
     border: 1px solid #f7f7f7;
     width: 200px;
     position: absolute;
