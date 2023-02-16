@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="table-container">
+    <div class='table-container' :style="{ width: containerSize + 'px', height: containerSize + 'px'}">
       <table class="table">
         <thead>
         <tr style="font-size: 17px;background-color: #f7f7f7;">
@@ -14,20 +14,27 @@
         <tbody>
 
         <tr>
-          <th>ID<div style="display: inline-block;position: absolute;top:45px;"><span
-              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+          <th>ID<div style="display: inline-block;position: absolute;top:0px;">
+            <span class="arrow asc"></span><br /><span class="arrow dsc"></span>
+          </div>
           </th>
-          <th>Resident<div style="display: inline-block;position: absolute;top: 45px;"><span
-              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+          <th>Resident<div style="display: inline-block;position: absolute;top: 45px;">
+            <span class="arrow asc"></span><br /><span class="arrow dsc"></span>
+            </div>
           </th>
-          <th>Help Type<div style="display: inline-block;position: absolute;top: 45px;"><span
-              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+          <th>Help Type<div style="display: inline-block;position: absolute;top: 45px;">
+            <span class="arrow asc"></span><br /><span class="arrow dsc"></span>
+          </div>
           </th>
-          <th>Due<div style="display: inline-block;position: absolute;top: 45px;"><span
-              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+          <th>Due<div style="display: inline-block;position: absolute;top: 45px;">
+            <span
+              class="arrow asc"></span><br /><span class="arrow dsc"></span>
+            </div>
           </th>
-          <th>Status<div style="display: inline-block;position: absolute;top: 45px;"><span
-              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>
+          <th>Status<div style="display: inline-block;position: absolute;top: 45px;">
+            <span
+              class="arrow asc"></span><br /><span class="arrow dsc"></span>
+            </div>
           </th>
         </tr>
         <!-- 用索引值除以 2 取余 -->
@@ -55,6 +62,12 @@ export default {
       list: [
       ]
     }
+  },
+  props: {
+    containerSize: {
+      type: Number,
+      required: true
+    },
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -129,8 +142,6 @@ export default {
 .table-container {
     box-sizing: border-box;
     position: absolute;
-    width: 1229px;
-    height: 854px;
     left: 20px;
     top: 194px;
     background: rgb(212, 215, 211);
@@ -145,6 +156,7 @@ export default {
   border-spacing: 0px;
   width: 100%;
   max-width: 100%;
+  height: 100%;
   margin: 0;
 }
 

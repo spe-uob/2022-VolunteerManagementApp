@@ -1,6 +1,8 @@
 <template>
     <form>
-        <header>Create New Resident</header>
+    <div>   
+        <h1 class="form-title">Create New Resident</h1>
+    </div>
     <div class="form-group">
         <label for="firstName">First Name</label>
         <input type="text" class="form-control" id="firstName" v-model="firstName" placeholder="First Name">
@@ -98,3 +100,8 @@ import $ from 'jquery';
   };
   </script>
   
+  <style>
+    .form-title{
+        font-size: large;
+    }
+</style>

@@ -1,8 +1,13 @@
 <template>
-  <div>
-    <actionTable class="small-action-table"/>
-    <referralTable class="small-referral-table"/>
+  <div>    
+    <div>
+        <actionTable :containerSize="600"></actionTable>
+    </div>
+    <div>
+      <referralTable :containerSize="600" :left="700" :top="195"></referralTable>
+    </div>
   </div>
+  
 </template>
 
 <script>
@@ -13,37 +18,53 @@ export default {
   name: 'AllActivity',
   components: {
     referralTable,
-    actionTable
+    actionTable,
   }
 }
 </script>
 
 <style scoped>
-  .small-action-table {
+  .small-action-container {
     box-sizing: border-box;
+    overflow: hidden;
 
-    position: absolute;
-    width: 718px;
+    position: static;
+    padding: 0;
+    width: calc(50% - 10px);
     height: 839px;
     left: -20px;
     top: 194px;
+    margin-right: 10px; 
 
-    background: #F2F2F2;
+    background: white;
     border: 1px solid #DFDFDF;
     border-radius: 5px;
+    height: 100%;
+    display: block;
+  }
+  .small-table {
+    height: 100%;
+    width: 100%;
+    vertical-align: top;
+    display: inline-block; 
   }
 
-  .small-referral-table {
+  .small-referral-container {
     box-sizing: border-box;
+    overflow: hidden;
 
-    position: absolute;
-    width: 474px;
-    height: 838px;
-    left: 784px;
-    top: 195px;
+    position: static;
+    margin: 0;
+    padding: 0;
+    width: 600px;
+    width: calc(50% - 10px);
+    left: 1000px;
+    top: 194px;
 
-    background: #F2F2F2;
+    background: white;
     border: 1px solid #DFDFDF;
     border-radius: 5px;
+    height: 100%;
+    display: block;
   }
 </style>
