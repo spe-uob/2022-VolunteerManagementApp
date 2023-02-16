@@ -21,7 +21,7 @@
             <div v-if="!CallStarted" class="buttons">
               <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
               <button class="callbtn" @click="Start_Call">Start Call</button>
-              <FilterComponent/>
+              <!-- <FilterComponent/> -->
             </div>
         </header>
         <router-view></router-view>
@@ -32,7 +32,7 @@
     import $ from 'jquery';
     import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
-    import FilterComponent from './components/FilterComponent.vue';
+    // import FilterComponent from './components/FilterComponent.vue';
 
 
     export default {
@@ -77,7 +77,7 @@
         components: {
             navbar,
             myButton,
-            FilterComponent
+            // FilterComponent
         },
         methods: {
             updateCallStarted(routeName) {
@@ -301,29 +301,10 @@
       border-radius: 5px;
       color: white;
     }
-/*.container {*/
-/*  font-size: 15vw;*/
-/*  display: grid;*/
-/*  grid-template-columns: 3fr 2fr 1fr; !* 3 columns with equal width *!*/
-/*  !*grid-template-rows: repeat(3, 1fr); !* 4 rows with equal height *!*!*/
-/*  grid-auto-rows: minmax(100px, auto);*/
-/*  gap: 3vw; !* gap between grid cells *!*/
-/*  !*width: 100%;*!*/
-/*  table-layout: fixed;*/
-/*  border-collapse: collapse;*/
-/*  row-gap: 5vw;*/
-/*  border: none;*/
-/*  */
-/*}*/
-
-/*.container2{*/
-/*  grid-column: 3/3;*/
-/*  justify-content: end;*/
-/*  height: 100vw;*/
-/*}*/
 
 
-    router-link{
+
+    .router-link{
         text-decoration: none;
         color: inherit;
     }
