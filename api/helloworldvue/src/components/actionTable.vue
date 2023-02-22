@@ -14,7 +14,7 @@
         <tbody>
 
         <tr>
-          <th>ID<div style="display: inline-block;position: absolute;top:0px;">
+          <th>ID<div style="display: inline-block;position: absolute;top:45px;">
             <span class="arrow asc"></span><br /><span class="arrow dsc"></span>
           </div>
           </th>
@@ -133,111 +133,5 @@ export default {
 </script>
 
 <style>
-.container1 {
-  position: relative;
-  width: 70%;
-  margin: 0 auto;
-}
 
-.table-container {
-    box-sizing: border-box;
-    position: absolute;
-    left: 20px;
-    top: 194px;
-    background: rgb(212, 215, 211);
-    border: 1px solid #DFDFDF;
-    border-radius: 5px;
-  }
-
-.table {
-  border: 1px solid #f5f5f5;
-  border-radius: 5px;
-  margin: 0 auto;
-  border-spacing: 0px;
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  margin: 0;
-}
-
-.table1 {
-  background: #ebecf0;
-  color: rgba(31, 31, 31, 0.7);
-  border-radius: 5px;
-  margin: 0 auto;
-  border: 1px solid #f7f7f7;
-  width: 200px;
-  position: absolute;
-  right: -220px;
-  top: 0;
-  /* position: fixed;
-  left: 1200px;
-  bottom: 745px; */
-}
-
-select {
-
-  /* styling */
-  background-color: white;
-  border: black;
-  border-radius: 4px;
-  display: inline-block;
-  font: inherit;
-  line-height: 1.5em;
-  padding: 0.5em 0.1em 0.5em 0.5em;
-}
-
-
-th {
-  background-color: #ebecf0;
-  color: rgba(31, 31, 31, 0.7);
-  cursor: pointer;
-  text-align: left;
-}
-
-
-td {
-  font-size: 13px;
-  height: 30px;
-}
-
-th,
-td {
-  min-width: 90px;
-  padding: 10px 10px;
-
-}
-
-/* 定义余数为 0 的行颜色 */
-
-.tr-color-0 {
-  background: #f2f2f2;
-}
-
-/* 定义余数为 1 的行颜色 */
-
-.tr-color-1 {
-  background: #fff;
-}
-
-.arrow {
-  display: inline-block;
-  vertical-align: middle;
-  width: 0;
-  height: 0;
-  margin-left: 5px;
-  opacity: 0.66;
-}
-
-.arrow.asc {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-bottom: 4px solid #4c4b50;
-}
-
-.arrow.dsc {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #4c4b50;
-}
 </style>

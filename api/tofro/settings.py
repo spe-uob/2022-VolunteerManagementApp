@@ -71,16 +71,17 @@ ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
 
 # Application definition
 INSTALLED_APPS = [
+    'myapp',
     'admin_auto_filters',
     'django_admin_listfilter_dropdown',
     'actions',
     'categories',
     'pages_and_menus',
-    'myapp',
     'core',
     'markup_help',
     'notifications',
     'users',
+    # 'clearcache',
     "django_rq",
     'sitetree',
     'crispy_forms',
@@ -97,7 +98,6 @@ INSTALLED_APPS = [
     'admin_overrides',
     'rest_framework',
     'axes',
-
 ]
 if DEBUG:
     # ensures whitenoise is used in development, as recommended:
