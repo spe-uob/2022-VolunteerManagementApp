@@ -83,7 +83,7 @@ export default {
           })
           return json;
       },
-    getReferrals: async function (id){
+    getReferrals: async function (){
         const csrftoken = this.getCookie('csrftoken')
           const json = await $.ajax({
               url: `http://localhost:8000/api/referrals/`,

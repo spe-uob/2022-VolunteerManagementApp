@@ -20,6 +20,8 @@
   "devDependencies": {
     "bootstrap": "^4.5.0",
     "parcel": "^1.12.4",
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "postcss": "^8.4.21",
     "postcss-preset-env": "^6.7.0",
     "sass": "^1.26.5"
   },
