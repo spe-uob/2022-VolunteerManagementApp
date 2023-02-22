@@ -2756,7 +2756,15 @@
   "version" "2.0.1"
 
 "inherits@2.0.3":
+<<<<<<< HEAD
+<<<<<<< HEAD
+  "integrity" "sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4="
+=======
   "integrity" "sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw=="
+>>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
+=======
+  "integrity" "sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw=="
+>>>>>>> main
   "resolved" "https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz"
   "version" "2.0.3"
 
@@ -3356,7 +3364,15 @@
   "resolved" "https://registry.npmjs.org/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz"
   "version" "1.0.1"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+"minimatch@^3.0.4":
+=======
 "minimatch@^3.0.4", "minimatch@3.0.4":
+>>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
+=======
+"minimatch@^3.0.4", "minimatch@3.0.4":
+>>>>>>> main
   "integrity" "sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA=="
   "resolved" "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz"
   "version" "3.0.4"
@@ -3403,11 +3419,20 @@
   "resolved" "https://registry.npmjs.org/nan/-/nan-2.14.1.tgz"
   "version" "2.14.1"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> main
 "nanoid@^3.3.4":
   "integrity" "sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw=="
   "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.3.4.tgz"
   "version" "3.3.4"
 
+<<<<<<< HEAD
+>>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
+=======
+>>>>>>> main
 "nanomatch@^1.2.9":
   "integrity" "sha512-fpoe2T0RbHwBTBUOftAfBPaDEi06ufaUai0mE6Yn1kacc3SnTErfb/h+X94VXzI64rKFHYImXSvdwGGCmwOqCA=="
   "resolved" "https://registry.npmjs.org/nanomatch/-/nanomatch-1.2.13.tgz"
@@ -3750,6 +3775,11 @@
     "v8-compile-cache" "^2.0.0"
     "ws" "^5.1.1"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> main
 "parcel-plugin-static-files-copy@^2.6.0":
   "integrity" "sha512-k3YxdnEQWo1aMfCeBfxgUNJWuUE0O730EGiGBcmWEUOto7f1jM/8oxBKXkVZsXDCO1o00dw5X7CsT+yF0JY4qA=="
   "resolved" "https://registry.npmjs.org/parcel-plugin-static-files-copy/-/parcel-plugin-static-files-copy-2.6.0.tgz"
@@ -3758,6 +3788,10 @@
     "minimatch" "3.0.4"
     "path" "0.12.7"
 
+<<<<<<< HEAD
+>>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
+=======
+>>>>>>> main
 "parcel@^1.12.4":
   "integrity" "sha512-qfc74e2/R4pCoU6L/ZZnK9k3iDS6ir4uHea0e9th9w52eehcAGf2ido/iABq9PBXdsIOe4NSY3oUm7Khe7+S3w=="
   "resolved" "https://registry.npmjs.org/parcel/-/parcel-1.12.4.tgz"
@@ -3888,6 +3922,8 @@
   "resolved" "https://registry.npmjs.org/path-parse/-/path-parse-1.0.6.tgz"
   "version" "1.0.6"
 
+<<<<<<< HEAD
+=======
 "path@0.12.7":
   "integrity" "sha512-aXXC6s+1w7otVF9UletFkFcDsJeO7lSZBPUQhtb5O0xJe8LtYhj/GxldoL09bBj9+ZmE2hNoHqQSFMN5fikh4Q=="
   "resolved" "https://registry.npmjs.org/path/-/path-0.12.7.tgz"
@@ -3896,6 +3932,7 @@
     "process" "^0.11.1"
     "util" "^0.10.3"
 
+>>>>>>> main
 "pbkdf2@^3.0.3":
   "integrity" "sha512-U/il5MsrZp7mGg3mSQfn742na2T+1/vHDCG5/iTI3X9MKUuYUZVLQhyRsg06mCgDBTd57TxzgZt7P+fYfjRLtA=="
   "resolved" "https://registry.npmjs.org/pbkdf2/-/pbkdf2-3.0.17.tgz"
@@ -4560,7 +4597,11 @@
     "source-map" "^0.6.1"
     "supports-color" "^5.4.0"
 
+<<<<<<< HEAD
+"postcss@^7.0.0", "postcss@^7.0.1", "postcss@^7.0.11", "postcss@^7.0.14", "postcss@^7.0.17", "postcss@^7.0.2", "postcss@^7.0.27", "postcss@^7.0.32", "postcss@^7.0.5", "postcss@^7.0.6":
+=======
 "postcss@^7.0.0":
+>>>>>>> main
   "integrity" "sha512-yioayjNbHn6z1/Bywyb2Y4s3yvDAeXGOyxqD+LnVOinq6Mdmd++SW2wUNVzavyyHxd6+DxzWGIuosg6P1Rj8uA=="
   "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.39.tgz"
   "version" "7.0.39"
@@ -4568,6 +4609,8 @@
     "picocolors" "^0.2.1"
     "source-map" "^0.6.1"
 
+<<<<<<< HEAD
+=======
 "postcss@^7.0.1":
   "integrity" "sha512-yioayjNbHn6z1/Bywyb2Y4s3yvDAeXGOyxqD+LnVOinq6Mdmd++SW2wUNVzavyyHxd6+DxzWGIuosg6P1Rj8uA=="
   "resolved" "https://registry.npmjs.org/postcss/-/postcss-7.0.39.tgz"
@@ -4649,6 +4692,7 @@
     "picocolors" "^1.0.0"
     "source-map-js" "^1.0.2"
 
+>>>>>>> main
 "postcss@6.0.1":
   "integrity" "sha1-AA29H47vIXqjaLmiEsX8QLKo8/I="
   "resolved" "https://registry.npmjs.org/postcss/-/postcss-6.0.1.tgz"
@@ -4701,7 +4745,11 @@
   "resolved" "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
   "version" "2.0.1"
 
+<<<<<<< HEAD
+"process@^0.11.10":
+=======
 "process@^0.11.1", "process@^0.11.10":
+>>>>>>> main
   "integrity" "sha1-czIwDoQBYb2j5podHZGn1LwW8YI="
   "resolved" "https://registry.npmjs.org/process/-/process-0.11.10.tgz"
   "version" "0.11.10"
@@ -5191,11 +5239,14 @@
     "source-map-resolve" "^0.5.0"
     "use" "^3.1.0"
 
+<<<<<<< HEAD
+=======
 "source-map-js@^1.0.2":
   "integrity" "sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw=="
   "resolved" "https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz"
   "version" "1.0.2"
 
+>>>>>>> main
 "source-map-resolve@^0.5.0":
   "integrity" "sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw=="
   "resolved" "https://registry.npmjs.org/source-map-resolve/-/source-map-resolve-0.5.3.tgz"
@@ -5739,6 +5790,11 @@
     "has-symbols" "^1.0.1"
     "object.getownpropertydescriptors" "^2.1.0"
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> main
 "util@^0.10.3":
   "integrity" "sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A=="
   "resolved" "https://registry.npmjs.org/util/-/util-0.10.4.tgz"
@@ -5746,6 +5802,10 @@
   dependencies:
     "inherits" "2.0.3"
 
+<<<<<<< HEAD
+>>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
+=======
+>>>>>>> main
 "util@^0.11.0":
   "integrity" "sha512-HShAsny+zS2TZfaXxD9tYj4HQGlBezXZMZuM/S5PKLLoZkShZiGk9o5CzukI1LVHZvjdvZ2Sj1aW/Ndn2NB/HQ=="
   "resolved" "https://registry.npmjs.org/util/-/util-0.11.1.tgz"
