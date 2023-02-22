@@ -272,7 +272,7 @@ WHITENOISE_AUTOREFRESH = DEBUG
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/actions/'
+LOGIN_REDIRECT_URL = '/index/'
 
 LOGGING = copy.deepcopy(DEFAULT_LOGGING)
 
