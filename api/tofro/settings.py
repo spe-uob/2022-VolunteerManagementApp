@@ -71,27 +71,17 @@ ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
 
 # Application definition
 INSTALLED_APPS = [
-<<<<<<< HEAD
-=======
-    'myapp',
->>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
     'admin_auto_filters',
     'django_admin_listfilter_dropdown',
     'actions',
     'categories',
     'pages_and_menus',
-<<<<<<< HEAD
     'myapp',
-=======
->>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
     'core',
     'markup_help',
     'notifications',
     'users',
-<<<<<<< HEAD
-=======
     # 'clearcache',
->>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
     "django_rq",
     'sitetree',
     'crispy_forms',
@@ -108,10 +98,6 @@ INSTALLED_APPS = [
     'admin_overrides',
     'rest_framework',
     'axes',
-<<<<<<< HEAD
-
-=======
->>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
 ]
 if DEBUG:
     # ensures whitenoise is used in development, as recommended:
@@ -286,11 +272,7 @@ WHITENOISE_AUTOREFRESH = DEBUG
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-<<<<<<< HEAD
 LOGIN_REDIRECT_URL = '/actions/'
-=======
-LOGIN_REDIRECT_URL = '/index/'
->>>>>>> 75f0c01c4b3ee42370c5066ff4eca6bb1181c473
 
 LOGGING = copy.deepcopy(DEFAULT_LOGGING)
 
