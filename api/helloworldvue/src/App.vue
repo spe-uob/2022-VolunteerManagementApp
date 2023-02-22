@@ -14,6 +14,7 @@
                             <a href="#">Coordinator</a>
                             <a href="#">Volunteer</a>
                             <a href="#">Log Out</a>
+                            <a href="#">Dummy</a>
                         </div>
                 </div>
             </nav>
