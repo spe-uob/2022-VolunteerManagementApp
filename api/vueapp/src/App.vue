@@ -436,17 +436,33 @@
     }
 
 
+    /*.title {*/
+    /*    position: absolute;*/
+    /*    width: 10vw;*/
+    /*    height: 2vw;*/
+    /*    right: 20vw;*/
+    /*    top: 1.5vw;*/
+
+    /*    font-family: 'Inter';*/
+    /*    font-style: normal;*/
+    /*    font-weight: 300;*/
+    /*    font-size: 2vw;*/
+    /*    display: flex;*/
+    /*    align-items: center;*/
+    /*    color: #FFFFFF;*/
+    /*}*/
+
     .title {
         position: absolute;
-        width: 10vw;
+        width: 4vw;
         height: 2vw;
         right: 20vw;
-        top: 1.5vw;
+        top: 1vw;
 
         font-family: 'Inter';
         font-style: normal;
-        font-weight: 300;
-        font-size: 2vw;
+        font-weight: 600;
+        font-size: 1.5vw;
         display: flex;
         align-items: center;
         color: #FFFFFF;
