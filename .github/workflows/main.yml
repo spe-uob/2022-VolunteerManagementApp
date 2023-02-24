@@ -1,5 +1,5 @@
-name: learn-github-actions
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: WorkFlow
+run-name: $This is our workflow
 on: [push]
 jobs:
   check-bats-version:
