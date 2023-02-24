@@ -307,7 +307,7 @@
     /*}*/
 
 
-    .router-link {
+    router-link {
         text-decoration: none;
         color: inherit;
     }
@@ -349,10 +349,10 @@
         display: inline-block;
     }
 
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
+    /*.dropdown {*/
+    /*    position: relative;*/
+    /*    display: inline-block;*/
+    /*}*/
 
     .dropbtn {
         /* background-color: #3A4857;
