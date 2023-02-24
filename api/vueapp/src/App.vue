@@ -6,22 +6,26 @@
                 <img class="symbol" src="../img/CompanyIcon.png"/>
 
                 <header class="title">
+                    <span>
                   Coordinator
+                    </span>
                 </header>
+                <span class="gap"></span>
                 <div class="dropdown">
-                        <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
-                        <div class="dropdown-content">
-                            <a href="#">Coordinator</a>
-                            <a href="#">Volunteer</a>
-                            <a href="#">Log Out</a>
-                        </div>
+                    <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
+                    <div class="dropdown-content">
+                        <a href="#">Coordinator</a>
+                        <a href="#">Volunteer</a>
+                        <a href="#">Log Out</a>
+                    </div>
                 </div>
             </nav>
 
             <div v-if="!CallStarted" class="buttons">
-              <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected"/>
-              <button class="callbtn" @click="Start_Call">Start Call</button>
-              <!-- <FilterComponent/> -->
+                <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"
+                          @click.native="selectButton(index)" :selected="item.selected"/>
+                <button class="callbtn" @click="Start_Call">Start Call</button>
+                <!-- <FilterComponent/> -->
             </div>
         </header>
         <router-view></router-view>
@@ -61,7 +65,7 @@
         watch: {
             //TODO: fix gets broken when you refresh on Start Call or forward. Most likely need to run updateCallStarted on more than popstate event
             $route(to, from) {
-                if(from !== '/Start_Call')
+                if (from !== '/Start_Call')
                     this.updateCallStarted(to.path)
             }
         },
@@ -81,10 +85,10 @@
         },
         methods: {
             updateCallStarted(routeName) {
-                this.CallStarted = (routeName === '/Start_Call' ||  routeName.startsWith('/add'));
+                this.CallStarted = (routeName === '/Start_Call' || routeName.startsWith('/add'));
                 localStorage.setItem('callStarted', this.CallStarted);
             },
-            onBeforeUnload(){
+            onBeforeUnload() {
                 //code here
             },
             onPopState() {
@@ -93,14 +97,14 @@
             Start_Call() {
                 this.$router.push("/Start_Call")
             },
-            back(){
+            back() {
                 this.$emit('buttonClick')
                 this.$router.push("/All Activity")
             },
             selectButton(index) {
                 this.buttons.forEach((item, i) => {
                     item.selected = (i === index)
-                    if(i === index){
+                    if (i === index) {
                         this.$router.push(`/${item.label}`)
                     }
                 })
@@ -291,27 +295,28 @@
 
 <style>
 
-.callbtn {
-      position: absolute;
-      width: 117px;
-      height: 48px;
-      left: 1365px;
-      top: 112px;
-      background: #1C405A;
-      border-radius: 5px;
-      color: white;
+    .callbtn {
+        position: absolute;
+        width: 117px;
+        height: 48px;
+        left: 1365px;
+        top: 112px;
+        background: #1C405A;
+        border-radius: 5px;
+        color: white;
     }
 
 
-
-    .router-link{
+    .router-link {
         text-decoration: none;
         color: inherit;
     }
+
     .buttons .btn {
         font-weight: 500;
     }
-    .buttons{
+
+    .buttons {
         margin: 5vw;
         display: flex;
         justify-content: center;
@@ -345,8 +350,8 @@
     }
 
     .dropdown {
-      position: relative;
-      display: inline-block;
+        position: relative;
+        display: inline-block;
     }
 
     .dropbtn {
@@ -357,7 +362,7 @@
         display: flex;
         align-items: center; */
         background-color: #3A4857;
-        color:white;
+        color: white;
         position: absolute;
         width: 73px;
         height: 45px;
@@ -373,15 +378,15 @@
 
     /* Dropdown Content (Hidden by Default) */
     .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 1300px;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 1300px;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
 
     /* Links inside the dropdown */
     .dropdown-content a,
