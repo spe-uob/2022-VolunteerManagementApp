@@ -5,18 +5,18 @@
                 <navbar/>
                 <img class="symbol" src="../img/CompanyIcon.png"/>
 
-                <header class="title">
-                    <span>
-                  Coordinator
-                    </span>
-                </header>
-                <span class="gap"></span>
-                <div class="dropdown">
-                    <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
-                    <div class="dropdown-content">
-                        <a href="#">Coordinator</a>
-                        <a href="#">Volunteer</a>
-                        <a href="#">Log Out</a>
+                <div class="title">
+                 <span>
+                    Coordinator
+                </span>
+                    <span class="gap"></span>
+                    <div class="dropdown">
+                        <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
+                        <div class="dropdown-content">
+                            <a href="#">Coordinator</a>
+                            <a href="#">Volunteer</a>
+                            <a href="#">Log Out</a>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -24,7 +24,7 @@
             <div v-if="!CallStarted" class="buttons">
                 <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"
                           @click.native="selectButton(index)" :selected="item.selected"/>
-                <button class="callbtn" @click="Start_Call">Start Call</button>
+                <button class="btn" @click="Start_Call">Start Call</button>
                 <!-- <FilterComponent/> -->
             </div>
         </header>
@@ -295,16 +295,16 @@
 
 <style>
 
-    .callbtn {
-        position: absolute;
-        width: 117px;
-        height: 48px;
-        left: 1365px;
-        top: 112px;
-        background: #1C405A;
-        border-radius: 5px;
-        color: white;
-    }
+    /*.callbtn {*/
+    /*    position: absolute;*/
+    /*    width: 117px;*/
+    /*    height: 48px;*/
+    /*    left: 1365px;*/
+    /*    top: 112px;*/
+    /*    background: #1C405A;*/
+    /*    border-radius: 5px;*/
+    /*    color: white;*/
+    /*}*/
 
 
     .router-link {
