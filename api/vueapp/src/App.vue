@@ -325,10 +325,15 @@
 
     .buttons .btn {
         font-weight: 500;
+        margin: 1.5vw;
+        font-size: 1.5vw;
+        color: black;
+        /*text-transform: uppercase;*/
+        transition: all 0.1s ease-in-out;
     }
 
     .buttons {
-        margin: 2.5vw;
+        margin: 2vw;
         display: flex;
         justify-content: center;
     }
