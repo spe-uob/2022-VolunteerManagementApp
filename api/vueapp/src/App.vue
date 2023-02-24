@@ -21,11 +21,20 @@
                 </div>
             </nav>
 
-            <div v-if="!CallStarted" class="buttons">
-                <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"
-                          @click.native="selectButton(index)" :selected="item.selected"/>
-                <button class="btn" @click="Start_Call">Start Call</button>
-                <!-- <FilterComponent/> -->
+<!--            <div v-if="!CallStarted" class="buttons">-->
+<!--                <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
+<!--                          @click.native="selectButton(index)" :selected="item.selected"/>-->
+<!--                <button class="btn" @click="Start_Call">Start Call</button>-->
+<!--                &lt;!&ndash; <FilterComponent/> &ndash;&gt;-->
+<!--            </div>-->
+            <div class="buttons">
+                <span class="btn"><router-link tag="span" to="/allActivity">All Activity</router-link></span>
+                <span class="btn" ><router-link tag="span" to="/Actions">Actions</router-link></span>
+                <span class="btn"><router-link tag="span" to="/referrals">Referrals</router-link></span>
+                <span class="btn"><router-link tag="span" to="/residents">Residents</router-link></span>
+                <span class="btn"><router-link tag="span" to="/volunteers">Volunteers</router-link></span>
+                <span class="btn"><router-link tag="span" to="organisation">Organisations</router-link></span>
+                <span class="btn" @click="Start_Call">Phone Call</span>
             </div>
         </header>
         <router-view></router-view>
@@ -34,7 +43,7 @@
 
 <script>
     import $ from 'jquery';
-    import myButton from "@/components/myButton";
+    // import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
     // import FilterComponent from './components/FilterComponent.vue';
 
@@ -80,7 +89,7 @@
         },
         components: {
             navbar,
-            myButton,
+            // myButton,
             // FilterComponent
         },
         methods: {
