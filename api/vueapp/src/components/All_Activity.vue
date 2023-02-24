@@ -116,7 +116,6 @@ export default {
     // actionTable,
     Referral_FilterComponent: require('./FilterComponent.vue').default,
     Action_FilterComponent: require('./Action_FilterComponent.vue').default
-
   },
   methods: {
 
@@ -182,24 +181,26 @@ tr:hover {
 
 
 .table3{
-  color: black;
-  font-size: 10px;
-  margin-left: 1300px;
-  border-collapse: collapse;
-  border: none;
-  background: #F2F2F2;
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  position: absolute;
+  /*left: -15rem;*/
+  right: 0.5%;
+  top: 30%;
 }
 
-
-
-
 .table4{
-  color: black;
-  font-size: 10px;
-  margin-left: 1300px;
-  border-collapse: collapse;
-  border: none;
-  background: #F7F7F7;
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  position: absolute;
+  right: 0.5%;
+  top: 60%;
 }
 
 .tr-color-0 {
