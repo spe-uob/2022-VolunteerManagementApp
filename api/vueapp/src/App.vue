@@ -361,13 +361,22 @@
         border: none;
         display: flex;
         align-items: center; */
+        /*background-color: #3A4857;*/
+        /*color: white;*/
+        /*position: absolute;*/
+        /*width: 73px;*/
+        /*height: 45px;*/
+        /*left: 1300px;*/
+        /*top: -1px;*/
         background-color: #3A4857;
         color: white;
-        position: absolute;
-        width: 73px;
-        height: 45px;
-        left: 1300px;
-        top: -1px;
+        font-size: 1rem;
+        border: none;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-transform: uppercase;
+        cursor: pointer;
     }
 
     .dropdown-arrow {
