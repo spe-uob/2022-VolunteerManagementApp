@@ -3,7 +3,7 @@
         <header>
             <nav class="nav">
                 <navbar/>
-                <img class="symbol" src="../img/CompanyIcon.png"/>
+                <img class="symbol" :src="companyIcon"/>
 
                 <div class="title">
                  <span>
@@ -21,15 +21,15 @@
                 </div>
             </nav>
 
-<!--            <div v-if="!CallStarted" class="buttons">-->
-<!--                <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
-<!--                          @click.native="selectButton(index)" :selected="item.selected"/>-->
-<!--                <button class="btn" @click="Start_Call">Start Call</button>-->
-<!--                &lt;!&ndash; <FilterComponent/> &ndash;&gt;-->
-<!--            </div>-->
+            <!--            <div v-if="!CallStarted" class="buttons">-->
+            <!--                <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
+            <!--                          @click.native="selectButton(index)" :selected="item.selected"/>-->
+            <!--                <button class="btn" @click="Start_Call">Start Call</button>-->
+            <!--                &lt;!&ndash; <FilterComponent/> &ndash;&gt;-->
+            <!--            </div>-->
             <div class="buttons">
                 <span class="btn"><router-link tag="span" to="/allActivity">All Activity</router-link></span>
-                <span class="btn" ><router-link tag="span" to="/Actions">Actions</router-link></span>
+                <span class="btn"><router-link tag="span" to="/Actions">Actions</router-link></span>
                 <span class="btn"><router-link tag="span" to="/referrals">Referrals</router-link></span>
                 <span class="btn"><router-link tag="span" to="/residents">Residents</router-link></span>
                 <span class="btn"><router-link tag="span" to="/volunteers">Volunteers</router-link></span>
@@ -45,6 +45,7 @@
     import $ from 'jquery';
     // import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
+    import companyIcon from "../img/CompanyIcon.png";
     // import FilterComponent from './components/FilterComponent.vue';
 
 
@@ -53,6 +54,7 @@
         data() {
             return {
                 showContent: false,
+                companyIcon: companyIcon,
                 buttons: [
                     {label: 'All Activity', left: '273px', selected: false},
                     {label: 'Actions', left: '426px', selected: false},
