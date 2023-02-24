@@ -50,6 +50,9 @@
           </tr>
           </tbody>
         </table>
+        <div>
+          <FilterComponent class="table1"></FilterComponent>
+        </div>
       </div>
     </div>
   </template>
@@ -81,6 +84,9 @@
     },
     created() {
       this.tableData = this.$store.state.tableData
+    },
+    components: {
+      FilterComponent: require('./FilterComponent.vue').default
     },
     methods: {
       toggleHide() {
@@ -139,6 +145,7 @@
       })
       },
   }
+
   
   </script>
   
@@ -165,12 +172,12 @@
     max-width: 100%;
     margin: 0;
   }
-  
+
   .table1 {
     background: #ebecf0;
     color: rgba(31, 31, 31, 0.7);
     border-radius: 5px;
-    margin: 0 auto;
+  //margin: 0 auto;
     border: 1px solid #f7f7f7;
     width: 200px;
     position: absolute;
