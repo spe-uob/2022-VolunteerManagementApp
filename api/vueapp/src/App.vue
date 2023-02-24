@@ -326,7 +326,7 @@
     }
 
     .buttons {
-        margin: 5vw;
+        margin: 2.5vw;
         display: flex;
         justify-content: center;
     }
