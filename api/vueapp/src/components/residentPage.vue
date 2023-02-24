@@ -10,7 +10,7 @@
             <button class="btn" @click="openActionform">Add New Action</button>
           </ul>
         </div>
-        
+
         <div class="box-container2">
             <header>Referrals</header>
           <ul class="action-list">
@@ -24,7 +24,7 @@
           <addactionform :id="this.id"/>
         </div>
     </div>
-    
+
 </template>
 
 
@@ -83,7 +83,7 @@ export default {
           })
           return json;
       },
-    getReferrals: async function (id){
+    getReferrals: async function (){
         const csrftoken = this.getCookie('csrftoken')
           const json = await $.ajax({
               url: `http://localhost:8000/api/referrals/`,
@@ -129,7 +129,7 @@ export default {
                 resident: result.resident,
                 type: result.referral_type,
             }
-       }) 
+       })
     })
     this.getActions().then((response) => {
         console.log("response.results:" + + response.results)

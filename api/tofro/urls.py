@@ -41,10 +41,7 @@ router2.register(r'wards', WardViewSet)
 admin_path = settings.DJANGO_ADMIN_LOCATION + '/'
 
 urlpatterns = [
-<<<<<<< HEAD
-=======
     # path('admin/clearcache/', include('clearcache.urls')),
->>>>>>> main
     path('', homepage, name="home"),
     path('index/', myapp_views.index),
     re_path(r'static-path/(?P<path>.+)', resolve_static_path_view),

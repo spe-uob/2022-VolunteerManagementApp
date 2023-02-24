@@ -71,19 +71,13 @@ ALLOWED_HOSTS = DJANGO_ALLOWED_HOSTS
 
 # Application definition
 INSTALLED_APPS = [
-<<<<<<< HEAD
-=======
+
     'myapp',
->>>>>>> main
     'admin_auto_filters',
     'django_admin_listfilter_dropdown',
     'actions',
     'categories',
     'pages_and_menus',
-<<<<<<< HEAD
-    'myapp',
-=======
->>>>>>> main
     'core',
     'markup_help',
     'notifications',
@@ -260,7 +254,7 @@ LOCALE_PATHS = (
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static-built')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     join_path(BASE_DIR, 'static-src'),
@@ -279,11 +273,10 @@ WHITENOISE_AUTOREFRESH = DEBUG
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-<<<<<<< HEAD
+
 LOGIN_REDIRECT_URL = '/actions/'
-=======
-LOGIN_REDIRECT_URL = '/index/'
->>>>>>> main
+
+
 
 LOGGING = copy.deepcopy(DEFAULT_LOGGING)
 

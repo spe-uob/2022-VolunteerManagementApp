@@ -10,14 +10,12 @@ import MyVolunteers from './components/MyVolunteers'
 import MyOrganisations from './components/myOrganisation'
 import VueRouter from 'vue-router'
 import { loremIpsum } from "lorem-ipsum"
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 Object.defineProperty(Vue.prototype, '$lorem', { value: loremIpsum });
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
-Vue.use(BootstrapVue)
+
 
 const routes = [
   { path: '/vue-test', component: App},
