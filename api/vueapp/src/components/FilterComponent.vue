@@ -87,17 +87,21 @@
     }
 
     .f-title{
-        font-size: 18px;
+        font-size: 13px;
         font-weight: 600;
         line-height: 1.5;
     }
 
     .filter-head {
         background: #eee;
+        font-size: 12px;
         padding: 5px;
         border-bottom: 1px solid #ccc;
         border-top: 1px solid #ccc;
         margin: -1px 0;
+    }
+    label{
+      font-size: 10px;
     }
 
 </style>

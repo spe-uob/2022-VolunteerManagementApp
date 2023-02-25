@@ -189,7 +189,7 @@ tr:hover {
   position: absolute;
   /*left: -15rem;*/
   right: 0.5%;
-  top: 30%;
+  top: 23%;
 }
 
 .table4{
@@ -218,12 +218,6 @@ tr:hover {
     max-width: 50%;
     font-size: 18px;
   }
-  .table3{
-    margin-left: 680px;
-  }
-  .table4{
-    margin-left: 680px;
-  }
 }
 
 
@@ -232,24 +226,13 @@ tr:hover {
     max-width: 50%;
     font-size: 18px;
   }
-  .table3{
-    margin-left: 88%;
-  }
-  .table4{
-    margin-left: 88%;
-  }
+
 }
 
 @media (min-width: 992px) {
   table {
     max-width: 33.33%;
     font-size: 20px;
-  }
-  .table3{
-    margin-left: 88%;
-  }
-  .table4{
-    margin-left: 88%;
   }
 }
 
@@ -258,13 +241,17 @@ tr:hover {
 @media (min-width: 1200px) {
   table {
     max-width: 25%;
-    font-size: 22px;
+    font-size: 20px;
   }
+
+}
+
+@media (max-width: 1180px) {
   .table3{
-    margin-left: 95%;
+    display: none;
   }
   .table4{
-    margin-left: 95%;
+    display: none;
   }
 }
 

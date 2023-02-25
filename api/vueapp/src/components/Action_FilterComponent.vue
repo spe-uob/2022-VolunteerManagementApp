@@ -7,7 +7,7 @@
         <div>
           <label>
             <input type="checkbox">
-            foodbank
+            feedback
           </label>
         </div>
         <div>
@@ -89,7 +89,7 @@ export default {
 }
 
 .f-title{
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 600;
   line-height: 1.5;
 }
@@ -97,9 +97,13 @@ export default {
 .filter-head {
   background: #eee;
   padding: 5px;
+  font-size: 12px;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
   margin: -1px 0;
 }
+ label{
+   font-size: 10px;
+ }
 
 </style>
