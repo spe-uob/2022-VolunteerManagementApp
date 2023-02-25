@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <table style="margin-left: 4rem">
       <thead style="background-color: rgba(247, 247, 247, 1)">
       <tr style="font-size: 1rem;">
@@ -142,8 +141,8 @@ th,td{
 }
 
 th {
-  background-color: #3A4857;
-  color: #fff;
+  background-color: rgba(234, 236, 239, 1);
+  color: black;
   font-weight: bold;
   text-align: left;
   padding: 0.75rem 1rem;
@@ -216,7 +215,7 @@ tr:hover {
 @media (min-width: 460px) {
   table {
     max-width: 50%;
-    font-size: 18px;
+    font-size: 10px;
   }
 }
 
@@ -224,7 +223,7 @@ tr:hover {
 @media (min-width: 800px) {
   table {
     max-width: 50%;
-    font-size: 18px;
+    font-size: 12px;
   }
 
 }
@@ -232,18 +231,15 @@ tr:hover {
 @media (min-width: 992px) {
   table {
     max-width: 33.33%;
-    font-size: 20px;
+    font-size: 14px;
   }
 }
-
-
 
 @media (min-width: 1200px) {
   table {
     max-width: 25%;
-    font-size: 20px;
+    font-size: 16px;
   }
-
 }
 
 @media (max-width: 1180px) {

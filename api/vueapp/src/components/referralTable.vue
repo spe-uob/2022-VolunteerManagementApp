@@ -177,7 +177,7 @@
     background: #ebecf0;
     color: rgba(31, 31, 31, 0.7);
     border-radius: 5px;
-  //margin: 0 auto;
+    margin: 0 auto;
     border: 1px solid #f7f7f7;
     width: 200px;
     position: absolute;

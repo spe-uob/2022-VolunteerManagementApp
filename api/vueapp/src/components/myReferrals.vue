@@ -161,11 +161,10 @@ export default {
 .table {
   border: 1px solid #f5f5f5;
   border-radius: 5px;
-  //margin: 0 auto;
+  margin: 0 auto;
   border-spacing: 0px;
   width: 100%;
   max-width: 100%;
-  margin: 0;
 }
 
 .table1 {
