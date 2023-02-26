@@ -50,9 +50,11 @@
           </tr>
           </tbody>
         </table>
+
         <div>
           <FilterComponent class="table1"></FilterComponent>
         </div>
+
       </div>
     </div>
   </template>
@@ -183,9 +185,6 @@
     position: absolute;
     right: -220px;
     top: 0;
-    /* position: fixed;
-    left: 1200px;
-    bottom: 745px; */
   }
   
   select {

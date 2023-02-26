@@ -40,6 +40,11 @@
         </tr>
         </tbody>
       </table>
+
+      <div>
+        <FilterComponent class="table1"></FilterComponent>
+      </div>
+
     </div>
   </div>
 </template>
@@ -54,6 +59,9 @@ export default {
       list: [
       ]
     }
+  },
+  components: {
+    FilterComponent: require('./FilterComponent.vue').default
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -157,9 +165,6 @@ export default {
   position: absolute;
   right: -220px;
   top: 0;
-  /* position: fixed;
-  left: 1200px;
-  bottom: 745px; */
 }
 
 select {

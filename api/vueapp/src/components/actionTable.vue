@@ -57,7 +57,7 @@
       <div class="table-container" :style="{width: containerSize + 'px', height: containerSize + 'px', left: left + 'px', top: top + 'px'}">
         <table class="table">
           <thead>
-          <tr style="font-size: 17px;background-color: #f7f7f7;">
+          <tr style="font-size: 17px;backgrou6nd-color: #f7f7f7;">
             <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Actions</td>
             <td></td>
             <td></td>
@@ -104,11 +104,11 @@
           </tr>
           </tbody>
         </table>
+
         <div>
           <FilterComponent class="table1"></FilterComponent>
         </div>
       </div>
-
 
   </div>
 </template>
@@ -130,6 +130,9 @@ export default {
       type: Number,
       required: true
     },
+  },
+  components: {
+    FilterComponent: require('./FilterComponent.vue').default
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -206,6 +209,17 @@ table {
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.table1 {
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 5px;
+  margin: 0 auto;
+  border: 1px solid #f7f7f7;
+  width: 200px;
+  position: absolute;
+  right: -220px;
+  top: 0;
 }
 
 .tr-color-0 {
