@@ -219,7 +219,7 @@ tr:hover {
     font-size: 10px;
   }
   .referral_table{
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
 }
 
@@ -230,7 +230,7 @@ tr:hover {
     font-size: 12px;
   }
   .referral_table{
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
 }
 
@@ -240,7 +240,7 @@ tr:hover {
     font-size: 14px;
   }
   .referral_table{
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
 }
 
@@ -250,9 +250,16 @@ tr:hover {
     font-size: 16px;
   }
   .referral_table{
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
 }
+
+@media (min-width: 1750px) {
+  .referral_table{
+    margin-top: 0;
+  }
+}
+
 
 @media (max-width: 1180px) {
   .table3{

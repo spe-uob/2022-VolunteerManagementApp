@@ -64,7 +64,7 @@
 <style scoped>
 .filter-container {
   width: 120px;
-  border: 1px solid #DFDFDF;
+  border: 1px solid #D8D8D8;
   font-weight: bold;
   margin-top: 20px;
 }
@@ -75,6 +75,7 @@
   line-height: 1.5;
   padding: 6px;
   color: black;
+  background-color: rgba(247, 247, 247, 1)
 }
 
 
@@ -82,8 +83,8 @@
   background: #eee;
   padding: 10px;
   font-size: 10px;
-  border-bottom: 1px solid #ccc;
-  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #D8D8D8;
+  border-top: 1px solid #D8D8D8;
   margin: -1px 0;
   color: black;
 }
