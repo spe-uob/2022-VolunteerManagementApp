@@ -2,7 +2,7 @@
     <div class="filter-container">
       <div class="f-title">Filter</div>
         <div>
-            <div class="filter-head" @click="setToggle1">Referral Type</div>
+            <div class="filter-head" @click="setToggle1"><i class="arrow-right"></i> Referral Type</div>
             <div v-show="toggle1" class="filter-body">
                 <div>
                     <label>
@@ -20,26 +20,8 @@
         </div>
 
         <div>
-            <div class="filter-head" @click="setToggle2">Status</div>
+            <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>
             <div v-show="toggle2" class="filter-body">
-                <div>
-                    <label>
-                        <input type="checkbox">
-                        sub type1
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="checkbox">
-                        sub type1
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="filter-head" @click="setToggle3()">Organisation</div>
-            <div v-show="toggle3" class="filter-body">
                 <div>
                     <label>
                         <input type="checkbox">
@@ -80,28 +62,62 @@
     }
 </script>
 <style scoped>
-    .filter-container {
-        width: 200px;
-        border: 1px solid #ccc;
-        font-weight: bold;
-    }
+.filter-container {
+  width: 120px;
+  border: 1px solid #DFDFDF;
+  font-weight: bold;
+  margin-top: 20px;
+}
 
-    .f-title{
-        font-size: 13px;
-        font-weight: 600;
-        line-height: 1.5;
-    }
+.f-title{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 6px;
+  color: black;
+}
 
-    .filter-head {
-        background: #eee;
-        font-size: 12px;
-        padding: 5px;
-        border-bottom: 1px solid #ccc;
-        border-top: 1px solid #ccc;
-        margin: -1px 0;
-    }
-    label{
-      font-size: 10px;
-    }
 
+.filter-head{
+  background: #eee;
+  padding: 10px;
+  font-size: 10px;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  margin: -1px 0;
+  color: black;
+}
+
+.arrow-right {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-top: .10rem solid #666;
+  border-right: .10rem solid #666;
+  margin-right: 6px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.filter-head:active .arrow-right{
+  animation: rotateArrow 0.1s ease-in-out forwards;
+}
+
+@keyframes rotateArrow {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(135deg);
+  }
+}
+
+label{
+  font-size: 10px;
+  color: black;
+
+}
+.filter-body{
+  background-color: white;
+}
 </style>

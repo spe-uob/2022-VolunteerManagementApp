@@ -33,7 +33,7 @@
       </tbody>
     </table>
 
-    <table style="margin-left: 4rem">
+    <table class="referral_table" style="margin-left: 4rem">
       <thead style="background-color: rgba(247, 247, 247, 1)">
 
       <tr style="font-size: 1rem;">
@@ -213,12 +213,13 @@ tr:hover {
   background: #fff;
 }
 
-
-
 @media (min-width: 460px) {
   table {
     max-width: 50%;
     font-size: 10px;
+  }
+  .referral_table{
+    margin-top: 5rem;
   }
 }
 
@@ -228,7 +229,9 @@ tr:hover {
     max-width: 50%;
     font-size: 12px;
   }
-
+  .referral_table{
+    margin-top: 5rem;
+  }
 }
 
 @media (min-width: 992px) {
@@ -236,12 +239,18 @@ tr:hover {
     max-width: 33.33%;
     font-size: 14px;
   }
+  .referral_table{
+    margin-top: 5rem;
+  }
 }
 
 @media (min-width: 1200px) {
   table {
     max-width: 25%;
     font-size: 16px;
+  }
+  .referral_table{
+    margin-top: 5rem;
   }
 }
 
@@ -252,6 +261,7 @@ tr:hover {
   .table4{
     display: none;
   }
+
 }
 
 </style>

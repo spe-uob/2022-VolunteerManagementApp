@@ -1,8 +1,8 @@
 <template>
   <div class="filter-container">
-    <div class="f-title">Action Filter</div>
+    <div class="f-title">Action Filters</div>
     <div>
-      <div class="filter-head" @click="setToggle1">Help Type</div>
+      <div @click="setToggle1" class="filter-head"><i class="arrow-right"></i> Help Type</div>
       <div v-show="toggle1" class="filter-body">
         <div>
           <label>
@@ -20,7 +20,7 @@
     </div>
 
     <div>
-      <div class="filter-head" @click="setToggle2">Status</div>
+      <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>
       <div v-show="toggle2" class="filter-body">
         <div>
           <label>
@@ -38,7 +38,7 @@
     </div>
 
     <div>
-      <div class="filter-head" @click="setToggle3()">Priority</div>
+      <div class="filter-head" @click="setToggle3()"> <i class="arrow-right"></i> Priority</div>
       <div v-show="toggle3" class="filter-body">
         <div>
           <label>
@@ -81,6 +81,7 @@ export default {
 </script>
 
 <style scoped>
+
 .filter-container {
   width: 120px;
   border: 1px solid #ccc;
@@ -89,21 +90,54 @@ export default {
 }
 
 .f-title{
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.5;
+  padding: 6px;
+  color: black;
 }
 
-.filter-head {
+.filter-head{
   background: #eee;
-  padding: 5px;
-  font-size: 12px;
+  padding: 10px;
+  font-size: 10px;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
   margin: -1px 0;
+  color: black;
 }
+
+.arrow-right {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-top: .10rem solid #666;
+  border-right: .10rem solid #666;
+  margin-right: 6px;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.filter-head:active .arrow-right{
+  animation: rotateArrow 0.1s ease-in-out forwards;
+}
+
+@keyframes rotateArrow {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(135deg);
+  }
+}
+
  label{
    font-size: 10px;
+   color: black;
+ }
+
+ .filter-body{
+   background-color: white;
  }
 
 </style>
