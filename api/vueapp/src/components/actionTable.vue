@@ -94,7 +94,6 @@
             </div>
             </th>
           </tr>
-          <!-- 用索引值除以 2 取余 -->
           <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
             <td style="color:  black;">{{item.id}}</td>
             <td style="color:  black;">{{item.resident}}</td>

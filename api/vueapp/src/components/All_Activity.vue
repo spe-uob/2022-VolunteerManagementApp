@@ -155,16 +155,19 @@ th:hover {
 }
 
 th.sortable:hover {
-  background-color: #273b52;
+  background-color: #dddddd;
 }
 
 th.sortable:after {
   content: "\25B2";
-  margin-left: 2px;
+  font-size: 12px;
+  margin-left: 5px;
 }
 
 th.sortable.asc:after {
   content: "\25BC";
+  font-size: 12px;
+  margin-left: 5px;
 }
 
 td {
