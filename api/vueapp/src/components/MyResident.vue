@@ -120,9 +120,9 @@
       <!--        </tr>-->
       <!--        </tbody>-->
       <!--      </table>-->
-      <div>
-        <FilterComponent class="table1"></FilterComponent>
-      </div>
+<!--      <div>-->
+<!--        <FilterComponent class="table1"></FilterComponent>-->
+<!--      </div>-->
 
     </div>
 

@@ -54,60 +54,70 @@
 
 <!--    new version-->
 
-      <div class="table-container" :style="{width: containerSize + 'px', height: containerSize + 'px', left: left + 'px', top: top + 'px'}">
-        <table class="table">
-          <thead>
-          <tr style="font-size: 17px;backgrou6nd-color: #f7f7f7;">
-            <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Actions</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          </thead>
-          <tbody>
+<!--      <div class="table-container" :style="{width: containerSize + 'px', height: containerSize + 'px', left: left + 'px', top: top + 'px'}">-->
+<!--        <table class="table">-->
+<!--          <thead>-->
+<!--          <tr style="font-size: 17px;backgrou6nd-color: #f7f7f7;">-->
+<!--            <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Actions</td>-->
+<!--            <td></td>-->
+<!--            <td></td>-->
+<!--            <td></td>-->
+<!--            <td></td>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
 
-          <tr>
-            <th>ID<div style="display: inline-block;position: absolute;top:45px;">
-              <span
-                  class="arrow asc"></span><br /><span class="arrow dsc"></span>
-            </div>
-            </th>
-            <th>Resident<div style="display: inline-block;position: absolute;top: 45px;">
-              <span
-                  class="arrow asc"></span><br /><span class="arrow dsc"></span>
-            </div>
-            </th>
-            <th>Help Type<div style="display: inline-block;position: absolute;top: 45px;">
-              <span
-                  class="arrow asc"></span><br /><span class="arrow dsc"></span>
-            </div>
-            </th>
-            <th>Due<div style="display: inline-block;position: absolute;top: 45px;">
-              <span
-                  class="arrow asc"></span><br /><span class="arrow dsc"></span>
-            </div>
-            </th>
-            <th>Status<div style="display: inline-block;position: absolute;top: 45px;">
-              <span
-                  class="arrow asc"></span><br /><span class="arrow dsc"></span>
-            </div>
-            </th>
-          </tr>
-          <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
-            <td style="color:  black;">{{item.id}}</td>
-            <td style="color:  black;">{{item.resident}}</td>
-            <td style="color:  black;">{{item.help_type}}</td>
-            <td style="color:  black;">{{item.Organisation}}</td>
-            <td style="color:  black;">{{item.Completed}}</td>
-          </tr>
-          </tbody>
-        </table>
+<!--          <tr>-->
+<!--            <th>ID<div style="display: inline-block;position: absolute;top:45px;">-->
+<!--              <span-->
+<!--                  class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+<!--            </div>-->
+<!--            </th>-->
+<!--            <th>Resident<div style="display: inline-block;position: absolute;top: 45px;">-->
+<!--              <span-->
+<!--                  class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+<!--            </div>-->
+<!--            </th>-->
+<!--            <th>Help Type<div style="display: inline-block;position: absolute;top: 45px;">-->
+<!--              <span-->
+<!--                  class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+<!--            </div>-->
+<!--            </th>-->
+<!--            <th>Due<div style="display: inline-block;position: absolute;top: 45px;">-->
+<!--              <span-->
+<!--                  class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+<!--            </div>-->
+<!--            </th>-->
+<!--            <th>Status<div style="display: inline-block;position: absolute;top: 45px;">-->
+<!--              <span-->
+<!--                  class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+<!--            </div>-->
+<!--            </th>-->
+<!--          </tr>-->
+<!--          <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
+<!--            <td style="color:  black;">{{item.id}}</td>-->
+<!--            <td style="color:  black;">{{item.resident}}</td>-->
+<!--            <td style="color:  black;">{{item.help_type}}</td>-->
+<!--            <td style="color:  black;">{{item.Organisation}}</td>-->
+<!--            <td style="color:  black;">{{item.Completed}}</td>-->
+<!--          </tr>-->
+<!--          </tbody>-->
+<!--        </table>-->
 
-        <div>
-          <FilterComponent class="table1"></FilterComponent>
-        </div>
-      </div>
+<!--        <div>-->
+<!--          <FilterComponent class="table1"></FilterComponent>-->
+<!--        </div>-->
+<!--      </div>-->
+    
+    
+    <div>
+      <Action_tableComponent></Action_tableComponent>
+  </div>
+
+
+    <div >
+      <FilterComponent></FilterComponent>
+    </div>
 
   </div>
 </template>
@@ -131,7 +141,8 @@ export default {
     },
   },
   components: {
-    FilterComponent: require('./FilterComponent.vue').default
+    FilterComponent: require('./FilterComponent.vue').default,
+    Action_tableComponent:require('./Actions.vue').default
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -198,66 +209,79 @@ export default {
 
 <style>
 
-table {
-  border-collapse: collapse;
-  width: 20%;
-  max-width: 40rem;
-  margin: 0rem;
-  float: left;
-  background-color: #f8f8f8;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-.table1 {
+.table3{
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
-  border-radius: 5px;
-  margin: 0 auto;
-  border: 1px solid #f7f7f7;
-  width: 200px;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
   position: absolute;
-  right: -220px;
-  top: 0;
-}
-
-.tr-color-0 {
-  background: #f2f2f2;
-}
-
-.tr-color-1 {
-  background: #fff;
-}
-
-@media (min-width: 460px) {
-  table {
-    max-width: 50%;
-    font-size: 18px;
-  }
+  /*left: -15rem;*/
+  right: 0.5%;
+  top: 23%;
 }
 
 
-@media (min-width: 800px) {
-  table {
-    max-width: 50%;
-    font-size: 18px;
-  }
+/*table {*/
+/*  border-collapse: collapse;*/
+/*  width: 20%;*/
+/*  max-width: 40rem;*/
+/*  margin: 0rem;*/
+/*  float: left;*/
+/*  background-color: #f8f8f8;*/
+/*  border-radius: 4px;*/
+/*  overflow: hidden;*/
+/*  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);*/
+/*}*/
+/*.table1 {*/
+/*  background: #ebecf0;*/
+/*  color: rgba(31, 31, 31, 0.7);*/
+/*  border-radius: 5px;*/
+/*  margin: 0 auto;*/
+/*  border: 1px solid #f7f7f7;*/
+/*  width: 200px;*/
+/*  position: absolute;*/
+/*  right: -220px;*/
+/*  top: 0;*/
+/*}*/
 
-}
+/*.tr-color-0 {*/
+/*  background: #f2f2f2;*/
+/*}*/
 
-@media (min-width: 992px) {
-  table {
-    max-width: 33.33%;
-    font-size: 20px;
-  }
-}
+/*.tr-color-1 {*/
+/*  background: #fff;*/
+/*}*/
 
-@media (min-width: 1200px) {
-  table {
-    max-width: 25%;
-    font-size: 22px;
-  }
-}
+/*@media (min-width: 460px) {*/
+/*  table {*/
+/*    max-width: 50%;*/
+/*    font-size: 18px;*/
+/*  }*/
+/*}*/
+
+
+/*@media (min-width: 800px) {*/
+/*  table {*/
+/*    max-width: 50%;*/
+/*    font-size: 18px;*/
+/*  }*/
+
+/*}*/
+
+/*@media (min-width: 992px) {*/
+/*  table {*/
+/*    max-width: 33.33%;*/
+/*    font-size: 20px;*/
+/*  }*/
+/*}*/
+
+/*@media (min-width: 1200px) {*/
+/*  table {*/
+/*    max-width: 25%;*/
+/*    font-size: 22px;*/
+/*  }*/
+/*}*/
 
 /*.table-container {*/
 /*    box-sizing: border-box;*/

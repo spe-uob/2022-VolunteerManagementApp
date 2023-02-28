@@ -180,8 +180,6 @@ tr:hover {
   background-color: #e6e6e6;
 }
 
-
-
 .table3{
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
@@ -268,7 +266,6 @@ tr:hover {
   .table4{
     display: none;
   }
-
 }
 
 </style>

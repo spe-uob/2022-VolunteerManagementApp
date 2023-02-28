@@ -63,10 +63,16 @@
 </script>
 <style scoped>
 .filter-container {
-  width: 120px;
-  border: 1px solid #D8D8D8;
   font-weight: bold;
   margin-top: 20px;
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  position: absolute;
+  right: 0.5%;
+  top: 23%;
 }
 
 .f-title{
@@ -121,4 +127,12 @@ label{
 .filter-body{
   background-color: white;
 }
+
+
+@media (max-width: 1180px ){
+   .filter-container{
+    display: none;
+  }
+}
+
 </style>
