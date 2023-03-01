@@ -209,18 +209,6 @@ export default {
 
 <style>
 
-.table3{
-  background: #ebecf0;
-  color: rgba(31, 31, 31, 0.7);
-  border-radius: 0.5rem;
-  border: 0.1rem solid #f7f7f7;
-  width: 10rem;
-  position: absolute;
-  /*left: -15rem;*/
-  right: 0.5%;
-  top: 23%;
-}
-
 
 /*table {*/
 /*  border-collapse: collapse;*/

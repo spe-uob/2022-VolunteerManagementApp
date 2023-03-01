@@ -2,7 +2,7 @@
   <div>
     <div>
 
-      <table style="margin-left: 4rem">
+      <table class="referral_table" style="margin-left: 5%">
         <thead style="background-color: rgba(247, 247, 247, 1)">
 
         <tr style="font-size: 1rem;">
@@ -240,6 +240,13 @@ td {
 
 tr:hover {
   background-color: #e6e6e6;
+}
+
+
+@media (max-width: 1050px){
+  .referral_table{
+    min-width: 92%;
+  }
 }
 
 

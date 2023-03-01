@@ -116,20 +116,11 @@ export default {
   border-right: .10rem solid #666;
   margin-right: 6px;
   transform: rotate(45deg);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.1s ease-in-out;
 }
 
-.filter-head:active .arrow-right{
-  animation: rotateArrow 0.1s ease-in-out forwards;
-}
-
-@keyframes rotateArrow {
-  from {
-    transform: rotate(45deg);
-  }
-  to {
-    transform: rotate(135deg);
-  }
+.filter-head:hover .arrow-right{
+  transform: rotate(135deg);
 }
 
  label{

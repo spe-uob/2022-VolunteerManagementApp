@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table style="margin-left: 4rem">
+    <table class="Action_table" style="margin-left: 5%">
       <thead style="background-color: rgba(247, 247, 247, 1)">
       <tr style="font-size: 1rem;">
         <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>
@@ -302,10 +302,10 @@ export default {
 
 <style>
 
-table {
+.Action_table {
   border-collapse: collapse;
   width: 20%;
-  max-width: 40rem;
+  min-width: 60rem;
   margin: 0rem;
   float: left;
   background-color: #f8f8f8;
@@ -358,33 +358,9 @@ table tr:hover {
   background-color: #e6e6e6;
 }
 
-
-@media (min-width: 460px) {
-  table {
-    max-width: 50%;
-    font-size: 10px;
-  }
-}
-
-
-@media (min-width: 800px) {
-  table {
-    max-width: 50%;
-    font-size: 12px;
-  }
-}
-
-@media (min-width: 992px) {
-  table {
-    max-width: 33.33%;
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 1200px) {
-  table {
-    max-width: 25%;
-    font-size: 16px;
+@media (max-width: 1050px){
+  .Action_table{
+    min-width: 92%;
   }
 }
 

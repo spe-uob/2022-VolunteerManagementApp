@@ -127,7 +127,7 @@ export default {
 table {
   border-collapse: collapse;
   width: 20%;
-  max-width: 40rem;
+  min-width: 20rem;
   margin: 0rem;
   float: left;
   background-color: #f8f8f8;
