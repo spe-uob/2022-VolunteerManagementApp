@@ -157,16 +157,72 @@
 
 <script>
 export default {
+
   data() {
     return {
       toggle: false,
       list: [
         {
-          type: "222222222222",
-          resident: '2222222222',
-          created: '222222222222',
-          status: '222222222',
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
         },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' ',
+        },
+
       ],
     }
   },
@@ -183,8 +239,6 @@ export default {
 </script>
 
 <style>
-
-
 table {
   border-collapse: collapse;
   border-spacing: 50px;
@@ -200,6 +254,16 @@ table {
 
 th,td{
   border: none;
+}
+
+table th {
+  background-color: rgba(234, 236, 239, 1);
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
 }
 
 /*th {*/

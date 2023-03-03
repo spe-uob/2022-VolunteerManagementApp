@@ -115,7 +115,7 @@
   </div>
 
 
-    <div >
+    <div>
       <FilterComponent></FilterComponent>
     </div>
 
@@ -130,8 +130,6 @@ export default {
   data() {
     return {
       toggle: false,
-      list: [
-      ]
     }
   },
   props: {
@@ -141,7 +139,7 @@ export default {
     },
   },
   components: {
-    FilterComponent: require('./FilterComponent.vue').default,
+    FilterComponent: require('./Action_FilterComponent.vue').default,
     Action_tableComponent:require('./Actions.vue').default
   },
   created() {
@@ -208,6 +206,21 @@ export default {
 </script>
 
 <style>
+
+.container{
+  justify-content: flex-start;
+  align-items: flex-start;
+  vertical-align: top;
+  box-sizing: border-box;
+  position: absolute;
+  width: 1229px;
+  height: 854px;
+  left: 20px;
+  top: 194px;
+  background: rgb(212, 215, 211);
+  border: 1px solid #DFDFDF;
+  border-radius: 5px;
+}
 
 
 /*table {*/

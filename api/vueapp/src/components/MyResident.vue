@@ -136,11 +136,10 @@ export default {
   data() {
     return {
       toggle: false,
-      list: []
+      list: [
+
+      ]
     }
-  },
-  components: {
-    FilterComponent: require('./FilterComponent.vue').default,
   },
   created() {
     this.tableData = this.$store.state.tableData

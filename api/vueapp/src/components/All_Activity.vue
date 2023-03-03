@@ -74,8 +74,6 @@
 </template>
 
 <script>
-// import referralTable from './referralTable.vue';
-// import actionTable from './actionTable.vue';
 
 export default {
   name: 'AllActivity',
@@ -83,21 +81,90 @@ export default {
     return {
       list1: [
         {
-          type: "222222222222",
-          resident: '2222222222',
-          Due: '222222222222',
-          status: '222222222',
-          assigned: '222222222',
-          priority: '22222222222'
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
         },
       ],
 
       list: [
         {
-          type: '2222222222222222222',
-          resident: '2222222222',
-          created: '22222222222',
-          status: '2222222222'
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },{
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
         },
       ],
       buttons: [
@@ -234,7 +301,7 @@ tr:hover {
 
 @media (min-width: 992px) {
   table {
-    max-width: 33.33%;
+    min-width: 33.33%;
     font-size: 14px;
   }
   .referral_table{
@@ -242,17 +309,11 @@ tr:hover {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1684px) {
   table {
     max-width: 25%;
     font-size: 16px;
   }
-  .referral_table{
-    margin-top: 3rem;
-  }
-}
-
-@media (min-width: 1750px) {
   .referral_table{
     margin-top: 0;
   }

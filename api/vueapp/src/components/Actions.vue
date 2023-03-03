@@ -206,36 +206,102 @@
 <!--             :class="item.status === 1 ? 'opacity-1' : ''"></div>-->
 <!--      </div>-->
 <!--    </div>-->
-
   </div>
 </template>
 
-<script type="text/javascript">
-import $ from "jquery";
+<script>
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: "Actions",
+  name:"Actions",
+
   data() {
     return {
       toggle: false,
       list: [
         {
-          type: "222222222222",
-          resident: '2222222222',
-          Due: '222222222222',
-          status: '222222222',
-          assigned: '222222222',
-          priority: '22222222222'
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
         },
+        {
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
+        },
+        {
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
+        },
+          {
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
+        },
+        {
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
+        },
+        {
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
+        },
+        {
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
+        },
+        {
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
+        },
+        {
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
+        },
+        {
+          type: " ",
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned:' ',
+          priority:' '
+        },
+
       ],
     }
-  },
-  props: {
-    containerSize: {
-      type: Number,
-      required: true
-    },
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -243,67 +309,17 @@ export default {
   methods: {
     toggleHide() {
       this.toggle = !this.toggle;
-    },
-    getActions: async function () {
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/actions/",
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-      return json;
-    },
-    getCookie: function (name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
-        }
-      }
-      return cookieValue;
-    },
-  },
-  mounted(){
-    this.getActions().then((response) => {
-      this.list = response.results.map((result) => {
-        return {
-          id: result.id,
-          resident: result.resident,
-          help_type: result.help_type,
-          Due: 'n/a',
-          Status: result.action_status,
-        }
-      })
-    })
-  },
+    }
+  }
 }
 
 </script>
 
 <style>
 
-.Action_table {
+table {
   border-collapse: collapse;
+  border-spacing: 50px;
   width: 20%;
   min-width: 60rem;
   margin: 0rem;
@@ -314,7 +330,7 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-table th,td{
+th,td{
   border: none;
 }
 
@@ -328,35 +344,36 @@ table th {
   cursor: pointer;
 }
 
-table th:hover {
+th:hover {
   background-color: #354a63;
 }
 
-table th.sortable:hover {
+th.sortable:hover {
   background-color: #dddddd;
 }
 
-table th.sortable:after {
+th.sortable:after {
   content: "\25B2";
   font-size: 12px;
   margin-left: 5px;
 }
 
-table th.sortable.asc:after {
+th.sortable.asc:after {
   content: "\25BC";
   font-size: 12px;
   margin-left: 5px;
 }
 
-table td {
+td {
   padding: 0.75rem 2rem;
   border-bottom: 1px solid #ddd;
   color: #333;
 }
 
-table tr:hover {
+tr:hover {
   background-color: #e6e6e6;
 }
+
 
 @media (max-width: 1050px){
   .Action_table{

@@ -41,10 +41,6 @@
         </tbody>
       </table>
 
-      <div>
-        <FilterComponent class="table1"></FilterComponent>
-      </div>
-
     </div>
   </div>
 </template>
@@ -61,7 +57,6 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./FilterComponent.vue').default
   },
   created() {
     this.tableData = this.$store.state.tableData
