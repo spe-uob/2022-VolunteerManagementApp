@@ -120,7 +120,12 @@
       <!--        </tr>-->
       <!--        </tbody>-->
       <!--      </table>-->
+<!--      <div>-->
+<!--        <FilterComponent class="table1"></FilterComponent>-->
+<!--      </div>-->
+
     </div>
+
   </div>
 </template>
 
@@ -131,7 +136,9 @@ export default {
   data() {
     return {
       toggle: false,
-      list: []
+      list: [
+
+      ]
     }
   },
   created() {
@@ -220,7 +227,7 @@ export default {
 .table {
   border: 1px solid #f5f5f5;
   border-radius: 5px;
-//margin: 0 auto;
+  margin: 0 auto;
   border-spacing: 0px;
   width: 100%;
   max-width: 100%;
@@ -231,19 +238,15 @@ export default {
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 5px;
-//margin: 0 auto;
+  margin: 0 auto;
   border: 1px solid #f7f7f7;
   width: 200px;
   position: absolute;
   right: -220px;
   top: 0;
-  /* position: fixed;
-  left: 1200px;
-  bottom: 745px; */
 }
 
 select {
-
   /* styling */
   background-color: white;
   border: black;

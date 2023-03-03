@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <table style="margin-left: 4rem">
       <thead style="background-color: rgba(247, 247, 247, 1)">
       <tr style="font-size: 1rem;">
@@ -34,7 +33,7 @@
       </tbody>
     </table>
 
-    <table style="margin-left: 4rem">
+    <table class="referral_table" style="margin-left: 4rem">
       <thead style="background-color: rgba(247, 247, 247, 1)">
 
       <tr style="font-size: 1rem;">
@@ -75,8 +74,6 @@
 </template>
 
 <script>
-// import referralTable from './referralTable.vue';
-// import actionTable from './actionTable.vue';
 
 export default {
   name: 'AllActivity',
@@ -84,21 +81,90 @@ export default {
     return {
       list1: [
         {
-          type: "222222222222",
-          resident: '2222222222',
-          Due: '222222222222',
-          status: '222222222',
-          assigned: '222222222',
-          priority: '22222222222'
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          Due: ' ',
+          status: ' ',
+          assigned: ' ',
+          priority: ' '
         },
       ],
 
       list: [
         {
-          type: '2222222222222222222',
-          resident: '2222222222',
-          created: '22222222222',
-          status: '2222222222'
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },{
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
+        },
+        {
+          type: ' ',
+          resident: ' ',
+          created: ' ',
+          status: ' '
         },
       ],
       buttons: [
@@ -128,7 +194,7 @@ export default {
 table {
   border-collapse: collapse;
   width: 20%;
-  max-width: 40rem;
+  min-width: 20rem;
   margin: 0rem;
   float: left;
   background-color: #f8f8f8;
@@ -142,8 +208,8 @@ th,td{
 }
 
 th {
-  background-color: #3A4857;
-  color: #fff;
+  background-color: rgba(234, 236, 239, 1);
+  color: black;
   font-weight: bold;
   text-align: left;
   padding: 0.75rem 1rem;
@@ -156,16 +222,19 @@ th:hover {
 }
 
 th.sortable:hover {
-  background-color: #273b52;
+  background-color: #dddddd;
 }
 
 th.sortable:after {
   content: "\25B2";
-  margin-left: 2px;
+  font-size: 12px;
+  margin-left: 5px;
 }
 
 th.sortable.asc:after {
   content: "\25BC";
+  font-size: 12px;
+  margin-left: 5px;
 }
 
 td {
@@ -178,8 +247,6 @@ tr:hover {
   background-color: #e6e6e6;
 }
 
-
-
 .table3{
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
@@ -189,7 +256,7 @@ tr:hover {
   position: absolute;
   /*left: -15rem;*/
   right: 0.5%;
-  top: 30%;
+  top: 23%;
 }
 
 .table4{
@@ -211,18 +278,13 @@ tr:hover {
   background: #fff;
 }
 
-
-
 @media (min-width: 460px) {
   table {
     max-width: 50%;
-    font-size: 18px;
+    font-size: 10px;
   }
-  .table3{
-    margin-left: 680px;
-  }
-  .table4{
-    margin-left: 680px;
+  .referral_table{
+    margin-top: 3rem;
   }
 }
 
@@ -230,41 +292,40 @@ tr:hover {
 @media (min-width: 800px) {
   table {
     max-width: 50%;
-    font-size: 18px;
+    font-size: 12px;
   }
-  .table3{
-    margin-left: 88%;
-  }
-  .table4{
-    margin-left: 88%;
+  .referral_table{
+    margin-top: 3rem;
   }
 }
 
 @media (min-width: 992px) {
   table {
-    max-width: 33.33%;
-    font-size: 20px;
+    min-width: 33.33%;
+    font-size: 14px;
   }
-  .table3{
-    margin-left: 88%;
+  .referral_table{
+    margin-top: 3rem;
   }
-  .table4{
-    margin-left: 88%;
+}
+
+@media (min-width: 1684px) {
+  table {
+    max-width: 25%;
+    font-size: 16px;
+  }
+  .referral_table{
+    margin-top: 0;
   }
 }
 
 
-
-@media (min-width: 1200px) {
-  table {
-    max-width: 25%;
-    font-size: 22px;
-  }
+@media (max-width: 1180px) {
   .table3{
-    margin-left: 95%;
+    display: none;
   }
   .table4{
-    margin-left: 95%;
+    display: none;
   }
 }
 

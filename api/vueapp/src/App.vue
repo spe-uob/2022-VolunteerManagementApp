@@ -386,7 +386,7 @@
         /*top: -1px;*/
         background-color: #3A4857;
         color: white;
-        font-size: 1rem;
+        font-size: 0.8rem;
         border: none;
         display: flex;
         align-items: center;

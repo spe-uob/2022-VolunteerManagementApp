@@ -40,6 +40,7 @@
         </tr>
         </tbody>
       </table>
+
     </div>
   </div>
 </template>
@@ -54,6 +55,8 @@ export default {
       list: [
       ]
     }
+  },
+  components: {
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -157,9 +160,6 @@ export default {
   position: absolute;
   right: -220px;
   top: 0;
-  /* position: fixed;
-  left: 1200px;
-  bottom: 745px; */
 }
 
 select {
