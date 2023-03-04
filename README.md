@@ -23,8 +23,10 @@ To get running locally and quickly, download docker, clone this repository, then
 
     docker-compose up --build
 
-Then run the following command in the home directory
-    docker-compose -f docker-compose.yml -f development.yml up --build
+Then run the following command in the home directory：
+```
+docker-compose -f docker-compose.yml -f development.yml up --build
+```
 
 Direct to the helloworldvue directory and run the following commands
 
