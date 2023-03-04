@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="Action_table" style="margin-left: 5%">
+    <table class="Action_table">
       <thead style="background-color: rgba(247, 247, 247, 1)">
       <tr style="font-size: 1rem;">
         <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>
@@ -23,7 +23,7 @@
       </tr>
 
       <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
-        <td>{{item.type}}</td>
+        <td>{{item.help_type}}</td>
         <td>{{item.resident}}</td>
         <td>{{item.Due}}</td>
         <td>{{item.status}}</td>
@@ -211,97 +211,22 @@
 
 <script>
 
-export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name:"Actions",
+import $ from "jquery";
 
+export default {
+  name: 'actionTable',
   data() {
     return {
       toggle: false,
       list: [
-        {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-        {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-        {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-          {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-        {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-        {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-        {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-        {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-        {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-        {
-          type: " ",
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned:' ',
-          priority:' '
-        },
-
-      ],
+      ]
     }
+  },
+  props: {
+    containerSize: {
+      type: Number,
+      required: true
+    },
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -309,21 +234,72 @@ export default {
   methods: {
     toggleHide() {
       this.toggle = !this.toggle;
-    }
-  }
+    },
+    getActions: async function () {
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: "http://localhost:8000/" + "api/actions/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      return json;
+    },
+    getCookie: function (name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    },
+  },
+  mounted(){
+    this.getActions().then((response) => {
+      this.list = response.results.map((result) => {
+        return {
+          id: result.id,
+          resident: result.resident,
+          help_type: result.help_type,
+          Due: 'n/a',
+          assigned: 'n/a',
+          status: result.action_status,
+          priority: result.action_priority
+        }
+      })
+    })
+  },
 }
-
 </script>
 
 <style>
 
-table {
+.Action_table {
   border-collapse: collapse;
   border-spacing: 50px;
-  width: 20%;
-  min-width: 60rem;
-  margin: 0rem;
-  float: left;
+  font-size: 1vw;
+  min-width: 80%;
+  margin-left: 5%;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
@@ -334,7 +310,7 @@ th,td{
   border: none;
 }
 
-table th {
+.Action_table th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;
@@ -373,16 +349,6 @@ td {
 tr:hover {
   background-color: #e6e6e6;
 }
-
-
-@media (max-width: 1050px){
-  .Action_table{
-    min-width: 92%;
-  }
-}
-
-
-
 
 
 
@@ -551,3 +517,4 @@ tr:hover {
 
 
 
+</style>

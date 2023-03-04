@@ -167,14 +167,6 @@ export default {
           status: ' '
         },
       ],
-      buttons: [
-        {label: 'All Activity', left: '373rem', selected: false},
-        {label: 'Actions', left: '526rem', selected: false},
-        {label: 'Referrals', left: '679rem', selected: false},
-        {label: 'Residents', left: '832rem', selected: false},
-        {label: 'Volunteers', left: '985rem', selected: false},
-        {label: 'Organisations', left: '1138rem', selected: false},
-      ],
     }
   },
   components: {

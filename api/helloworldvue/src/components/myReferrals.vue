@@ -2,7 +2,7 @@
   <div>
     <div>
 
-      <table class="referral_table" style="margin-left: 5%">
+      <table class="referral_table">
         <thead style="background-color: rgba(247, 247, 247, 1)">
 
         <tr style="font-size: 1rem;">
@@ -156,74 +156,28 @@
 </template>
 
 <script>
-export default {
+import $ from "jquery";
 
+export default {
   data() {
     return {
       toggle: false,
       list: [
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' ',
-        },
-
-      ],
+      ]
+    }
+  },
+  props: {
+    containerSize: {
+      type: Number,
+      required: true
+    },
+    left: {
+      type: Number,
+      required: false
+    },
+    top: {
+      type: Number,
+      required: false
     }
   },
   created() {
@@ -232,20 +186,70 @@ export default {
   methods: {
     toggleHide() {
       this.toggle = !this.toggle;
-    }
-  }
+    },
+    getReferrals: async function () {
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: "http://localhost:8000/" + "api/referrals/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      return json;
+    },
+    getCookie: function (name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    },
+  },
+  mounted(){
+    this.getReferrals().then((response) => {
+      this.list = response.results.map((result) => {
+        return {
+          resident: result.resident,
+          type: result.referral_type,
+          created: result.created_datetime,
+          status: result.referral_status,
+          Completed: 'n/a'
+        }
+      })
+    })
+  },
 }
 
 </script>
 
 <style>
-table {
+.referral_table {
   border-collapse: collapse;
   border-spacing: 50px;
-  width: 20%;
-  min-width: 60rem;
-  margin: 0rem;
-  float: left;
+  font-size: 1vw;
+  min-width: 80%;
+  margin-left: 5%;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
@@ -256,7 +260,7 @@ th,td{
   border: none;
 }
 
-table th {
+.referral_table th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;
@@ -265,16 +269,6 @@ table th {
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
-
-/*th {*/
-/*  background-color: rgba(234, 236, 239, 1);*/
-/*  color: black;*/
-/*  font-weight: bold;*/
-/*  text-align: left;*/
-/*  padding: 5rem 5rem;*/
-/*  border-bottom: 1px solid #ddd;*/
-/*  cursor: pointer;*/
-/*}*/
 
 th:hover {
   background-color: #354a63;
@@ -304,13 +298,6 @@ td {
 
 tr:hover {
   background-color: #e6e6e6;
-}
-
-
-@media (max-width: 1050px){
-  .referral_table{
-    min-width: 92%;
-  }
 }
 
 
