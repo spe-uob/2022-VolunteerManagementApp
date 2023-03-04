@@ -25,8 +25,11 @@ Then run the following command in the home directory
     docker-compose -f docker-compose.yml -f development.yml up --build
 
 Direct to the helloworldvue directory and run the following commands
-    npm i
-    npm run serve
+
+```
+npm i
+npm run serve
+```
 
 This downloads all required node modules for the vue app.
 
@@ -44,8 +47,11 @@ This is where the Vue Application is rendered. Now all that is left is to enjoy!
 
 ## Possible Issues
 If you have a windows machine and you are having issues with setup.sh then run the following commands in your terminal:
-    dos2unix setup.sh
-    dos2unix run.sh
-    dos2unix run-dev.sh
+
+```
+dos2unix setup.sh
+dos2unix run.sh
+dos2unix run-dev.sh
+```
 
 Ensure you execute all commands in the specified order
