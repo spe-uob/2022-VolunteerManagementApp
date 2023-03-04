@@ -217,9 +217,9 @@ export default {
   name: 'actionTable',
   data() {
     return {
+
       toggle: false,
-      list: [
-      ]
+      list: 10,
     }
   },
   props: {

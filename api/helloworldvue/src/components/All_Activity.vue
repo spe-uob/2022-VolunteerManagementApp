@@ -1,65 +1,75 @@
 <template>
   <div>
-    <table style="margin-left: 4rem">
-      <thead style="background-color: rgba(247, 247, 247, 1)">
-      <tr style="font-size: 1rem;">
-        <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      </thead>
+<!--    <table style="margin-left: 4rem">-->
+<!--      <thead style="background-color: rgba(247, 247, 247, 1)">-->
+<!--      <tr style="font-size: 1rem;">-->
+<!--        <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--      </tr>-->
+<!--      </thead>-->
 
-      <tbody>
+<!--      <tbody>-->
 
-      <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th class="sortable">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Assigned<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-      </tr>
+<!--      <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">-->
+<!--        <th class="sortable">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>-->
+<!--        <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>-->
+<!--        <th class="sortable">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>-->
+<!--        <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>-->
+<!--        <th class="sortable">Assigned<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>-->
+<!--        <th class="sortable">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>-->
+<!--      </tr>-->
 
-      <tr v-for="(item, index) in list1" :class="'tr-color-' + index % 2" :key="index">
-        <td>{{item.type}}</td>
-        <td>{{item.resident}}</td>
-        <td>{{item.Due}}</td>
-        <td>{{item.status}}</td>
-        <td>{{item.assigned}}</td>
-        <td>{{item.priority}}</td>
-      </tr>
-      </tbody>
-    </table>
+<!--      <tr v-for="(item, index) in list1" :class="'tr-color-' + index % 2" :key="index">-->
+<!--        <td>{{item.type}}</td>-->
+<!--        <td>{{item.resident}}</td>-->
+<!--        <td>{{item.Due}}</td>-->
+<!--        <td>{{item.status}}</td>-->
+<!--        <td>{{item.assigned}}</td>-->
+<!--        <td>{{item.priority}}</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
 
-    <table class="referral_table" style="margin-left: 4rem">
-      <thead style="background-color: rgba(247, 247, 247, 1)">
+<!--    <table class="referral_table" style="margin-left: 4rem">-->
+<!--      <thead style="background-color: rgba(247, 247, 247, 1)">-->
 
-      <tr style="font-size: 1rem;">
-        <td rowspan="4" style="font-size: 1rem;font-weight:bold;">Referrals</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
+<!--      <tr style="font-size: 1rem;">-->
+<!--        <td rowspan="4" style="font-size: 1rem;font-weight:bold;">Referrals</td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--        <td></td>-->
+<!--      </tr>-->
 
-      </thead>
-      <tbody>
-      <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th class="sortable">Referral Type<div style="display: inline-block;position: absolute;;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-        <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-      </tr>
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">-->
+<!--        <th class="sortable">Referral Type<div style="display: inline-block;position: absolute;;"><span ></span><br /><span  ></span></div></th>-->
+<!--        <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>-->
+<!--        <th class="sortable">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>-->
+<!--        <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>-->
+<!--      </tr>-->
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
-        <td>{{item.type}}</td>
-        <td>{{item.resident}}</td>
-        <td>{{item.created}}</td>
-        <td>{{item.status}}</td>
-      </tr>
-      </tbody>
-    </table>
+<!--      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
+<!--        <td>{{item.type}}</td>-->
+<!--        <td>{{item.resident}}</td>-->
+<!--        <td>{{item.created}}</td>-->
+<!--        <td>{{item.status}}</td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+
+    <div>
+      <Action_table></Action_table>
+    </div>
+
+    <div>
+      <Referral_table style="margin-top: 50px"></Referral_table>
+    </div>
+
+
 
     <div>
       <Action_FilterComponent class="table3"></Action_FilterComponent>
@@ -79,99 +89,13 @@ export default {
   name: 'AllActivity',
   data(){
     return {
-      list1: [
-        {
-          type: ' ',
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned: ' ',
-          priority: ' '
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned: ' ',
-          priority: ' '
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned: ' ',
-          priority: ' '
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned: ' ',
-          priority: ' '
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned: ' ',
-          priority: ' '
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          Due: ' ',
-          status: ' ',
-          assigned: ' ',
-          priority: ' '
-        },
-      ],
-
-      list: [
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' '
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' '
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' '
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' '
-        },{
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' '
-        },
-        {
-          type: ' ',
-          resident: ' ',
-          created: ' ',
-          status: ' '
-        },
-      ],
     }
   },
   components: {
     // referralTable,
     // actionTable,
+    Action_table: require('./Actions.vue').default,
+    Referral_table: require('./myReferrals.vue').default,
     Referral_FilterComponent: require('./FilterComponent.vue').default,
     Action_FilterComponent: require('./Action_FilterComponent.vue').default
   },
@@ -268,57 +192,6 @@ tr:hover {
 
 .tr-color-1 {
   background: #fff;
-}
-
-@media (min-width: 460px) {
-  table {
-    max-width: 50%;
-    font-size: 10px;
-  }
-  .referral_table{
-    margin-top: 3rem;
-  }
-}
-
-
-@media (min-width: 800px) {
-  table {
-    max-width: 50%;
-    font-size: 12px;
-  }
-  .referral_table{
-    margin-top: 3rem;
-  }
-}
-
-@media (min-width: 992px) {
-  table {
-    min-width: 33.33%;
-    font-size: 14px;
-  }
-  .referral_table{
-    margin-top: 3rem;
-  }
-}
-
-@media (min-width: 1684px) {
-  table {
-    max-width: 25%;
-    font-size: 16px;
-  }
-  .referral_table{
-    margin-top: 0;
-  }
-}
-
-
-@media (max-width: 1180px) {
-  .table3{
-    display: none;
-  }
-  .table4{
-    display: none;
-  }
 }
 
 </style>
