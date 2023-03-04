@@ -29,8 +29,6 @@ Direct to the helloworldvue directory and run the following commands
 
     npm i
 
-then
-
     npm run serve
 
 This downloads all required node modules for the vue app.
