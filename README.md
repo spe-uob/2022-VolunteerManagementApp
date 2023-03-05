@@ -1,5 +1,6 @@
 # Volunteer Management App
 
+
 ## Table of Contents
 - <a href="#1">Overview</a>
 - <a href="#2">Deployment</a>
@@ -19,6 +20,9 @@ The application uses a Django project integrated with a vue application.
 
 
 <h2 id="2"> Deployment</h2>
+
+### Backend: (Using Docker)
+
 To get running locally and quickly, download docker, clone this repository, then start the applications using this command in the api directory:
 
     docker-compose up --build
@@ -27,11 +31,11 @@ Then run the following command in the home directory：
 ```
 docker-compose -f docker-compose.yml -f development.yml up --build
 ```
-
+### Frontend:
 Direct to the helloworldvue directory and run the following commands
 
 ```
-npm i
+npm install
 npm run serve
 ```
 
@@ -62,8 +66,6 @@ Ensure you execute all commands in the specified order
 
 <h2 id="5">  UX design </h2> 
 To design an interactive user interface we employed general UX design methods, such as Journey Mapping, listing user personas and requirements. We aim to follow a UX design pattern.
-
-![My Image](images/image1.jpg)
 
 <a id="6">
   <img src="images/image2.jpg">
