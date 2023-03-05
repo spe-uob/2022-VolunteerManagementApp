@@ -20,12 +20,6 @@ The application uses a Django project integrated with a vue application.
 
 <h2 id="2"> Deployment</h2>
 
-### Frontend:
-Direct to the helloworldvue directory and run the following commands
-```
-npm install
-npm run serve
-```
 ### Backend: (Using Docker)
 
 #### Install Docker: https://www.docker.com
@@ -42,6 +36,13 @@ docker-compose -f docker-compose.yml -f development.yml up --build
 This downloads all required node modules for the vue app.
 
 Restart the tofro-django container and get running!!
+
+### Frontend:
+Direct to the helloworldvue directory and run the following commands
+```
+npm install
+npm run serve
+```
 
 <h2 id="3"> Getting Running! </h2> 
 
