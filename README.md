@@ -1,6 +1,5 @@
 # Volunteer Management App
 
-
 ## Table of Contents
 - <a href="#1">Overview</a>
 - <a href="#2">Deployment</a>
@@ -21,7 +20,15 @@ The application uses a Django project integrated with a vue application.
 
 <h2 id="2"> Deployment</h2>
 
+### Frontend:
+Direct to the helloworldvue directory and run the following commands
+```
+npm install
+npm run serve
+```
 ### Backend: (Using Docker)
+
+#### Install Docker: https://www.docker.com
 
 To get running locally and quickly, download docker, clone this repository, then start the applications using this command in the api directory:
 
@@ -30,13 +37,6 @@ To get running locally and quickly, download docker, clone this repository, then
 Then run the following command in the home directory：
 ```
 docker-compose -f docker-compose.yml -f development.yml up --build
-```
-### Frontend:
-Direct to the helloworldvue directory and run the following commands
-
-```
-npm install
-npm run serve
 ```
 
 This downloads all required node modules for the vue app.
