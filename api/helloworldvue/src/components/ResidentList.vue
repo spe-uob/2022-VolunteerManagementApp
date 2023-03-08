@@ -97,13 +97,13 @@ export default {
     position: relative;
     top: 150px;
     left: 100px;
-    width: 500px;
-    height: 400px;
+    width: 1000px;
+    height: 500px;
     margin: 0 auto;
   }
 
 .search-box {
-    font-family: 'Times New Roman', Times, serif;
+  font-family: 'Times New Roman', Times, serif;
   width: 60%;
   padding: 10px;
   font-size: 16px;
@@ -114,7 +114,7 @@ export default {
 }
 
 .resident-list {
-    box-shadow: -5px -1px 10px rgba(62, 62, 62, 0.134);
+  box-shadow: -5px -1px 10px rgba(62, 62, 62, 0.134);
   background-color: white;
   width: 20%;
   list-style: none;

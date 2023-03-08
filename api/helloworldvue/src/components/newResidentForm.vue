@@ -104,4 +104,7 @@ import $ from 'jquery';
     .form-title{
         font-size: large;
     }
+    .btn{
+      font-size: 18px;
+    }
 </style>

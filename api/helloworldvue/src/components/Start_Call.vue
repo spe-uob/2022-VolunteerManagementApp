@@ -79,14 +79,14 @@ export default {
   letter-spacing: -5px;
   cursor: pointer;
   position: absolute;
-  left: 15%;
-  top: 12%;
+  left: 150px;
+  top: 310px;
   display: inline-block;
 }
 .call-title{
     position: absolute;
-    top: 150px;
-    left: 225px;
+    top: 280px;
+    left: 260px;
 }
 
 .comp-container{
@@ -96,7 +96,7 @@ export default {
     width: 200px;
     height: 500px;
     left: 100px;
-    top: 300px;
+    top: 350px;
 
     background: transparent;
     border: none;
@@ -110,7 +110,7 @@ export default {
     width: 200px;
     height: 500px;
     left: 85%;
-    top: 0%;
+    top: 10%;
 
     background: transparent;
     border: none;

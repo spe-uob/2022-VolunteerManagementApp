@@ -10,25 +10,23 @@ import MyVolunteers from './components/MyVolunteers'
 import MyOrganisations from './components/myOrganisation'
 import VueRouter from 'vue-router'
 import { loremIpsum } from "lorem-ipsum"
-import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 Object.defineProperty(Vue.prototype, '$lorem', { value: loremIpsum });
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
-Vue.use(BootstrapVue)
+
 
 const routes = [
   { path: '/vue-test', component: App},
   { path: '/Actions', component: actionTable},
-  { path: '/Referrals', component: referralTable},
-  { path: '/All Activity', component: All_Activity},
+  { path: '/referrals', component: referralTable},
+  { path: '/allActivity', component: All_Activity},
   { path: '/Start_Call', component: Start_Call},
   { path: '/add/:id', component: residentPage, name: 'add'},
-  { path: '/Residents', component: MyResident},
+  { path: '/residents', component: MyResident},
   { path: '/Volunteers', component: MyVolunteers },
-  { path: '/Organisations', component: MyOrganisations}
+  { path: '/organisation', component: MyOrganisations}
 ]
 
 const router = new VueRouter({
