@@ -217,7 +217,6 @@ export default {
   name: 'actionTable',
   data() {
     return {
-
       toggle: false,
       list: 10,
     }
