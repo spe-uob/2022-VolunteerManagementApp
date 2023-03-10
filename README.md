@@ -15,7 +15,8 @@
   - <a href="#8">use cases</a>
   - <a href="#8">journey mapping</a>
 
-
+## Gantt chart
+![Gannt chart](https://docs.google.com/spreadsheets/d/17jk70c7Ysqay2RxTJ-WYFc619bPg-nvXDeJa_21MRxU/edit#gid=1962477973)
 <h2 id="1"> 1.1 Overview</h2>
 
 We're working on a website that can be used by different communities to help self organise, keep track of need and effectively deploy help. We focus on building an intuitive front-end design and a system which all users can interact with.
