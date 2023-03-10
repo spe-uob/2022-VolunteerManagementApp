@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <button :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff', left: left}" class="custom-button" @click="$emit('click', $event)">{{ label }}</button>
+        <button :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff'}" class="custom-button" @click="$emit('click', $event)">{{ label }}</button>
     </div>
     <!-- <button :style="{left: left + 'px'}"
             v-bind:class="{'dark-button': clicked, 'light-button': !clicked}"
@@ -31,38 +31,38 @@
 </script>
 
 <style scoped>
-    .dark-button{
-        color: white;
-        border: #ffffff;
-        position: absolute;
-        width: 120px;
-        height: 37px;
-        top: 118px;
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
 
-        background: #6B818C;
-        border-radius: 5px;
+.custom-button {
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  outline: none;
+  background: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
 
-        /* font-family: Inter;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px; */
-    }
+.custom-button:hover {
+  background-color: #f2f2f2;
+}
 
-    .custom-button{
-        color: black;
-        border: #ffffff;
-        position: absolute;
-        width: 120px;
-        height: 37px;
-        top: 118px;
+.dark-button {
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  outline: none;
+  background: #6B818C;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
 
-        background: #ffffff;
-        border-radius: 5px;
-        /*
-            font-family: Inter;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 16px; */
-    }
-
+.clicked {
+  background-color: #334756;
+}
 </style>

@@ -21,7 +21,7 @@ const routes = [
   { path: '/vue-test', component: App},
   { path: '/Actions', component: actionTable},
   { path: '/referrals', component: referralTable},
-  { path: '/allActivity', component: All_Activity},
+  { path: '/All Activity', component: All_Activity},
   { path: '/Start_Call', component: Start_Call},
   { path: '/add/:id', component: residentPage, name: 'add'},
   { path: '/residents', component: MyResident},
