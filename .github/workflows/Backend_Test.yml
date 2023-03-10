@@ -2,22 +2,17 @@ name: Backend Tests
 
 on:
   pull_request:
-    branches: [ main , stable ]
+    branches: [ main, stable ]
 
 jobs:
-  Backend-ci-test:
+  backend-ci-test:
 
     runs-on: ubuntu-latest
 
     defaults:
       run:
         working-directory: /
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
-
+        
     steps:
     - uses: actions/checkout@v3
     - name: Build and start Docker containers
