@@ -1,0 +1,14 @@
+name: Docker Compose Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and start Docker containers
+        run: docker-compose -f docker-compose.yml -f development.yml up --build
