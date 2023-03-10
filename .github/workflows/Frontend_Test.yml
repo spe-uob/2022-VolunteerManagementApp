@@ -2,7 +2,7 @@ name: Frontend Tests
 
 on:
   pull_request:
-    branches: [ main , stable ]
+    branches: [ main ]
 
 jobs:
   frontend-ci-test:
@@ -11,7 +11,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./frontend
+        working-directory: ./Application/api/helloworldvue
 
     strategy:
       matrix:
