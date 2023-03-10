@@ -1,0 +1,23 @@
+name: Docker API Test
+ 
+on:
+  pull_request:
+    branches: [ main, test ]
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build Docker image
+      run: docker build -t my-api-image-name .
+    - name: Start API container
+      run: docker run -d -p 8080:80 --name my-api-container my-api-image-name
+    - name: Run API tests
+      run: |
+        # Use curl to send a test request to the API
+        curl http://localhost:8080/api/test
+    - name: Stop API container
+      run: docker stop my-api-container
