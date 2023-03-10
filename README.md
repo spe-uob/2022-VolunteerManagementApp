@@ -77,13 +77,13 @@ Ensure you execute all commands in the specified order
 To design an interactive user interface we employed general UX design methods, such as Journey Mapping, listing user personas and requirements. We aim to follow a UX design pattern.
 
 <a id="6">
-  <img src="images/image2.jpg">
+  <img src="images/image2.png">
 </a>
 
 <a id="7">
-  <img src="images/image3.jpg">
+  <img src="images/image8.png" > <img src="images/image5.png" > <img src="images/image6.png" > <img src="images/image7.png" >
 </a>
 
 <a id="8">
-  <img src="images/image4.jpg">
+  <img src="images/image4.png">
 </a>
