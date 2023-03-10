@@ -1,0 +1,24 @@
+name: Backend Tests
+
+on:
+  pull_request:
+    branches: [ main , stable ]
+
+jobs:
+  frontend-ci-test:
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: /
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build Docker image
+      run: docker-compose -f docker-compose.yml -f development.yml up --build
