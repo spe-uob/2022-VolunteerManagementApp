@@ -77,33 +77,17 @@ Ensure you execute all commands in the specified order
 <h2 id="7"> 1.5 UX design </h2> 
 To design an interactive user interface we employed general UX design methods, such as Journey Mapping, listing user personas and requirements. We aim to follow a UX design pattern.
 
-<<<<<<< HEAD
-<a id="6">
+
+<a id="8">
   <img src="images/image2.png">
 </a>
 
-<a id="7">
+<a id="9">
    <img src="images/image9.png" >
 </a>
 
-<a id="8">
-  <img src="images/image4.png">
-</a>
-=======
-<a id="8">
-  <img src="images/image2.jpg">
-</a>
-
-<a id="9">
-  <img src="images/image3.jpg">
-</a>
-
 <a id="10">
-  <img src="images/image4.jpg">
-</a>
-
-<a id="11">
-  <img src="images/image4.jpg">
+  <img src="images/image4.png">
 </a>
 
 <h2 id="12">1.6 Ethics</h2> 
@@ -115,4 +99,3 @@ To provide a good user experience, we have established the following ethical pri
 - We will listen to feedback and criticism from our users and will use it to improve our products and services.
 
 By adhering to these principles, we hope to create a culture of respect that benefits everyone in our group.
->>>>>>> ed1b24bb16825cc2b8a3751e0b7ab90cf97358d7
