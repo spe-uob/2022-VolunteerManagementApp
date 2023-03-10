@@ -25,7 +25,7 @@ We're working on a website that can be used by different communities to help sel
 The application uses a Django project integrated with a vue application.
 
 <h2 id = "a">1.1 Gantt Chart</h2>
-[Gantt Chart!](https://uob-my.sharepoint.com/:x:/r/personal/yn20659_bristol_ac_uk/_layouts/15/Doc.aspx?sourcedoc=%7B670259F1-3542-4880-87B4-97D3EBBCC66F%7D&file=Software%20Engineering%20Project%20Gantt%20chart.xlsx&action=default&mobileredirect=true)
+[Gantt Chart!](https://docs.google.com/spreadsheets/d/17jk70c7Ysqay2RxTJ-WYFc619bPg-nvXDeJa_21MRxU/edit#gid=1962477973)
 
 <h2 id="2">1.2 Deployment Instruction</h2>
 
