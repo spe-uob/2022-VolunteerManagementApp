@@ -28,7 +28,7 @@ The application uses a Django project integrated with a vue application.
 
 #### Install Docker: https://www.docker.com
 
-To get running locally and quickly, download docker, clone this repository, then start the applications using this command in the api directory:
+To get running locally and quickly, download docker, clone this repository, then start the applications using this command in the Application/api directory:
 
     docker-compose up --build
 
@@ -43,7 +43,7 @@ Restart the tofro-django container and get running!!
 
 <h3 id="f"> 1.2.3 Frontend: </h3> 
 
-Direct to the helloworldvue directory and run the following commands
+Direct to the Application/api/helloworldvue directory and run the following commands
 ```
 npm install
 npm run serve
