@@ -5,7 +5,7 @@ on:
     branches: [ main, stable ]
 
 jobs:
-  backend-ci-test:
+  frontend-ci-test:
 
     runs-on: ubuntu-latest
 
