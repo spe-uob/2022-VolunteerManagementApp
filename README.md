@@ -1,5 +1,7 @@
 # Volunteer Management App
 
+![Frontend Tests](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/Frontend_Test.yml/badge.svg)
+
 ## Table of Contents
 - <a href="#1">Overview</a>
 - <a href="#2">Deployment</a>
@@ -16,9 +18,7 @@ We're working on a website that can be used by different communities to help sel
 
 The application uses a Django project integrated with a vue application.
 
-
-
-<h2 id="2"> Deployment</h2>
+<h2 id="2"> Deployment Instruction</h2>
 
 ### Backend: (Using Docker)
 
@@ -62,7 +62,6 @@ dos2unix setup.sh
 dos2unix run.sh
 dos2unix run-dev.sh
 ```
-
 Ensure you execute all commands in the specified order
 
 <h2 id="5">  UX design </h2> 
