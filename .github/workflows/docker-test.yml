@@ -3,6 +3,10 @@ name: Docker-test
 on:
   pull_request:
     branches: [ main , test ]
+    
+defaults:
+  run:
+    working-directory: ./Application
 
 jobs:
   build:
@@ -13,8 +17,6 @@ jobs:
 
       - name: Set up Docker Compose
         uses: docker/compose-action@v2
-        with:
-          compose-version: 2.302.1
 
       - name: Build Docker images
         run: |
@@ -23,5 +25,8 @@ jobs:
       - name: Run Django tests
         run: |
           docker-compose -f docker-compose.yml run --rm server sh -c "python manage.py test"
+          
+      - name: Stop Docker containers
+        run: docker-compose down
 
 
