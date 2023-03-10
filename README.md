@@ -81,7 +81,7 @@ To design an interactive user interface we employed general UX design methods, s
 </a>
 
 <a id="7">
-  <img src="images/image8.png" > <img src="images/image5.png" > <img src="images/image6.png" > <img src="images/image7.png" >
+   <img src="images/image9.png" >
 </a>
 
 <a id="8">
