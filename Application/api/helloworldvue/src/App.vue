@@ -21,21 +21,12 @@
         </div>
       </nav>
 
-      <!--                <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
+ <!--                <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
       <!--                          @click.native="selectButton(index)" :selected="item.selected"/>-->
 
-      <!--                &lt;!&ndash; <FilterComponent/> &ndash;&gt;-->
-
-
-
-      <div class="buttons">
-        <span class="btn"><router-link tag="span" to="/allActivity">All Activity</router-link></span>
-        <span class="btn"><router-link tag="span" to="/Actions">Actions</router-link></span>
-        <span class="btn"><router-link tag="span" to="/referrals">Referrals</router-link></span>
-        <span class="btn"><router-link tag="span" to="/residents">Residents</router-link></span>
-        <span class="btn"><router-link tag="span" to="/volunteers">Volunteers</router-link></span>
-        <span class="btn"><router-link tag="span" to="organisation">Organisations</router-link></span>
-<!--        <span class="btn" @click="Start_Call">Phone Call</span>-->
+      <div v-if=!CallStarted class="buttons">
+                    <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"
+                                @click.native="selectButton(index)" :selected="item.selected"/>
         <button class="callbtn" @click="Start_Call">Start Call</button>
       </div>
     </header>
@@ -45,7 +36,7 @@
 
 <script>
 import $ from 'jquery';
-// import myButton from "@/components/myButton";
+import myButton from "@/components/myButton";
 import navbar from './components/navbar.vue';
 import companyIcon from "../img/CompanyIcon.png";
 // import FilterComponent from './components/FilterComponent.vue';
@@ -91,7 +82,7 @@ export default {
   },
   components: {
     navbar,
-    // myButton,
+    myButton,
     // FilterComponent
   },
   methods: {
@@ -319,6 +310,24 @@ export default {
     border-radius: 5px;
     color: white;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .callbtn {
+        width: 16vw;
+        height: 32px;
+        top: 8%;
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .callbtn {
+        width: 24vw;
+        height: 24px;
+        top: 4%;
+        font-size: 0.6rem;
+    }
 }
 
 router-link {
