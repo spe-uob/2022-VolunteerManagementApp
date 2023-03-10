@@ -14,8 +14,8 @@
   - <a href="#8">Requirements</a>
   - <a href="#9">User Stories</a>
   - <a href="#10">use cases</a>
-  - <a href="#11">journey mapping</a>
-- <a href="#12"> Ethics </a>
+  - <a href="#10">journey mapping</a>
+- <a href="#11"> Ethics </a>
 
 
 <h2 id="1">Overview</h2>
@@ -86,11 +86,11 @@ To design an interactive user interface we employed general UX design methods, s
    <img src="images/image9.png" >
 </a>
 
-<a id="10 11">
+<a id="10">
   <img src="images/image4.png">
 </a>
 
-<h2 id="12">1.6 Ethics</h2> 
+<h2 id="11">1.6 Ethics</h2> 
 In our group, we are committed to upholding ethical standards in everything we do.  However, there are certain things that cannot be avoided.  For example, if coordinators use this application, we need to know their email addresses, addresses, phone numbers, and personal information.  To avoid concerns about privacy and security, obtaining ethical approval is crucial.
 
 To provide a good user experience, we have established the following ethical principles:
