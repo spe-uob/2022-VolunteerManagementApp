@@ -11,7 +11,7 @@
   - <a href="#8">use cases</a>
   - <a href="#8">journey mapping</a>
 
-<h2 id="1">Overview</h2>
+<h2 id="1">1. Overview</h2>
 We're working on a website that can be used by different communities to help self organise, keep track of need and effectively deploy help. We focus on building an intuitive front-end design and a system which all users can interact with.
 
 The application uses a Django project integrated with a vue application.
