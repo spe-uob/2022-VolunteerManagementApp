@@ -20,5 +20,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build Docker image
-      run: docker-compose -f docker-compose.yml -f development.yml up --build
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v4.0.0
+    - run: docker-compose -f docker-compose.yml -f development.yml up --build
