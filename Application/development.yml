@@ -4,4 +4,4 @@ services:
   # Mount the source code in development.
   server:
     volumes:
-      - "./api/:/code"
+      - "./api:/code"

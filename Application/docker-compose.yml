@@ -6,7 +6,7 @@ services:
     build:
       context: ./db/
     container_name: tofro-db
-    restart: unless-stopped
+    restart: always
     ports:
       - "${DATABASE_PORT}:${DATABASE_PORT}"
     environment:
@@ -36,7 +36,7 @@ services:
     build:
       context: ./redis/
     container_name: tofro-redis
-    restart: unless-stopped
+    restart: always
     ports:
       - "${REDIS_PORT}:${REDIS_PORT}"
     volumes:
@@ -48,7 +48,7 @@ services:
       context: ./api/
       dockerfile: Dockerfile.worker
     container_name: tofro-redis-worker
-    restart: unless-stopped
+    restart: always
     environment:
       - RUN_ENV=${RUN_ENV}
       - DEBUG=${DEBUG}
@@ -76,7 +76,7 @@ services:
       context: ./api/
       dockerfile: Dockerfile.scheduler
     container_name: tofro-redis-scheduler
-    restart: unless-stopped
+    restart: always
     environment:
       - RUN_ENV=${RUN_ENV}
       - DEBUG=${DEBUG}
@@ -95,7 +95,7 @@ services:
       context: ./api/
       dockerfile: Dockerfile.api
     container_name: tofro-django
-    restart: unless-stopped
+    restart: always
     ports:
       - "${DJANGO_PORT}:${DJANGO_PORT}"
     environment:
