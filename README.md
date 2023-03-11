@@ -19,7 +19,7 @@
   - <a href="#8">Requirements</a>
   - <a href="#9">User Stories</a>
   - <a href="#10">use cases</a>
-  - <a href="#11">journey mapping</a>
+  - <a href="#10">journey mapping</a>
 - <a href="#12"> Ethics </a>
 
 
@@ -110,10 +110,6 @@ To design an interactive user interface we employed general UX design methods, s
 </a>
 
 <a id="10">
-  <img src="images/image4.jpg">
-</a>
-
-<a id="11">
   <img src="images/image4.jpg">
 </a>
 
