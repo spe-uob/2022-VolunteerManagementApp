@@ -13,7 +13,8 @@
   - <a href="#3">Backend</a>
   - <a href="#4">Frontend</a>
 - <a href="#5">Getting running</a>
-- <a href="#6">Possible Issues</a>
+- <a href="#6">Possible Issues & Bugs</a>
+- <a href="#api"> API Guide </a>
 - <a href="#7">UX design</a>
   - <a href="#8">Requirements</a>
   - <a href="#9">User Stories</a>
@@ -68,7 +69,7 @@ Login then direct to:
 
 This is where the Vue Application is rendered. Now all that is left is to enjoy!!!
 
-<h2 id="6"> 1.4 Possible Issues </h2>
+<h2 id="6"> 1.4 Possible Issues & Bugs </h2>
 If you have a windows machine and you are having issues with setup.sh then run the following commands in your terminal:
 
 ```
@@ -77,8 +78,27 @@ dos2unix run.sh
 dos2unix run-dev.sh
 ```
 Ensure you execute all commands in the specified order
+  
+### 1.4.1 Found a bug !!!
+If you found a bug, you can [create an issue](https://github.com/spe-uob/2022-VolunteerManagementApp/issues/new) with the tag `bug`
+  
+  
+<h2 id="api"> 1.5 API Guide </h2> 
 
-<h2 id="7"> 1.5 UX design </h2> 
+| <div align="left" style="width:180px">API URL</div>         | Request Type          | <div align="left" style="width:460px">Description</div>   |
+| ------------- |:-------------:| :-----|
+| `api/actions/` 	| `GET`     	| retreive all the action data from a server |
+| `api/actions/` 	| `POST`     	| Add actions to the database - Requires an object with `Help Type`, `Resident`, `Due`, `Status`, `Date`|
+| `api/volunteers/`  | `GET`    | retreive all the volunteers data from a server |
+| `api/referrals/` 	| `GET`     	| retreive all the referral data from a server |
+| `api/residents/`  | `GET`     	| retreive all the resident data from a server |
+| `api/residents/`  | `POST`     	| Add residents to the database - Requires an object with `first_name`, `last_name`, `address`, `postcode`, `Date`|
+| `api/volunteers/`  | `GET`    | retreive all the volunteers data from a server  |
+| `api/organisations/`  | `GET`     	| retreive all the organistion data from a server|
+| `api/residents/37/` | `DELETE` | Deletes a resident from the database |
+| `api/actions/7/` | `PATCH` | a set of changes described in the request entity be applied to the resource identified by the Request- URI|
+
+<h2 id="7"> 1.6 UX design </h2> 
 To design an interactive user interface we employed general UX design methods, such as Journey Mapping, listing user personas and requirements. We aim to follow a UX design pattern.
 
 <a id="8">
@@ -97,7 +117,7 @@ To design an interactive user interface we employed general UX design methods, s
   <img src="images/image4.jpg">
 </a>
 
-<h2 id="12">1.6 Ethics</h2> 
+<h2 id="12">1.7 Ethics</h2> 
 In our group, we are committed to upholding ethical standards in everything we do.  However, there are certain things that cannot be avoided.  For example, if coordinators use this application, we need to know their email addresses, addresses, phone numbers, and personal information.  To avoid concerns about privacy and security, obtaining ethical approval is crucial.
 
 To provide a good user experience, we have established the following ethical principles:
