@@ -31,7 +31,7 @@ We're working on a website that can be used by different communities to help sel
 The application uses a Django project integrated with a vue application.
 
 <h2 id = "a">1.1 Gantt Chart</h2>
-[Gantt Chart](Software Engineering Project Gantt chart.xlsx)
+<a href="https://docs.google.com/spreadsheets/d/17jk70c7Ysqay2RxTJ-WYFc619bPg-nvXDeJa_21MRxU/edit#gid=1962477973">Gantt Chart</a>
 
 <h2 id="2">1.2 Deployment Instruction</h2>
 
@@ -79,11 +79,11 @@ dos2unix run.sh
 dos2unix run-dev.sh
 ```
 Ensure you execute all commands in the specified order
-  
+
 ### 1.4.1 Found a bug !!!
 If you found a bug, you can [create an issue](https://github.com/spe-uob/2022-VolunteerManagementApp/issues/new) with the tag `bug`
-  
-  
+
+
 <h2 id="api"> 1.5 API Guide </h2> 
 
 | <div align="left" style="width:180px">API URL</div>         | Request Type          | <div align="left" style="width:460px">Description</div>   |
@@ -102,24 +102,24 @@ If you found a bug, you can [create an issue](https://github.com/spe-uob/2022-Vo
 <h2 id="7"> 1.6 UX design </h2> 
 To design an interactive user interface we employed general UX design methods, such as Journey Mapping, listing user personas and requirements. We aim to follow a UX design pattern.
 
+
 <a id="8">
-  <img src="images/image2.jpg">
+  <img src="images/image2.png">
 </a>
 
 <a id="9">
-  <img src="images/image3.jpg">
+   <img src="images/image9.png" >
 </a>
 
 <a id="10">
-  <img src="images/image4.jpg">
+  <img src="images/image4.png">
 </a>
 
 <h2 id="12">1.7 Ethics</h2> 
-In our group, we are committed to upholding ethical standards in everything we do.  However, there are certain things that cannot be avoided.  For example, if coordinators use this application, we need to know their email addresses, addresses, phone numbers, and personal information.  To avoid concerns about privacy and security, obtaining ethical approval is crucial.
-
+In our group, we are committed to upholding ethical standards in everything we do. However, there are certain things that cannot be avoided. For example, if coordinators use this application, we need to know their email addresses, addresses, phone numbers, and personal information. To avoid concerns about privacy and security, obtaining ethical approval is crucial.
 To provide a good user experience, we have established the following ethical principles:
-- We will prioritize the safety of our users.
-- We will respect the privacy of our users and will never use their data for any purpose other than the intended one.
-- We will listen to feedback and criticism from our users and will use it to improve our products and services.
 
+We will prioritize the safety of our users.
+We will respect the privacy of our users and will never use their data for any purpose other than the intended one.
+We will listen to feedback and criticism from our users and will use it to improve our products and services.
 By adhering to these principles, we hope to create a culture of respect that benefits everyone in our group.
