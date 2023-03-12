@@ -19,8 +19,7 @@
 - <a href="#7">UX design</a>
   - <a href="#8">Requirements</a>
   - <a href="#9">User Stories</a>
-  - <a href="#10">use cases</a>
-  - <a href="#10">journey mapping</a>
+  - <a href="#10">Use Cases & journey mapping</a>
 - <a href="#12"> Ethics </a>
 
 
@@ -125,6 +124,7 @@ To design an interactive user interface we employed general UX design methods, s
 | Residents 	| To quickly and efficiently give required information to coordinator     	| Long,slow drawn out phone call|
 | Volunteer  | Quick matching of volunteered action    | Overlooked action for long period of times |
 
+<h3 id="10"> 1.6.3 Use Cases & Journey Mapping: </h3> 
 <a id="10">
   <img src="images/image4.png">
 </a>
