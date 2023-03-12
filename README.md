@@ -9,6 +9,7 @@
 
 ## Table of Contents
 - <a href="#1">Overview</a>
+- <a href="#C">Contributors</a>
 - <a href="#a">Gannt Chart</a>
 - <a href="#2">Deployment Instruction</a>
   - <a href="#3">Backend</a>
@@ -28,6 +29,14 @@
 We're working on a website that can be used by different communities to help self organise, keep track of need and effectively deploy help. We focus on building an intuitive front-end design and a system which all users can interact with.
 
 The application uses a Django project integrated with a vue application.
+
+<h2 id = "C">Contributors</h2>
+
+- Ismael Bencharef   (IshShogun) - ha21869@bristol.ac.uk
+- Linfeng Cai   (CAILINFENG123) - yn20659@bristol.ac.uk
+- Bowen Wang   (Ruri22) - ki21094@bristol.ac.uk
+- Xinyuan Zhang   (s1s1s) - wo21905@bristol.ac.uk
+- Zhiming Liu  (LZMBill) - kf21667@bristol.ac.uk
 
 <h2 id = "a">1.1 Gantt Chart</h2>
 <a href="https://docs.google.com/spreadsheets/d/17jk70c7Ysqay2RxTJ-WYFc619bPg-nvXDeJa_21MRxU/edit#gid=1962477973">Gantt Chart</a>
