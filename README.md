@@ -110,25 +110,14 @@ To design an interactive user interface we employed general UX design methods, s
 - The site needs to facilitate efficient dealing of high priority actions
 - The site needs to facilitate easy searching of actions,residents and volunteers
 
+
 <h3 id="9"> 1.6.2 User Personas:</h3> 
 
-### Co-ordinator:
-
-**Goal:** To efficiently match requests and log new data
-
-**Frustrations:** Confusing UI requiring a lot of clicks and long traversals through out the interface
-
-### Residents:
-
-**Goal:** To quickly and efficiently give required information to coordinator
-
-**Frustrations:** Long,slow drawn out phone call
-
-### Volunteer:
-
-**Goal:** Quick matching of volunteered action
-
-**Frustrations:** Overlooked action for long period of times
+| <div align="left" style="width:240px">User</div>         | Goal          | <div align="left" style="width:400px">Frustrations</div>   |
+| ------------- |:-------------:| :-----|
+| Coordinator 	| To efficiently match requests and log new data     	| Confusing UI requiring a lot of clicks and long traversals through out the interface |
+| Residents 	| To quickly and efficiently give required information to coordinator     	| Long,slow drawn out phone call|
+| Volunteer  | Quick matching of volunteered action    | Overlooked action for long period of times |
 
 <a id="10">
   <img src="images/image4.png">
