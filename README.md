@@ -102,14 +102,33 @@ If you found a bug, you can [create an issue](https://github.com/spe-uob/2022-Vo
 <h2 id="7"> 1.6 UX design </h2> 
 To design an interactive user interface we employed general UX design methods, such as Journey Mapping, listing user personas and requirements. We aim to follow a UX design pattern.
 
+<h3 id="8"> 1.6.1 Requirements:</h3> 
 
-<a id="8">
-  <img src="images/image2.png">
-</a>
+- The site needs to be intuitive and easy to navigate/use for the coordinator
+- The site needs to facilitate easy logging of new actions
+- The site needs to facilitate easy matching between actions and eligible volunteers
+- The site needs to facilitate efficient dealing of high priority actions
+- The site needs to facilitate easy searching of actions,residents and volunteers
 
-<a id="9">
-   <img src="images/image9.png" >
-</a>
+<h3 id="9"> 1.6.2 User Personas:</h3> 
+
+### Co-ordinator:
+
+**Goal:** To efficiently match requests and log new data
+
+**Frustrations:** Confusing UI requiring a lot of clicks and long traversals through out the interface
+
+### Residents:
+
+**Goal:** To quickly and efficiently give required information to coordinator
+
+**Frustrations:** Long,slow drawn out phone call
+
+### Volunteer:
+
+**Goal:** Quick matching of volunteered action
+
+**Frustrations:** Overlooked action for long period of times
 
 <a id="10">
   <img src="images/image4.png">
