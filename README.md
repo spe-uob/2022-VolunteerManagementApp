@@ -47,29 +47,24 @@ The application uses a Django project integrated with a vue application.
 
 <h3 id="3">1.2.1 Backend: (Using Docker) </h3> 
 
-#### Install Docker: <a href="https://www.docker.com">Docker</a>
+Download docker: <a href="https://www.docker.com">Docker</a>
 
-To get running locally and quickly, download docker, clone this repository, then start the applications using this command in the api directory:
+1. Clone this repository - ``` git clone https://github.com/spe-uob/2022-VolunteerManagementApp.git ```
 
-    docker-compose up --build
+2. Start the applications using this command in the api directory ``` ./Application/api ```: ``` docker-compose up --build ```
 
-Then run the following command in the home directory：
+3. Then Run the following command in the Application directory``` ./Application ```:``` docker-compose -f docker-compose.yml -f development.yml up --build ```
 
-```
-docker-compose -f docker-compose.yml -f development.yml up --build
-```
-
-This downloads all required node modules for the vue app.
-
-Restart the tofro-django container and get running!!
+4. This downloads all required node modules for the vue app.
 
 <h3 id="4"> 1.2.3 Frontend: </h3> 
 
-Direct to the helloworldvue directory and run the following commands
+5. Direct to the helloworldvue directory ``` ./Application/api/helloworldvue ```and run the following commands
 ```
 npm install
 npm run serve
 ```
+6.  Restart the tofro-django container and get running ! ! !
 
 <h2 id="5"> 1.3 Getting Running! </h2> 
 
