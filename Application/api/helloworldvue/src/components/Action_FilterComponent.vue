@@ -20,22 +20,46 @@
     </div>
 
     <div>
-      <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>
-      <div v-show="toggle2" class="filter-body">
-        <div>
-          <label>
-            <input type="checkbox">
-            sub type1
-          </label>
+      <label for="id2">
+        <input class="filter-head-input" id="id2" type="checkbox">
+        <div @click="setToggle2" class="filter-head">
+          <i class="arrow-right"></i>
+          Status
         </div>
-        <div>
-          <label>
-            <input type="checkbox">
-            sub type1
-          </label>
+        <div v-show="toggle2" class="filter-body">
+          <div>
+            <label>
+              <input type="checkbox">
+              sub type1
+            </label>
+          </div>
+          <div>
+            <label>
+              <input type="checkbox">
+              sub type2
+            </label>
+          </div>
         </div>
-      </div>
+      </label>
     </div>
+
+    <!--    <div>-->
+    <!--      <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>-->
+    <!--      <div v-show="toggle2" class="filter-body">-->
+    <!--        <div>-->
+    <!--          <label>-->
+    <!--            <input type="checkbox">-->
+    <!--            sub type1-->
+    <!--          </label>-->
+    <!--        </div>-->
+    <!--        <div>-->
+    <!--          <label>-->
+    <!--            <input type="checkbox">-->
+    <!--            sub type1-->
+    <!--          </label>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
 
     <div>
       <div class="filter-head" @click="setToggle3()"> <i class="arrow-right"></i> Priority</div>
@@ -124,19 +148,22 @@ export default {
   transform: rotate(45deg);
   transition: transform 0.1s ease-in-out;
 }
-
-.filter-head:hover .arrow-right{
+.filter-head-input{
+  display: none;
+}
+.filter-head-input:checked+.filter-head .arrow-right{
   transform: rotate(135deg);
+  transition: transform 0.1s ease-in-out;
 }
 
- label{
-   font-size: 10px;
-   color: black;
- }
+label{
+  font-size: 10px;
+  color: black;
+}
 
- .filter-body{
-   background-color: white;
- }
+.filter-body{
+  background-color: white;
+}
 
 @media (max-width: 1180px ){
   .filter-container{
