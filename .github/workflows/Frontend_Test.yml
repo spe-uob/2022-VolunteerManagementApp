@@ -8,22 +8,27 @@ jobs:
   frontend-ci-test:
 
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: ./Application/api/helloworldvue
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
-
+        
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
+        node-version: '18.x'
+
+    - name: Install dependencies in folder1
+      run: |
+        cd 2022-VolunteerManagementApp/Application/api
+        npm install npm@9.6.1
+
+
+    - name: Install dependencies in folder2
+      run: |
+        cd 2022-VolunteerManagementApp/Application/api/helloworldvue
+        npm install npm@9.6.1
+        
+    - name: build frontend
     - run: npm run build 
     - run: npm run lint
