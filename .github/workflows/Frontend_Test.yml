@@ -2,7 +2,7 @@ name: Frontend Tests
 
 on:
   pull_request:
-    branches: [ CI ]
+    branches: [ main , CI ]
 
 jobs:
   frontend-ci-test:
