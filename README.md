@@ -9,18 +9,19 @@
 
 ## Table of Contents
 - <a href="#1">Overview</a>
+- <a href="#C">Contributors</a>
 - <a href="#a">Gannt Chart</a>
 - <a href="#2">Deployment Instruction</a>
   - <a href="#3">Backend</a>
   - <a href="#4">Frontend</a>
 - <a href="#5">Getting running</a>
 - <a href="#6">Possible Issues & Bugs</a>
+- <a href="#CI">Continuous Integration</a>
 - <a href="#api"> API Guide </a>
 - <a href="#7">UX design</a>
   - <a href="#8">Requirements</a>
   - <a href="#9">User Stories</a>
-  - <a href="#10">use cases</a>
-  - <a href="#10">journey mapping</a>
+  - <a href="#10">Use Cases & Journey Mapping</a>
 - <a href="#12"> Ethics </a>
 
 
@@ -30,43 +31,59 @@ We're working on a website that can be used by different communities to help sel
 
 The application uses a Django project integrated with a vue application.
 
+<h2 id = "C">Contributors</h2>
+
+- Ismael Bencharef   (IshShogun) - ha21869@bristol.ac.uk
+- Linfeng Cai   (CAILINFENG123) - yn20659@bristol.ac.uk
+- Bowen Wang   (Ruri22) - ki21094@bristol.ac.uk
+- Xinyuan Zhang   (s1s1s) - wo21905@bristol.ac.uk
+- Zhiming Liu  (LZMBill) - kf21667@bristol.ac.uk
+
 <h2 id = "a">1.1 Gantt Chart</h2>
 <a href="https://docs.google.com/spreadsheets/d/17jk70c7Ysqay2RxTJ-WYFc619bPg-nvXDeJa_21MRxU/edit#gid=1962477973">Gantt Chart</a>
 
 <h2 id="2">1.2 Deployment Instruction</h2>
 
+**Please see our <a href="https://github.com/spe-uob/2022-VolunteerManagementApp/releases/tag/beta-version">latest release</a> ！**
+
 <h3 id="3">1.2.1 Backend: (Using Docker) </h3> 
 
-#### Install Docker: https://www.docker.com
+Download docker: <a href="https://www.docker.com">Docker</a>
 
-To get running locally and quickly, download docker, clone this repository, then start the applications using this command in the api directory:
+1. Clone this repository - ``` git clone https://github.com/spe-uob/2022-VolunteerManagementApp.git ```
 
-    docker-compose up --build
-
-Then run the following command in the home directory：
+2. Start the applications using this command in the api directory ``` ./Application/api/ ```: 
+``` 
+docker-compose up --build 
 ```
+
+3. Then Run the following command in the Application directory``` ./Application/ ```:
+``` 
 docker-compose -f docker-compose.yml -f development.yml up --build
 ```
 
-This downloads all required node modules for the vue app.
-
-Restart the tofro-django container and get running!!
+4. This downloads all required node modules for the vue app.
 
 <h3 id="4"> 1.2.3 Frontend: </h3> 
 
-Direct to the helloworldvue directory and run the following commands
+5. Direct to the helloworldvue directory ``` ./Application/api/helloworldvue/ ```and run the following commands
 ```
 npm install
 npm run serve
 ```
+6.  Restart the tofro-django container and get running ! ! !
 
 <h2 id="5"> 1.3 Getting Running! </h2> 
 
 To get the website running open the following url:
-    http://localhost:8000/
+```
+http://localhost:8000/
+```
 
 Login then direct to:
-    http://localhost:8000/index
+```
+http://localhost:8000/index
+```
 
 This is where the Vue Application is rendered. Now all that is left is to enjoy!!!
 
@@ -83,8 +100,16 @@ Ensure you execute all commands in the specified order
 ### 1.4.1 Found a bug !!!
 If you found a bug, you can [create an issue](https://github.com/spe-uob/2022-VolunteerManagementApp/issues/new) with the tag `bug`
 
+<h2 id="CI"> 1.5 Continuous Integration </h2>
 
-<h2 id="api"> 1.5 API Guide </h2> 
+We decided to use GitHub actions that triggers whenever we start a pull request into ``` main ```
+
+There are two tests, one for the frontend and one for the backend
+- [x] Frontend Tests
+- [ ] Backend Tests
+
+
+<h2 id="api"> 1.6 API Guide </h2> 
 
 | <div align="left" style="width:180px">API URL</div>         | Request Type          | <div align="left" style="width:460px">Description</div>   |
 | ------------- |:-------------:| :-----|
@@ -99,23 +124,32 @@ If you found a bug, you can [create an issue](https://github.com/spe-uob/2022-Vo
 | `api/residents/37/` | `DELETE` | Deletes a resident from the database |
 | `api/actions/7/` | `PATCH` | a set of changes described in the request entity be applied to the resource identified by the Request- URI|
 
-<h2 id="7"> 1.6 UX design </h2> 
+<h2 id="7"> 1.7 UX design </h2> 
 To design an interactive user interface we employed general UX design methods, such as Journey Mapping, listing user personas and requirements. We aim to follow a UX design pattern.
 
+<h3 id="8"> 1.7.1 Requirements:</h3> 
 
-<a id="8">
-  <img src="images/image2.png">
-</a>
+- The site needs to be intuitive and easy to navigate/use for the coordinator
+- The site needs to facilitate easy logging of new actions
+- The site needs to facilitate easy matching between actions and eligible volunteers
+- The site needs to facilitate efficient dealing of high priority actions
+- The site needs to facilitate easy searching of actions,residents and volunteers
 
-<a id="9">
-   <img src="images/image9.png" >
-</a>
 
+<h3 id="9"> 1.7.2 User Personas:</h3> 
+
+| <div align="left" style="width:240px">User</div>         | Goal          | <div align="left" style="width:400px">Frustrations</div>   |
+| ------------- |:-------------:| :-----|
+| Coordinator 	| To efficiently match requests and log new data     	| Confusing UI requiring a lot of clicks and long traversals through out the interface |
+| Residents 	| To quickly and efficiently give required information to coordinator     	| Long,slow drawn out phone call|
+| Volunteer  | Quick matching of volunteered action    | Overlooked action for long period of times |
+
+<h3 id="10"> 1.7.3 Use Cases & Journey Mapping: </h3> 
 <a id="10">
   <img src="images/image4.png">
 </a>
 
-<h2 id="12">1.7 Ethics</h2> 
+<h2 id="12">1.8 Ethics</h2> 
 In our group, we are committed to upholding ethical standards in everything we do. However, there are certain things that cannot be avoided. For example, if coordinators use this application, we need to know their email addresses, addresses, phone numbers, and personal information. To avoid concerns about privacy and security, obtaining ethical approval is crucial.
 To provide a good user experience, we have established the following ethical principles:
 
