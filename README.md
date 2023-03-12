@@ -51,15 +51,21 @@ Download docker: <a href="https://www.docker.com">Docker</a>
 
 1. Clone this repository - ``` git clone https://github.com/spe-uob/2022-VolunteerManagementApp.git ```
 
-2. Start the applications using this command in the api directory ``` ./Application/api ```: ``` docker-compose up --build ```
+2. Start the applications using this command in the api directory ``` ./Application/api/ ```: 
+``` 
+docker-compose up --build 
+```
 
-3. Then Run the following command in the Application directory``` ./Application ```:``` docker-compose -f docker-compose.yml -f development.yml up --build ```
+3. Then Run the following command in the Application directory``` ./Application/ ```:
+``` 
+docker-compose -f docker-compose.yml -f development.yml up --build
+```
 
 4. This downloads all required node modules for the vue app.
 
 <h3 id="4"> 1.2.3 Frontend: </h3> 
 
-5. Direct to the helloworldvue directory ``` ./Application/api/helloworldvue ```and run the following commands
+5. Direct to the helloworldvue directory ``` ./Application/api/helloworldvue/ ```and run the following commands
 ```
 npm install
 npm run serve
