@@ -37,13 +37,14 @@ The application uses a Django project integrated with a vue application.
 
 <h3 id="3">1.2.1 Backend: (Using Docker) </h3> 
 
-#### Install Docker: https://www.docker.com
+#### Install Docker: <a href="https://www.docker.com">Docker</a>
 
 To get running locally and quickly, download docker, clone this repository, then start the applications using this command in the api directory:
 
     docker-compose up --build
 
 Then run the following command in the home directory：
+
 ```
 docker-compose -f docker-compose.yml -f development.yml up --build
 ```
@@ -63,10 +64,15 @@ npm run serve
 <h2 id="5"> 1.3 Getting Running! </h2> 
 
 To get the website running open the following url:
-    http://localhost:8000/
+```
+http://localhost:8000/
+```
+
 
 Login then direct to:
-    http://localhost:8000/index
+```
+http://localhost:8000/index
+```
 
 This is where the Vue Application is rendered. Now all that is left is to enjoy!!!
 
