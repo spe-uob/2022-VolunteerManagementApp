@@ -18,15 +18,21 @@ jobs:
       with:
         node-version: '18.x'
 
-    - name: Install dependencies in folder1
+    - name: Install dependencies in api
       run: |
         cd ./Application/api
         npm install npm@9.6.1
 
 
-    - name: Install dependencies in folder2
+    - name: Install dependencies in frontend dir
       run: |
         cd ./Application/api/helloworldvue
         npm install npm@9.6.1
+        npm run build
+        npm run lint
+        
+    - name: build frontend
+      run: |
+        cd ./Application/api/helloworldvue
         npm run build
         npm run lint
