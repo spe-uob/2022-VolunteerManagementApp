@@ -16,6 +16,7 @@
   - <a href="#4">Frontend</a>
 - <a href="#5">Getting running</a>
 - <a href="#6">Possible Issues & Bugs</a>
+- <a href="#CI">Continuous Integration</a>
 - <a href="#api"> API Guide </a>
 - <a href="#7">UX design</a>
   - <a href="#8">Requirements</a>
@@ -79,7 +80,6 @@ To get the website running open the following url:
 http://localhost:8000/
 ```
 
-
 Login then direct to:
 ```
 http://localhost:8000/index
@@ -100,8 +100,16 @@ Ensure you execute all commands in the specified order
 ### 1.4.1 Found a bug !!!
 If you found a bug, you can [create an issue](https://github.com/spe-uob/2022-VolunteerManagementApp/issues/new) with the tag `bug`
 
+<h2 id="CI"> 1.5 Continuous Integration </h2>
 
-<h2 id="api"> 1.5 API Guide </h2> 
+We decided to use GitHub actions that triggers whenever we start a pull request into ``` main ```
+
+There are two tests, one for the frontend and one for the backend
+- [x] Frontend Tests
+- [ ] Backend Tests
+
+
+<h2 id="api"> 1.6 API Guide </h2> 
 
 | <div align="left" style="width:180px">API URL</div>         | Request Type          | <div align="left" style="width:460px">Description</div>   |
 | ------------- |:-------------:| :-----|
@@ -116,10 +124,10 @@ If you found a bug, you can [create an issue](https://github.com/spe-uob/2022-Vo
 | `api/residents/37/` | `DELETE` | Deletes a resident from the database |
 | `api/actions/7/` | `PATCH` | a set of changes described in the request entity be applied to the resource identified by the Request- URI|
 
-<h2 id="7"> 1.6 UX design </h2> 
+<h2 id="7"> 1.7 UX design </h2> 
 To design an interactive user interface we employed general UX design methods, such as Journey Mapping, listing user personas and requirements. We aim to follow a UX design pattern.
 
-<h3 id="8"> 1.6.1 Requirements:</h3> 
+<h3 id="8"> 1.7.1 Requirements:</h3> 
 
 - The site needs to be intuitive and easy to navigate/use for the coordinator
 - The site needs to facilitate easy logging of new actions
@@ -128,7 +136,7 @@ To design an interactive user interface we employed general UX design methods, s
 - The site needs to facilitate easy searching of actions,residents and volunteers
 
 
-<h3 id="9"> 1.6.2 User Personas:</h3> 
+<h3 id="9"> 1.7.2 User Personas:</h3> 
 
 | <div align="left" style="width:240px">User</div>         | Goal          | <div align="left" style="width:400px">Frustrations</div>   |
 | ------------- |:-------------:| :-----|
@@ -136,12 +144,12 @@ To design an interactive user interface we employed general UX design methods, s
 | Residents 	| To quickly and efficiently give required information to coordinator     	| Long,slow drawn out phone call|
 | Volunteer  | Quick matching of volunteered action    | Overlooked action for long period of times |
 
-<h3 id="10"> 1.6.3 Use Cases & Journey Mapping: </h3> 
+<h3 id="10"> 1.7.3 Use Cases & Journey Mapping: </h3> 
 <a id="10">
   <img src="images/image4.png">
 </a>
 
-<h2 id="12">1.7 Ethics</h2> 
+<h2 id="12">1.8 Ethics</h2> 
 In our group, we are committed to upholding ethical standards in everything we do. However, there are certain things that cannot be avoided. For example, if coordinators use this application, we need to know their email addresses, addresses, phone numbers, and personal information. To avoid concerns about privacy and security, obtaining ethical approval is crucial.
 To provide a good user experience, we have established the following ethical principles:
 
