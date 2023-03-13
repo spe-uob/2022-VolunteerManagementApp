@@ -103,7 +103,7 @@ dos2unix run-dev.sh
 Ensure you execute all commands in the specified order
 
 ### 1.4.1 Found a bug !!!
-If you found a bug, you can [create an issue](https://github.com/spe-uob/2022-VolunteerManagementApp/issues/new) with the tag `bug`
+If you found a bug, you can use [issue template](https://github.com/spe-uob/2022-VolunteerManagementApp/blob/main/.github/ISSUE_TEMPLATE/bug.md) to [create an issue](https://github.com/spe-uob/2022-VolunteerManagementApp/issues/new) with the tag `bug`
 
 <h2 id="CI"> 1.5 Continuous Integration </h2>
 
