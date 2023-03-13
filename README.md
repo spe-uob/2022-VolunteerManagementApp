@@ -1,4 +1,5 @@
-# 1. Volunteer Management App
+<h1 align="center">Volunteer Management App</h1>   
+<div align="center">
 
 ![Frontend Tests](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/Frontend_Test.yml/badge.svg)
 [![Contributors](https://img.shields.io/badge/Contributors-5-brightgreen)](https://github.com/spe-uob/2022-VolunteerManagementApp/graphs/contributors)
@@ -7,28 +8,32 @@
 [![Vue version](https://img.shields.io/badge/Vue-v5.0.8-blue)](https://vuejs.org)
 [![Django Version](https://img.shields.io/badge/Django-v4.0.2-blue)](https://www.djangoproject.com)
 
-## Table of Contents
+</div>
+
+
+<details>
+  <summary>Table of Contents</summary>
+
 - <a href="#1">Overview</a>
 - <a href="#C">Contributors</a>
 - <a href="#a">Gannt Chart</a>
 - <a href="#2">Deployment Instruction</a>
-  - <a href="#3">Backend</a>
-  - <a href="#4">Frontend</a>
+   - <a href="#3">Backend</a>
+   - <a href="#4">Frontend</a>
 - <a href="#5">Getting running</a>
 - <a href="#6">Possible Issues & Bugs</a>
 - <a href="#CI">Continuous Integration</a>
 - <a href="#api"> API Guide </a>
 - <a href="#7">UX design</a>
-  - <a href="#8">Requirements</a>
-  - <a href="#9">User Stories</a>
-  - <a href="#10">Use Cases & Journey Mapping</a>
+   - <a href="#8">Requirements</a>
+   - <a href="#9">User Stories</a>
+   - <a href="#10">Use Cases & Journey Mapping</a>
 - <a href="#12"> Ethics </a>
-
+</details>
 
 <h2 id="1">Overview</h2>
 
 We're working on a website that can be used by different communities to help self organise, keep track of need and effectively deploy help. We focus on building an intuitive front-end design and a system which all users can interact with.
-
 The application uses a Django project integrated with a vue application.
 
 <h2 id = "C">Contributors</h2>
