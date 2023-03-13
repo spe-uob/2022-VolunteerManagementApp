@@ -62,7 +62,7 @@ The application uses a Django project integrated with a vue application.
 
 <h3 id="3">1.2.1 Backend: (Using Docker) </h3> 
 
-Download docker: <a href="https://www.docker.com">Docker</a>
+- <a href="https://www.docker.com">Download & Install Docker</a>
 
 - Clone this repository: 
 ``` 
