@@ -179,8 +179,9 @@ To design an interactive user interface we employed general UX design methods, s
 --------------------
 
 <h2 id="12">1.7 Ethics</h2> 
-In our group, we are committed to upholding ethical standards in everything we do. However, there are certain things that cannot be avoided. For example, if coordinators use this application, we need to know their email addresses, addresses, phone numbers, and personal information. To avoid concerns about privacy and security, obtaining ethical approval is crucial.
+If coordinators use this application, we need to know their email addresses, addresses, phone numbers, and personal information. To avoid concerns about privacy and security, obtaining ethical approval is crucial.
 To provide a good user experience, we have established the following ethical principles:
+
 - We will prioritize the safety of our users.
 - We will respect the privacy of our users and will never use their data for any purpose other than the intended one.
 - We will listen to feedback and criticism from our users and will use it to improve our products and services.
