@@ -1,0 +1,31 @@
+{   
+    "HelpTypes": {
+        "1": {
+            "name": "Dog Walking",
+            "requirements":""
+        },
+    
+        "2": {
+            "name": "Perscription Collection",
+            "requirements":""
+        },
+        "3": {
+            "name": "Leafletting",
+            "requirements":""
+        }
+        },
+
+        "Priorities": {
+        "1":"High",
+        "2":"Medium",
+        "3":"Low"
+        },
+
+        "Requirements": {
+        "1":"Access to car",
+        "2":"Befriending/telephone experience",
+        "3":"Previous experience of dogs",
+        "4":"Access to own tools",
+        "5":"Enhanced DBS check"
+        }
+}

@@ -124,6 +124,7 @@
 
 <script>
     import $ from 'jquery';
+    import data from '../data.json';
 
 export default {
   name: 'actionTable',
@@ -190,11 +191,12 @@ export default {
   },
   mounted(){
         this.getActions().then((response) => {
+        const helpTypes = data.HelpTypes;
         this.list = response.results.map((result) => {
           return {
             id: result.id,
             resident: result.resident,
-            help_type: result.help_type,
+            help_type:  helpTypes.result.help_type.name,
             Due: 'n/a',
             Status: result.action_status,
           }
