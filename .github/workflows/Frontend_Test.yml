@@ -1,8 +1,6 @@
 name: Frontend Tests
 
 on:
-  push:
-    branches: [ main , new-CI]
   pull_request:
     branches: [ main , new-CI]
 
