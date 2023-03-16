@@ -1,13 +1,17 @@
 name: Frontend Tests
 
 on:
+  push:
+    branches: [ main , new-CI]
   pull_request:
-    branches: [ main , Liu ]
+    branches: [ main , new-CI]
 
 jobs:
-  frontend-ci-test:
-
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest , windows-latest , macOS-latest]
         
     steps:
     - name: Checkout code
