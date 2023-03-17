@@ -70,13 +70,13 @@ git clone https://github.com/spe-uob/2022-VolunteerManagementApp.git
 
 - Start the applications using this command in the ```api``` directory: 
 ``` 
-cd ./Allication/api/
+cd ./Application/api/
 docker-compose up --build 
 ```
 
 - Then Run the following command in the ```Application``` directory ( This downloads all required node modules for the vue app ):
 ``` 
-cd ./Allication/
+cd ./Application/
 docker-compose -f docker-compose.yml -f development.yml up --build
 ```
 
