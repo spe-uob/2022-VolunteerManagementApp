@@ -111,8 +111,49 @@
     
     
     <div>
-      <Action_tableComponent></Action_tableComponent>
-  </div>
+      <table class="Action_table">
+        <thead style="background-color: rgba(247, 247, 247, 1)">
+        <tr style="font-size: 1rem;">
+          <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
+          <th class="sortable">ID<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Assigned<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+          <th class="sortable">Volunteer<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Completed<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        </tr>
+
+        <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+          <td>{{item.id}}</td>
+          <td>{{item.help_type}}</td>
+          <td>{{item.resident}}</td>
+          <td>{{item.Due}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.assigned}}</td>
+          <td>{{item.priority}}</td>
+          <td>{{item.volunteer}}</td>
+          <td>{{item.completed}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
 
 
     <div>
@@ -126,11 +167,11 @@
     import $ from 'jquery';
 
 export default {
-  name: 'actionTable',
+
   data() {
     return {
       toggle: false,
-    }
+      list: 10,    }
   },
   props: {
     containerSize: {
@@ -140,7 +181,6 @@ export default {
   },
   components: {
     FilterComponent: require('./Action_FilterComponent.vue').default,
-    Action_tableComponent:require('./Actions.vue').default
   },
   created() {
     this.tableData = this.$store.state.tableData
