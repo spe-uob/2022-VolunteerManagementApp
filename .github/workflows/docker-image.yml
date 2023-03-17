@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Docker CI
 
 on:
   push:
@@ -18,4 +18,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker-compose -f docker-compose.yml -f development.yml up --build
+      run: ｜
+         docker-compose -f docker-compose.yml -f development.yml up --build
+         docker-compose pause
+         
