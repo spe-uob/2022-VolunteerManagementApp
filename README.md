@@ -146,7 +146,7 @@ We decided to use GitHub actions that triggers whenever we start a pull request 
 
 There are two tests, one for the frontend and one for the backend
 - [x] Frontend Tests
-- [ ] Backend Tests
+- [x] Backend Tests
 
 --------------------
 
