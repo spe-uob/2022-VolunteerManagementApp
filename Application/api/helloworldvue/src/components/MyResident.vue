@@ -152,6 +152,9 @@
     <!--        </tr>-->
     <!--        </tbody>-->
     <!--      </table>-->
+    <div>
+      <FilterComponent></FilterComponent>
+    </div>
   </div>
 </template>
 
@@ -164,6 +167,9 @@ export default {
       toggle: false,
       list: 10
     }
+  },
+  components: {
+    FilterComponent: require('./Resident_FilterComponent').default,
   },
   created() {
     this.tableData = this.$store.state.tableData
