@@ -218,7 +218,16 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 10,
+      list: [
+      { help_type: 'Z', resident: 'John Doe', created: '2021-01-01', status: 'Active' },
+      { help_type: 'X', resident: 'Amy', created: '2020-02-01', status: 'Inactive' },
+      { help_type: 'Y', resident: 'Annie', created: '2019-02-01', status: 'Inactive' },
+      { help_type: 'A', resident: 'Bill', created: '2018-02-01', status: 'Inactive' },
+      { help_type: 'D', resident: 'Lin', created: '2022-02-01', status: 'Inactive' },
+      { help_type: 'C', resident: 'Skill', created: '2014-02-01', status: 'Inactive' },
+      { help_type: 'E', resident: 'miss', created: '2013-02-01', status: 'Inactive' },
+      { help_type: 'B', resident: 'doctor', created: '2007-02-01', status: 'Inactive' },
+    ],
     }
   },
   props: {
