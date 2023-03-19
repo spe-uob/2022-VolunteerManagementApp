@@ -15,12 +15,12 @@
       <tbody>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th class="sortable">First Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Last Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Phone Number<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Email<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Total Time Received<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Consent<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+        <th class="sortable" @click="sortTable('FirstName')">First Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th class="sortable" @click="sortTable('LastName')">Last Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th class="sortable" @click="sortTable('PhoneNumber')">Phone Number<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th class="sortable" @click="sortTable('Email')">Email<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th class="sortable" @click="sortTable('TotalTimeReceived')">Total Time Received<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th class="sortable" @click="sortTable('Consent')">Consent<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
       </tr>
 
       <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
@@ -165,7 +165,8 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 10
+      list:10,
+      sortOrder:'',
     }
   },
   components: {
@@ -175,6 +176,18 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    sortTable(sortKey) {
+      if (this.sortOrder === sortKey) {
+        this.list.reverse();
+      } else {
+        if (sortKey === 'FirstName') {
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'LastName') {
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }
+        this.sortOrder = sortKey;
+      }
+    },
     toggleHide() {
       this.toggle = !this.toggle;
     },

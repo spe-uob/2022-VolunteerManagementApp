@@ -42,7 +42,7 @@ export default {
     props: [],
     methods: {
         back(){
-            this.$router.push("/All Activity")
+            this.$router.push("/MyResident")
         },
         selectButton(index) {
                 this.buttons.forEach((item, i) => {

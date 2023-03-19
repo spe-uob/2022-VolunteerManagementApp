@@ -1,0 +1,22 @@
+name: Docker CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+    defaults:
+     run:
+      working-directory: ./Application
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker-compose -f docker-compose.yml -f development.yml up --build -d && docker-compose down
+         

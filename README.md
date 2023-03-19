@@ -1,12 +1,11 @@
 <h1 align="center">Volunteer Management App</h1>   
 <div align="center">
 
-![Frontend Tests](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/Frontend_Test.yml/badge.svg)
+[![Frontend Tests](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/Frontend_Test.yml/badge.svg)](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/Frontend_Test.yml)
+[![Backend Tests](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/docker-image.yml/badge.svg)](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/docker-image.yml)
 [![Contributors](https://img.shields.io/badge/Contributors-5-brightgreen)](https://github.com/spe-uob/2022-VolunteerManagementApp/graphs/contributors)
 [![License: GPL](https://img.shields.io/badge/License-GPL-brightgreen.svg)](https://github.com/spe-uob/2022-VolunteerManagementApp/blob/main/Application/LICENSE)
-[![Docker](https://img.shields.io/badge/Docker-v20.10.23-blue)](https://www.docker.com)
 [![Vue version](https://img.shields.io/badge/Vue-v5.0.8-blue)](https://vuejs.org)
-[![Django Version](https://img.shields.io/badge/Django-v4.0.2-blue)](https://www.djangoproject.com)
 
 </div>
 
@@ -71,13 +70,13 @@ git clone https://github.com/spe-uob/2022-VolunteerManagementApp.git
 
 - Start the applications using this command in the ```api``` directory: 
 ``` 
-cd ./Allication/api/
+cd ./Application/api/
 docker-compose up --build 
 ```
 
 - Then Run the following command in the ```Application``` directory ( This downloads all required node modules for the vue app ):
 ``` 
-cd ./Allication/
+cd ./Application/
 docker-compose -f docker-compose.yml -f development.yml up --build
 ```
 
@@ -147,7 +146,7 @@ We decided to use GitHub actions that triggers whenever we start a pull request 
 
 There are two tests, one for the frontend and one for the backend
 - [x] Frontend Tests
-- [ ] Backend Tests
+- [x] Backend Tests
 
 --------------------
 

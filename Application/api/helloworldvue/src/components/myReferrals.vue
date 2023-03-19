@@ -15,10 +15,10 @@
         </thead>
         <tbody>
         <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-          <th class="sortable">Referral Type<div style="display: inline-block;position: absolute;;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-          <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+          <th class="sortable" @click="sortTable('type')">Referral Type<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+          <th class="sortable" @click="sortTable('resident')">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable" @click="sortTable('created')">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+          <th class="sortable" @click="sortTable('status')">Status<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
         </tr>
 
         <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
@@ -162,7 +162,16 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 10,
+      list: [
+        {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
+        {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
+        {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
+        {type:'Food parcel', resident:'john',created:'2022-01-01',status:'Inactive'},
+        {type:'teaching', resident:'Bill',created:'2020-04-08',status:'Inactive'},
+        {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
+        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+      ],
+      sortOrder:'',
     }
   },
   props: {
@@ -182,7 +191,24 @@ export default {
   created() {
     this.tableData = this.$store.state.tableData
   },
+
   methods: {
+    sortTable(sortKey) {
+      if (this.sortOrder === sortKey) {
+        this.list.reverse();
+      } else {
+        if (sortKey === 'created') {
+          this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
+        } else if (sortKey === 'type') {
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'resident') {
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'status') {
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }
+        this.sortOrder = sortKey;
+      }
+    },
     toggleHide() {
       this.toggle = !this.toggle;
     },
@@ -273,17 +299,13 @@ th:hover {
   background-color: #354a63;
 }
 
-th.sortable:hover {
-  background-color: #dddddd;
-}
-
 th.sortable:after {
   content: "\25B2";
   font-size: 12px;
   margin-left: 5px;
 }
 
-th.sortable.asc:after {
+th.sortable:active:after {
   content: "\25BC";
   font-size: 12px;
   margin-left: 5px;
