@@ -1,23 +1,46 @@
 <template>
     <div class="filter-container">
       <div class="f-title">Filter</div>
-        <div>
-            <div class="filter-head" @click="setToggle1"><i class="arrow-right"></i> Referral Type</div>
-            <div v-show="toggle1" class="filter-body">
-                <div>
-                    <label>
-                        <input type="checkbox">
-                        foodbank
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="checkbox">
-                        gp
-                    </label>
-                </div>
+      <div>
+        <label for="id1">
+          <input class="filter-head-input" id="id1" type="checkbox">
+          <div @click="setToggle1" class="filter-head">
+            <i class="arrow-right"></i>
+            Referral Type
+          </div>
+          <div v-show="toggle1" class="filter-body">
+            <div>
+              <label>
+                <input type="checkbox">
+               foodbank
+              </label>
             </div>
-        </div>
+            <div>
+              <label>
+                <input type="checkbox">
+                gp
+              </label>
+            </div>
+          </div>
+        </label>
+      </div>
+<!--        <div>-->
+<!--            <div class="filter-head" @click="setToggle1"><i class="arrow-right"></i> Referral Type</div>-->
+<!--            <div v-show="toggle1" class="filter-body">-->
+<!--                <div>-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">-->
+<!--                        foodbank-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">-->
+<!--                        gp-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <div>
             <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>
@@ -94,7 +117,9 @@
   margin: -1px 0;
   color: black;
 }
-
+.filter-head-input{
+  display: none;
+}
 .arrow-right {
   display: inline-block;
   width: 0.45rem;
