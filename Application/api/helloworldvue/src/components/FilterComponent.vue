@@ -178,8 +178,9 @@
   transition: transform 0.1s ease-in-out;
 }
 
-.filter-head:hover .arrow-right{
+.filter-head-input:checked+.filter-head .arrow-right{
   transform: rotate(135deg);
+  transition: transform 0.1s ease-in-out;
 }
 
 label{
