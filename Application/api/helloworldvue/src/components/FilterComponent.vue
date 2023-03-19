@@ -1,6 +1,6 @@
 <template>
     <div class="filter-container">
-      <div class="f-title">Filter</div>
+      <div class="f-title">Filters</div>
       <div>
         <label for="id1">
           <input class="filter-head-input" id="id1" type="checkbox">
@@ -42,23 +42,70 @@
 <!--            </div>-->
 <!--        </div>-->
 
-        <div>
-            <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>
-            <div v-show="toggle2" class="filter-body">
-                <div>
-                    <label>
-                        <input type="checkbox">
-                        sub type1
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="checkbox">
-                        sub type1
-                    </label>
-                </div>
+      <div>
+        <label for="id2">
+          <input class="filter-head-input" id="id2" type="checkbox">
+          <div @click="setToggle2" class="filter-head">
+            <i class="arrow-right"></i>
+            Status
+          </div>
+          <div v-show="toggle2" class="filter-body">
+            <div>
+              <label>
+                <input type="checkbox">
+                sub type1
+              </label>
             </div>
-        </div>
+            <div>
+              <label>
+                <input type="checkbox">
+                sub type2
+              </label>
+            </div>
+          </div>
+        </label>
+      </div>
+
+<!--        <div>-->
+<!--            <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>-->
+<!--            <div v-show="toggle2" class="filter-body">-->
+<!--                <div>-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">-->
+<!--                        sub type1-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">-->
+<!--                        sub type1-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+      <div>
+        <label for="id3">
+          <input class="filter-head-input" id="id3" type="checkbox">
+          <div @click="setToggle3" class="filter-head">
+            <i class="arrow-right"></i>
+            Organisation
+          </div>
+          <div v-show="toggle3" class="filter-body">
+            <div>
+              <label>
+                <input type="checkbox">
+                sub type1
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="checkbox">
+                sub type2
+              </label>
+            </div>
+          </div>
+        </label>
+      </div>
     </div>
 </template>
 <script>
