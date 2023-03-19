@@ -51,7 +51,42 @@
 <!--          </tbody>-->
 <!--        </table>-->
         <div>
-          <Referrals_tablecomponent></Referrals_tablecomponent>
+          <table class="referral_table">
+            <thead style="background-color: rgba(247, 247, 247, 1)">
+
+            <tr style="font-size: 1rem;">
+              <td rowspan="4" style="font-size: 1rem;font-weight:bold;">Referrals</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
+              <th class="sortable">ID<div style="display: inline-block;position: absolute;;"><span ></span><br /><span  ></span></div></th>
+              <th class="sortable">Referral Type<div style="display: inline-block;position: absolute;;"><span ></span><br /><span  ></span></div></th>
+              <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+              <th class="sortable">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+              <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+              <th class="sortable">Organisation<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+              <th class="sortable">Completed<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+            </tr>
+
+            <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+              <td>{{item.id}}</td>
+              <td>{{item.type}}</td>
+              <td>{{item.resident}}</td>
+              <td>{{item.created}}</td>
+              <td>{{item.status}}</td>
+              <td>{{item.organisation}}</td>
+              <td>{{item.completed}}</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
 
         <div>
@@ -69,8 +104,7 @@
     data() {
       return {
         toggle: false,
-        list: [
-        ]
+        list: 10
       }
     },
     props: {
@@ -92,7 +126,6 @@
     },
     components: {
       FilterComponent: require('./FilterComponent.vue').default,
-      Referrals_tablecomponent: require('./myReferrals.vue').default
     },
     methods: {
       toggleHide() {
