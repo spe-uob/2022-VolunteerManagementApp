@@ -302,10 +302,10 @@ export default {
 
 .callbtn {
     position: absolute;
-    width: 8vw;
-    height: 48px;
-    right: 2%;
-    top: 12%;
+    width: 100px;
+    height: 40px;
+    right: 10px;
+    top: 100px;
     background: #1C405A;
     border-radius: 5px;
     color: white;
@@ -323,7 +323,7 @@ export default {
 
 @media screen and (max-width: 480px) {
     .callbtn {
-        width: 24vw;
+        width: 240px;
         height: 24px;
         top: 4%;
         font-size: 0.6rem;
