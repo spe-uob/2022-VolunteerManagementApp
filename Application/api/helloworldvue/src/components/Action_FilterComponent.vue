@@ -2,22 +2,45 @@
   <div class="filter-container">
     <div class="f-title">Action Filters</div>
     <div>
-      <div @click="setToggle1" class="filter-head"><i class="arrow-right"></i> Help Type</div>
-      <div v-show="toggle1" class="filter-body">
-        <div>
-          <label>
-            <input type="checkbox">
-            feedback
-          </label>
+      <label for="id1">
+        <input class="filter-head-input" id="id1" type="checkbox">
+        <div @click="setToggle1" class="filter-head">
+          <i class="arrow-right"></i>
+          HelpType
         </div>
-        <div>
-          <label>
-            <input type="checkbox">
-            gp
-          </label>
+        <div v-show="toggle1" class="filter-body">
+          <div>
+            <label>
+              <input type="checkbox">
+              feedback
+            </label>
+          </div>
+          <div>
+            <label>
+              <input type="checkbox">
+              gp
+            </label>
+          </div>
         </div>
-      </div>
+      </label>
     </div>
+<!--    <div>-->
+<!--      <div @click="setToggle1" class="filter-head"><i class="arrow-right"></i> Help Type</div>-->
+<!--      <div v-show="toggle1" class="filter-body">-->
+<!--        <div>-->
+<!--          <label>-->
+<!--            <input type="checkbox">-->
+<!--            feedback-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label>-->
+<!--            <input type="checkbox">-->
+<!--            gp-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <div>
       <label for="id2">
@@ -62,23 +85,48 @@
     <!--    </div>-->
 
     <div>
-      <div class="filter-head" @click="setToggle3()"> <i class="arrow-right"></i> Priority</div>
-      <div v-show="toggle3" class="filter-body">
-        <div>
-          <label>
-            <input type="checkbox">
-            sub type1
-          </label>
+      <label for="id3">
+        <input class="filter-head-input" id="id3" type="checkbox">
+        <div @click="setToggle3" class="filter-head">
+          <i class="arrow-right"></i>
+          Priority
         </div>
-        <div>
-          <label>
-            <input type="checkbox">
-            sub type1
-          </label>
+        <div v-show="toggle3" class="filter-body">
+          <div>
+            <label>
+              <input type="checkbox">
+              sub type1
+            </label>
+          </div>
+          <div>
+            <label>
+              <input type="checkbox">
+              sub type2
+            </label>
+          </div>
         </div>
-      </div>
+      </label>
     </div>
   </div>
+
+<!--    <div>-->
+<!--      <div class="filter-head" @click="setToggle3()"> <i class="arrow-right"></i> Priority</div>-->
+<!--      <div v-show="toggle3" class="filter-body">-->
+<!--        <div>-->
+<!--          <label>-->
+<!--            <input type="checkbox">-->
+<!--            sub type1-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          <label>-->
+<!--            <input type="checkbox">-->
+<!--            sub type1-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </template>
 <script>
 export default {
