@@ -29,127 +29,127 @@
         </tr>
         </tbody>
       </table>
-<!--      <table class="table">-->
-<!--        <thead>-->
-<!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-<!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Referrals</td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--          <td></td>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
+      <!--      <table class="table">-->
+      <!--        <thead>-->
+      <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
+      <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Referrals</td>-->
+      <!--          <td></td>-->
+      <!--          <td></td>-->
+      <!--          <td></td>-->
+      <!--          <td></td>-->
+      <!--          <td></td>-->
+      <!--        </tr>-->
+      <!--        </thead>-->
+      <!--        <tbody>-->
 
-<!--        <tr>-->
-<!--          <th>Referral Type<div style="display: inline-block;position: absolute;top:45px;"><span-->
-<!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-<!--          </th>-->
-<!--          <th>Resident<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-<!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-<!--          </th>-->
-<!--          <th>Created<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-<!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-<!--          </th>-->
-<!--          <th>Status<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-<!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-<!--          </th>-->
-<!--          <th>Organisation<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-<!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-<!--          </th>-->
-<!--          <th>Completed<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-<!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-<!--          </th>-->
-<!--        </tr>-->
-<!--        &lt;!&ndash; 用索引值除以 2 取余 &ndash;&gt;-->
-<!--        <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
-<!--          <td style="color:  black;">{{item.type}}</td>-->
-<!--          <td style="color:  black;">{{item.resident}}</td>-->
-<!--          <td style="color:  black;">{{item.created}}</td>-->
-<!--          <td style="color:  black;">{{item.status}}</td>-->
-<!--          <td style="color:  black;">{{item.organisation}}</td>-->
-<!--          <td style="color:  black;">{{item.completed}}</td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--      </table>-->
+      <!--        <tr>-->
+      <!--          <th>Referral Type<div style="display: inline-block;position: absolute;top:45px;"><span-->
+      <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
+      <!--          </th>-->
+      <!--          <th>Resident<div style="display: inline-block;position: absolute;top: 45px;"><span-->
+      <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
+      <!--          </th>-->
+      <!--          <th>Created<div style="display: inline-block;position: absolute;top: 45px;"><span-->
+      <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
+      <!--          </th>-->
+      <!--          <th>Status<div style="display: inline-block;position: absolute;top: 45px;"><span-->
+      <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
+      <!--          </th>-->
+      <!--          <th>Organisation<div style="display: inline-block;position: absolute;top: 45px;"><span-->
+      <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
+      <!--          </th>-->
+      <!--          <th>Completed<div style="display: inline-block;position: absolute;top: 45px;"><span-->
+      <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
+      <!--          </th>-->
+      <!--        </tr>-->
+      <!--        &lt;!&ndash; 用索引值除以 2 取余 &ndash;&gt;-->
+      <!--        <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
+      <!--          <td style="color:  black;">{{item.type}}</td>-->
+      <!--          <td style="color:  black;">{{item.resident}}</td>-->
+      <!--          <td style="color:  black;">{{item.created}}</td>-->
+      <!--          <td style="color:  black;">{{item.status}}</td>-->
+      <!--          <td style="color:  black;">{{item.organisation}}</td>-->
+      <!--          <td style="color:  black;">{{item.completed}}</td>-->
+      <!--        </tr>-->
+      <!--        </tbody>-->
+      <!--      </table>-->
 
 
-<!--      <div class="table1">-->
-<!--        <thead>-->
-<!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-<!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;">Filters</td>-->
-<!--          <td></td>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--          <div>-->
-<!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>Referral Type</td></div>-->
-<!--          <div v-show="toggle" class="t-body">-->
-<!--            <p><input type="radio" name="111" id="1">-->
-<!--              <label for="1">foodbank</label></p >-->
-<!--            <p><input type="radio" name="111" id="1">-->
-<!--              <label for="1">gp</label></p >-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>Status</td></div>-->
-<!--          <div v-show="toggle" class="t-body">-->
-<!--&lt;!&ndash;            <p>1</p >&ndash;&gt;-->
-<!--&lt;!&ndash;            <p>2</p >&ndash;&gt;-->
-<!--&lt;!&ndash;            <p>3</p >&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>organisation</td></div>-->
-<!--          <div v-show="toggle" class="t-body">-->
-<!--&lt;!&ndash;            <p>1</p >&ndash;&gt;-->
-<!--&lt;!&ndash;            <p>2</p >&ndash;&gt;-->
-<!--&lt;!&ndash;            <p>3</p >&ndash;&gt;-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="table1">-->
+      <!--        <thead>-->
+      <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
+      <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;">Filters</td>-->
+      <!--          <td></td>-->
+      <!--        </tr>-->
+      <!--        </thead>-->
+      <!--          <div>-->
+      <!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>Referral Type</td></div>-->
+      <!--          <div v-show="toggle" class="t-body">-->
+      <!--            <p><input type="radio" name="111" id="1">-->
+      <!--              <label for="1">foodbank</label></p >-->
+      <!--            <p><input type="radio" name="111" id="1">-->
+      <!--              <label for="1">gp</label></p >-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--        <div>-->
+      <!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>Status</td></div>-->
+      <!--          <div v-show="toggle" class="t-body">-->
+      <!--&lt;!&ndash;            <p>1</p >&ndash;&gt;-->
+      <!--&lt;!&ndash;            <p>2</p >&ndash;&gt;-->
+      <!--&lt;!&ndash;            <p>3</p >&ndash;&gt;-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--        <div>-->
+      <!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>organisation</td></div>-->
+      <!--          <div v-show="toggle" class="t-body">-->
+      <!--&lt;!&ndash;            <p>1</p >&ndash;&gt;-->
+      <!--&lt;!&ndash;            <p>2</p >&ndash;&gt;-->
+      <!--&lt;!&ndash;            <p>3</p >&ndash;&gt;-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
 
-<!--     <table class="table1">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-<!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;">Filters</td>-->
-<!--        </tr>-->
-<!--        </thead>-->
+      <!--     <table class="table1">-->
+      <!--        <thead>-->
+      <!--        <tr>-->
+      <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
+      <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;">Filters</td>-->
+      <!--        </tr>-->
+      <!--        </thead>-->
 
-<!--        <tbody>-->
-<!--        <tr class="info">-->
-<!--          <td>referral type-->
-<!--            <select class="classic">-->
-<!--              <option></option>-->
-<!--              <option>foodbank</option>-->
-<!--              <option>gp</option>-->
-<!--            </select>-->
+      <!--        <tbody>-->
+      <!--        <tr class="info">-->
+      <!--          <td>referral type-->
+      <!--            <select class="classic">-->
+      <!--              <option></option>-->
+      <!--              <option>foodbank</option>-->
+      <!--              <option>gp</option>-->
+      <!--            </select>-->
 
-<!--          </td>-->
+      <!--          </td>-->
 
-<!--        </tr>-->
-<!--        <tr>-->
-<!--          <td>status-->
-<!--            <select class="classic">-->
-<!--              <option></option>-->
-<!--              <option></option>-->
-<!--              <option></option>-->
-<!--            </select>-->
-<!--          </td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td>status-->
+      <!--            <select class="classic">-->
+      <!--              <option></option>-->
+      <!--              <option></option>-->
+      <!--              <option></option>-->
+      <!--            </select>-->
+      <!--          </td>-->
 
-<!--        </tr>-->
-<!--        <tr class="info">-->
-<!--          <td>organisation-->
-<!--            <select class="classic">-->
-<!--              <option></option>-->
-<!--              <option></option>-->
-<!--              <option></option>-->
-<!--            </select>-->
-<!--          </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--      </table>-->
+      <!--        </tr>-->
+      <!--        <tr class="info">-->
+      <!--          <td>organisation-->
+      <!--            <select class="classic">-->
+      <!--              <option></option>-->
+      <!--              <option></option>-->
+      <!--              <option></option>-->
+      <!--            </select>-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--        </tbody>-->
+      <!--      </table>-->
 
     </div>
   </div>

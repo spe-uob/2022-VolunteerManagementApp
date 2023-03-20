@@ -87,7 +87,7 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./Volunteer_FilterComponent').default,
+    FilterComponent: require('./FilterComponent').default,
   },
   created() {
     this.tableData = this.$store.state.tableData
