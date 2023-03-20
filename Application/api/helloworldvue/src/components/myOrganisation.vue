@@ -82,6 +82,12 @@
         />
       </header>
     </div> -->
+    <div>
+      <FilterComponent></FilterComponent>
+    </div>
+    <div>
+      <filterComponent></filterComponent>
+    </div>
   </div>
 </template>
 
@@ -94,6 +100,10 @@ export default {
       toggle: false,
       list: 10,
     }
+  },
+  components: {
+    FilterComponent: require('./TableSearch').default,
+    filterComponent: require('./TableSearch').default,
   },
   created() {
     this.tableData = this.$store.state.tableData

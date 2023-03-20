@@ -155,6 +155,9 @@
     <div>
       <FilterComponent></FilterComponent>
     </div>
+    <div>
+      <filterComponent></filterComponent>
+    </div>
   </div>
 </template>
 
@@ -170,7 +173,8 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./FilterComponent').default,
+    FilterComponent: require('./Resident_FilterComponent').default,
+    filterComponent: require('./TableSearch').default,
   },
   created() {
     this.tableData = this.$store.state.tableData

@@ -51,14 +51,108 @@
       <!--          </tbody>-->
       <!--        </table>-->
       <div>
-        <Referrals_tablecomponent></Referrals_tablecomponent>
-      </div>
+        <div>
+          <!--        <table class="table">-->
+          <!--          <thead>-->
+          <!--          <tr style="font-size: 17px;background-color: #f7f7f7;">-->
+          <!--            <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Referrals</td>-->
+          <!--            <td></td>-->
+          <!--            <td></td>-->
+          <!--            <td></td>-->
+          <!--            <td></td>-->
+          <!--          </tr>-->
+          <!--          </thead>-->
+          <!--          <tbody>-->
+
+          <!--          <tr>-->
+          <!--            <th>ID<div style="display: inline-block;position: absolute;top:45px;">-->
+          <!--              <span-->
+          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+          <!--              </div>-->
+          <!--            </th>-->
+          <!--            <th>Resident<div style="display: inline-block;position: absolute;top: 45px;">-->
+          <!--              <span-->
+          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+          <!--              </div>-->
+          <!--            </th>-->
+          <!--            <th>Help Type<div style="display: inline-block;position: absolute;top: 45px;">-->
+          <!--              <span-->
+          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+          <!--              </div>-->
+          <!--            </th>-->
+          <!--            <th>Organisation<div style="display: inline-block;position: absolute;top: 45px;">-->
+          <!--              <span-->
+          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+          <!--              </div>-->
+          <!--            </th>-->
+          <!--            <th>Completed<div style="display: inline-block;position: absolute;top: 45px;">-->
+          <!--              <span-->
+          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
+          <!--              </div>-->
+          <!--            </th>-->
+          <!--          </tr>-->
+          <!--          &lt;!&ndash; 用索引值除以 2 取余 &ndash;&gt;-->
+          <!--          <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
+          <!--            <td style="color:  black;">{{item.id}}</td>-->
+          <!--            <td style="color:  black;">{{item.resident}}</td>-->
+          <!--            <td style="color:  black;">{{item.help_type}}</td>-->
+          <!--            <td style="color:  black;">{{item.Organisation}}</td>-->
+          <!--            <td style="color:  black;">{{item.Completed}}</td>-->
+          <!--          </tr>-->
+          <!--          </tbody>-->
+          <!--        </table>-->
+          <div>
+            <table class="referral_table">
+              <thead style="background-color: rgba(247, 247, 247, 1)">
+
+              <tr style="font-size: 1rem;">
+                <td rowspan="4" style="font-size: 1rem;font-weight:bold;">Referrals</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              </thead>
+              <tbody>
+              <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
+                <th class="sortable">ID<div style="display: inline-block;position: absolute;;"><span ></span><br /><span  ></span></div></th>
+                <th class="sortable">Referral Type<div style="display: inline-block;position: absolute;;"><span ></span><br /><span  ></span></div></th>
+                <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+                <th class="sortable">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+                <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+                <th class="sortable">Organisation<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+                <th class="sortable">Completed<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+              </tr>
+
+              <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+                <td>{{item.id}}</td>
+                <td>{{item.type}}</td>
+                <td>{{item.resident}}</td>
+                <td>{{item.created}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.organisation}}</td>
+                <td>{{item.completed}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div>
+            <FilterComponent></FilterComponent>
+          </div>
+
+        </div>
+
 
       <div>
         <FilterComponent></FilterComponent>
       </div>
 
     </div>
+  </div>
   </div>
 </template>
 
@@ -70,7 +164,15 @@ export default {
     return {
       toggle: false,
       list: [
-      ]
+        {id:'1',type:'Dog Walking', resident:'John',created:'Fri, Feb 3, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Mon, Feb 6, 2023 - 09:15am'},
+        {id:'9',type:'Food Bank', resident:'Liu',created:'Mon, Jan 15, 2023 - 10:15am',status:'Pending',organisation:'Surgery',completed:'Mon, Feb 6, 2023 - 09:15am'},
+        {id:'11',type:'Shopping', resident:'Bob',created:'Mon, Jan 8, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Mon, Jan 15, 2023 - 10:15am'},
+        {id:'27',type:'Prescription', resident:'Ally',created:'Sun, Feb19 , 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Sun, Feb19 , 2023 - 10:15am'},
+        {id:'3',type:'Volunteer Assigned', resident:'Bill',created:'Sun, Feb12 , 2023 - 10:15am',status:'Pending',organisation:'Surgery',completed:'Sun, Feb12 , 2023 - 10:15am'},
+        {id:'15',type:'Volunteer Assigned', resident:'Alice',created:'Wed, Aug 11, 2023 - 5:30pm',status:'Pending',organisation:'Surgery'},
+        {id:'17',type:'Dog Walking', resident:'Sid',created:'Mon, Jan 1, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre'},
+      ],
+      sortOrder:'',
     }
   },
   props: {
@@ -91,8 +193,7 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   components: {
-    FilterComponent: require('./FilterComponent.vue').default,
-    Referrals_tablecomponent: require('./myReferrals.vue').default
+    FilterComponent: require('./FilterComponent.vue').default
   },
   methods: {
     toggleHide() {
