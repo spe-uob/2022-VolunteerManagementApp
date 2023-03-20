@@ -28,6 +28,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
     "jquery": "^3.6.1",
+    "npm": "^9.6.1",
     "parcel-bundler": "^1.12.5"
   }
 }
