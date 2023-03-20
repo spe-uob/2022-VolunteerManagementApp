@@ -149,7 +149,7 @@ export default {
 
 .filter-container {
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 175px;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
