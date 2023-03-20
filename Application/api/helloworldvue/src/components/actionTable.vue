@@ -111,9 +111,49 @@
 
 
     <div>
-      <Action_tableComponent></Action_tableComponent>
-    </div>
+      <table class="Action_table">
+        <thead style="background-color: rgba(247, 247, 247, 1)">
+        <tr style="font-size: 1rem;">
+          <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        </thead>
 
+        <tbody>
+
+        <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
+          <th class="sortable">ID<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Assigned<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+          <th class="sortable">Volunteer<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">Completed<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        </tr>
+
+        <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+          <td>{{item.id}}</td>
+          <td>{{item.help_type}}</td>
+          <td>{{item.resident}}</td>
+          <td>{{item.due}}</td>
+          <td>{{item.status}}</td>
+          <td>{{item.assigned}}</td>
+          <td>{{item.priority}}</td>
+          <td>{{item.volunteer}}</td>
+          <td>{{item.completed}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
 
     <div>
       <FilterComponent></FilterComponent>
@@ -130,6 +170,16 @@ export default {
   data() {
     return {
       toggle: false,
+      list: [
+        {id:'1',help_type:'Dog Walking', resident:'John',due:'Fri, Feb 3, 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'I',completed:'Mon, Feb 6, 2023'},
+        {id:'9',help_type:'Food Bank', resident:'Liu',due:'Mon, Jan 15, 2023',status:'Ongoing',assigned:'2/2',priority:'Normal',volunteer:'F',completed:'Mon, Feb 6, 2023'},
+        {id:'11',help_type:'Shopping', resident:'Bob',due:'Mon, Jan 8, 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'D',completed:'Mon, Jan 15, 2023'},
+        {id:'27',help_type:'Prescription', resident:'Ally',due:'Sun, Feb19 , 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'A',completed:'Sun, Feb19 , 2023'},
+        {id:'3',help_type:'Volunteer Assigned', resident:'Bill',due:'Sun, Feb12 , 2023',status:'Ongoing',assigned:'2/2',priority:'Normal',volunteer:'C',completed:'Sun, Feb12 , 2023'},
+        {id:'15',help_type:'Volunteer Assigned', resident:'Alice',due:'Wed, Aug 11, 2023',status:'Ongoing',assigned:'1/2',priority:'Normal',volunteer:'D'},
+        {id:'17',help_type:'Dog Walking', resident:'Sid',due:'Mon, Jan 1, 2023',status:'Ongoing',assigned:'0/1',priority:'Normal',volunteer:'A'},
+      ],
+      sortOrder:'',
     }
   },
   props: {
@@ -139,8 +189,7 @@ export default {
     },
   },
   components: {
-    FilterComponent: require('./Action_FilterComponent.vue').default,
-    Action_tableComponent:require('./Actions.vue').default
+    FilterComponent: require('./Action_FilterComponent.vue').default
   },
   created() {
     this.tableData = this.$store.state.tableData
