@@ -170,7 +170,7 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./FilterComponent').default,
+    FilterComponent: require('./Resident_FilterComponent').default,
   },
   created() {
     this.tableData = this.$store.state.tableData

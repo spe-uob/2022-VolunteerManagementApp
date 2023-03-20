@@ -1,6 +1,6 @@
 <template>
   <div class="filter-container">
-    <div class="f-title">Filters</div>
+    <div class="f-title">Referrals Filters</div>
     <div>
       <label for="id1">
         <input class="filter-head-input" id="id1" type="checkbox">
