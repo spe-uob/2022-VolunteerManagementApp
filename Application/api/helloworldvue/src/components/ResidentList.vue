@@ -92,7 +92,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .container {
     position: relative;
     top: 150px;
@@ -100,6 +100,8 @@ export default {
     width: 1000px;
     height: 500px;
     margin: 0 auto;
+    background-color: white;
+    border: none;
   }
 
 .search-box {

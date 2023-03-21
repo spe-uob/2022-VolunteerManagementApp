@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import $ from 'jquery';
 import myButton from "@/components/myButton";
 import navbar from './components/navbar.vue';
 import companyIcon from "../img/CompanyIcon.png";
@@ -74,7 +73,6 @@ export default {
   mounted() {
     this.updateCallStarted(this.$route.path);
     window.addEventListener('popstate', this.onPopState);
-    window.addEventListener('beforeunload', this.onBeforeUnload);
   },
   beforeDestroy() {
     window.removeEventListener('popstate', this.onPopState);
@@ -90,7 +88,7 @@ export default {
       window.location.href = "http://localhost:8000/";
     },
     updateCallStarted(routeName) {
-      this.CallStarted = (routeName === '/Start_Call' || routeName.startsWith('/add'));
+      this.CallStarted = (routeName === '/Start_Call' || routeName.startsWith('/add')) || routeName.startsWith('/action_page');
       localStorage.setItem('callStarted', this.CallStarted);
     },
     onBeforeUnload() {
@@ -114,186 +112,10 @@ export default {
         }
       })
     },
-    postAction: async function () {
-      //TODO: build this obj with a form
-      let action = {
-        "id": 7,
-        "external_action_id": null,
-        "added_by": 2,
-        "coordinator": 2,
-        "call_datetime": "2022-11-27T12:54:16Z",
-        "call_duration": null,
-        "resident": 1,
-        "requested_datetime": "2024-11-27T18:00:00Z",
-        "assigned_volunteers": [],
-        "action_status": "7",
-        "action_priority": "1",
-        "public_description": "",
-        "private_description": "",
-        "help_type": 5,
-        "volunteer_made_contact_on": null,
-        "assigned_date": "2022-11-27T13:26:15.887669Z",
-        "completed_date": null,
-        "action_uuid": "37b9d03a-a7a9-11ed-afa1-0242ac120002",
-        "time_taken": null,
-        "minimum_volunteers": 1,
-        "maximum_volunteers": 1,
-        "potential_volunteer_ids": [],
-        "actionfeedback_set": [],
-        "requirements": [
-          1
-        ],
-        "interested_volunteers": []
-      }
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/actions/",
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "POST",
-        type: "POST",
-        contentType: 'application/json',
-        data: JSON.stringify(action),
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-    },
-    postResident: async function () {
-      let resident = {
-        "id": 3,
-        "first_name": "Lin",
-        "last_name": "Bench",
-        "phone": "111111111111111",
-        "phone_secondary": null,
-        "email": "bencharefismael@protonmail.com",
-        "notes": "",
-        "address_line_1": "foo",
-        "address_line_2": "bar",
-        "address_line_3": null,
-        "postcode": "W",
-        "internet_access": false,
-        "smart_device": false,
-        "confident_online_shopping": false,
-        "confident_online_comms": false,
-        "shielded": false,
-        "time_received": null,
-        "data_consent_date": "2023-02-08",
-        "ward": 1
-      }
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/residents/",
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "POST",
-        type: "POST",
-        contentType: 'application/json',
-        data: JSON.stringify(resident),
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-    },
-    deleteResident: async function () {
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/residents/37/",
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "DELETE",
-        type: "DELETE",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-    },
-    getAction: async function () {
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/actions/6/",
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        data: JSON.stringify({'action_status': '7'}),
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-    },
-    updateAction: async function () {
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/actions/7/",
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "PATCH",
-        type: "PATCH",
-        contentType: 'application/json',
-        data: JSON.stringify({"action_priority": "2"}),
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-    },
-    getCookie: function (name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
-        }
-      }
-      return cookieValue;
-    },
+    openActionPage(){
+      this.CallStarted = true
+      this.$router.push("/action_page/1")
+    }
   },
 }
 </script>
