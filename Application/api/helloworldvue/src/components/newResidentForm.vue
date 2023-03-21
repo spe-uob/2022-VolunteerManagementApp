@@ -1,41 +1,33 @@
 <template>
     <form>
-    <div>   
+      <div>   
         <h1 class="form-title">Create New Resident</h1>
-    </div>
-    <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="firstName">First Name</label>
         <input type="text" class="form-control" id="firstName" v-model="firstName" placeholder="First Name">
-        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-    </div>
-    <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="lastName">Last Name</label>
         <input type="text" class="form-control" id="lastName" v-model="lastName" placeholder="Last Name">
-    </div>
-    <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="address">Address</label>
         <input type="text" class="form-control" id="address" v-model="address" placeholder="Address">
-    </div>
-    <div class="form-group">
+      </div>
+      <div class="form-group">
         <label for="postcode">Postcode</label>
-        <input type="text" class="form-control" id="postcode" v-model="postcode" placeholder="postcode">
-    </div>
-    <div>
+        <input type="text" class="form-control" id="postcode" v-model="postcode" placeholder="Postcode">
+      </div>
+      <div class="form-group">
         <label for="date">Date:</label>
         <input type="date" id="date" v-model="date">
-    </div>
-    <!-- <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div> -->
-    <!-- <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div> -->
-    <button type="submit" @click.prevent="submitForm" class="btn btn-primary">Save</button>
+      </div>
+      <div class="form-group">
+        <button type="submit" @click.prevent="submitForm" class="btn btn-primary">Save</button>
+      </div>
     </form>
-  </template>
+  </template>   
   
   <script>
 import $ from 'jquery';
@@ -101,10 +93,26 @@ import $ from 'jquery';
   </script>
   
   <style>
-    .form-title{
-        font-size: large;
-    }
-    .btn{
-      font-size: 18px;
-    }
+  .form-title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .form-group{
+    margin-bottom: 20px;
+  }
+  label{
+    font-weight: bold;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="text"], input[type="date"]{
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+
 </style>

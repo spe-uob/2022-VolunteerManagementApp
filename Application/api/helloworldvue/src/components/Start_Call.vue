@@ -34,8 +34,8 @@ export default {
         return {
             NewResident: false,
             buttons: [
-                    {label: 'All Residents', left: '273px', selected: true},
-                    {label: 'New Resident', left: '426px', selected: false},
+                    {label: 'New Residents', left: '273px', selected: true},
+                    {label: 'All Resident', left: '426px', selected: false},
                 ],
         }
     },
@@ -60,6 +60,8 @@ export default {
     border:none;
     margin-bottom: 3px;
     padding-bottom: 5px;
+    padding-left: 3px;
+    padding-bottom: 3px;
     position: absolute;
     top:100px;
 }
@@ -80,12 +82,12 @@ export default {
   cursor: pointer;
   position: absolute;
   left: 150px;
-  top: 310px;
+  top: 100px;
   display: inline-block;
 }
 .call-title{
     position: absolute;
-    top: 280px;
+    top: 80px;
     left: 260px;
 }
 
@@ -96,7 +98,7 @@ export default {
     width: 200px;
     height: 500px;
     left: 100px;
-    top: 350px;
+    top: 150px;
 
     background: transparent;
     border: none;
@@ -110,7 +112,7 @@ export default {
     width: 200px;
     height: 500px;
     left: 85%;
-    top: 10%;
+    top: 0%;
 
     background: transparent;
     border: none;
