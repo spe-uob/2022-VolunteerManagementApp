@@ -243,17 +243,17 @@ export default {
       this.list = response.results.map((result) => {
         return {
           id: result.id,
+          type: result.referral_type,
           resident: result.resident,
-          help_type: result.help_type,
-          Organisation: result.referral_organisation,
-          Completed: 'n/a'
+          created: result.created_datetime,
+          status: result.referral_status,
+          organisation: result.referral_organisation,
+          completed: result.completed_date
         }
       })
     })
   },
 }
-
-
 </script>
 
 <style>
