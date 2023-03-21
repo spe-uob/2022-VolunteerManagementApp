@@ -62,9 +62,6 @@ export default {
     if (callStarted !== null) {
       this.CallStarted = callStarted === 'true';
     }
-    this.$on('my-event', (data) => {
-      this.CallStarted = true;
-    })
   },
   watch: {
     //TODO: fix gets broken when you refresh on Start Call or forward. Most likely need to run updateCallStarted on more than popstate event
