@@ -22,7 +22,7 @@
         <th class="sortable" @click="sortTable('priority')">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
       </tr>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
         <td>{{item.help_type}}</td>
         <td>{{item.resident}}</td>
         <td>{{item.Due}}</td>
@@ -32,180 +32,6 @@
       </tr>
       </tbody>
     </table>
-
-    <!--    <div class="container">-->
-    <!--      <html lang="en">-->
-    <!--      <head>-->
-    <!--        <meta charset="utf-8"/>-->
-    <!--        <title>TableSorter</title>-->
-    <!--      </head>-->
-    <!--      <body>-->
-
-    <!--      <table>-->
-    <!--        <tr>-->
-    <!--          <th>actions</th>-->
-    <!--        </tr>-->
-    <!--        <tr class="info">-->
-    <!--            <td>-->
-    <!--              <div class="right"-->
-    <!--                   @click="change(item,index)"-->
-    <!--                   v-for="(item, index) in btnList"-->
-    <!--                   :key="index">{{item.lable}}-->
-    <!--                <div class="box-icon">-->
-    <!--                  <div class="up"-->
-    <!--                       :class="item.status === 1 ? 'opacity-5' : ''"></div>-->
-    <!--                  <div class="down"-->
-    <!--                       :class="item.status === 1 ? 'opacity-1' : ''"></div>-->
-    <!--                </div>-->
-    <!--              </div>-->
-    <!--            </td>-->
-    <!--          <td>-->
-    <!--            <div class="on">-->
-    <!--              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Help Type-->
-    <!--                <i class="angle_top"></i>-->
-    <!--                <i class="angle_bottom"></i>-->
-    <!--              </a>-->
-    <!--            </div>-->
-    <!--          </td>-->
-    <!--          <td>-->
-    <!--            <div class="on">-->
-    <!--              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Residents-->
-    <!--                <i class="angle_top"></i>-->
-    <!--                <i class="angle_bottom"></i>-->
-    <!--              </a>-->
-    <!--            </div>-->
-    <!--          </td>-->
-    <!--          <td>-->
-    <!--            <div class="on">-->
-    <!--              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Due-->
-    <!--                <i class="angle_top"></i>-->
-    <!--                <i class="angle_bottom"></i>-->
-    <!--              </a>-->
-    <!--            </div>-->
-    <!--          </td>-->
-    <!--          <td>-->
-    <!--            <div class="on">-->
-    <!--              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Status-->
-    <!--                <i class="angle_top"></i>-->
-    <!--                <i class="angle_bottom"></i>-->
-    <!--              </a>-->
-    <!--            </div>-->
-    <!--            </td>-->
-    <!--          <td>-->
-    <!--            <div class="on">-->
-    <!--              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Assigned-->
-    <!--                <i class="angle_top"></i>-->
-    <!--                <i class="angle_bottom"></i>-->
-    <!--              </a>-->
-    <!--            </div>-->
-    <!--            </td>-->
-    <!--          <td>-->
-    <!--            <div class="on">-->
-    <!--              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Priority-->
-    <!--                <i class="angle_top"></i>-->
-    <!--                <i class="angle_bottom"></i>-->
-    <!--              </a>-->
-    <!--            </div>-->
-    <!--            </td>-->
-    <!--          <td>-->
-    <!--            <div class="on">-->
-    <!--              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Volunteer-->
-    <!--                <i class="angle_top"></i>-->
-    <!--                <i class="angle_bottom"></i>-->
-    <!--              </a>-->
-    <!--            </div>-->
-    <!--          </td>-->
-    <!--          <td>-->
-    <!--            <div class="on">-->
-    <!--              <a href="javascript:void(0)" data-category="price" data-orderby="asc" class="js_category">Compeleted-->
-    <!--                <i class="angle_top"></i>-->
-    <!--                <i class="angle_bottom"></i>-->
-    <!--              </a>-->
-    <!--            </div>-->
-    <!--          </td>-->
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <td>1</td>-->
-    <!--          <td>1</td>-->
-    <!--          <td>1</td>-->
-    <!--          <td>1</td>-->
-    <!--          <td>1</td>-->
-    <!--          <td>1</td>-->
-    <!--          <td>1</td>-->
-    <!--          <td>1</td>-->
-    <!--          <td>1</td>-->
-    <!--        </tr>-->
-    <!--        <tr class="info">-->
-    <!--          <td>2</td>-->
-    <!--          <td>2</td>-->
-    <!--          <td>2</td>-->
-    <!--          <td>2</td>-->
-    <!--          <td>2</td>-->
-    <!--          <td>2</td>-->
-    <!--          <td>2</td>-->
-    <!--          <td>2</td>-->
-    <!--          <td>2</td>-->
-    <!--        </tr>-->
-    <!--      </table>-->
-    <!--      </body>-->
-    <!--      </html>-->
-    <!--      <html lang="en">-->
-    <!--      <head>-->
-    <!--        <meta charset="UTF-8">-->
-    <!--        <title>type</title>-->
-    <!--      </head>-->
-    <!--      <body>-->
-    <!--      <table>-->
-    <!--        <tr>-->
-    <!--          <th>filters</th>-->
-
-    <!--        </tr>-->
-    <!--        <tr class="info">-->
-    <!--          <td>1</td>-->
-
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <td>1</td>-->
-
-    <!--        </tr>-->
-    <!--        <tr class="info">-->
-    <!--          <td>1</td>-->
-
-    <!--        </tr>-->
-    <!--      </table>-->
-    <!--      </body>-->
-    <!--      </html>-->
-
-    <!--&lt;!&ndash;      <table1>&ndash;&gt;-->
-    <!--&lt;!&ndash;        <tr><td>Referrals</td></tr>&ndash;&gt;-->
-    <!--&lt;!&ndash;        <tr><td>111111111111111111111</td></tr>&ndash;&gt;-->
-    <!--&lt;!&ndash;        <tr><td>55555555555</td></tr>&ndash;&gt;-->
-    <!--&lt;!&ndash;      </table1>&ndash;&gt;-->
-    <!--      &lt;!&ndash;      <table>&ndash;&gt;-->
-    <!--&lt;!&ndash;        <tr><td>Actions</td></tr>&ndash;&gt;-->
-    <!--&lt;!&ndash;        <tr>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <td>ID</td>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <td>Help type</td>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <td>Residents</td>&ndash;&gt;-->
-    <!--&lt;!&ndash;            <td>Due</td>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <td>Status</td>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <td>assigned</td>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <td>Priority</td>&ndash;&gt;-->
-    <!--&lt;!&ndash;        </tr>&ndash;&gt;-->
-    <!--&lt;!&ndash;      </table>&ndash;&gt;-->
-
-    <!--    </div>-->
-    <!--    <div class="right"-->
-    <!--         @click="change(item,index)"-->
-    <!--         v-for="(item, index) in btnList"-->
-    <!--         :key="index">{{item.lable}}-->
-    <!--      <div class="box-icon">-->
-    <!--        <div class="up"-->
-    <!--             :class="item.status === 1 ? 'opacity-5' : ''"></div>-->
-    <!--        <div class="down"-->
-    <!--             :class="item.status === 1 ? 'opacity-1' : ''"></div>-->
-    <!--      </div>-->
-    <!--    </div>-->
   </div>
 </template>
 
@@ -241,6 +67,9 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    handleClick(id){
+      this.$router.push(`/action_page/${id}`)
+    },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();

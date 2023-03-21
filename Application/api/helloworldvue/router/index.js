@@ -59,6 +59,11 @@ const routes = [
                 path: '/Organisations', 
                 name: 'Organisations',
                 component: MyOrganisations
+            },
+            {
+                path: './action_page/:id',
+                name: 'action_page',
+                component: action-page
             }
         ]
     }

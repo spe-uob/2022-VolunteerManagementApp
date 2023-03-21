@@ -5,6 +5,7 @@ import All_Activity from './components/All_Activity'
 import referralTable from './components/referralTable'
 import Start_Call from './components/Start_Call'
 import residentPage from './components/residentPage'
+import action_page from './components/action_page'
 import MyResident from './components/MyResident'
 import MyVolunteers from './components/MyVolunteers'
 import MyOrganisations from './components/myOrganisation'
@@ -24,6 +25,7 @@ const routes = [
   { path: '/All Activity', component: All_Activity},
   { path: '/Start_Call', component: Start_Call},
   { path: '/add/:id', component: residentPage, name: 'add'},
+  { path: '/action_page/:id', component: action_page, name: 'action_page'},
   { path: '/residents', component: MyResident},
   { path: '/Volunteers', component: MyVolunteers },
   { path: '/organisation', component: MyOrganisations}

@@ -19,7 +19,8 @@
     "lorem-ipsum": "^2.0.8",
     "vue": "^2.6.14",
     "vue-router": "^3.6.5",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
