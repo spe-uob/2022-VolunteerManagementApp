@@ -136,7 +136,7 @@ export default {
 
 @media screen and (max-width: 768px) {
     .callbtn {
-        width: 16vw;
+        width: 340px;
         height: 32px;
         top: 8%;
         font-size: 0.8rem;
@@ -158,21 +158,21 @@ router-link {
 }
 .buttons .btn {
   font-weight: 500;
-  margin: 1.5vw;
-  font-size: 1.5vw;
+  margin: 10px;
+  font-size: 10px;
   color: black;
   /*text-transform: uppercase;*/
   transition: all 0.1s ease-in-out;
 }
 .buttons {
-  margin: 2vw;
+  margin: 10px;
   display: flex;
   justify-content: center;
   outline: none;
 }
 
 .btn {
-  margin: 1.5vw;
+  margin: 10px;
   font-size: 1.5vw;
   color: black;
   /*text-transform: uppercase;*/
@@ -183,7 +183,7 @@ router-link {
   color: white;
   /*border: 1px solid #3A4857;*/
   background-color: #3A4857;
-  border-radius: 2px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
