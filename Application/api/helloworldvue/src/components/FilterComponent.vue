@@ -2,8 +2,8 @@
   <div class="filter-container">
     <div class="f-title">Referrals Filters</div>
     <div>
-      <label for="id1">
-        <input class="filter-head-input" id="id1" type="checkbox">
+      <label for="id4">
+        <input class="filter-head-input" id="id4" type="checkbox">
         <div @click="setToggle1" class="filter-head">
           <i class="arrow-right"></i>
           Referral Type
@@ -43,8 +43,8 @@
     <!--        </div>-->
 
     <div>
-      <label for="id2">
-        <input class="filter-head-input" id="id2" type="checkbox">
+      <label for="id5">
+        <input class="filter-head-input" id="id5" type="checkbox">
         <div @click="setToggle2" class="filter-head">
           <i class="arrow-right"></i>
           Status
@@ -84,8 +84,8 @@
     <!--            </div>-->
     <!--        </div>-->
     <div>
-      <label for="id3">
-        <input class="filter-head-input" id="id3" type="checkbox">
+      <label for="id6">
+        <input class="filter-head-input" id="id6" type="checkbox">
         <div @click="setToggle3" class="filter-head">
           <i class="arrow-right"></i>
           Organisation
