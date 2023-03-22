@@ -245,14 +245,18 @@ export default {
           resident: result.resident,
           help_type: result.help_type,
           Due: 'n/a',
-          Status: result.action_status,
+          status: result.action_status,
+          assigned: result.assigned_date,
+          priority: result.action_priority,
+          volunteer: result.assigned_volunteers,
+          completed: 'n/a'
         }
       })
     })
   },
 }
-
 </script>
+
 
 <style>
 
