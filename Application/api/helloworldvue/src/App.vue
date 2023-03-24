@@ -38,7 +38,7 @@
 import myButton from "@/components/myButton";
 import navbar from './components/navbar.vue';
 import companyIcon from "../img/CompanyIcon.png";
-// import FilterComponent from './components/FilterComponent.vue';
+ // import FilterComponent from './components/FilterComponent.vue';
 export default {
   name: 'App',
   data() {
