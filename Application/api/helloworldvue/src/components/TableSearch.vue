@@ -7,7 +7,7 @@
       <!--          <button type="button">Search</button>-->
       <!--        </div>-->
       <div>
-        <div class="item">
+        <div class="mi">
           <input type="text" v-model="name" placeholder="" v-on:input="changetext"/>
           <button type="button">Search</button>
         </div>
@@ -120,7 +120,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-.item {
+.mi {
   text-align: center;
   input {
     border: 2px solid #B8B8B8;
@@ -132,8 +132,8 @@ export default {
     border: 2px solid #3385FF;
   }
 }
-.item-ul {
-  .item-ul-li{
+.mi-ul {
+  .mi-ul-li{
     margin: auto;
     height: 30px;
     line-height: 30px;
@@ -142,7 +142,7 @@ export default {
       font-size: 16px;
     }
   }
-  .item-ul-li:hover{
+  .mi-ul-li:hover{
     background-color: #F1F3F4;
   }
 }
@@ -230,7 +230,7 @@ ul {
 .mi {
   position: relative;
   left: 2.5px;
-  top: 16px;
+  top: 3px;
   width:150px;
   height: 36px;
   border: 2px solid rgba(223, 226, 230, 1);
