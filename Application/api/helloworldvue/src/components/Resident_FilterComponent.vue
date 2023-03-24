@@ -2,7 +2,12 @@
   <div class="filter-container">
     <div class="f-title">Residents Filters</div>
     <div>
-      <div @click="setToggle1" class="filter-head"><i class="arrow-right"></i> Status</div>
+      <label for="id7">
+        <input class="filter-head-input" id="id7" type="checkbox">
+        <div @click="setToggle1" class="filter-head">
+          <i class="arrow-right"></i>
+        Status
+      </div>
       <div v-show="toggle1" class="filter-body">
         <div>
           <label>
@@ -35,11 +40,12 @@
           </label>
         </div>
       </div>
+      </label>
     </div>
 
     <div>
-      <label for="id2">
-        <input class="filter-head-input" id="id2" type="checkbox">
+      <label for="id8">
+        <input class="filter-head-input" id="id8" type="checkbox">
         <div @click="setToggle2" class="filter-head">
           <i class="arrow-right"></i>
           Ward
@@ -60,8 +66,14 @@
         </div>
       </label>
     </div>
+
     <div>
-      <div class="filter-head" @click="setToggle3()"> <i class="arrow-right"></i> Account</div>
+      <label for="id9">
+        <input class="filter-head-input" id="id9" type="checkbox">
+        <div @click="setToggle3" class="filter-head">
+          <i class="arrow-right"></i>
+          Account
+        </div>
       <div v-show="toggle3" class="filter-body">
         <div>
           <label>
@@ -70,6 +82,7 @@
           </label>
         </div>
       </div>
+      </label>
     </div>
   </div>
 </template>

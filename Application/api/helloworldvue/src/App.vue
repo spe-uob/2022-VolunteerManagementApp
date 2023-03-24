@@ -124,7 +124,7 @@
                 this.CallStarted = true
                 this.$router.push("/action_page/1")
             }
-        },
+        }
     }
 </script>
 
