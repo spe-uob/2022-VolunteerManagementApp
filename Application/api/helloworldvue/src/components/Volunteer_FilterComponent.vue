@@ -2,7 +2,12 @@
   <div class="filter-container">
     <div class="f-title">Volunteer Filters</div>
     <div>
-      <div @click="setToggle1" class="filter-head"><i class="arrow-right"></i>Help Type</div>
+      <label for="id10">
+        <input class="filter-head-input" id="id10" type="checkbox">
+      <div @click="setToggle1" class="filter-head">
+        <i class="arrow-right"></i>
+        Help Type
+      </div>
       <div v-show="toggle1" class="filter-body">
         <div>
           <label>
@@ -41,11 +46,12 @@
           </label>
         </div>
       </div>
+      </label>
     </div>
 
     <div>
-      <label for="id2">
-        <input class="filter-head-input" id="id2" type="checkbox">
+      <label for="id11">
+        <input class="filter-head-input" id="id11" type="checkbox">
         <div @click="setToggle2" class="filter-head">
           <i class="arrow-right"></i>
           Checks
@@ -68,8 +74,8 @@
     </div>
     <div>
       <div>
-        <label for="id3">
-          <input class="filter-head-input" id="id3" type="checkbox">
+        <label for="id12">
+          <input class="filter-head-input" id="id12" type="checkbox">
           <div @click="setToggle3" class="filter-head">
             <i class="arrow-right"></i>
             Ward
@@ -90,8 +96,16 @@
           </div>
         </label>
       </div>
+
+
       <div>
-      <div class="filter-head" @click="setToggle4()"> <i class="arrow-right"></i> Account</div>
+        <label for="id13">
+          <input class="filter-head-input" id="id13" type="checkbox">
+          <div @click="setToggle4" class="filter-head">
+            <i class="arrow-right"></i>
+            Account
+          </div>
+<!--      <div class="filter-head" @click="setToggle4()"> <i class="arrow-right"></i> Account</div>-->
       <div v-show="toggle4" class="filter-body">
         <div>
           <label>
@@ -112,8 +126,10 @@
           </label>
         </div>
       </div>
+        </label>
     </div>
   </div>
+
   </div>
 </template>
 

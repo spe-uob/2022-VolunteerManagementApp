@@ -1,137 +1,140 @@
 <template>
-  <div class="filter-container">
-    <div class="f-title">Referrals Filters</div>
-    <div>
-      <label for="id4">
-        <input class="filter-head-input" id="id4" type="checkbox">
-        <div @click="setToggle1" class="filter-head">
-          <i class="arrow-right"></i>
-          Referral Type
-        </div>
-        <div v-show="toggle1" class="filter-body">
-          <div>
-            <label>
-              <input type="checkbox">
-              foodbank
-            </label>
+    <div class="filter-container">
+      <div class="f-title">Referral Filters</div>
+      <div>
+        <label for="id4">
+          <input class="filter-head-input" id="id4" type="checkbox">
+          <div @click="setToggle1" class="filter-head">
+            <i class="arrow-right"></i>
+            Referral Type
           </div>
-          <div>
-            <label>
-              <input type="checkbox">
-              gp
-            </label>
+          <div v-show="toggle1" class="filter-body">
+            <div>
+              <label>
+                <input type="checkbox">
+               foodbank
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="checkbox">
+                gp
+              </label>
+            </div>
           </div>
-        </div>
-      </label>
-    </div>
-    <!--        <div>-->
-    <!--            <div class="filter-head" @click="setToggle1"><i class="arrow-right"></i> Referral Type</div>-->
-    <!--            <div v-show="toggle1" class="filter-body">-->
-    <!--                <div>-->
-    <!--                    <label>-->
-    <!--                        <input type="checkbox">-->
-    <!--                        foodbank-->
-    <!--                    </label>-->
-    <!--                </div>-->
-    <!--                <div>-->
-    <!--                    <label>-->
-    <!--                        <input type="checkbox">-->
-    <!--                        gp-->
-    <!--                    </label>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
+        </label>
+      </div>
+<!--        <div>-->
+<!--            <div class="filter-head" @click="setToggle1"><i class="arrow-right"></i> Referral Type</div>-->
+<!--            <div v-show="toggle1" class="filter-body">-->
+<!--                <div>-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">-->
+<!--                        foodbank-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">-->
+<!--                        gp-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-    <div>
-      <label for="id5">
-        <input class="filter-head-input" id="id5" type="checkbox">
-        <div @click="setToggle2" class="filter-head">
-          <i class="arrow-right"></i>
-          Status
-        </div>
-        <div v-show="toggle2" class="filter-body">
-          <div>
-            <label>
-              <input type="checkbox">
-              sub type1
-            </label>
+      <div>
+        <label for="id5">
+          <input class="filter-head-input" id="id5" type="checkbox">
+          <div @click="setToggle2" class="filter-head">
+            <i class="arrow-right"></i>
+            Status
           </div>
-          <div>
-            <label>
-              <input type="checkbox">
-              sub type2
-            </label>
+          <div v-show="toggle2" class="filter-body">
+            <div>
+              <label>
+                <input type="checkbox">
+                sub type1
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="checkbox">
+                sub type2
+              </label>
+            </div>
           </div>
-        </div>
-      </label>
-    </div>
+        </label>
+      </div>
 
-    <!--        <div>-->
-    <!--            <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>-->
-    <!--            <div v-show="toggle2" class="filter-body">-->
-    <!--                <div>-->
-    <!--                    <label>-->
-    <!--                        <input type="checkbox">-->
-    <!--                        sub type1-->
-    <!--                    </label>-->
-    <!--                </div>-->
-    <!--                <div>-->
-    <!--                    <label>-->
-    <!--                        <input type="checkbox">-->
-    <!--                        sub type1-->
-    <!--                    </label>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <div>
-      <label for="id6">
-        <input class="filter-head-input" id="id6" type="checkbox">
-        <div @click="setToggle3" class="filter-head">
-          <i class="arrow-right"></i>
-          Organisation
-        </div>
-        <div v-show="toggle3" class="filter-body">
-          <div>
-            <label>
-              <input type="checkbox">
-              sub type1
-            </label>
+<!--        <div>-->
+<!--            <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>-->
+<!--            <div v-show="toggle2" class="filter-body">-->
+<!--                <div>-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">-->
+<!--                        sub type1-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <label>-->
+<!--                        <input type="checkbox">-->
+<!--                        sub type1-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+      <div>
+        <label for="id6">
+          <input class="filter-head-input" id="id6" type="checkbox">
+          <div @click="setToggle3" class="filter-head">
+            <i class="arrow-right"></i>
+            Organisation
           </div>
-          <div>
-            <label>
-              <input type="checkbox">
-              sub type2
-            </label>
+          <div v-show="toggle3" class="filter-body">
+            <div>
+              <label>
+                <input type="checkbox">
+                sub type1
+              </label>
+            </div>
+            <div>
+              <label>
+                <input type="checkbox">
+                sub type2
+              </label>
+            </div>
           </div>
-        </div>
-      </label>
+        </label>
+      </div>
     </div>
-  </div>
 </template>
 <script>
-export default {
-  data() {
-    return {
-      toggle1: false,
-      toggle2: false,
-      toggle3: false,
-    }
-  },
-  methods: {
-    setToggle1() {
-      this.toggle1 = !this.toggle1;
-    },
-    setToggle2() {
-      this.toggle2 = !this.toggle2;
-    },
-    setToggle3() {
-      this.toggle3 = !this.toggle3;
-    }
+    export default {
+        data() {
+            return {
+                toggle1: false,
+                toggle2: false,
+                toggle3: false,
+            }
+        },
+        methods: {
+            setToggle1() {
+                this.toggle1 = !this.toggle1;
+            },
+            setToggle2() {
+                this.toggle2 = !this.toggle2;
+            },
+            setToggle3() {
+                this.toggle3 = !this.toggle3;
+            }
 
   }
 }
 </script>
+
 <style scoped>
+
 .filter-container {
   font-weight: bold;
   margin-top: 20px;
@@ -151,7 +154,7 @@ export default {
   line-height: 1.5;
   padding: 6px;
   color: black;
-  background-color: rgba(247, 247, 247, 1)
+  background-color: rgba(247, 247, 247, 1);
 }
 
 
@@ -193,7 +196,7 @@ label{
 }
 
 @media (max-width: 1180px ){
-  .filter-container{
+   .filter-container{
     display: none;
   }
 }

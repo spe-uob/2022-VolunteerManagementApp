@@ -147,9 +147,9 @@
         </div>
 
 
-      <div>
-        <FilterComponent></FilterComponent>
-      </div>
+<!--      <div>-->
+<!--        <FilterComponent></FilterComponent>-->
+<!--      </div>-->
 
     </div>
   </div>
