@@ -1,19 +1,17 @@
 <!--header-->
 <template>
-  <div>
+    <div>
 
-  </div>
+    </div>
 
 </template>
 
 <script>
-export default {
-    components: {
-  },
-  name: "nav-bar",
-  methods: {
-  }
-}
+    export default {
+        components: {},
+        name: "nav-bar",
+        methods: {}
+    }
 </script>
 
 <style>
@@ -22,10 +20,12 @@ export default {
     .nav {
         /* position: absolute; */
         width: 100vw;
-        min-height:40px ;
-        height: 4.5vw;
+        min-height: 40px;
+        height: 4vw;
+        position: fixed;
         left: 0;
         top: 0;
+        /*z-index: 999;*/
         background: #3A4857;
         transition: height 0.2s ease-in-out;
     }
@@ -43,8 +43,6 @@ export default {
     /*        transition: height 0.2s ease-in-out;*/
     /*    }*/
     /*}*/
-
-
 
 
 </style>

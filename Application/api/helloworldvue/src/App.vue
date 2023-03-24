@@ -3,7 +3,8 @@
     <header>
       <nav class="nav">
         <navbar/>
-        <img class="symbol" :src="companyIcon"/>
+
+        <img class="symbol" :src="companyIcon" @click="goToHomePage"/>
 
         <div class="title">
                  <span>
@@ -84,6 +85,12 @@ export default {
     // FilterComponent
   },
   methods: {
+    goToHomePage(){
+      //first one for frontend test
+      window.location.href="http://localhost:8080/";
+      //this is the url
+      // window.location.href="http://localhost:8000/index";
+    },
     Login_page(){
       window.location.href = "http://localhost:8000/";
     },
@@ -121,7 +128,9 @@ export default {
 </script>
 
 <style>
-
+body{
+  padding-top:4vw;
+}
 .callbtn {
     position: absolute;
     width: 100px;
@@ -287,7 +296,7 @@ router-link {
   width: 7vw;
   height: 3vw;
   left: 1em;
-  top: 14px;
+  top: 3px;
   transition: height 0.2s ease-in-out;
 }
 /*.title {*/

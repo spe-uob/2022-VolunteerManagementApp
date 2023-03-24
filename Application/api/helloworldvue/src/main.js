@@ -19,7 +19,7 @@ Vue.use(VueRouter)
 
 
 const routes = [
-  { path: '/vue-test', component: App},
+  // { path: '/', component: App},
   { path: '/Actions', component: actionTable},
   { path: '/referrals', component: referralTable},
   { path: '/All Activity', component: All_Activity},
@@ -32,6 +32,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
   new Vue({
