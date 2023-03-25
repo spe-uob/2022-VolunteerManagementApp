@@ -60,7 +60,7 @@ jobs:
     # Authenticate with IBM Cloud CLI
     - name: Authenticate with IBM Cloud CLI
       run: |
-        ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g classroom
+        ibmcloud login --apikey "${IBM_CLOUD_API_KEY}" -r "${IBM_CLOUD_REGION}" -g 2022-VolunteerManagementApp
         ibmcloud cr region-set "${IBM_CLOUD_REGION}"
         ibmcloud cr login
 
