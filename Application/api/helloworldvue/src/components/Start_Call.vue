@@ -42,7 +42,12 @@ export default {
     props: [],
     methods: {
         back(){
-            this.$router.push("/MyResident")
+            this.$emit('buttonClick')
+            // this.$router.push("/All Activity")
+            // window.location.href = 'http://localhost:8080/static/src/vue/dist';
+            // window.location.href = "http://localhost:8000/index";
+            window.location.href = 'http://localhost:8080';
+
         },
         selectButton(index) {
                 this.buttons.forEach((item, i) => {

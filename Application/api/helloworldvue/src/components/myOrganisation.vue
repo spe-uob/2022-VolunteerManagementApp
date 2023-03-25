@@ -13,7 +13,7 @@
       <tbody>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th class="sortable">Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th class="sortable" >Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
         <th class="sortable">Phone Number<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
         <th class="sortable">Address<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
         <th class="sortable">Main Contact<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
@@ -85,6 +85,7 @@
     <div>
       <FilterComponent></FilterComponent>
     </div>
+
     <div>
       <filterComponent></filterComponent>
     </div>
@@ -102,8 +103,8 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./TableSearch').default,
-    filterComponent: require('./TableSearch').default,
+    FilterComponent: require('./TableSearch.vue').default,
+    filterComponent: require('./TableSearch.vue').default,
   },
   created() {
     this.tableData = this.$store.state.tableData
