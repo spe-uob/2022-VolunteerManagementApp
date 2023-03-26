@@ -30,11 +30,6 @@ jobs:
          cd ./Application/api/helloworldvue
          npm run build
          npm run lint
-         
-      - name: Build the Docker image 
-        run: |
-         cd ./Application
-         docker-compose -f docker-compose.yml -f development.yml up --build -d && docker-compose down
         
       - name: Create release
         uses: actions/create-release@v1
@@ -48,13 +43,14 @@ jobs:
           draft: false
           prerelease: false
         id: create_release
-      - name: Upload assets
+      - name: Upload release asset
         uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: | 
-                  $(echo ./dist/*)
-          asset_name: my-app-${{ github.ref }}.zip
+          asset_path: |
+            $(echo ./dist/*)
+          asset_name: my-app-refs/${{ github.ref }}/v0.1.2.zip
           asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          shell: bash
