@@ -15,11 +15,11 @@ jobs:
         with:
           node-version: 18.x
           
-      - name: Install dependencies in api
+      - name: Build the Docker image 
         run: |
-          cd ./Application/api
-          npm install npm@9.6.1
-          
+         cd ./Application
+         docker-compose -f docker-compose.yml -f development.yml up --build -d && docker-compose down
+                 
       - name: Install dependencies in frontend dir
         run: |
          cd ./Application/api/helloworldvue
@@ -30,11 +30,7 @@ jobs:
          cd ./Application/api/helloworldvue
          npm run build
          npm run lint
-      - name: Build the Docker image 
-        run: |
-         cd ./Application
-         docker-compose -f docker-compose.yml -f development.yml up --build -d && docker-compose down
-        
+         
       - name: Create release
         uses: actions/create-release@v1
         env:
