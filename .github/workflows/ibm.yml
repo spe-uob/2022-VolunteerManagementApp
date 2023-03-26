@@ -82,7 +82,7 @@ jobs:
         ibmcloud ks cluster config --cluster $IKS_CLUSTER
         kubectl config set-context --current --namespace=$ICR_NAMESPACE
         kubectl config current-context
-        kubectl create deployment $DEPLOYMENT_NAME --image=$REGISTRY_HOSTNAME/$ICR_NAMESPACE/$IMAGE_NAME:$GITHUB_SHA --dry-run=client -o yaml > deployment.yaml
+        kubectl create deployment $DEPLOYMENT_NAME --image=$REGISTRY_HOSTNAME/$ICR_NAMESPACE/$IMAGE_NAME:$GITHUB_SHA --dry-run -o yaml > deployment.yaml
         yq -i '
           .spec.template.spec.containers[0].env[0].name="REACT_APP_ENVIRONMENT" |
           .spec.template.spec.containers[0].env[0].value=strenv(ENVIRONMENT)
