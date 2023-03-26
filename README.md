@@ -59,7 +59,7 @@ The application uses a Django project integrated with a vue application.
 
 <h2 id="2">1.2 Deployment Instruction</h2>
 
-**Please see our <a href="https://github.com/spe-uob/2022-VolunteerManagementApp/releases/tag/beta-version">latest release</a> ！**
+**Please see our <a href="https://github.com/spe-uob/2022-VolunteerManagementApp/releases">latest release</a> ！**
 
 <h3 id="3">1.2.1 Backend: (Using Docker) </h3> 
 
