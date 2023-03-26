@@ -1,4 +1,4 @@
-name: Release
+name: Deployment and Release
 on:
   push:
     branches:
@@ -45,15 +45,3 @@ jobs:
           draft: false
           prerelease: false
         id: create_release
-        
-        
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./my-assets.zip
-          asset_name: my-assets.zip
-          asset_content_type: application/zip
