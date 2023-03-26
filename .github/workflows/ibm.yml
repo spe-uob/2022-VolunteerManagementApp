@@ -18,7 +18,7 @@ env:
   IBM_CLOUD_API_KEY: ${{ secrets.IBM_CLOUD_API_KEY }}
   IBM_CLOUD_REGION: eu-gb
   ICR_NAMESPACE: ${{ secrets.ICR_NAMESPACE }}
-  REGISTRY_HOSTNAME: us.icr.io
+  REGISTRY_HOSTNAME: uk.icr.io
   IMAGE_NAME: volunteermanagementapp
   IKS_CLUSTER: cgfhn4of0murn46k3l7g
   DEPLOYMENT_NAME: volunteermanagementapp
