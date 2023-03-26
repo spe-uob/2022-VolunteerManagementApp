@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # copy project
-COPY . .
+COPY .. .
 
 # run app
 CMD ["npm", "run", "serve"]
