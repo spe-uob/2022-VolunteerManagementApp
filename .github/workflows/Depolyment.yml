@@ -15,11 +15,11 @@ jobs:
         with:
           node-version: 18.x
           
-      - name: Build the Docker image 
+      - name: Install dependencies in api
         run: |
-         cd ./Application
-         docker-compose -f docker-compose.yml -f development.yml up --build -d && docker-compose down
-                 
+          cd ./Application/api
+          npm install npm@9.6.1
+          
       - name: Install dependencies in frontend dir
         run: |
          cd ./Application/api/helloworldvue
@@ -31,6 +31,11 @@ jobs:
          npm run build
          npm run lint
          
+      - name: Build the Docker image 
+        run: |
+         cd ./Application
+         docker-compose -f docker-compose.yml -f development.yml up --build -d && docker-compose down
+        
       - name: Create release
         uses: actions/create-release@v1
         env:
@@ -49,6 +54,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist/*
+          asset_path: | 
+                  $(echo ./dist/*)
           asset_name: my-app-${{ github.ref }}.zip
           asset_content_type: application/zip
