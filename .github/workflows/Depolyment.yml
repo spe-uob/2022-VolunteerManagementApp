@@ -45,12 +45,5 @@ jobs:
         id: create_release
       - name: Upload release asset
         uses: actions/upload-release-asset@v1
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: |
-            $(echo ./dist/*)
-          asset_name: my-app-refs/${{ github.ref }}/v0.1.2.zip
-          asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          shell: bash
