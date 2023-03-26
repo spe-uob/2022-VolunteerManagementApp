@@ -3,6 +3,8 @@
 
 [![Frontend Tests](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/Frontend_Test.yml/badge.svg)](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/Frontend_Test.yml)
 [![Backend Tests](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/docker-image.yml/badge.svg)](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/docker-image.yml)
+[![Deployment and Release](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/Depolyment.yml/badge.svg)](https://github.com/spe-uob/2022-VolunteerManagementApp/actions/workflows/Depolyment.yml)
+
 [![Contributors](https://img.shields.io/badge/Contributors-5-brightgreen)](https://github.com/spe-uob/2022-VolunteerManagementApp/graphs/contributors)
 [![License: GPL](https://img.shields.io/badge/License-GPL-brightgreen.svg)](https://github.com/spe-uob/2022-VolunteerManagementApp/blob/main/Application/LICENSE)
 [![Vue version](https://img.shields.io/badge/Vue-v5.0.8-blue)](https://vuejs.org)
