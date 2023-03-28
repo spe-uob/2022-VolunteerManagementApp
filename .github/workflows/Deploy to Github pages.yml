@@ -22,7 +22,7 @@ concurrency:
   
 defaults:
   run:
-    working-directory: helloworldvue
+    working-directory: Application/api/helloworldvue
 
 jobs:
   # Single deploy job since we're just deploying
