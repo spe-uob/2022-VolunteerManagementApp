@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'helloworldvue/**'
 
   workflow_dispatch:
 
@@ -17,10 +19,6 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: true
-  
-defaults:
- run:
-  working-directory: helloworldvue
 
 jobs:
   # Single deploy job since we're just deploying
