@@ -21,11 +21,11 @@
       </tr>
 
       <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
-        <td style="color:  black;">{{item.Name}}</td>
-        <td style="color:  black;">{{item.PhoneNumber}}</td>
-        <td style="color:  black;">{{item.Address}}</td>
-        <td style="color:  black;">{{item.MainContact}}</td>
-        <td style="color:  black;">{{item.Email}}</td>
+        <td style="color:  black;">{{item.name}}</td>
+        <td style="color:  black;">{{item.phone}}</td>
+        <td style="color:  black;">{{item.address}}</td>
+        <td style="color:  black;">{{item.contact}}</td>
+        <td style="color:  black;">{{item.email}}</td>
       </tr>
 
       </tbody>
@@ -85,10 +85,6 @@
     <div>
       <FilterComponent></FilterComponent>
     </div>
-
-    <div>
-      <filterComponent></filterComponent>
-    </div>
   </div>
 </template>
 
@@ -99,12 +95,47 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 10,
+      userList: [
+        {
+          name: 'Noel',
+          phone: '01179123456',
+          address:'A',
+          email: 'noel.wester@gmail.com',
+          contact:'Carol Lamentably',
+        },
+        {
+          name: 'Noel',
+          phone: '355667564532',
+          address:'A',
+          email: 'noel.wes@gmail.com',
+          contact:'Carol Lamentably',
+        },
+        {
+          name: 'Noe',
+          phone: '465768778787',
+          address:'A',
+          email: 'noe.wester@gmail.com',
+          contact:'Carol Lamentably',
+        },
+        {
+          name: 'Noel',
+          phone: '01179123456',
+          address:'A',
+          email: 'noel.wester@gmail.com',
+          contact:'Carol Lamentably',
+        },
+        {
+          name: 'Nel',
+          phone: '0456667665',
+          address:'A',
+          email: 'nel.weser@gmail.com',
+          contact:'Carol Lamentably',
+        },
+      ]
     }
   },
   components: {
-    FilterComponent: require('./TableSearch.vue').default,
-    filterComponent: require('./TableSearch.vue').default,
+    FilterComponent: require('./OrganisationSearch').default,
   },
   created() {
     this.tableData = this.$store.state.tableData
