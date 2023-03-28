@@ -1,40 +1,148 @@
 <template>
   <div>
-  <div class="filter-container">
-    <div class="f-title">Search</div>
-    <div class="mi">
-          <input type="search" name="" id="" placeholder="">
+    <div class="filter-container">
+      <div class="f-title">Search</div>
+      <!--    <div class="mi">-->
+      <!--          <input type="search" name="" id="" placeholder="">-->
+      <!--          <button type="button">Search</button>-->
+      <!--        </div>-->
+      <div>
+        <div class="mi">
+          <input type="text" v-model="name" placeholder="" v-on:input="changetext"/>
           <button type="button">Search</button>
         </div>
-</div>
+        <ul v-show="flag" class="item-ul">
+          <li class="item-ul-li" v-for="(item,index) in nlist" :key="index" @click="queryadd(item)">
+            <span>{{item.name}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-    <!--        <div>-->
-    <!--            <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>-->
-    <!--            <div v-show="toggle2" class="filter-body">-->
-    <!--                <div>-->
-    <!--                    <label>-->
-    <!--                        <input type="checkbox">-->
-    <!--                        sub type1-->
-    <!--                    </label>-->
-    <!--                </div>-->
-    <!--                <div>-->
-    <!--                    <label>-->
-    <!--                        <input type="checkbox">-->
-    <!--                        sub type1-->
-    <!--                    </label>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
- </template>
+  <!--        <div>-->
+  <!--            <div class="filter-head" @click="setToggle2"><i class="arrow-right"></i> Status</div>-->
+  <!--            <div v-show="toggle2" class="filter-body">-->
+  <!--                <div>-->
+  <!--                    <label>-->
+  <!--                        <input type="checkbox">-->
+  <!--                        sub type1-->
+  <!--                    </label>-->
+  <!--                </div>-->
+  <!--                <div>-->
+  <!--                    <label>-->
+  <!--                        <input type="checkbox">-->
+  <!--                        sub type1-->
+  <!--                    </label>-->
+  <!--                </div>-->
+  <!--            </div>-->
+  <!--        </div>-->
+</template>
 <script>
 
 export default {
   data() {
-    return {}
+    return {
+      flag: false,
+      name: '',
+      nlist: [],
+      userList: [
+        {
+          name: 'Noel',
+          age: 'Wester',
+          phone: '01179123456',
+          email: 'noel.wester@gmail.com',
+          time:'1 day, 5 hours',
+          consent:'✓'
+        },
+        {
+          name: 'Noel',
+          age: 'Wes',
+          phone: '355667564532',
+          email: 'noel.wes@gmail.com',
+          time:'5 day, 2 hours',
+          consent:'✓'
+        },
+        {
+          name: 'Noe',
+          age: 'Wester',
+          phone: '465768778787',
+          email: 'noe.wester@gmail.com',
+          time:'1 day, 12 hours',
+          consent:'✓'
+        },
+        {
+          name: 'Noel',
+          age: 'Wester',
+          phone: '01179123456',
+          email: 'noel.wester@gmail.com',
+          time:'13 day, 24 hours',
+          consent:'✓'
+        },
+        {
+          name: 'Nel',
+          age: 'Weser',
+          phone: '0456667665',
+          email: 'nel.weser@gmail.com',
+          time:'1 day, 5 hours',
+          consent:'✓'
+        },
+      ]
+    }
+  },
+  methods: {
+    changetext() {
+      this.userList.filter(item => {
+        if (this.name === item.name) {
+          let sin = {
+            name: item.name,
+            age: item.age,
+            phone: item.phone,
+            email: item.email,
+            time: item.time,
+            consent: item.consent
+          }
+          this.nlist.push(sin)
+          this.flag = true
+        }
+      })
+
+      this.nlist.forEach(item => {
+        if (this.name !== item.name) {
+          this.nlist = []
+          this.flag = false
+        }
+      })
+    },
   }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
+.mi {
+  text-align: center;
+  input {
+    border: 2px solid #B8B8B8;
+    height: 40px;
+    width: 88%;
+    font-size: 16px;
+  }
+  input:focus{
+    border: 2px solid #3385FF;
+  }
+}
+.mi-ul {
+  .mi-ul-li{
+    margin: auto;
+    height: 30px;
+    line-height: 30px;
+    width: 35%;
+    span{
+      font-size: 16px;
+    }
+  }
+  .mi-ul-li:hover{
+    background-color: #F1F3F4;
+  }
+}
 .filter-container {
   font-weight: bold;
   margin-top: 20px;
@@ -119,7 +227,7 @@ ul {
 .mi {
   position: relative;
   left: 2.5px;
-  top: 16px;
+  top: 3px;
   width:150px;
   height: 36px;
   border: 2px solid rgba(223, 226, 230, 1);
