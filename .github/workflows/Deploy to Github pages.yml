@@ -46,6 +46,7 @@ jobs:
          
       - name: build site
         run: |
+         cd ./Application/api/helloworldvue
          npm run build
          
       - name: Setup Pages
