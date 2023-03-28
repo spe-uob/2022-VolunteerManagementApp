@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'helloworldvue/**'
 
   workflow_dispatch:
 
@@ -19,10 +17,6 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: true
-  
-defaults:
-  run:
-    working-directory: Application/api/helloworldvue
 
 jobs:
   # Single deploy job since we're just deploying
@@ -39,19 +33,29 @@ jobs:
         uses: actions/setup-node@v2
         with:
          node-version: '18.x'
-         
-      - name: Install dependencies in frontend
+
+      - name: Install dependencies in api dir
         run: |
+          cd ./Application/api
+          npm install npm@9.6.1
+
+      - name: Install dependencies in helloworldvue dir
+        run: |
+         cd ./Application/api/helloworldvue
          npm install npm@9.6.1
+         
       - name: build site
         run: |
          npm run build
+         
       - name: Setup Pages
         uses: actions/configure-pages@v2
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "helloworldvue/dist/"
+          path: "./Application/api/helloworldvue/dist/"
+          
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
