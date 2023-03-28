@@ -46,7 +46,7 @@ jobs:
          
       - name: Install dependencies in frontend dir
         run: |
-         cd .api/helloworldvue
+         cd ./api/helloworldvue
          npm install npm@9.6.1
       - name: build site
         run: |
