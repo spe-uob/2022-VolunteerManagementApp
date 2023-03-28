@@ -45,7 +45,7 @@ jobs:
       - name: build site
         run: |
          cd ./Application/api/helloworldvue
-         npm run serve
+         npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
