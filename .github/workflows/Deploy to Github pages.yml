@@ -41,12 +41,12 @@ jobs:
          node-version: '18.x'
       - name: Install dependencies in api
         run: |
-         cd ./Application/api
+         cd ./api
          npm install npm@9.6.1
          
       - name: Install dependencies in frontend dir
         run: |
-         cd ./Application/api/helloworldvue
+         cd .api/helloworldvue
          npm install npm@9.6.1
       - name: build site
         run: |
