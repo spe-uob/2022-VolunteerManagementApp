@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'helloworldvue/**'
 
   workflow_dispatch:
 
