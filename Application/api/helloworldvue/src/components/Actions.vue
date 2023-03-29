@@ -45,14 +45,14 @@ export default {
     return {
       toggle: false,
       list: [
-        { help_type: 'Z', resident: 'John Doe', Due: '2021-01-01', status: 'Active' },
-        { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive' },
-        { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' },
-        { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' },
-        { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' },
-        { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' },
-        { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' },
-        { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' },
+        // { help_type: 'Z', resident: 'John Doe', Due: '2021-01-01', status: 'Active' },
+        // { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive' },
+        // { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' },
+        // { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' },
+        // { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' },
+        // { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' },
+        // { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' },
+        // { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' },
       ],
       sortOrder:'',
     }
@@ -127,13 +127,37 @@ export default {
       }
       return cookieValue;
     },
+    getResidentbyID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: `http://localhost:8000/" + "api/residents/${id}`,
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      return json.first_name;
+    }
   },
   mounted(){
+    //TODO: saves as integers at the moment get strings from api or local json
     this.getActions().then((response) => {
-      this.list = response.results.map((result) => {
+      this.list = response.results.map(async (result) => {
         return {
           id: result.id,
-          resident: result.resident,
+          resident: await getResidentbyID(result.resident),
           help_type: result.help_type,
           Due: 'n/a',
           assigned: 'n/a',
@@ -142,6 +166,7 @@ export default {
         }
       })
     })
+    this.list.forEach((elem) => (console.log(elem.resident)))
   },
 }
 </script>
