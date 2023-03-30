@@ -5,6 +5,10 @@ on:
       - main
     tags:
       - '*'
+    paths:
+      - 'helloworld/**'
+      
+  workflow_dispatch:
 
 jobs:
   build-and-release:
