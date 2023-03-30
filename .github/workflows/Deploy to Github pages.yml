@@ -52,16 +52,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
         
-      - name: fixed the authority
-        run: |
-         chmod 777 ./Application
-         chmod 777 ./Application/api
-         chmod 777 ./Application/api/helloworldvue
-        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "./Application/api/helloworldvue/dist/"
+          path: "./Application/api/helloworldvue/src/"
           
       - name: Deploy to GitHub Pages
         id: deployment
