@@ -42,6 +42,11 @@ jobs:
       - name: Install dependencies in helloworldvue dir
         run: |
          cd ./Application/api/helloworldvue
+         npm install npm@9.6.1
+         
+      - name: build the site
+        run: |
+         cd ./Application/api/helloworldvue
          exec npm run serve -d
          
       - name: Setup Pages
