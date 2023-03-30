@@ -49,9 +49,6 @@ jobs:
          cd ./Application/api/helloworldvue
          npm run serve &
          
-      - name: Wait for server to start
-        run: npx wait-on http://localhost:8080
-         
       - name: Setup Pages
         uses: actions/configure-pages@v2
         
