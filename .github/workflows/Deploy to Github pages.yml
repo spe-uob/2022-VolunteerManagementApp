@@ -55,7 +55,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: "./Application/api/helloworldvue/"
+          path: "./Application/api/helloworldvue/public/"
           
       - name: Deploy to GitHub Pages
         id: deployment
