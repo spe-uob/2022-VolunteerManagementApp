@@ -1,14 +1,11 @@
-name: Deployment and Release
+name: Release
 on:
   push:
     branches:
-    - main
-    
-  release:
-    types: [created]
-    
-  workflow_dispatch:
-    
+      - main
+    tags:
+      - '*'
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -41,9 +38,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v1.0.2
-          release_name: v1.0.2
+          tag_name: v1.0.${{ github.run_number }}
+          release_name: v1.0.${{ github.run_number }}
           body: |
             This is a new release.
           draft: false
           prerelease: false
+        id: create_release
