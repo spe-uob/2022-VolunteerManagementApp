@@ -40,7 +40,9 @@ jobs:
          npm install
          
       - name: Build the Docker image
-        run: docker-compose -f docker-compose.yml -f development.yml up --build -d && docker-compose down
+        run: |
+          cd ./Application
+          docker-compose -f docker-compose.yml -f development.yml up --build -d && docker-compose down
        
       - name: build the site
         run: |
