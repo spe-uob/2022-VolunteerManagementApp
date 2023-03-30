@@ -52,7 +52,6 @@ export default {
           phone: '01179123456',
           email: 'noel.wester@gmail.com',
           time:'1 day, 5 hours',
-          consent:'✓'
         },
         {
           name: 'Noel',
@@ -60,7 +59,6 @@ export default {
           phone: '355667564532',
           email: 'noel.wes@gmail.com',
           time:'5 day, 2 hours',
-          consent:'✓'
         },
         {
           name: 'Noe',
@@ -68,7 +66,6 @@ export default {
           phone: '465768778787',
           email: 'noe.wester@gmail.com',
           time:'1 day, 12 hours',
-          consent:'✓'
         },
         {
           name: 'Noel',
@@ -76,7 +73,6 @@ export default {
           phone: '01179123456',
           email: 'noel.wester@gmail.com',
           time:'13 day, 24 hours',
-          consent:'✓'
         },
         {
           name: 'Nel',
@@ -84,7 +80,6 @@ export default {
           phone: '0456667665',
           email: 'nel.weser@gmail.com',
           time:'1 day, 5 hours',
-          consent:'✓'
         },
       ]
     }
@@ -99,7 +94,6 @@ export default {
             phone: item.phone,
             email: item.email,
             time: item.time,
-            consent: item.consent
           }
           this.nlist.push(sin)
           this.flag = true
@@ -114,7 +108,7 @@ export default {
       })
     },
     queryadd (item) {
-      alert('First Name is' + item.name + '\r\nLast Name is' + item.age + '\r\nPhone Number is' + item.phone + '\r\nEmail is' + item.email+ '\r\nTotal Time Received' + item.time+ '\r\nConsent' + item.consent)
+      alert('First Name is' + item.name + '\r\nLast Name is' + item.age + '\r\nPhone Number is' + item.phone + '\r\nEmail is' + item.email+ '\r\nTotal Time Received' + item.time)
     }
   }
 }

@@ -48,43 +48,38 @@ export default {
       userList: [
         {
           name: 'Noel',
-          age: 'Wester',
           phone: '01179123456',
+          address:'A',
           email: 'noel.wester@gmail.com',
-          time:'1 day, 5 hours',
-          consent:'✓'
+          contact:'Carol Lamentably',
         },
         {
           name: 'Noel',
-          age: 'Wes',
           phone: '355667564532',
+          address:'A',
           email: 'noel.wes@gmail.com',
-          time:'5 day, 2 hours',
-          consent:'✓'
+          contact:'Carol Lamentably',
         },
         {
           name: 'Noe',
-          age: 'Wester',
           phone: '465768778787',
+          address:'A',
           email: 'noe.wester@gmail.com',
-          time:'1 day, 12 hours',
-          consent:'✓'
+          contact:'Carol Lamentably',
         },
         {
           name: 'Noel',
-          age: 'Wester',
           phone: '01179123456',
+          address:'A',
           email: 'noel.wester@gmail.com',
-          time:'13 day, 24 hours',
-          consent:'✓'
+          contact:'Carol Lamentably',
         },
         {
           name: 'Nel',
-          age: 'Weser',
           phone: '0456667665',
+          address:'A',
           email: 'nel.weser@gmail.com',
-          time:'1 day, 5 hours',
-          consent:'✓'
+          contact:'Carol Lamentably',
         },
       ]
     }
@@ -95,11 +90,10 @@ export default {
         if (this.name === item.name) {
           let sin = {
             name: item.name,
-            age: item.age,
             phone: item.phone,
+            address: item.address,
+            contact: item.contact,
             email: item.email,
-            time: item.time,
-            consent: item.consent
           }
           this.nlist.push(sin)
           this.flag = true
@@ -114,7 +108,7 @@ export default {
       })
     },
     queryadd (item) {
-      alert('First Name is' + item.name + '\r\nLast Name is' + item.age + '\r\nPhone Number is' + item.phone + '\r\nEmail is' + item.email+ '\r\nTotal Time Received' + item.time+ '\r\nConsent' + item.consent)
+      alert('Name is' + item.name + '\r\nPhone Number is' + item.phone + '\r\nAddress is' + item.address + '\r\nContact is' + item.contact+ '\r\nEmail is' + item.email)
     }
   }
 }
