@@ -33,23 +33,23 @@ jobs:
         uses: actions/setup-node@v2
         with:
          node-version: '18.x'
-
+         
+      - name: Install dependencies in api
+        run: |
+         cd ./Application/api
+         npm install npm@9.6.1
+         
       - name: Install dependencies in helloworldvue dir
         run: |
          cd ./Application/api/helloworldvue
-         npm install
-         
-      - name: Build the Docker image
-        run: |
-          cd ./Application
-          docker-compose -f docker-compose.yml -f development.yml up --build -d && docker-compose down
-       
+         npm install npm@9.6.1
+
       - name: build the site
         run: |
          cd ./Application/api/helloworldvue
-         npm install wait-on --save-dev
          npm run serve &
-         npx wait-on http://localhost:8080
+         sleep 20
+         kill $(ps aux | grep '[n]pm run serve' | awk '{print $2}')
          
       - name: Setup Pages
         uses: actions/configure-pages@v2
