@@ -47,9 +47,7 @@ jobs:
       - name: build the site
         run: |
          cd ./Application/api/helloworldvue
-         npm run serve &
-         sleep 20
-         kill $(ps aux | grep '[n]pm run serve' | awk '{print $2}')
+         npm run build
          
       - name: Setup Pages
         uses: actions/configure-pages@v2
