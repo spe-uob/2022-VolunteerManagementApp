@@ -2,8 +2,8 @@
   <div>
     <table class="Action_table">
       <thead style="background-color: rgba(247, 247, 247, 1)">
-      <tr style="font-size: 1rem;">
-        <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>
+      <tr style="font-size: 12px;">
+        <td colspan="2" style=" font-size: 15px;font-weight:bold;">Actions</td>
         <td></td>
         <td></td>
         <td></td>
@@ -13,7 +13,7 @@
 
       <tbody>
 
-      <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
+      <tr style="background-color: rgba(223, 226, 230, 1); height: 50px;">
         <th class="sortable" @click="sortTable('help_type')">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
         <th class="sortable" @click="sortTable('resident')">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
         <th class="sortable" @click="sortTable('Due')">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
@@ -151,7 +151,7 @@ export default {
 .Action_table {
   border-collapse: collapse;
   border-spacing: 50px;
-  font-size: 1vw;
+  font-size: 12px;
   min-width: 80%;
   margin-left: 5%;
   background-color: #f8f8f8;
@@ -169,7 +169,7 @@ th,td{
   color: black;
   font-weight: bold;
   text-align: left;
-  padding: 0.75rem 1rem;
+  padding: 10px 20px;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
@@ -195,7 +195,7 @@ th.sortable.asc:after {
 }
 
 td {
-  padding: 0.75rem 2rem;
+  padding: 10px 20px;
   border-bottom: 1px solid #ddd;
   color: #333;
 }

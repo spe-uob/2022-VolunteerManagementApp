@@ -88,7 +88,7 @@
         methods: {
             goToHomePage() {
                 //first one for frontend test
-                window.location.href = "http://localhost:8080/";
+                window.location.href = "http://localhost:8000/index";
                 //this is the url
                 // window.location.href="http://localhost:8000/index";
             },
@@ -134,7 +134,7 @@
     }
 
     .callbtn {
-        position: absolute;
+
         width: 100px;
         height: 40px;
         right: 10px;
@@ -187,7 +187,6 @@
 
     .btn {
         margin: 10px;
-        font-size: 1.5vw;
         color: black;
         /*text-transform: uppercase;*/
         transition: all 0.1s ease-in-out;

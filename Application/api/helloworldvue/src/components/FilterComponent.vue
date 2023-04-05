@@ -140,33 +140,30 @@
   margin-top: 20px;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
-  border-radius: 0.5rem;
-  border: 0.1rem solid #f7f7f7;
-  width: 10rem;
+  width: 150px;
   position: absolute;
-  right: 0.5%;
-  top: 23%;
+  right: 10px;
+  top: 120px;
 }
 
 .f-title{
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1.5;
-  padding: 6px;
+  padding: 4px;
   color: black;
   background-color: rgba(247, 247, 247, 1);
 }
 
-
 .filter-head{
   background: #eee;
-  padding: 10px;
+  padding: 8px;
   font-size: 10px;
-  border-bottom: 1px solid #D8D8D8;
   border-top: 1px solid #D8D8D8;
-  margin: -1px 0;
+  margin: 1px 0;
   color: black;
 }
+
 .filter-head-input{
   display: none;
 }
