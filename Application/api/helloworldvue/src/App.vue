@@ -11,8 +11,14 @@
                     Coordinator
                 </span>
                     <span class="gap"></span>
-                    <div class="dropdown">
-                        <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
+
+                    <div class="person-wrapper">
+                        <div class="person-wrapper background-color">
+                            <img class="person" :src="personIcon"/>
+                            <img class="dropdown-arrow" arrow :src="arrow"/>
+                        </div>
+
+                        <!--                        <button class="dropbtn">Switch User </button>-->
                         <div class="dropdown-content">
                             <a href="#">Volunteer view</a>
                             <a href="#">Account settings</a>
@@ -20,10 +26,11 @@
                         </div>
                     </div>
                 </div>
+
             </nav>
 
-            <!--                <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
-            <!--                          @click.native="selectButton(index)" :selected="item.selected"/>-->
+            <!--                            <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
+            <!--                                      @click.native="selectButton(index)" :selected="item.selected"/>-->
 
             <div v-if=!CallStarted class="buttons">
                 <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label"
@@ -40,6 +47,8 @@
     import myButton from "@/components/myButton";
     import navbar from './components/navbar.vue';
     import companyIcon from "../img/CompanyIcon.png";
+    import personIcon from "../img/person.png"
+    import arrow from "../img/arrow.png"
     // import FilterComponent from './components/FilterComponent.vue';
     export default {
         name: 'App',
@@ -47,6 +56,8 @@
             return {
                 showContent: false,
                 companyIcon: companyIcon,
+                personIcon: personIcon,
+                arrow: arrow,
                 buttons: [
                     {label: 'All Activity', left: '273px', selected: false},
                     {label: 'Actions', left: '426px', selected: false},
@@ -131,6 +142,7 @@
 <style>
     body {
         padding-top: 4vw;
+        font-family: 'Inter';
     }
 
     .callbtn {
@@ -183,6 +195,7 @@
         display: flex;
         justify-content: center;
         outline: none;
+        font-family: 'Inter';
     }
 
     .btn {
@@ -192,6 +205,7 @@
         /*text-transform: uppercase;*/
         transition: all 0.1s ease-in-out;
     }
+
     .btn[label="All Activity"],
     .btn[label="Actions"],
     .btn[label="Referrals"],
@@ -214,10 +228,10 @@
         transform: scale(1.15);
     }
 
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
+    /*.dropdown {*/
+    /*    position: relative;*/
+    /*    display: inline-block;*/
+    /*}*/
 
     .dropbtn {
         background-color: #3A4857;
@@ -232,9 +246,13 @@
     }
 
     .dropdown-arrow {
-        margin-left: 0.4rem;
-        font-size: 0.5rem;
-        transition: transform 0.2s ease-in-out;
+        width: 1.8vw;
+        height: 2vw;
+        transition: all 0.2s ease-out;
+        margin-left: 1vw;
+        /*font-size: 0.5rem;*/
+        /*transition: transform 0.2s ease-in-out;*/
+        /*transform: rotate(180deg);*/
     }
 
     .dropdown-content {
@@ -267,7 +285,7 @@
     }
 
     /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {
+    .person-wrapper:hover .dropdown-content {
         display: block;
         pointer-events: initial;
     }
@@ -285,7 +303,7 @@
         border-bottom: none;
     }
 
-    .dropdown:hover .dropdown-arrow {
+    .person-wrapper:hover .dropdown-arrow {
         transform: rotate(180deg);
     }
 
@@ -296,6 +314,21 @@
         left: 1em;
         top: 3px;
         transition: height 0.2s ease-in-out;
+    }
+
+    .person {
+        /*position: absolute;*/
+        width: 2vw;
+        height: 2vw;
+        right: 1vw;
+        top: 3px;
+        transition: height 0.2s ease-in-out;
+    }
+
+    .person-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
     }
 
     .title {
@@ -314,8 +347,14 @@
     }
 
     .gap {
-        padding-left: 0.4vw;
-        padding-right: 0.4vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+    .background-color{
+        background: darkgrey;
+        padding: 3px;
+        border: 2px solid darkgrey;
+        border-radius: 5px;
     }
 
     /* Dropdown Content (Hidden by Default) */
