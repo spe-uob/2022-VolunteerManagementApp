@@ -8,7 +8,9 @@ import referralTable from "@/components/referralTable"
 import MyOrganisations from './components/myOrganisation'
 import residentPage from '@/components/residentPage'
 import MyResident from '@/component/MyResident'
-
+import Router from 'vue-router'
+import Start_Call from "@/components/Start_Call";
+import action_page from "@/components/action_page";
 
 Vue.use(Router)
 
@@ -19,7 +21,7 @@ const routes = [
         component: aHeader,
         children: [
             {
-                path: '/All Activity',
+                path: '/AllActivity',
                 name: "All_Activity",
                 component: All_Activity,
             },
@@ -55,8 +57,8 @@ const routes = [
                 name: 'Volunteers',
                 component: MyVolunteers
             },
-            { 
-                path: '/Organisations', 
+            {
+                path: '/Organisations',
                 name: 'Organisations',
                 component: MyOrganisations
             },

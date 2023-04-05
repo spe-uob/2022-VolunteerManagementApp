@@ -88,7 +88,7 @@
         methods: {
             goToHomePage() {
                 //first one for frontend test
-                window.location.href = "http://localhost:8080/";
+                window.location.href = "http://localhost:8080/AllActivity";
                 //this is the url
                 // window.location.href="http://localhost:8000/index";
             },
@@ -172,7 +172,7 @@
     .buttons .btn {
         font-weight: 500;
         margin: 10px;
-        font-size: 10px;
+        font-size: 20px;
         color: black;
         /*text-transform: uppercase;*/
         transition: all 0.1s ease-in-out;
@@ -187,10 +187,19 @@
 
     .btn {
         margin: 10px;
-        font-size: 1.5vw;
+        font-size: 2vw;
         color: black;
         /*text-transform: uppercase;*/
         transition: all 0.1s ease-in-out;
+    }
+    .btn[label="All Activity"],
+    .btn[label="Actions"],
+    .btn[label="Referrals"],
+    .btn[label="Residents"],
+    .btn[label="Volunteers"],
+    .btn[label="Organisations"] {
+        /*update the font size*/
+        font-size: 2vw;
     }
 
     .btn:hover {
