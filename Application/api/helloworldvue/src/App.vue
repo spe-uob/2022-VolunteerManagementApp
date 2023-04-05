@@ -14,8 +14,8 @@
                     <div class="dropdown">
                         <button class="dropbtn">Switch User <span class="dropdown-arrow">&#9660;</span></button>
                         <div class="dropdown-content">
-                            <a href="#">Coordinator</a>
-                            <a href="#">Volunteer</a>
+                            <a href="#">Volunteer view</a>
+                            <a href="#">Account settings</a>
                             <a @click="Login_page" href="#">Log Out</a>
                         </div>
                     </div>
