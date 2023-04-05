@@ -19,6 +19,7 @@ Vue.use(VueRouter)
 
 
 const routes = [
+  {path: '/static/src/vue/dist',component: All_Activity},
   { path: '/', component: All_Activity},
   { path: '/Actions', component: actionTable},
   { path: '/referrals', component: referralTable},
