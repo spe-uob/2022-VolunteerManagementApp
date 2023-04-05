@@ -1,7 +1,9 @@
 <template>
     <div>
 
-        <button :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff'}" class="custom-button" @click="$emit('click', $event)">{{ label }}</button>
+        <button :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff'}" class="custom-button"
+                @click="$emit('click', $event)">{{ label }}
+        </button>
     </div>
     <!-- <button :style="{left: left + 'px'}"
             v-bind:class="{'dark-button': clicked, 'light-button': !clicked}"
@@ -13,56 +15,55 @@
     export default {
         name: 'myButton',
         //props: [action],
-        components: {
-        },
+        components: {},
 
-        data(){
+        data() {
             return {
                 clicked: false,
             }
         },
         props: ['label', 'left', 'selected'],
-        computed: {
-
-        },
-        methods: {
-        },
+        computed: {},
+        methods: {},
     }
 </script>
 
 <style scoped>
-.button-container {
-  display: flex;
-  justify-content: space-between;
-}
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+    }
 
-.custom-button {
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  outline: none;
-  background: #ffffff;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
+    .custom-button {
+        color: black;
+        border: none;
+        padding: 10px 25px;
+        outline: none;
+        background: #ffffff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+        font-size: 1vw;
+        font-family: Inter;
+    }
 
-.custom-button:hover {
-  background-color: #f2f2f2;
-}
+    .custom-button:hover {
+        background-color: #f2f2f2;
+    }
 
-.dark-button {
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  outline: none;
-  background: #6B818C;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
+    .dark-button {
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        outline: none;
+        background: #6B818C;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
 
-.clicked {
-  background-color: #334756;
-}
+    .clicked {
+        background-color: #334756;
+    }
+
 </style>

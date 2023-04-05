@@ -22,11 +22,11 @@
       </tr>
 
       <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
-        <td style="color:  black;">{{item.FirstName}}</td>
-        <td style="color:  black;">{{item.LastName}}</td>
-        <td style="color:  black;">{{item.PhoneNumber}}</td>
-        <td style="color:  black;">{{item.Email}}</td>
-        <td style="color:  black;">{{item.TotalTimeGiven}}</td>
+        <td style="color:  black;">{{item.name}}</td>
+        <td style="color:  black;">{{item.age}}</td>
+        <td style="color:  black;">{{item.phone}}</td>
+        <td style="color:  black;">{{item.email}}</td>
+        <td style="color:  black;">{{item.time}}</td>
       </tr>
       </tbody>
     </table>
@@ -86,12 +86,49 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 10,
+      list: [
+        {
+          name: 'Noel',
+          age: 'Wester',
+          phone: '01179123456',
+          email: 'noel.wester@gmail.com',
+          time:'1 day, 5 hours'
+        },
+        {
+          name: 'Noel',
+          age: 'Wes',
+          phone: '355667564532',
+          email: 'noel.wes@gmail.com',
+          time:'5 day, 2 hours',
+          consent:'✓'
+        },
+        {
+          name: 'Noe',
+          age: 'Wester',
+          phone: '465768778787',
+          email: 'noe.wester@gmail.com',
+          time:'1 day, 12 hours'
+        },
+        {
+          name: 'Noel',
+          age: 'Wester',
+          phone: '01179123456',
+          email: 'noel.wester@gmail.com',
+          time:'13 day, 24 hours'
+        },
+        {
+          name: 'Nel',
+          age: 'Weser',
+          phone: '0456667665',
+          email: 'nel.weser@gmail.com',
+          time:'1 day, 5 hours'
+        }
+      ],
     }
   },
   components: {
     FilterComponent: require('./Volunteer_FilterComponent').default,
-    filterComponent: require('./TableSearch').default,
+    filterComponent: require('./VolunteerSearch').default,
   },
   created() {
     this.tableData = this.$store.state.tableData

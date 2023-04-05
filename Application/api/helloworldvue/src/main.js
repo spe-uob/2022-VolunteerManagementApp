@@ -19,10 +19,11 @@ Vue.use(VueRouter)
 
 
 const routes = [
-  // { path: '/', component: App},
+  {path: '/static/src/vue/dist',component: All_Activity},
+  { path: '/', component: All_Activity},
   { path: '/Actions', component: actionTable},
   { path: '/referrals', component: referralTable},
-  { path: '/All Activity', component: All_Activity},
+  { path: '/AllActivity', component: All_Activity},
   { path: '/Start_Call', component: Start_Call},
   { path: '/add/:id', component: residentPage, name: 'add'},
   { path: '/action_page/:id', component: action_page, name: 'action_page'},

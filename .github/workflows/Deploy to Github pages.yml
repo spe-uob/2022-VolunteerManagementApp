@@ -33,18 +33,18 @@ jobs:
         uses: actions/setup-node@v2
         with:
          node-version: '18.x'
-
-      - name: Install dependencies in api dir
+         
+      - name: Install dependencies in api
         run: |
-          cd ./Application/api
-          npm install npm@9.6.1
-
+         cd ./Application/api
+         npm install npm@9.6.1
+         
       - name: Install dependencies in helloworldvue dir
         run: |
          cd ./Application/api/helloworldvue
          npm install npm@9.6.1
-         
-      - name: build site
+
+      - name: build the site
         run: |
          cd ./Application/api/helloworldvue
          npm run build
