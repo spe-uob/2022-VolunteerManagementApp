@@ -17,7 +17,6 @@
                             <img class="person" :src="personIcon"/>
                             <img class="dropdown-arrow" arrow :src="arrow"/>
                         </div>
-
                         <!--                        <button class="dropbtn">Switch User </button>-->
                         <div class="dropdown-content">
                             <a href="#">Volunteer view</a>
@@ -329,6 +328,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        padding-top: 2px;
     }
 
     .title {
