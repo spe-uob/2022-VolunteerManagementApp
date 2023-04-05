@@ -98,6 +98,7 @@
         methods: {
             goToHomePage() {
                 //first one for frontend test
+                window.location.href = "http://localhost:8000/index";
                 window.location.href = "http://localhost:8080/AllActivity";
                 //this is the url
                 // window.location.href="http://localhost:8000/index";
@@ -145,7 +146,7 @@
     }
 
     .callbtn {
-        position: absolute;
+
         width: 100px;
         height: 40px;
         right: 3vw;

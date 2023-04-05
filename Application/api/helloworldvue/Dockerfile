@@ -1,17 +1,13 @@
 # pull official base image
-FROM node:lts-alpine
-
+FROM node:14
 # set work directory
 WORKDIR /usr/src/app
-
 # copy both 'package.json' and 'package-lock.json' (if available)
 COPY package*.json ./
-
 # install project dependencies
 RUN npm install
-
 # copy project
-COPY .. .
-
+COPY . .
+EXPOSE 8080
 # run app
 CMD ["npm", "run", "serve"]

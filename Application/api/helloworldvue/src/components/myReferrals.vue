@@ -4,9 +4,8 @@
 
       <table class="referral_table">
         <thead style="background-color: rgba(247, 247, 247, 1)">
-
-        <tr style="font-size: 1rem;">
-          <td rowspan="4" style="font-size: 1rem;font-weight:bold;">Referrals</td>
+        <tr style="font-size: 12px;">
+          <td rowspan="4" style="font-size: 15px;font-weight:bold;">Referrals</td>
           <td></td>
           <td></td>
           <td></td>
@@ -14,7 +13,7 @@
 
         </thead>
         <tbody>
-        <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
+        <tr style="background-color: rgba(223, 226, 230, 1); height: 50px;">
           <th class="sortable" @click="sortTable('type')">Referral Type<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
           <th class="sortable" @click="sortTable('resident')">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
           <th class="sortable" @click="sortTable('created')">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
@@ -170,6 +169,7 @@ export default {
         {type:'teaching', resident:'Bill',created:'2020-04-08',status:'Inactive'},
         {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
         {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
       ],
       sortOrder:'',
     }
@@ -272,7 +272,7 @@ export default {
 .referral_table {
   border-collapse: collapse;
   border-spacing: 50px;
-  font-size: 1vw;
+  font-size: 12px;
   min-width: 80%;
   margin-left: 5%;
   background-color: #f8f8f8;
@@ -290,7 +290,7 @@ th,td{
   color: black;
   font-weight: bold;
   text-align: left;
-  padding: 0.75rem 1rem;
+  padding: 10px 20px;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }

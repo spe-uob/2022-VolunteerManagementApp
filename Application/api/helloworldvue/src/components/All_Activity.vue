@@ -62,11 +62,11 @@
     <!--    </table>-->
 
     <div>
-      <Action_table></Action_table>
+      <Action_table class="left-table"></Action_table>
     </div>
 
     <div>
-      <Referral_table style="margin-top: 50px"></Referral_table>
+      <Referral_table  class="right-table"></Referral_table>
     </div>
 
 
@@ -99,6 +99,7 @@ export default {
     Referral_FilterComponent: require('./FilterComponent.vue').default,
     Action_FilterComponent: require('./Action_FilterComponent.vue').default
   },
+
   methods: {
 
   }
@@ -107,61 +108,74 @@ export default {
 
 <style scoped>
 
-table {
-  border-collapse: collapse;
-  width: 20%;
-  min-width: 20rem;
-  margin: 0rem;
+.left-table{
   float: left;
-  background-color: #f8f8f8;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  width: 800px;
+  margin-left: 0px;
 }
 
-th,td{
-  border: none;
+.right-table{
+  position: absolute;
+  float: right;
+  width: 600px;
+  margin-left: 720px;
 }
 
-th {
-  background-color: rgba(234, 236, 239, 1);
-  color: black;
-  font-weight: bold;
-  text-align: left;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #ddd;
-  cursor: pointer;
-}
+/*table {*/
+/*  border-collapse: collapse;*/
+/*  width: 20%;*/
+/*  min-width: 20rem;*/
+/*  margin: 0rem;*/
+/*  float: left;*/
+/*  background-color: #f8f8f8;*/
+/*  border-radius: 4px;*/
+/*  overflow: hidden;*/
+/*  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);*/
+/*}*/
 
-th:hover {
-  background-color: #354a63;
-}
+/*th,td{*/
+/*  border: none;*/
+/*}*/
 
-th.sortable:hover {
-  background-color: #dddddd;
-}
+/*th {*/
+/*  background-color: rgba(234, 236, 239, 1);*/
+/*  color: black;*/
+/*  font-weight: bold;*/
+/*  text-align: left;*/
+/*  padding: 0.75rem 1rem;*/
+/*  border-bottom: 1px solid #ddd;*/
+/*  cursor: pointer;*/
+/*}*/
 
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
-  margin-left: 5px;
-}
+/*th:hover {*/
+/*  background-color: #354a63;*/
+/*}*/
 
-th.sortable.asc:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
-}
+/*th.sortable:hover {*/
+/*  background-color: #dddddd;*/
+/*}*/
 
-td {
-  padding: 0.75rem 2rem;
-  border-bottom: 1px solid #ddd;
-  color: #333;
-}
+/*th.sortable:after {*/
+/*  content: "\25B2";*/
+/*  font-size: 12px;*/
+/*  margin-left: 5px;*/
+/*}*/
 
-tr:hover {
-  background-color: #e6e6e6;
-}
+/*th.sortable.asc:after {*/
+/*  content: "\25BC";*/
+/*  font-size: 12px;*/
+/*  margin-left: 5px;*/
+/*}*/
+
+/*td {*/
+/*  padding: 0.75rem 2rem;*/
+/*  border-bottom: 1px solid #ddd;*/
+/*  color: #333;*/
+/*}*/
+
+/*tr:hover {*/
+/*  background-color: #e6e6e6;*/
+/*}*/
 
 .table3{
   background: #ebecf0;
@@ -170,9 +184,8 @@ tr:hover {
   border: 0.1rem solid #f7f7f7;
   width: 10rem;
   position: absolute;
-  /*left: -15rem;*/
-  right: 0.5%;
-  top: 23%;
+  right: 10px;
+  top: 115px;
 }
 
 .table4{
@@ -182,8 +195,8 @@ tr:hover {
   border: 0.1rem solid #f7f7f7;
   width: 10rem;
   position: absolute;
-  right: 0.5%;
-  top: 60%;
+  right: 10px;
+  top: 400px;
 }
 
 .tr-color-0 {
