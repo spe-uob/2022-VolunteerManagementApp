@@ -58,7 +58,7 @@
                 personIcon: personIcon,
                 arrow: arrow,
                 buttons: [
-                    {label: 'All Activity', left: '273px', selected: false},
+                    {label: 'AllActivity', left: '273px', selected: false},
                     {label: 'Actions', left: '426px', selected: false},
                     {label: 'Referrals', left: '579px', selected: false},
                     {label: 'Residents', left: '732px', selected: false},
@@ -148,8 +148,9 @@
         position: absolute;
         width: 100px;
         height: 40px;
-        right: 10px;
-        top: 100px;
+        right: 3vw;
+        /*top: 100px;*/
+        margin-left: 3vw;
         background: #1C405A;
         border-radius: 5px;
         color: white;
@@ -171,7 +172,7 @@
             height: 24px;
             top: 4%;
             font-size: 0.6rem;
-            z-index: 1;
+            /*z-index: 1;*/
         }
     }
 
