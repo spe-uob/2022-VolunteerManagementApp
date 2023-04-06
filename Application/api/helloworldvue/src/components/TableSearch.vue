@@ -9,7 +9,7 @@
       <div>
         <div class="mi">
           <input type="text" v-model="name" placeholder="" v-on:input="changetext"/>
-          <button type="button">Search</button>
+<!--          <button type="button">Search</button>-->
         </div>
         <ul v-show="flag" class="item-ul">
           <li class="item-ul-li" v-for="(item,index) in nlist" :key="index" @click="queryadd(item)">
@@ -232,7 +232,7 @@ ul {
   left: 2.5px;
   top: 3px;
   width:150px;
-  height: 36px;
+  height: 30px;
   border: 2px solid rgba(223, 226, 230, 1);
 }
 
