@@ -32,7 +32,6 @@
       </tr>
       </tbody>
     </table>
-    <router-view></router-view>
   </div>
 </template>
 
@@ -69,7 +68,7 @@ export default {
   },
   methods: {
     handleClick(id){
-      this.$router.push(`/action_page/$1`)
+      this.$router.push(`/action_page/${id}`)
     },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {

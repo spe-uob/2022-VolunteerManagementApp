@@ -74,14 +74,14 @@ export default {
 }
 
 .list-container {
-    background-color: blue;
+    background-color: transparent;
     border:none;
     margin-bottom: 3px;
     top:100px;
     left:200px;
 }
 .back-button {
-  background-color: blue;
+  background-color: transparent;
   border: none;
   color: black;
   font-size: 20px;
@@ -107,7 +107,7 @@ export default {
     left: 100px;
     top: 150px;
 
-    background: green;
+    background: transparent;
     border: none;
     border-radius: 5px;
 }
@@ -115,7 +115,7 @@ export default {
 .form-container{
     box-sizing: border-box;
 
-    background-color: red;
+    background-color: transparent;
     position: relative;
     width: 200px;
     height: 500px;
