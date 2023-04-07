@@ -1,24 +1,27 @@
 <template>
     <div>
-        <div class="box-container">
-            <header>Actions</header>
+        <div class="container-dum">
+            <header :class="title">Actions</header>
+            <div>
+
+            </div>
           <ul class="action-list">
             <li class="action-item" v-for="action in filteredActions" :key="action.id">
                 <a class="name">{{ action.type}}</a>
                 <p class="address">{{ action.date}}</p>
             </li>
-            <button class="btn" @click="openActionform">Add New Action</button>
           </ul>
+          <button class="btn" @click="openActionform">New Action</button>
         </div>
         
-        <div class="box-container2">
+        <div class="container-dum">
             <header>Referrals</header>
           <ul class="action-list">
             <li class="action-item" v-for="action in filteredActions" :key="action.id">
                 <a class="name">{{ action.type}}</a>
             </li>
           </ul>
-          <button class="btn" @click="openActionform">Add New Action</button>
+          <button class="btn" @click="openActionform">New Referral</button>
         </div>
         <div class="container-xyz">
           <addactionform :id="this.id"/>
@@ -35,7 +38,18 @@ import addactionform from './addactionform.vue';
 export default {
   data() {
     return {
-        actions: [],
+        actions: [ 
+          {
+            resident: 1,
+            type: "dog walk",
+            date: "today"
+          },
+          {
+            resident: 1,
+            type: "dog walk",
+            date: "today"
+          }
+        ],
         referrals: [],
         actionForm: false,
         referralForm: false,
@@ -148,23 +162,28 @@ export default {
 </script>
 
 <style>
-  .box-container {
-    position: relative;
-    top: -50px;
-    left: -500px;
-    width: 500px;
-    height: 400px;
-    margin: 0 auto;
+
+  .title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+  }
+  .container-dum {
+    display: inline-block; 
+    margin-right: 20%;
   }
 
   .container-xyz {
-  width: 120px;
-  border: 1px solid #ccc;
-  font-weight: bold;
-  margin-top: 30px;
+    position: relative;
+    float: right;
+    background-color: blue;
+    width: 120px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    margin-top: 30px;
 
 }
-  .box-container2 {
+.box-container2 {
+    background-color: purple;
     position: relative;
     top: 0px;
     left: -500px;
@@ -193,18 +212,8 @@ export default {
   margin-bottom: 10px;
 }
 
-.action-list {
-    box-shadow: -5px -1px 10px rgb(112, 102, 102);
-  background-color: white;
-  width: 20%;
-  list-style: none;
-  padding: 0;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
 .action-item {
-  border: 1px solid #ddd;
+  border: 1px solid black;
   padding: 30px;
   box-sizing: border-box;
   width: 300px;
