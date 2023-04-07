@@ -1,4 +1,5 @@
 <template>
+
     <div>
         <button class="back-button" @click="back">&lt;</button>
         <h1 class="call-title">
@@ -34,8 +35,8 @@ export default {
         return {
             NewResident: false,
             buttons: [
-                    {label: 'New Residents', left: '273px', selected: true},
-                    {label: 'All Resident', left: '426px', selected: false},
+                    {label: 'All Residents   ', left: '273px', selected: true},
+                    {label: 'New Resident', left: '426px', selected: false},
                 ],
         }
     },
@@ -60,15 +61,19 @@ export default {
 </script>
 
 <style>
+
 .btn-container {
-    background-color: transparent;
-    border:none;
-    margin-bottom: 3px;
-    padding-bottom: 5px;
-    padding-left: 3px;
-    padding-bottom: 3px;
-    position: absolute;
-    top:100px;
+  display: inline-block; /* Set display property to inline-block to make the buttons display side by side */
+  padding: 10px 20px;
+  background-color: transparent;
+  top: 150px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px; /* Add margin-right to create space between the buttons */
+}
+.btn-container:last-child {
+  margin-right: 0; /* Remove margin-right from the last button to prevent extra space */
 }
 
 .list-container {
@@ -86,8 +91,8 @@ export default {
   letter-spacing: -5px;
   cursor: pointer;
   position: absolute;
-  left: 150px;
-  top: 100px;
+  left: 200px;
+  top: 80px;
   display: inline-block;
 }
 .call-title{

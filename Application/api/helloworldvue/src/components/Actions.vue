@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     handleClick(id){
-      this.$router.push(`/action_page/${id}`)
+      this.$router.push(`/action_page/$1`)
     },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
