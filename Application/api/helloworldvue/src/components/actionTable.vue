@@ -260,21 +260,77 @@ export default {
 
 <style>
 
-.container{
-  justify-content: flex-start;
-  align-items: flex-start;
-  vertical-align: top;
-  box-sizing: border-box;
-  position: absolute;
-  width: 1229px;
-  height: 854px;
-  left: 20px;
-  top: 194px;
-  background: rgb(212, 215, 211);
-  border: 1px solid #DFDFDF;
-  border-radius: 5px;
+.Action_table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 50px;
+  font-size: 12px;
+  width: 80%;
+  margin-left: 40px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+@media (max-width: 900px) {
+  .Action_table{
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+
+ th,td{
+  border: none;
+}
+
+.Action_table th {
+  background-color: rgba(234, 236, 239, 1);
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+th:hover {
+  background-color: #354a63;
+}
+
+th.sortable:hover {
+  background-color: #dddddd;
+}
+
+th.sortable:after {
+  content: "\25B2";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+th.sortable.asc:after {
+  content: "\25BC";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+td {
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+tr:hover {
+  background-color: #e6e6e6;
+}
+
+.tr-color-0 {
+  background: #f2f2f2;
+}
+
+.tr-color-1 {
+  background: #fff;
+}
 
 /*table {*/
 /*  border-collapse: collapse;*/

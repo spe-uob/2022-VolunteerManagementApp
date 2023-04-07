@@ -2,7 +2,7 @@
   <div>
     <div>
 
-      <table class="referral_table">
+      <table class="right_table">
         <thead style="background-color: rgba(247, 247, 247, 1)">
         <tr style="font-size: 12px;">
           <td rowspan="4" style="font-size: 15px;font-weight:bold;">Referrals</td>
@@ -269,12 +269,11 @@ export default {
 </script>
 
 <style>
-.referral_table {
+.right_table {
+  table-layout: fixed;
   border-collapse: collapse;
-  border-spacing: 50px;
+  border-spacing: 12px;
   font-size: 12px;
-  min-width: 80%;
-  margin-left: 5%;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
@@ -285,7 +284,7 @@ th,td{
   border: none;
 }
 
-.referral_table th {
+.right_table th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;

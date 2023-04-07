@@ -258,6 +258,65 @@ export default {
 
 <style>
 
+.referral_table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 50px;
+  font-size: 12px;
+  width: 80%;
+  margin-left: 40px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+@media (max-width: 900px) {
+  .referral_table{
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+
+.referral_table th,td{
+  border: none;
+}
+
+.referral_table th {
+  background-color: rgba(234, 236, 239, 1);
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.referral_table th:hover {
+  background-color: #354a63;
+}
+
+.referral_table th.sortable:after {
+  content: "\25B2";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.referral_table th.sortable:active:after {
+  content: "\25BC";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.referral_table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+.referral_table tr:hover {
+  background-color: #e6e6e6;
+}
+
 /*.table-container {*/
 /*    box-sizing: border-box;*/
 /*    position: absolute;*/

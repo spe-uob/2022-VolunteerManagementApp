@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="Action_table">
+    <table class="left_table">
       <thead style="background-color: rgba(247, 247, 247, 1)">
       <tr style="font-size: 12px;">
         <td colspan="2" style=" font-size: 15px;font-weight:bold;">Actions</td>
@@ -148,12 +148,11 @@ export default {
 
 <style>
 
-.Action_table {
+.left_table {
+  table-layout: fixed;
   border-collapse: collapse;
-  border-spacing: 50px;
   font-size: 12px;
-  min-width: 80%;
-  margin-left: 5%;
+  float: left;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
@@ -164,7 +163,7 @@ th,td{
   border: none;
 }
 
-.Action_table th {
+.left_table th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;

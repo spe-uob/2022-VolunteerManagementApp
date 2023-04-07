@@ -118,8 +118,26 @@ export default {
   position: absolute;
   float: right;
   width: 600px;
-  margin-left: 720px;
+  margin-left: 700px;
 }
+
+@media (max-width: 1000px) {
+  .left-table{
+    table-layout: fixed;
+    width: 800px;
+    margin-left: 50px;
+  }
+
+  .right-table{
+    table-layout: fixed;
+    width: 800px;
+    margin-left: 50px;
+    margin-top: 500px;
+ }
+}
+
+
+
 
 /*table {*/
 /*  border-collapse: collapse;*/
@@ -183,7 +201,6 @@ export default {
   border-radius: 0.5rem;
   border: 0.1rem solid #f7f7f7;
   width: 10rem;
-  position: absolute;
   right: 10px;
   top: 115px;
 }
@@ -194,7 +211,6 @@ export default {
   border-radius: 0.5rem;
   border: 0.1rem solid #f7f7f7;
   width: 10rem;
-  position: absolute;
   right: 10px;
   top: 400px;
 }
