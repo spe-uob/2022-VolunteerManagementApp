@@ -32,6 +32,7 @@
       </tr>
       </tbody>
     </table>
+    <router-view></router-view>
   </div>
 </template>
 
