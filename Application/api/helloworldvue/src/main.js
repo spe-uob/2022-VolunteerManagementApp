@@ -29,7 +29,7 @@ const routes = [
   { path: '/action_page/:id', component: action_page, name: 'action_page'},
   { path: '/residents', component: MyResident},
   { path: '/Volunteers', component: MyVolunteers },
-  { path: '/organisation', component: MyOrganisations}
+  { path: '/organisations', component: MyOrganisations}
 ]
 
 const router = new VueRouter({
