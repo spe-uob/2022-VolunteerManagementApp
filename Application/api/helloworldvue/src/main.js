@@ -10,6 +10,7 @@ import MyResident from './components/MyResident'
 import MyVolunteers from './components/MyVolunteers'
 import MyOrganisations from './components/myOrganisation'
 import CreateOrganisation from './components/NewOrganisationForm'
+import UpdateOrganisation from './components/UpdateOrganisationForm'
 import VueRouter from 'vue-router'
 import { loremIpsum } from "lorem-ipsum"
 
@@ -32,6 +33,7 @@ const routes = [
   { path: '/Volunteers', component: MyVolunteers },
   { path: '/organisations', component: MyOrganisations},
   { path: '/createOrganisation', component: CreateOrganisation},
+  { path: '/updateOrganisation', component: UpdateOrganisation}
 ]
 
 const router = new VueRouter({
