@@ -20,7 +20,7 @@
         <th class="sortable">Email<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
       </tr>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+      <tr v-for="(item, index) in userList" :class="'tr-color-' + index % 2" :key="index">
         <td style="color:  black;">{{item.name}}</td>
         <td style="color:  black;">{{item.phone}}</td>
         <td style="color:  black;">{{item.address}}</td>
