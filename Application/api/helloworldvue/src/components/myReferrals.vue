@@ -161,16 +161,15 @@ export default {
   data() {
     return {
       toggle: false,
-      list: [
-        {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
-        {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
-        {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
-        {type:'Food parcel', resident:'john',created:'2022-01-01',status:'Inactive'},
-        {type:'teaching', resident:'Bill',created:'2020-04-08',status:'Inactive'},
-        {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
-        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
-        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
-      ],
+      list: 15,
+        // {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
+        // {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
+        // {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
+        // {type:'Food parcel', resident:'john',created:'2022-01-01',status:'Inactive'},
+        // {type:'teaching', resident:'Bill',created:'2020-04-08',status:'Inactive'},
+        // {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
+        // {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+        // {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
       sortOrder:'',
     }
   },
@@ -262,6 +261,17 @@ export default {
           Completed: 'n/a'
         }
       })
+      if (this.list.length === 0) {
+        for (let i = 0; i < 15; i++) {
+          this.list.push({
+            resident: '',
+            type: '',
+            created: '',
+            status: '',
+            Completed: ''
+          })
+        }
+      }
     })
   },
 }

@@ -9,9 +9,6 @@
         <td></td>
         <td></td>
       </tr>
-      </thead>
-
-      <tbody>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 50px;">
         <th class="sortable" @click="sortTable('help_type')">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
@@ -22,7 +19,10 @@
         <th class="sortable" @click="sortTable('priority')">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
       </tr>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
+      </thead>
+
+      <tbody>
+      <tr  v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
         <td>{{item.help_type}}</td>
         <td>{{item.resident}}</td>
         <td>{{item.Due}}</td>
@@ -44,16 +44,15 @@ export default {
   data() {
     return {
       toggle: false,
-      list: [
-        { help_type: 'Z', resident: 'John Doe', Due: '2021-01-01', status: 'Active' },
-        { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive' },
-        { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' },
-        { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' },
-        { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' },
-        { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' },
-        { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' },
-        { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' },
-      ],
+      list: 15,
+        // { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' },
+        // { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive' },
+        // { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' },
+        // { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' },
+        // { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' },
+        // { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' },
+        // { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' },
+        // { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' },
       sortOrder:'',
     }
   },
@@ -63,11 +62,12 @@ export default {
       required: true
     },
   },
+
   created() {
     this.tableData = this.$store.state.tableData
   },
   methods: {
-    handleClick(id){
+    handleClick(){
       this.$router.push(`/action_page/$1`)
     },
     sortTable(sortKey) {
@@ -105,7 +105,7 @@ export default {
         },
         error: (err) => {
           console.error(JSON.stringify(err))
-        }
+        },
       }).catch((err) => {
         console.err(JSON.stringify(err))
       })
@@ -130,17 +130,30 @@ export default {
   },
   mounted(){
     this.getActions().then((response) => {
-      this.list = response.results.map((result) => {
-        return {
-          id: result.id,
-          resident: result.resident,
-          help_type: result.help_type,
-          Due: 'n/a',
-          assigned: 'n/a',
-          status: result.action_status,
-          priority: result.action_priority
+          this.list = response.results.map((result) => {
+            return {
+              id: result.id,
+              resident: result.resident,
+              help_type: result.help_type,
+              Due: 'n/a',
+              assigned: 'n/a',
+              status: result.action_status,
+              priority: result.action_priority
+            }
+          })
+      if (this.list.length === 0) {
+        for (let i = 0; i < 15; i++) {
+          this.list.push({
+            id: '',
+            resident: '',
+            help_type: '',
+            Due: '',
+            assigned: '',
+            status: '',
+            priority: ''
+          })
         }
-      })
+      }
     })
   },
 }
@@ -149,7 +162,6 @@ export default {
 <style>
 
 .left_table {
-  table-layout: fixed;
   border-collapse: collapse;
   font-size: 12px;
   float: left;
