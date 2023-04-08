@@ -101,7 +101,7 @@
           <!--          </tr>-->
           <!--          </tbody>-->
           <!--        </table>-->
-          <div>
+          <div class="container-table">
             <table class="referral_table">
               <thead style="background-color: rgba(247, 247, 247, 1)">
 
@@ -141,7 +141,7 @@
           </div>
 
           <div>
-            <FilterComponent></FilterComponent>
+            <FilterComponent class="filter"></FilterComponent>
           </div>
 
         </div>
@@ -193,7 +193,7 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   components: {
-    FilterComponent: require('./FilterComponent.vue').default
+    FilterComponent: require('./filter component/FilterComponent.vue').default
   },
   methods: {
     toggleHide() {
@@ -257,6 +257,81 @@ export default {
 </script>
 
 <style>
+.container-table{
+  position: absolute;
+  top: 150px;
+  z-index: -1;
+}
+
+.referral_table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 50px;
+  font-size: 12px;
+  width: 80%;
+  margin-left: 40px;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+@media (max-width: 900px) {
+  .referral_table{
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+
+.referral_table th,td{
+  border: none;
+}
+
+.referral_table th {
+  background-color: rgba(234, 236, 239, 1);
+  color: black;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.referral_table th:hover {
+  background-color: #354a63;
+}
+
+.referral_table th.sortable:after {
+  content: "\25B2";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.referral_table th.sortable:active:after {
+  content: "\25BC";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.referral_table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+.referral_table tr:hover {
+  background-color: #e6e6e6;
+}
+
+.filter{
+  z-index: -1;
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  right: 10px;
+  top: 150px;
+}
 
 /*.table-container {*/
 /*    box-sizing: border-box;*/

@@ -60,15 +60,10 @@
     <!--      </tr>-->
     <!--      </tbody>-->
     <!--    </table>-->
-
-    <div>
+<div class="container-table">
       <Action_table class="left-table"></Action_table>
-    </div>
-
-    <div>
       <Referral_table  class="right-table"></Referral_table>
-    </div>
-
+</div>
 
 
     <div>
@@ -94,32 +89,51 @@ export default {
   components: {
     // referralTable,
     // actionTable,
-    Action_table: require('./Actions.vue').default,
-    Referral_table: require('./myReferrals.vue').default,
-    Referral_FilterComponent: require('./FilterComponent.vue').default,
-    Action_FilterComponent: require('./Action_FilterComponent.vue').default
+    Action_table: require('./table component/Actions.vue').default,
+    Referral_table: require('./table component/myReferrals.vue').default,
+    Referral_FilterComponent: require('./filter component/FilterComponent.vue').default,
+    Action_FilterComponent: require('./filter component/Action_FilterComponent.vue').default
   },
-
   methods: {
 
   }
+
 }
 </script>
 
 <style scoped>
 
+.container-table{
+  position: absolute;
+  top: 150px;
+  z-index: -1;
+}
+
 .left-table{
-  float: left;
   width: 800px;
-  margin-left: 0px;
+  margin-left: 20px;
 }
 
 .right-table{
-  position: absolute;
-  float: right;
   width: 600px;
   margin-left: 720px;
+  margin-top: 0px;
 }
+
+@media (max-width: 1000px) {
+  .left-table{
+    position: relative;
+    width: 800px;
+    margin-left: 50px;
+    bottom: 20px;
+  }
+
+  .right-table{
+    width: 800px;
+    margin-left: 50px;
+ }
+}
+
 
 /*table {*/
 /*  border-collapse: collapse;*/
@@ -178,14 +192,14 @@ export default {
 /*}*/
 
 .table3{
+  z-index: -1;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
   border: 0.1rem solid #f7f7f7;
   width: 10rem;
-  position: absolute;
   right: 10px;
-  top: 115px;
+  top: 150px;
 }
 
 .table4{
@@ -194,7 +208,6 @@ export default {
   border-radius: 0.5rem;
   border: 0.1rem solid #f7f7f7;
   width: 10rem;
-  position: absolute;
   right: 10px;
   top: 400px;
 }

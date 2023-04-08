@@ -9,7 +9,7 @@
         <td></td>
         <td></td>
         <td style="text-align:right">
-          <button @click="showNewForm()">Add</button>
+          <button  style="cursor: pointer;" @click="showNewForm()">Add</button>
         </td>
       </tr>
       </thead>
@@ -144,7 +144,7 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./OrganisationSearch').default,
+    FilterComponent: require('./search_box component/OrganisationSearch.vue').default,
     // Form:Form
   },
   created() {
@@ -224,11 +224,12 @@ export default {
 
 <style>
 .Organisation_table {
+  table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 50px;
-  font-size: 1vw;
+  font-size: 12px;
   min-width: 80%;
-  margin-left: 5%;
+  margin-left: 40px;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;

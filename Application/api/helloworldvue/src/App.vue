@@ -146,7 +146,6 @@
     }
 
     .callbtn {
-
         width: 100px;
         height: 40px;
         right: 3vw;
@@ -257,21 +256,21 @@
     }
 
     .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        border-radius: 4px;
-        transition: all 0.3s ease-out;
-        top: 100%;
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      transition: all 0.3s ease-out;
+      top: 100%;
     }
 
     /* Links inside the dropdown */
     .dropdown-content a,
     .dropdown-content a:hover {
         color: black;
-        font-size: 20px;
+        font-size: 18px;
         padding: 0.8em 1.5em;
         text-decoration: none;
         display: block;

@@ -2,7 +2,7 @@
   <div>
     <div>
 
-      <table class="referral_table">
+      <table class="right_table">
         <thead style="background-color: rgba(247, 247, 247, 1)">
         <tr style="font-size: 12px;">
           <td rowspan="4" style="font-size: 15px;font-weight:bold;">Referrals</td>
@@ -161,16 +161,15 @@ export default {
   data() {
     return {
       toggle: false,
-      list: [
-        {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
-        {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
-        {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
-        {type:'Food parcel', resident:'john',created:'2022-01-01',status:'Inactive'},
-        {type:'teaching', resident:'Bill',created:'2020-04-08',status:'Inactive'},
-        {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
-        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
-        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
-      ],
+      list: 15,
+        // {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
+        // {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
+        // {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
+        // {type:'Food parcel', resident:'john',created:'2022-01-01',status:'Inactive'},
+        // {type:'teaching', resident:'Bill',created:'2020-04-08',status:'Inactive'},
+        // {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
+        // {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+        // {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
       sortOrder:'',
     }
   },
@@ -262,6 +261,17 @@ export default {
           Completed: 'n/a'
         }
       })
+      if (this.list.length === 0) {
+        for (let i = 0; i < 15; i++) {
+          this.list.push({
+            resident: '',
+            type: '',
+            created: '',
+            status: '',
+            Completed: ''
+          })
+        }
+      }
     })
   },
 }
@@ -269,12 +279,11 @@ export default {
 </script>
 
 <style>
-.referral_table {
+.right_table {
+  table-layout: fixed;
   border-collapse: collapse;
-  border-spacing: 50px;
+  border-spacing: 12px;
   font-size: 12px;
-  min-width: 80%;
-  margin-left: 5%;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
@@ -285,7 +294,7 @@ th,td{
   border: none;
 }
 
-.referral_table th {
+.right_table th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;

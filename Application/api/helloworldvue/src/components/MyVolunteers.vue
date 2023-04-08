@@ -127,8 +127,8 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./Volunteer_FilterComponent').default,
-    filterComponent: require('./VolunteerSearch').default,
+    FilterComponent: require('./filter component/Volunteer_FilterComponent.vue').default,
+    filterComponent: require('./search_box component/VolunteerSearch.vue').default,
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -195,15 +195,23 @@ export default {
 
 <style>
 .Volunteer_table {
+  table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 50px;
-  font-size: 1vw;
-  min-width: 80%;
-  margin-left: 5%;
+  font-size: 12px;
+  width: 80%;
+  margin-left: 40px;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 900px) {
+  .Volunteer_table{
+    width: 100%;
+    margin-left: 0px;
+  }
 }
 
 th,td{
