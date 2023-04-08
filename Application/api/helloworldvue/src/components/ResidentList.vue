@@ -3,7 +3,9 @@
       <input class="searchbox" type="text" v-model="search" placeholder="Search Residents"/>
       <ul class="resident-list">
         <li class="resident-item" v-for="resident in filteredResidents" :key="resident.id">
-            <a class="name" @click="showDetails(resident.id)">{{ resident.name }}</a>
+            <router-link :to="{ name: 'add', params: { id: resident.id }}">
+                <a class="name">{{ resident.name }}</a>
+            </router-link>
             <p class="address">{{ resident.address }}</p>
         </li>
       </ul>
@@ -19,7 +21,29 @@ import { RouterView } from 'vue-router';
 export default {
     data() {
         return {
-            residents: [],
+            residents: [
+                { 
+                    name: "Mia Postings",
+                    id: 1,
+                    address: "Brum"
+                },                { 
+                    name: "Mia Postings",
+                    id: 1,
+                    address: "Brum"
+                },                { 
+                    name: "Mia Postings",
+                    id: 1,
+                    address: "Brum"
+                },                { 
+                    name: "Mia Postings",
+                    id: 1,
+                    address: "Brum"
+                },                { 
+                    name: "Mia Postings",
+                    id: 1,
+                    address: "Brum"
+                }
+            ],
             search: ""
         };
     },
@@ -32,6 +56,7 @@ export default {
     },
     methods: {
         showDetails(id) {
+            console.log("link working")
             this.$router.push({
                 name: "add",
                 params: { id: id }
@@ -137,6 +162,10 @@ export default {
     color: #333;
     font-family:'Times New Roman', Times, serif;
     font-size: 20px;
+  }
+
+  .name:hover {
+    color: blue;
   }
   .address {
     color: #555;

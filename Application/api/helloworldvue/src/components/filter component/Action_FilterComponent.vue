@@ -156,13 +156,12 @@ export default {
 
 .filter-container {
   font-weight: bold;
-  margin-top: 20px;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
-  width: 150px;
+  width: 10rem;
   position: absolute;
   right: 10px;
-  top: 120px;
+  top: 140px;
 }
 
 .f-title{

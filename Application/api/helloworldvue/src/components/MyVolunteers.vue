@@ -127,8 +127,8 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./Volunteer_FilterComponent').default,
-    filterComponent: require('./VolunteerSearch').default,
+    FilterComponent: require('./filter component/Volunteer_FilterComponent.vue').default,
+    filterComponent: require('./search_box component/VolunteerSearch.vue').default,
   },
   created() {
     this.tableData = this.$store.state.tableData

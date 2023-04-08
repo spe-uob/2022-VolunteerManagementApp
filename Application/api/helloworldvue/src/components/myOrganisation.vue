@@ -1,12 +1,16 @@
 <template>
   <div>
+  <div>
+
     <table class="Organisation_table">
       <thead style="background-color: rgba(247, 247, 247, 1)">
       <tr style="font-size: 1rem;">
         <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Organisations</td>
         <td></td>
         <td></td>
-        <td></td>
+        <td style="text-align:right">
+          <button  style="cursor: pointer;" @click="showNewForm()">Add</button>
+        </td>
       </tr>
       </thead>
 
@@ -20,8 +24,8 @@
         <th class="sortable">Email<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
       </tr>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
-        <td style="color:  black;">{{item.name}}</td>
+      <tr v-for="(item, index) in userList" :class="'tr-color-' + index % 2" :key="index">
+        <td style="color:  black;" @click="goUpdate(item)">{{item.name}}</td>
         <td style="color:  black;">{{item.phone}}</td>
         <td style="color:  black;">{{item.address}}</td>
         <td style="color:  black;">{{item.contact}}</td>
@@ -85,16 +89,21 @@
     <div>
       <FilterComponent></FilterComponent>
     </div>
+
+  </div>
+<!--    <Form v-if="newFormFlag" @back="closeNewForm()"></Form>-->
   </div>
 </template>
 
 <script>
 import $ from 'jquery';
+// import Form from './NewOrganisationForm'
 
 export default {
+
   data() {
     return {
-      toggle: false,
+      // newFormFlag: false,
       userList: [
         {
           name: 'Noel',
@@ -135,12 +144,26 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./OrganisationSearch').default,
+    FilterComponent: require('./search_box component/OrganisationSearch.vue').default,
+    // Form:Form
   },
   created() {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    // closeNewForm(){
+    //   this.newFormFlag = false;
+    // },
+    showNewForm(){
+      this.$router.push("/createOrganisation");
+      // this.newFormFlag = true;
+    },
+    goUpdate(data){
+      console.log(data);
+      localStorage.setItem("org",JSON.stringify(data));
+      this.$router.push("/updateOrganisation");
+
+    },
     toggleHide() {
       this.toggle = !this.toggle;
     },
@@ -201,11 +224,12 @@ export default {
 
 <style>
 .Organisation_table {
+  table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 50px;
-  font-size: 1vw;
+  font-size: 12px;
   min-width: 80%;
-  margin-left: 5%;
+  margin-left: 40px;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;

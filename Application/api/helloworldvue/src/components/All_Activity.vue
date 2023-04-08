@@ -89,10 +89,10 @@ export default {
   components: {
     // referralTable,
     // actionTable,
-    Action_table: require('./Actions.vue').default,
-    Referral_table: require('./myReferrals.vue').default,
-    Referral_FilterComponent: require('./FilterComponent.vue').default,
-    Action_FilterComponent: require('./Action_FilterComponent.vue').default
+    Action_table: require('./table component/Actions.vue').default,
+    Referral_table: require('./table component/myReferrals.vue').default,
+    Referral_FilterComponent: require('./filter component/FilterComponent.vue').default,
+    Action_FilterComponent: require('./filter component/Action_FilterComponent.vue').default
   },
   methods: {
 

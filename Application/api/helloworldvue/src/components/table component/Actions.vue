@@ -67,7 +67,7 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
-    handleClick(){
+    handleClick() {
       this.$router.push(`/action_page/$1`)
     },
     sortTable(sortKey) {

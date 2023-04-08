@@ -214,8 +214,8 @@ export default {
     }
   },
   components: {
-    FilterComponent: require('./Resident_FilterComponent').default,
-    SearchComponent: require('./TableSearch').default,
+    FilterComponent: require('./filter component/Resident_FilterComponent.vue').default,
+    SearchComponent: require('./search_box component/ResidentSearch.vue').default,
   },
   created() {
     this.tableData = this.$store.state.tableData

@@ -101,7 +101,7 @@
           <!--          </tr>-->
           <!--          </tbody>-->
           <!--        </table>-->
-          <div>
+          <div class="container-table">
             <table class="referral_table">
               <thead style="background-color: rgba(247, 247, 247, 1)">
 
@@ -141,7 +141,7 @@
           </div>
 
           <div>
-            <FilterComponent></FilterComponent>
+            <FilterComponent class="filter"></FilterComponent>
           </div>
 
         </div>
@@ -193,7 +193,7 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   components: {
-    FilterComponent: require('./FilterComponent.vue').default
+    FilterComponent: require('./filter component/FilterComponent.vue').default
   },
   methods: {
     toggleHide() {
@@ -257,6 +257,11 @@ export default {
 </script>
 
 <style>
+.container-table{
+  position: absolute;
+  top: 150px;
+  z-index: -1;
+}
 
 .referral_table {
   table-layout: fixed;
@@ -315,6 +320,17 @@ export default {
 
 .referral_table tr:hover {
   background-color: #e6e6e6;
+}
+
+.filter{
+  z-index: -1;
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  right: 10px;
+  top: 150px;
 }
 
 /*.table-container {*/

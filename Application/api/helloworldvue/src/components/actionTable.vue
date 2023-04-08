@@ -110,7 +110,7 @@
     <!--      </div>-->
 
 
-    <div>
+    <div class="container-table">
       <table class="Action_table">
         <thead style="background-color: rgba(247, 247, 247, 1)">
         <tr style="font-size: 1rem;">
@@ -156,7 +156,7 @@
     </div>
 
     <div>
-      <FilterComponent></FilterComponent>
+      <FilterComponent class="filter"></FilterComponent>
     </div>
 
   </div>
@@ -189,7 +189,7 @@ export default {
     },
   },
   components: {
-    FilterComponent: require('./Action_FilterComponent.vue').default
+    FilterComponent: require('./filter component/Action_FilterComponent.vue').default
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -259,6 +259,12 @@ export default {
 
 
 <style>
+
+.container-table{
+  position: absolute;
+  top: 150px;
+  z-index: -1;
+}
 
 .Action_table {
   table-layout: fixed;
@@ -330,6 +336,17 @@ tr:hover {
 
 .tr-color-1 {
   background: #fff;
+}
+
+.filter{
+  z-index: -1;
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  right: 10px;
+  top: 150px;
 }
 
 /*table {*/

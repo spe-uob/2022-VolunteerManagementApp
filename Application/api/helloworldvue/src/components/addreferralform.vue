@@ -1,24 +1,24 @@
 <template>
     <form>
-      <header class="form-header">Create New Action</header>
-      <div class="form-group">
+        <header>Create New Referral</header>
+    <div class="form-group">
         <label for="help_type">Help Type</label>
-        <input type="text" class="form-control first-input" id="help_type" v-model="help_type" placeholder="help_type">
+        <input class="form-control" id="help_type" v-model="help_type" placeholder="help_type">
         <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-      </div>
-      <div class="form-group">
+    </div>
+    <div class="form-group">
         <label for="datetime">Select date and time:</label>
-        <input type="datetime-local" id="datetime" v-model="dateTime" @change="updateISO" />
-      </div>
-      <div class="form-group">
+         <input type="datetime-local" id="datetime" v-model="dateTime" @change="updateISO" />
+    </div>
+    <div class="form-group">
         <label for="publicDescription">Public Description</label>
-        <input @input="event => text = event.target.value" v-model="publicDescription">
-      </div>
-      <div class="form-group">
+        <input  @input="event => text = event.target.value" v-model="publicDescription">
+    </div>
+    <div class="form-group">
         <label for="privateDescription">Private Description</label>
         <input @input="event => text = event.target.value" v-model="privateDescription">
-      </div>
-      <button type="submit" @click.prevent="submitForm" class="btn btn-primary">Save</button>
+    </div>
+    <button type="submit" @click.prevent="submitForm" class="btn btn-primary">Save</button>
     </form>
   </template>
   
@@ -48,7 +48,7 @@ import $ from 'jquery';
         }
         const csrftoken = this.getCookie('csrftoken')
         const json = await $.ajax({
-            url: "http://localhost:8000/" + "api/actions/",
+            url: "http://localhost:8000/" + "api/referrals/",
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
             },
@@ -101,6 +101,7 @@ import $ from 'jquery';
 
   };
   </script>
+
 <style scoped>
 /* CSS for the form header */
 form header {

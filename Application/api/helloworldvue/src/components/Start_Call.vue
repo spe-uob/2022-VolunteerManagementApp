@@ -44,9 +44,6 @@ export default {
     methods: {
         back(){
             this.$emit('buttonClick')
-            // this.$router.push("/All Activity")
-            // window.location.href = 'http://localhost:8080/static/src/vue/dist';
-            // window.location.href = "http://localhost:8000/index";
             window.location.href = 'http://localhost:8080';
 
         },
@@ -67,7 +64,7 @@ export default {
   padding: 10px 20px;
   background-color: transparent;
   top: 150px;
-  color: white;
+  color: blue;
   border: none;
   border-radius: 5px;
   margin-right: 10px; /* Add margin-right to create space between the buttons */
@@ -118,7 +115,8 @@ export default {
 .form-container{
     box-sizing: border-box;
 
-    position: absolute;
+    background-color: transparent;
+    position: relative;
     width: 200px;
     height: 500px;
     left: 85%;
