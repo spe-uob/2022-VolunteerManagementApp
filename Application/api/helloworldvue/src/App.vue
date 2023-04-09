@@ -308,12 +308,18 @@
     }
 
     .symbol {
-        position: absolute;
-        width: 7vw;
-        height: 3vw;
-        left: 1em;
-        top: 3px;
-        transition: height 0.2s ease-in-out;
+      position: absolute;
+      width: 7vw;
+      height: 3vw;
+      left: 1em;
+      top: 3px;
+      transition: height 0.2s ease-in-out;
+      cursor: pointer;
+    }
+
+    .symbol:hover{
+      opacity: 0.8;
+      transition: opacity 0.3s ease-in-out;
     }
 
     .person {
