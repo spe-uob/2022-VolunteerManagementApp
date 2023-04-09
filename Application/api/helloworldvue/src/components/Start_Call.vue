@@ -9,7 +9,7 @@
             <myButton v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left" @click.native="selectButton(index)" :selected="item.selected" :style="{width: '300px'}"/>
         </div>
         <div class="comp-container">
-            <ResidentList v-if="!NewResident" :style="{ top: '0%', left: '79%'}"/>
+            <ResidentList style="z-index: -1" v-if="!NewResident" :style="{ top: '0%', left: '79%'}"/>
             <div class="form-container">
                 <newResidentForm v-if="NewResident"/>
             </div>
@@ -91,11 +91,13 @@ export default {
   left: 200px;
   top: 80px;
   display: inline-block;
+  z-index: -1;
 }
 .call-title{
-    position: absolute;
-    top: 80px;
-    left: 260px;
+  z-index: -1;
+  position: absolute;
+  top: 80px;
+  left: 260px;
 }
 
 .comp-container{
