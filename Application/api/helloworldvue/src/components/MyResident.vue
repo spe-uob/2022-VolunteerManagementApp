@@ -279,12 +279,12 @@ export default {
     this.getResidents().then((response) => {
       this.list = response.results.map((result) => {
         return {
-          FirstName: result.first_name,
-          LastName: result.last_name,
-          PhoneNumber: result.phone,
-          Email: 'n/a',
-          TotalTimeReceived: 'n/a',
-          Consent: 'n/a',
+          name: result.first_name,
+          age: result.last_name,
+          phone: result.phone,
+          email: 'n/a',
+          time: 'n/a',
+          consent: '✓',
         }
       })
     })
