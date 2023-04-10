@@ -110,13 +110,14 @@ export default {
 }
 
 .left-table{
-  width: 800px;
+  width: 60%;
   margin-left: 20px;
+  margin-top: 0px;
 }
 
 .right-table{
-  width: 600px;
-  margin-left: 720px;
+  width: 40%;
+  margin-left: 52%;
   margin-top: 0px;
 }
 
@@ -129,8 +130,8 @@ export default {
   }
 
   .right-table{
-    width: 700px;
-    margin-left: 50px;
+    width: 800px;
+    margin-left: 20px;
  }
 }
 

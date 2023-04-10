@@ -63,7 +63,7 @@ export default {
   display: inline-block; /* Set display property to inline-block to make the buttons display side by side */
   padding: 10px 20px;
   background-color: transparent;
-  top: 150px;
+  margin-top: 0px;
   color: blue;
   border: none;
   border-radius: 5px;
@@ -81,18 +81,21 @@ export default {
   left:200px;
 }
 .back-button {
+  position: absolute;
   background-color: transparent;
   border: none;
   color: black;
   font-size: 20px;
   letter-spacing: -5px;
   cursor: pointer;
-  position: absolute;
   left: 200px;
   top: 80px;
   display: inline-block;
 }
+
+
 .call-title{
+  z-index: -1;
   position: absolute;
   top: 80px;
   left: 260px;
@@ -100,7 +103,6 @@ export default {
 
 .comp-container{
   box-sizing: border-box;
-
   position: absolute;
   width: 200px;
   height: 500px;

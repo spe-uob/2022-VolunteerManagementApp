@@ -141,6 +141,7 @@
 
 <style>
     body {
+        z-index: 1;
         padding-top: 4vw;
         font-family: 'Inter';
     }
