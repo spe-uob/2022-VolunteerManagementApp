@@ -26,6 +26,15 @@
           <td>{{item.created}}</td>
           <td>{{item.status}}</td>
         </tr>
+
+        <tr v-for=" i in emptyRows" :class="'tr-color-' + i % 2" :key="i">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+
         </tbody>
       </table>
       <!--      <table class="table">-->
@@ -161,7 +170,8 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 15,
+      list: 12,
+      emptyRows: 0,
         // {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
         // {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
         // {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
@@ -250,28 +260,29 @@ export default {
       return cookieValue;
     },
   },
-  mounted(){
-    this.getReferrals().then((response) => {
-      this.list = response.results.map((result) => {
-        return {
-          resident: result.resident,
-          type: result.referral_type,
-          created: result.created_datetime,
-          status: result.referral_status,
-          Completed: 'n/a'
-        }
-      })
-      if (this.list.length === 0) {
-        for (let i = 0; i < 15; i++) {
-          this.list.push({
-            resident: '',
-            type: '',
-            created: '',
-            status: '',
-            Completed: ''
-          })
-        }
-      }
+  // mounted(){
+  //   this.getReferrals().then((response) => {
+  //     this.list = response.results.map((result) => {
+  //       return {
+  //         resident: result.resident,
+  //         type: result.referral_type,
+  //         created: result.created_datetime,
+  //         status: result.referral_status,
+  //       }
+  //     })
+  //   })
+  // },
+  mounted() {
+    this.getReferrals().then(response => {
+      const results = response.results
+      const emptyRows = 12 - results.length
+      this.emptyRows = emptyRows > 0 ? emptyRows : 0
+      this.list = results.map(result => ({
+        resident: result.resident,
+        type: result.referral_type,
+        created: result.created_datetime,
+        status: result.referral_status,
+      }))
     })
   },
 }
@@ -284,6 +295,7 @@ export default {
   border-collapse: collapse;
   border-spacing: 12px;
   font-size: 12px;
+  width: 80%;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;

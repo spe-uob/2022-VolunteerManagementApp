@@ -123,13 +123,13 @@ export default {
 @media (max-width: 1000px) {
   .left-table{
     position: relative;
-    width: 800px;
-    margin-left: 50px;
+    width: 1000px;
+    /*margin-left: 50px;*/
     bottom: 20px;
   }
 
   .right-table{
-    width: 800px;
+    width: 700px;
     margin-left: 50px;
  }
 }

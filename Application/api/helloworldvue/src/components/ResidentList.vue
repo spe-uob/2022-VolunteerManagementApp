@@ -22,23 +22,23 @@ export default {
     data() {
         return {
             residents: [
-                { 
+                {
                     name: "Mia Postings",
                     id: 1,
                     address: "Brum"
-                },                { 
+                },                {
                     name: "Mia Postings",
                     id: 1,
                     address: "Brum"
-                },                { 
+                },                {
                     name: "Mia Postings",
                     id: 1,
                     address: "Brum"
-                },                { 
+                },                {
                     name: "Mia Postings",
                     id: 1,
                     address: "Brum"
-                },                { 
+                },                {
                     name: "Mia Postings",
                     id: 1,
                     address: "Brum"
@@ -119,6 +119,7 @@ export default {
 
 <style scoped>
   .container {
+    z-index: -1;
     position: relative;
     top: 150px;
     left: 100px;

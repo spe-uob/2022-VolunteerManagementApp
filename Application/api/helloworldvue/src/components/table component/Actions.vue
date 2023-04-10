@@ -30,6 +30,16 @@
         <td>{{item.assigned}}</td>
         <td>{{item.priority}}</td>
       </tr>
+
+      <tr v-for=" i in emptyRows" :class="'tr-color-' + i % 2" :key="i">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
       </tbody>
     </table>
   </div>
@@ -44,7 +54,8 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 15,
+      list: 12,
+      emptyRows: 0,
         // { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' },
         // { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive' },
         // { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' },
@@ -67,7 +78,8 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
-    handleClick() {
+    // eslint-disable-next-line no-unused-vars
+    handleClick(id) {
       this.$router.push(`/action_page/$1`)
     },
     sortTable(sortKey) {
@@ -106,6 +118,7 @@ export default {
         error: (err) => {
           console.error(JSON.stringify(err))
         },
+
       }).catch((err) => {
         console.err(JSON.stringify(err))
       })
@@ -128,34 +141,40 @@ export default {
       return cookieValue;
     },
   },
-  mounted(){
-    this.getActions().then((response) => {
-          this.list = response.results.map((result) => {
-            return {
-              id: result.id,
-              resident: result.resident,
-              help_type: result.help_type,
-              Due: 'n/a',
-              assigned: 'n/a',
-              status: result.action_status,
-              priority: result.action_priority
-            }
-          })
-      if (this.list.length === 0) {
-        for (let i = 0; i < 15; i++) {
-          this.list.push({
-            id: '',
-            resident: '',
-            help_type: '',
-            Due: '',
-            assigned: '',
-            status: '',
-            priority: ''
-          })
-        }
-      }
+  // mounted(){
+  //   this.getActions().then((response) => {
+  //         this.list = response.results.map((result) => {
+  //           return {
+  //             id: result.id,
+  //             resident: result.resident,
+  //             help_type: result.help_type,
+  //             Due: 'n/a',
+  //             assigned: 'n/a',
+  //             status: result.action_status,
+  //             priority: result.action_priority
+  //           }
+  //         })
+  //   })
+  // },
+
+   mounted() {
+    this.getActions().then(response => {
+      const results = response.results
+      const emptyRows = 12 - results.length
+      this.emptyRows = emptyRows > 0 ? emptyRows : 0
+      this.list = results.map(result => ({
+        id: result.id,
+        resident: result.resident,
+        help_type: result.help_type,
+        Due: 'n/a',
+        assigned: 'n/a',
+        status: result.action_status,
+        priority: result.action_priority
+      }))
     })
   },
+
+
 }
 </script>
 
@@ -165,6 +184,7 @@ export default {
   border-collapse: collapse;
   font-size: 12px;
   float: left;
+  width: 80%;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
