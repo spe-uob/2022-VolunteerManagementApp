@@ -208,7 +208,7 @@ export default {
 
 </script>
 
-<style scoped lang="scss">
+<style>
 .Volunteer_table {
   table-layout: fixed;
   border-collapse: collapse;
@@ -281,32 +281,7 @@ tr:hover {
   background: #fff;
 }
 
-.mi {
-  text-align: center;
-input {
-  border: 2px solid #B8B8B8;
-  height: 40px;
-  width: 88%;
-  font-size: 16px;
-}
-input:focus{
-  border: 2px solid #3385FF;
-}
-}
-.mi-ul {
-.mi-ul-li{
-  margin: auto;
-  height: 30px;
-  line-height: 30px;
-  width: 35%;
-span{
-  font-size: 16px;
-}
-}
-.mi-ul-li:hover{
-  background-color: #F1F3F4;
-}
-}
+
 .filter-container {
   font-weight: bold;
   margin-top: 20px;
@@ -330,63 +305,10 @@ span{
 }
 
 
-.filter-head{
-  background: #eee;
-  padding: 10px;
-  font-size: 10px;
-  border-bottom: 1px solid #D8D8D8;
-  border-top: 1px solid #D8D8D8;
-  height:30px;
-  margin: -1px 0;
-  color: black;
-}
-.filter-head-input{
-  display: none;
-}
-.arrow-right {
-  display: inline-block;
-  width: 0.45rem;
-  height: 0.45rem;
-  border-top: .10rem solid #666;
-  border-right: .10rem solid #666;
-  margin-right: 6px;
-  transform: rotate(45deg);
-  transition: transform 0.1s ease-in-out;
-}
-
-.filter-head-input:checked+.filter-head .arrow-right{
-  transform: rotate(135deg);
-  transition: transform 0.1s ease-in-out;
-}
-
-label{
-  font-size: 10px;
-  color: black;
-}
-
-.filter-body{
-  background-color: white;
-}
-
 @media (max-width: 1180px ){
   .filter-container{
     display: none;
   }
-}
-button,
-input {
-  border: 0;
-  outline: none;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-ul {
-  list-style: none;
 }
 
 .mi {
@@ -398,52 +320,16 @@ ul {
   border: 2px solid rgba(223, 226, 230, 1);
 }
 
-.mi button {
-  float: right;
-  width: 50px;
-  height: 33px;
-  background-color: rgba(223, 226, 230, 1);
-  font-size: 13px;
-  color: gray;
-}
-
 .mi input {
   float: left;
-  width: 150px;
+  width: 130px;
   height: 33px;
-  padding-left: 10px;
   padding: 0 10px;
   font-size: 14px;
   line-height: 48px;
   border: 1px solid #e0e0e0;
   outline: none;
   transition: all 0.3s;
-}
-
-/*.mi .search {*/
-/*  border: 1px solid #b1191a;*/
-/*}*/
-
-.result-list {
-  display: none;
-  left: 0;
-  top: 48px;
-  width: 454px;
-  border: 1px solid #b1191a;
-  border-top: 0;
-  background: #fff;
-}
-
-.result-list a {
-  display: block;
-  padding: 6px 15px;
-  font-size: 12px;
-  color: #424242;
-  text-decoration: none;
-}
-
-.result-list a:hover {
-  background-color: #eee;
 }
 
 
