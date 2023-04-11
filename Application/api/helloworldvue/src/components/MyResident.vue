@@ -273,6 +273,9 @@ export default {
               resident.time.toLowerCase().includes(this.search.toLowerCase())
           );
         });
+      },
+      queryadd (item) {
+        alert('First Name is' + item.name + '\r\nLast Name is' + item.age + '\r\nPhone Number is' + item.phone + '\r\nEmail is' + item.email+ '\r\nTotal Time Received' + item.time+ '\r\nConsent' + item.consent)
       }
     },
 
