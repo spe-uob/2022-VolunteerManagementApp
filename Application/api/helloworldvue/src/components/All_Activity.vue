@@ -110,28 +110,16 @@ export default {
 }
 
 .left-table{
-  width: 60%;
+  width: 800px;
   margin-left: 20px;
   margin-top: 0px;
 }
 
 .right-table{
-  width: 40%;
-  margin-left: 52%;
+  width: 600px;
+  margin-left: 700px;
   margin-top: 0px;
 }
-
-  @media (max-width: 1180px){
-    .left-table{
-      width: 40%;
-    }
-
-    .right-table{
-      width: 45%;
-      margin-left: 620px;
-    }
-
-  }
 
 
 
@@ -140,7 +128,7 @@ export default {
     position: relative;
     width: 120%;
     margin-left: 5px;
-    bottom: 5px;
+    bottom: 20px;
   }
 
   .right-table{

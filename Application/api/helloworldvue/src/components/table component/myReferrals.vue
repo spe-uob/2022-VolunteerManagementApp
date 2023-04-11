@@ -170,16 +170,19 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 12,
+      // list: 12,
       emptyRows: 0,
-        // {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
-        // {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
-        // {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
-        // {type:'Food parcel', resident:'john',created:'2022-01-01',status:'Inactive'},
-        // {type:'teaching', resident:'Bill',created:'2020-04-08',status:'Inactive'},
-        // {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
-        // {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
-        // {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+      list:
+      [
+        {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
+        {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
+        {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
+        {type:'Food parcel', resident:'john',created:'2022-01-02',status:'Inactive'},
+        {type:'teaching', resident:'Bill',created:'2022-08-19',status:'Inactive'},
+        {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
+        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+      ],
       sortOrder:'',
     }
   },
