@@ -86,10 +86,24 @@
         />
       </header>
     </div> -->
+<!--    <div>-->
+<!--      <FilterComponent></FilterComponent>-->
+<!--    </div>-->
     <div>
-      <FilterComponent></FilterComponent>
+      <div class="filter-container">
+        <div class="f-title">Search</div>
+        <!--    <div class="mi">-->
+        <!--          <input type="search" name="" id="" placeholder="">-->
+        <!--          <button type="button">Search</button>-->
+        <!--        </div>-->
+        <div>
+          <div class="mi">
+            <input type="text" v-model="search"/>
+            <!--          <button type="button">Search</button>-->
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
 <!--    <Form v-if="newFormFlag" @back="closeNewForm()"></Form>-->
   </div>
@@ -143,10 +157,10 @@ export default {
       ]
     }
   },
-  components: {
-    FilterComponent: require('./search_box component/OrganisationSearch.vue').default,
+  // components: {
+  //   FilterComponent: require('./search_box component/OrganisationSearch.vue').default,
     // Form:Form
-  },
+  // },
   created() {
     this.tableData = this.$store.state.tableData
   },
@@ -288,6 +302,55 @@ tr:hover {
 
 .tr-color-1 {
   background: #fff;
+}
+.filter-container {
+  font-weight: bold;
+  margin-top: 20px;
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  position: absolute;
+  right: 0.5%;
+  top: 23%;
+}
+
+.f-title{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 6px;
+  color: black;
+  background-color: rgba(247, 247, 247, 1)
+}
+
+
+@media (max-width: 1180px ){
+  .filter-container{
+    display: none;
+  }
+}
+
+.mi {
+  position: relative;
+  left: 2.5px;
+  top: 3px;
+  width:150px;
+  height: 30px;
+  border: 2px solid rgba(223, 226, 230, 1);
+}
+
+.mi input {
+  float: left;
+  width: 130px;
+  height: 33px;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 48px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  transition: all 0.3s;
 }
 
 
