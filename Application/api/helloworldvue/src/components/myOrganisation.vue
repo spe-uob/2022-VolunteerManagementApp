@@ -153,8 +153,10 @@ export default {
           address:'A',
           email: 'nel.weser@gmail.com',
           contact:'Carol Lamentably',
-        },
-      ]
+        }
+      ],
+      search:"",
+      sortOrder:'',
     }
   },
   // components: {
