@@ -464,15 +464,6 @@ tr:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
 /*.container1 {*/
 /*  position: relative;*/
 /*  width: 70%;*/
