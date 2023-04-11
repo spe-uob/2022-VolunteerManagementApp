@@ -197,137 +197,162 @@ export default {
           age: 'Wester',
           phone: '01179123456',
           email: 'noel.wester@gmail.com',
-          time:'1 day, 5 hours',
-          consent:'✓'
+          time: '1 day, 5 hours',
+          consent: '✓'
         },
         {
           name: 'Noel',
           age: 'Wes',
           phone: '355667564532',
           email: 'noel.wes@gmail.com',
-          time:'5 day, 2 hours',
-          consent:'✓'
+          time: '5 day, 2 hours',
+          consent: '✓'
         },
         {
           name: 'Noe',
           age: 'Wester',
           phone: '465768778787',
           email: 'noe.wester@gmail.com',
-          time:'1 day, 12 hours',
-          consent:'✓'
+          time: '1 day, 12 hours',
+          consent: '✓'
         },
         {
           name: 'Noel',
           age: 'Wester',
           phone: '01179123456',
           email: 'noel.wester@gmail.com',
-          time:'13 day, 24 hours',
-          consent:'✓'
+          time: '13 day, 24 hours',
+          consent: '✓'
         },
         {
           name: 'Nel',
           age: 'Weser',
           phone: '0456667665',
           email: 'nel.weser@gmail.com',
-          time:'1 day, 5 hours',
-          consent:'✓'
+          time: '1 day, 5 hours',
+          consent: '✓'
         }
       ],
-      search:"",
-      sortOrder:'',
+      search: "",
+      sortOrder: '',
     }
-  },
-  computed: {
-    filteredResidents() {
-      return this.list.filter(resident => {
-        // return resident.name.toLowerCase().includes(this.search.toLowerCase());
-        return (
-            resident.name.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.age.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.phone.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.email.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.time.toLowerCase().includes(this.search.toLowerCase())
-        );
-      });
-    }
-  },
-
-  components: {
-    FilterComponent: require('./filter component/Resident_FilterComponent.vue').default,
-    // SearchComponent: require('./search_box component/ResidentSearch.vue').default,
-  },
-  created() {
-    this.tableData = this.$store.state.tableData
   },
   methods: {
-    sortTable(sortKey) {
-      if (this.sortOrder === sortKey) {
-        this.list.reverse();
-      } else {
-        if (sortKey === 'FirstName') {
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-        } else if (sortKey === 'LastName') {
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+    changetext() {
+      this.userList.filter(item => {
+        if (this.name === item.name) {
+          let sin = {
+            name: item.name,
+            age: item.age,
+            phone: item.phone,
+            email: item.email,
+            time: item.time,
+            consent: item.consent
+          }
+          this.nlist.push(sin)
+          this.flag = true
         }
-        this.sortOrder = sortKey;
+      })
+
+      this.nlist.forEach(item => {
+        if (this.name !== item.name) {
+          this.nlist = []
+          this.flag = false
+        }
+      })
+    },
+    computed: {
+      filteredResidents() {
+        return this.list.filter(resident => {
+          // return resident.name.toLowerCase().includes(this.search.toLowerCase());
+          return (
+              resident.name.toLowerCase().includes(this.search.toLowerCase()) ||
+              resident.age.toLowerCase().includes(this.search.toLowerCase()) ||
+              resident.phone.toLowerCase().includes(this.search.toLowerCase()) ||
+              resident.email.toLowerCase().includes(this.search.toLowerCase()) ||
+              resident.time.toLowerCase().includes(this.search.toLowerCase())
+          );
+        });
       }
     },
-    toggleHide() {
-      this.toggle = !this.toggle;
+
+    components: {
+      FilterComponent: require('./filter component/Resident_FilterComponent.vue').default,
+      // SearchComponent: require('./search_box component/ResidentSearch.vue').default,
     },
-    getResidents: async function () {
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/residents/",
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
+    created() {
+      this.tableData = this.$store.state.tableData
+    },
+    methods: {
+      sortTable(sortKey) {
+        if (this.sortOrder === sortKey) {
+          this.list.reverse();
+        } else {
+          if (sortKey === 'FirstName') {
+            this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          } else if (sortKey === 'LastName') {
+            this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          }
+          this.sortOrder = sortKey;
         }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-      return json;
-    },
-    getCookie: function (name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
+      },
+      toggleHide() {
+        this.toggle = !this.toggle;
+      },
+      getResidents: async function () {
+        const csrftoken = this.getCookie('csrftoken')
+        const json = await $.ajax({
+          url: "http://localhost:8000/" + "api/residents/",
+          beforeSend: function (xhr) {
+            xhr.setRequestHeader('X-CSRFToken', csrftoken)
+          },
+          method: "GET",
+          type: "GET",
+          contentType: 'application/json',
+          success: () => {
+            //this.$emit('removed-action', response)
+            console.log("success")
+          },
+          error: (err) => {
+            console.error(JSON.stringify(err))
+          }
+        }).catch((err) => {
+          console.err(JSON.stringify(err))
+        })
+        console.log(JSON.stringify(json))
+        return json;
+      },
+      getCookie: function (name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
           }
         }
-      }
-      return cookieValue;
+        return cookieValue;
+      },
     },
-  },
-  mounted(){
-    this.getResidents().then((response) => {
-      this.list = response.results.map((result) => {
-        return {
-          name: result.first_name,
-          age: result.last_name,
-          phone: result.phone,
-          email: 'n/a',
-          time: 'n/a',
-          consent: '✓',
-        }
+    mounted() {
+      this.getResidents().then((response) => {
+        this.list = response.results.map((result) => {
+          return {
+            name: result.first_name,
+            age: result.last_name,
+            phone: result.phone,
+            email: 'n/a',
+            time: 'n/a',
+            consent: '✓',
+          }
+        })
       })
-    })
-  },
+    },
+  }
 }
 
 </script>
