@@ -24,7 +24,7 @@
         <th class="sortable">Email<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
       </tr>
 
-      <tr v-for="(item, index) in userList" :class="'tr-color-' + index % 2" :key="index">
+      <tr v-for="(item, index) in filteredOrganisation" :class="'tr-color-' + index % 2" :key="index">
         <td style="color:  black;" @click="goUpdate(item)">{{item.name}}</td>
         <td style="color:  black;">{{item.phone}}</td>
         <td style="color:  black;">{{item.address}}</td>
@@ -118,7 +118,8 @@ export default {
   data() {
     return {
       // newFormFlag: false,
-      userList: [
+      toggle: false,
+      list: [
         {
           name: 'Noel',
           phone: '01179123456',
@@ -157,6 +158,20 @@ export default {
       ],
       search:"",
       sortOrder:'',
+    }
+  },
+  computed: {
+    filteredOrganisation() {
+      return this.list.filter(organisation => {
+        // return resident.name.toLowerCase().includes(this.search.toLowerCase());
+        return (
+            organisation.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            organisation.phone.toLowerCase().includes(this.search.toLowerCase()) ||
+            organisation.address.toLowerCase().includes(this.search.toLowerCase()) ||
+            organisation.email.toLowerCase().includes(this.search.toLowerCase()) ||
+            organisation.contact.toLowerCase().includes(this.search.toLowerCase())
+        );
+      });
     }
   },
   // components: {
