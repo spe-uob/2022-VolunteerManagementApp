@@ -8,14 +8,9 @@
       <!--        </div>-->
       <div>
         <div class="mi">
-          <input type="text" v-model="name" placeholder="" v-on:input="changetext"/>
+          <input type="text" v-model="search" placeholder="" v-on:input="changetext"/>
 <!--          <button type="button">Search</button>-->
         </div>
-        <ul v-show="flag" class="item-ul">
-          <li class="item-ul-li" v-for="(item,index) in nlist" :key="index" @click="queryadd(item)">
-            <span>{{item.name}}</span>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
