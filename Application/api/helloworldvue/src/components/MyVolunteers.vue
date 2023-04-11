@@ -21,7 +21,7 @@
         <th class="sortable">Total Time Given<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
       </tr>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+      <tr v-for="(item, index) in filteredVolunteers" :class="'tr-color-' + index % 2" :key="index">
         <td style="color:  black;">{{item.name}}</td>
         <td style="color:  black;">{{item.age}}</td>
         <td style="color:  black;">{{item.phone}}</td>
@@ -74,8 +74,23 @@
       <FilterComponent></FilterComponent>
     </div>
     <div>
-      <filterComponent></filterComponent>
+      <div class="filter-container">
+        <div class="f-title">Search</div>
+        <!--    <div class="mi">-->
+        <!--          <input type="search" name="" id="" placeholder="">-->
+        <!--          <button type="button">Search</button>-->
+        <!--        </div>-->
+        <div>
+          <div class="mi">
+            <input type="text" v-model="search"/>
+            <!--          <button type="button">Search</button>-->
+          </div>
+        </div>
+      </div>
     </div>
+<!--    <div>-->
+<!--      <filterComponent></filterComponent>-->
+<!--    </div>-->
   </div>
 </template>
 
@@ -124,16 +139,44 @@ export default {
           time:'1 day, 5 hours'
         }
       ],
+      search:"",
+      sortOrder:'',
+    }
+  },
+  computed: {
+    filteredVolunteers() {
+      return this.list.filter(volunteer => {
+        // return resident.name.toLowerCase().includes(this.search.toLowerCase());
+        return (
+            volunteer.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            volunteer.age.toLowerCase().includes(this.search.toLowerCase()) ||
+            volunteer.phone.toLowerCase().includes(this.search.toLowerCase()) ||
+            volunteer.email.toLowerCase().includes(this.search.toLowerCase()) ||
+            volunteer.time.toLowerCase().includes(this.search.toLowerCase())
+        );
+      });
     }
   },
   components: {
     FilterComponent: require('./filter component/Volunteer_FilterComponent.vue').default,
-    filterComponent: require('./search_box component/VolunteerSearch.vue').default,
+    // filterComponent: require('./search_box component/VolunteerSearch.vue').default,
   },
   created() {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    sortTable(sortKey) {
+      if (this.sortOrder === sortKey) {
+        this.list.reverse();
+      } else {
+        if (sortKey === 'FirstName') {
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'LastName') {
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }
+        this.sortOrder = sortKey;
+      }
+    },
     toggleHide() {
       this.toggle = !this.toggle;
     },
@@ -264,6 +307,66 @@ tr:hover {
 
 .tr-color-1 {
   background: #fff;
+}
+
+.filter-container {
+  font-weight: bold;
+  margin-top: 20px;
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  position: absolute;
+  right: 0.5%;
+  top: 23%;
+}
+
+.f-title{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 6px;
+  color: black;
+  background-color: rgba(247, 247, 247, 1)
+}
+
+
+@media (max-width: 1180px ){
+  .filter-container{
+    display: none;
+  }
+}
+
+.mi {
+  position: relative;
+  left: 2.5px;
+  top: 3px;
+  width:150px;
+  height: 30px;
+  border: 2px solid rgba(223, 226, 230, 1);
+}
+
+.mi input {
+  float: left;
+  width: 130px;
+  height: 33px;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 48px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.table4{
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  right: 10px;
+  top: 300px;
 }
 
 
