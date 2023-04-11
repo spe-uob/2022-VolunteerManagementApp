@@ -280,7 +280,7 @@ export default {
       this.list = results.map(result => ({
         resident: result.resident,
         type: result.referral_type,
-        created: result.created_datetime,
+        created: 'xxxx-xx-xx',
         status: result.referral_status,
       }))
     })

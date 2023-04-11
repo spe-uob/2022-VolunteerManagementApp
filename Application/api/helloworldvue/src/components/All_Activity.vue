@@ -60,10 +60,10 @@
     <!--      </tr>-->
     <!--      </tbody>-->
     <!--    </table>-->
-<div class="container-table">
+    <div class="container-table">
       <Action_table class="left-table"></Action_table>
       <Referral_table  class="right-table"></Referral_table>
-</div>
+    </div>
 
 
     <div>
@@ -132,7 +132,7 @@ export default {
   .right-table{
     width: 800px;
     margin-left: 20px;
- }
+  }
 }
 
 

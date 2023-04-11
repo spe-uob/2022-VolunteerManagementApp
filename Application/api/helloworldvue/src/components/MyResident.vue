@@ -1,6 +1,11 @@
 <template>
   <div>
 
+<!--    <div class="container-search">-->
+<!--    <input type="text" v-model="search" placeholder="Search">-->
+<!--    </div>-->
+
+
     <table class="Resident_table">
       <thead style="background-color: rgba(247, 247, 247, 1)">
       <tr style="font-size: 1rem;">
@@ -23,7 +28,7 @@
         <th class="sortable" @click="sortTable('Consent')">Consent<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
       </tr>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+      <tr v-for="(item, index) in filteredResidents" :class="'tr-color-' + index % 2" :key="index">
         <td style="color:  black;">{{item.name}}</td>
         <td style="color:  black;">{{item.age}}</td>
         <td style="color:  black;">{{item.phone}}</td>
@@ -153,10 +158,25 @@
     <!--        </tbody>-->
     <!--      </table>-->
     <div>
-      <FilterComponent></FilterComponent>
+      <FilterComponent class="table4"></FilterComponent>
     </div>
+<!--    <div>-->
+<!--      <SearchComponent></SearchComponent>-->
+<!--    </div>-->
     <div>
-      <SearchComponent></SearchComponent>
+      <div class="filter-container">
+        <div class="f-title">Search</div>
+        <!--    <div class="mi">-->
+        <!--          <input type="search" name="" id="" placeholder="">-->
+        <!--          <button type="button">Search</button>-->
+        <!--        </div>-->
+        <div>
+          <div class="mi">
+            <input type="text" v-model="search"/>
+            <!--          <button type="button">Search</button>-->
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -210,12 +230,28 @@ export default {
           consent:'✓'
         }
       ],
+      search:"",
       sortOrder:'',
     }
   },
+  computed: {
+    filteredResidents() {
+      return this.list.filter(resident => {
+        // return resident.name.toLowerCase().includes(this.search.toLowerCase());
+        return (
+            resident.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.age.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.phone.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.email.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.time.toLowerCase().includes(this.search.toLowerCase())
+        );
+      });
+    }
+  },
+
   components: {
     FilterComponent: require('./filter component/Resident_FilterComponent.vue').default,
-    SearchComponent: require('./search_box component/ResidentSearch.vue').default,
+    // SearchComponent: require('./search_box component/ResidentSearch.vue').default,
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -293,9 +329,7 @@ export default {
 
 </script>
 
-<style>
-
-
+<style scoped lang="scss">
 
 .Resident_table {
   table-layout: fixed;
@@ -368,6 +402,67 @@ tr:hover {
 .tr-color-1 {
   background: #fff;
 }
+
+.filter-container {
+  font-weight: bold;
+  margin-top: 20px;
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  position: absolute;
+  right: 0.5%;
+  top: 23%;
+}
+
+.f-title{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  padding: 6px;
+  color: black;
+  background-color: rgba(247, 247, 247, 1)
+}
+
+
+@media (max-width: 1180px ){
+  .filter-container{
+    display: none;
+  }
+}
+
+.mi {
+  position: relative;
+  left: 2.5px;
+  top: 3px;
+  width:150px;
+  height: 30px;
+  border: 2px solid rgba(223, 226, 230, 1);
+}
+
+.mi input {
+  float: left;
+  width: 130px;
+  height: 33px;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 48px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.table4{
+  background: #ebecf0;
+  color: rgba(31, 31, 31, 0.7);
+  border-radius: 0.5rem;
+  border: 0.1rem solid #f7f7f7;
+  width: 10rem;
+  right: 10px;
+  top: 300px;
+}
+
 
 
 

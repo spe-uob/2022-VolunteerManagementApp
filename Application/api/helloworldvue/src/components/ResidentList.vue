@@ -47,6 +47,7 @@ export default {
             search: ""
         };
     },
+
     computed: {
         filteredResidents() {
             return this.residents.filter(resident => {
@@ -54,6 +55,7 @@ export default {
             });
         }
     },
+
     methods: {
         showDetails(id) {
             console.log("link working")
