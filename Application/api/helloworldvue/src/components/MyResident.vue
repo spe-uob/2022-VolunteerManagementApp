@@ -163,25 +163,22 @@
 <!--    <div>-->
 <!--      <SearchComponent></SearchComponent>-->
 <!--    </div>-->
-    <div class="filter-container">
-      <div class="f-title">Search</div>
-      <!--    <div class="mi">-->
-      <!--          <input type="search" name="" id="" placeholder="">-->
-      <!--          <button type="button">Search</button>-->
-      <!--        </div>-->
-      <div>
-        <div class="mi">
-          <input type="text" v-model="name" placeholder="" v-on:input="changetext"/>
-          <!--          <button type="button">Search</button>-->
+    <div>
+      <div class="filter-container">
+        <div class="f-title">Search</div>
+        <!--    <div class="mi">-->
+        <!--          <input type="search" name="" id="" placeholder="">-->
+        <!--          <button type="button">Search</button>-->
+        <!--        </div>-->
+        <div>
+          <div class="mi">
+            <input type="text" v-model="search"/>
+            <!--          <button type="button">Search</button>-->
+          </div>
         </div>
-        <ul v-show="flag" class="item-ul">
-          <li class="item-ul-li" v-for="(item,index) in nlist" :key="index" @click="queryadd(item)">
-            <span>{{item.name}}</span>
-          </li>
-        </ul>
       </div>
     </div>
-      </div>
+  </div>
 </template>
 
 <script>
@@ -197,165 +194,137 @@ export default {
           age: 'Wester',
           phone: '01179123456',
           email: 'noel.wester@gmail.com',
-          time: '1 day, 5 hours',
-          consent: '✓'
+          time:'1 day, 5 hours',
+          consent:'✓'
         },
         {
           name: 'Noel',
           age: 'Wes',
           phone: '355667564532',
           email: 'noel.wes@gmail.com',
-          time: '5 day, 2 hours',
-          consent: '✓'
+          time:'5 day, 2 hours',
+          consent:'✓'
         },
         {
           name: 'Noe',
           age: 'Wester',
           phone: '465768778787',
           email: 'noe.wester@gmail.com',
-          time: '1 day, 12 hours',
-          consent: '✓'
+          time:'1 day, 12 hours',
+          consent:'✓'
         },
         {
           name: 'Noel',
           age: 'Wester',
           phone: '01179123456',
           email: 'noel.wester@gmail.com',
-          time: '13 day, 24 hours',
-          consent: '✓'
+          time:'13 day, 24 hours',
+          consent:'✓'
         },
         {
           name: 'Nel',
           age: 'Weser',
           phone: '0456667665',
           email: 'nel.weser@gmail.com',
-          time: '1 day, 5 hours',
-          consent: '✓'
+          time:'1 day, 5 hours',
+          consent:'✓'
         }
       ],
-      search: "",
-      sortOrder: '',
+      search:"",
+      sortOrder:'',
     }
   },
-  methods: {
-    changetext() {
-      this.userList.filter(item => {
-        if (this.name === item.name) {
-          let sin = {
-            name: item.name,
-            age: item.age,
-            phone: item.phone,
-            email: item.email,
-            time: item.time,
-            consent: item.consent
-          }
-          this.nlist.push(sin)
-          this.flag = true
-        }
-      })
+  computed: {
+    filteredResidents() {
+      return this.list.filter(resident => {
+        // return resident.name.toLowerCase().includes(this.search.toLowerCase());
+        return (
+            resident.name.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.age.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.phone.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.email.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.time.toLowerCase().includes(this.search.toLowerCase())
+        );
+      });
+    }
+  },
 
-      this.nlist.forEach(item => {
-        if (this.name !== item.name) {
-          this.nlist = []
-          this.flag = false
+  components: {
+    FilterComponent: require('./filter component/Resident_FilterComponent.vue').default,
+    // SearchComponent: require('./search_box component/ResidentSearch.vue').default,
+  },
+  created() {
+    this.tableData = this.$store.state.tableData
+  },
+  methods: {
+    sortTable(sortKey) {
+      if (this.sortOrder === sortKey) {
+        this.list.reverse();
+      } else {
+        if (sortKey === 'FirstName') {
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'LastName') {
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         }
-      })
-    },
-    computed: {
-      filteredResidents() {
-        return this.list.filter(resident => {
-          // return resident.name.toLowerCase().includes(this.search.toLowerCase());
-          return (
-              resident.name.toLowerCase().includes(this.search.toLowerCase()) ||
-              resident.age.toLowerCase().includes(this.search.toLowerCase()) ||
-              resident.phone.toLowerCase().includes(this.search.toLowerCase()) ||
-              resident.email.toLowerCase().includes(this.search.toLowerCase()) ||
-              resident.time.toLowerCase().includes(this.search.toLowerCase())
-          );
-        });
-      },
-      queryadd (item) {
-        alert('First Name is' + item.name + '\r\nLast Name is' + item.age + '\r\nPhone Number is' + item.phone + '\r\nEmail is' + item.email+ '\r\nTotal Time Received' + item.time+ '\r\nConsent' + item.consent)
+        this.sortOrder = sortKey;
       }
     },
-
-    components: {
-      FilterComponent: require('./filter component/Resident_FilterComponent.vue').default,
-      // SearchComponent: require('./search_box component/ResidentSearch.vue').default,
+    toggleHide() {
+      this.toggle = !this.toggle;
     },
-    created() {
-      this.tableData = this.$store.state.tableData
-    },
-    methods: {
-      sortTable(sortKey) {
-        if (this.sortOrder === sortKey) {
-          this.list.reverse();
-        } else {
-          if (sortKey === 'FirstName') {
-            this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-          } else if (sortKey === 'LastName') {
-            this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-          }
-          this.sortOrder = sortKey;
+    getResidents: async function () {
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: "http://localhost:8000/" + "api/residents/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
         }
-      },
-      toggleHide() {
-        this.toggle = !this.toggle;
-      },
-      getResidents: async function () {
-        const csrftoken = this.getCookie('csrftoken')
-        const json = await $.ajax({
-          url: "http://localhost:8000/" + "api/residents/",
-          beforeSend: function (xhr) {
-            xhr.setRequestHeader('X-CSRFToken', csrftoken)
-          },
-          method: "GET",
-          type: "GET",
-          contentType: 'application/json',
-          success: () => {
-            //this.$emit('removed-action', response)
-            console.log("success")
-          },
-          error: (err) => {
-            console.error(JSON.stringify(err))
-          }
-        }).catch((err) => {
-          console.err(JSON.stringify(err))
-        })
-        console.log(JSON.stringify(json))
-        return json;
-      },
-      getCookie: function (name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-          const cookies = document.cookie.split(';');
-          for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-              break;
-            }
-          }
-        }
-        return cookieValue;
-      },
-    },
-    mounted() {
-      this.getResidents().then((response) => {
-        this.list = response.results.map((result) => {
-          return {
-            name: result.first_name,
-            age: result.last_name,
-            phone: result.phone,
-            email: 'n/a',
-            time: 'n/a',
-            consent: '✓',
-          }
-        })
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
       })
+      console.log(JSON.stringify(json))
+      return json;
     },
-  }
+    getCookie: function (name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
+    },
+  },
+  mounted(){
+    this.getResidents().then((response) => {
+      this.list = response.results.map((result) => {
+        return {
+          name: result.first_name,
+          age: result.last_name,
+          phone: result.phone,
+          email: 'n/a',
+          time: 'n/a',
+          consent: '✓',
+        }
+      })
+    })
+  },
 }
 
 </script>
