@@ -23,7 +23,7 @@
 <script>
 import ResidentList from './ResidentList.vue'
 import myButton from './myButton.vue'
-import newResidentForm from './newResidentForm.vue'
+import newResidentForm from './add form/newResidentForm.vue'
 export default {
   name: 'Start_Call',
   components: {

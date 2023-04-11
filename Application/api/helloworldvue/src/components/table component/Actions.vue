@@ -10,13 +10,13 @@
         <td></td>
       </tr>
 
-      <tr style="background-color: rgba(223, 226, 230, 1); height: 50px;">
-        <th class="sortable" @click="sortTable('help_type')">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('resident')">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('Due')">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('status')">Status<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('assigned')">Assigned<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('priority')">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+      <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
+        <th class="sortable" @click="sortTable('help_type')">Type</th>
+        <th class="sortable" @click="sortTable('resident')">Resident</th>
+        <th class="sortable" @click="sortTable('Due')">Due</th>
+        <th class="sortable" @click="sortTable('status')">Status</th>
+        <th class="sortable" @click="sortTable('assigned')">Assigned</th>
+        <th class="sortable" @click="sortTable('priority')">Priority</th>
       </tr>
 
       </thead>

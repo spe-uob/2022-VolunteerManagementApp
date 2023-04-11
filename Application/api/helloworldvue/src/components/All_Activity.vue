@@ -121,17 +121,31 @@ export default {
   margin-top: 0px;
 }
 
-@media (max-width: 1000px) {
+  @media (max-width: 1180px){
+    .left-table{
+      width: 40%;
+    }
+
+    .right-table{
+      width: 45%;
+      margin-left: 620px;
+    }
+
+  }
+
+
+
+  @media (max-width: 1000px) {
   .left-table{
     position: relative;
-    width: 1000px;
-    /*margin-left: 50px;*/
-    bottom: 20px;
+    width: 120%;
+    margin-left: 5px;
+    bottom: 5px;
   }
 
   .right-table{
-    width: 800px;
-    margin-left: 20px;
+    width: 120%;
+    margin-left: 5px;
   }
 }
 

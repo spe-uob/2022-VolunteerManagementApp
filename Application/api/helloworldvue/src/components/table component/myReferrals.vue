@@ -13,11 +13,11 @@
 
         </thead>
         <tbody>
-        <tr style="background-color: rgba(223, 226, 230, 1); height: 50px;">
-          <th class="sortable" @click="sortTable('type')">Referral Type<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-          <th class="sortable" @click="sortTable('resident')">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable" @click="sortTable('created')">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-          <th class="sortable" @click="sortTable('status')">Status<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+        <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
+          <th class="sortable" @click="sortTable('type')">Type</th>
+          <th class="sortable" @click="sortTable('resident')">Resident</th>
+          <th class="sortable" @click="sortTable('created')">Created</th>
+          <th class="sortable" @click="sortTable('status')">Status</th>
         </tr>
 
         <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
