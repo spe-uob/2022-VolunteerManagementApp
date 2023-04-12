@@ -21,7 +21,7 @@
                         <div class="dropdown-content">
                             <a href="#">Volunteer view</a>
                             <a href="#">Account settings</a>
-                            <a @click="Login_page" href="#">Log Out</a>
+                            <a @click="Login_page">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 personIcon: personIcon,
                 arrow: arrow,
                 buttons: [
-                    {label: 'All Activity', left: '273px', selected: false},
+                    {label: 'AllActivity', left: '273px', selected: false},
                     {label: 'Actions', left: '426px', selected: false},
                     {label: 'Referrals', left: '579px', selected: false},
                     {label: 'Residents', left: '732px', selected: false},
@@ -340,10 +340,9 @@
     }
 
     .title {
-        position: absolute;
-        width: 4vw;
+        position: fixed;
         height: 2vw;
-        right: 18vw;
+        right: 1vw;
         top: 1vw;
         font-family: 'Inter';
         font-style: normal;
