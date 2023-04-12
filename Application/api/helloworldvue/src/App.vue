@@ -58,7 +58,7 @@
                 personIcon: personIcon,
                 arrow: arrow,
                 buttons: [
-                    {label: 'AllActivity', left: '273px', selected: false},
+                    {label: 'All Activity', left: '273px', selected: false},
                     {label: 'Actions', left: '426px', selected: false},
                     {label: 'Referrals', left: '579px', selected: false},
                     {label: 'Residents', left: '732px', selected: false},
@@ -343,7 +343,7 @@
         position: absolute;
         width: 4vw;
         height: 2vw;
-        right: 20vw;
+        right: 18vw;
         top: 1vw;
         font-family: 'Inter';
         font-style: normal;
@@ -359,9 +359,10 @@
         padding-right: 2vw;
     }
     .background-color{
-        background: darkgrey;
+        background: RGB(114, 140, 159 );
+
         padding: 3px;
-        border: 2px solid darkgrey;
+        border: 2px solid RGB(114, 140, 159 );
         border-radius: 5px;
     }
 
