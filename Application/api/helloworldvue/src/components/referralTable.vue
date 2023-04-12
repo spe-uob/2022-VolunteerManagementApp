@@ -118,13 +118,13 @@
               </thead>
               <tbody>
               <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-                <th class="sortable">ID<div style="display: inline-block;position: absolute;;"><span ></span><br /><span  ></span></div></th>
-                <th class="sortable">Referral Type<div style="display: inline-block;position: absolute;;"><span ></span><br /><span  ></span></div></th>
-                <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-                <th class="sortable">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-                <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-                <th class="sortable">Organisation<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-                <th class="sortable">Completed<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+                <th class="sortable">ID</th>
+                <th class="sortable">Referral Type</th>
+                <th class="sortable">Resident</th>
+                <th class="sortable">Created</th>
+                <th class="sortable">Status</th>
+                <th class="sortable">Organisation</th>
+                <th class="sortable">Completed</th>
               </tr>
 
               <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
@@ -286,7 +286,7 @@ export default {
   border: none;
 }
 
-.referral_table th {
+ th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;
@@ -296,29 +296,29 @@ export default {
   cursor: pointer;
 }
 
-.referral_table th:hover {
+th:hover {
   background-color: #354a63;
 }
 
-.referral_table th.sortable:after {
+th.sortable:after {
   content: "\25B2";
   font-size: 12px;
   margin-left: 5px;
 }
 
-.referral_table th.sortable:active:after {
+th.sortable:active:after {
   content: "\25BC";
   font-size: 12px;
   margin-left: 5px;
 }
 
-.referral_table td {
+ td {
   padding: 1rem 1.5rem;
   border-bottom: 1px solid #ddd;
   color: #333;
 }
 
-.referral_table tr:hover {
+tr:hover {
   background-color: #e6e6e6;
 }
 

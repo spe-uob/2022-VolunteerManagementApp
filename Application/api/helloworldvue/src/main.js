@@ -9,7 +9,7 @@ import action_page from './components/action_page'
 import MyResident from './components/MyResident'
 import MyVolunteers from './components/MyVolunteers'
 import MyOrganisations from './components/myOrganisation'
-import CreateOrganisation from './components/NewOrganisationForm'
+import CreateOrganisation from './components/add form/NewOrganisationForm.vue'
 import UpdateOrganisation from './components/UpdateOrganisationForm'
 import VueRouter from 'vue-router'
 import { loremIpsum } from "lorem-ipsum"

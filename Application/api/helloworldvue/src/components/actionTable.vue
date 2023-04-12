@@ -128,15 +128,15 @@
         <tbody>
 
         <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-          <th class="sortable">ID<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable">Status<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable">Assigned<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-          <th class="sortable">Volunteer<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable">Completed<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+          <th class="sortable">ID</th>
+          <th class="sortable">Help Type</th>
+          <th class="sortable">Resident</th>
+          <th class="sortable">Due</th>
+          <th class="sortable">Status</th>
+          <th class="sortable">Assigned</th>
+          <th class="sortable">Priority</th>
+          <th class="sortable">Volunteer</th>
+          <th class="sortable">Completed</th>
         </tr>
 
         <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
@@ -156,7 +156,7 @@
     </div>
 
     <div>
-      <FilterComponent class="filter"></FilterComponent>
+      <FilterComponent class="table4"></FilterComponent>
     </div>
 
   </div>
@@ -338,7 +338,7 @@ tr:hover {
   background: #fff;
 }
 
-.filter{
+.table4{
   z-index: -1;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
@@ -346,7 +346,7 @@ tr:hover {
   border: 0.1rem solid #f7f7f7;
   width: 10rem;
   right: 10px;
-  top: 150px;
+  top: 200px;
 }
 
 /*table {*/

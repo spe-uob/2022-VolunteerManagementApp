@@ -13,11 +13,11 @@
 
         </thead>
         <tbody>
-        <tr style="background-color: rgba(223, 226, 230, 1); height: 50px;">
-          <th class="sortable" @click="sortTable('type')">Referral Type<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-          <th class="sortable" @click="sortTable('resident')">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-          <th class="sortable" @click="sortTable('created')">Created<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-          <th class="sortable" @click="sortTable('status')">Status<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+        <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
+          <th class="sortable" @click="sortTable('type')">Type</th>
+          <th class="sortable" @click="sortTable('resident')">Resident</th>
+          <th class="sortable" @click="sortTable('created')">Created</th>
+          <th class="sortable" @click="sortTable('status')">Status</th>
         </tr>
 
         <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
@@ -170,16 +170,19 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 12,
+      // list: 12,
       emptyRows: 0,
-        // {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
-        // {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
-        // {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
-        // {type:'Food parcel', resident:'john',created:'2022-01-01',status:'Inactive'},
-        // {type:'teaching', resident:'Bill',created:'2020-04-08',status:'Inactive'},
-        // {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
-        // {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
-        // {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+      list:
+      [
+        {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
+        {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
+        {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
+        {type:'Food parcel', resident:'john',created:'2022-01-02',status:'Inactive'},
+        {type:'teaching', resident:'Bill',created:'2022-08-19',status:'Inactive'},
+        {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
+        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
+      ],
       sortOrder:'',
     }
   },

@@ -460,7 +460,7 @@ tr:hover {
   border: 0.1rem solid #f7f7f7;
   width: 10rem;
   right: 10px;
-  top: 300px;
+  top: 400px;
 }
 
 
