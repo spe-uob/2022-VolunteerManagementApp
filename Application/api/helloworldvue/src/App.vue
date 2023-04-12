@@ -148,11 +148,11 @@
     }
 
     .callbtn {
-        position: relative;
+        /*position: fixed;*/
         width: 100px;
-        height: 40px;
-        right: 1vw;
-        /*top: 100px;*/
+        height: 45px;
+        /*right: 1vw;*/
+        top: 100px;
         margin-left: 3vw;
         background: #1C405A;
         border-radius: 5px;
