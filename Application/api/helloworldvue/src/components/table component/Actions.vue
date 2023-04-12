@@ -10,13 +10,13 @@
         <td></td>
       </tr>
 
-      <tr style="background-color: rgba(223, 226, 230, 1); height: 50px;">
-        <th class="sortable" @click="sortTable('help_type')">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('resident')">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('Due')">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('status')">Status<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('assigned')">Assigned<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('priority')">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+      <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
+        <th class="sortable" @click="sortTable('help_type')">Type</th>
+        <th class="sortable" @click="sortTable('resident')">Resident</th>
+        <th class="sortable" @click="sortTable('Due')">Due</th>
+        <th class="sortable" @click="sortTable('status')">Status</th>
+        <th class="sortable" @click="sortTable('assigned')">Assigned</th>
+        <th class="sortable" @click="sortTable('priority')">Priority</th>
       </tr>
 
       </thead>
@@ -54,16 +54,19 @@ export default {
   data() {
     return {
       toggle: false,
-      list: 12,
+      // list: 12,
       emptyRows: 0,
-        // { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' },
-        // { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive' },
-        // { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' },
-        // { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' },
-        // { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' },
-        // { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' },
-        // { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' },
-        // { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' },
+      list:
+      [
+        { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' },
+        { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive' },
+        { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' },
+        { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' },
+        { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' },
+        { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' },
+        { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' },
+        { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' },
+    ],
       sortOrder:'',
     }
   },

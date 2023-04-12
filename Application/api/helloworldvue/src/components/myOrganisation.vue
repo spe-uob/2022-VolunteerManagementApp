@@ -253,7 +253,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 .Organisation_table {
   table-layout: fixed;
   border-collapse: collapse;

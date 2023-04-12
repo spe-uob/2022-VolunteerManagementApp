@@ -71,7 +71,7 @@
     <!--        </tbody>-->
     <!--      </table>-->
     <div>
-      <FilterComponent></FilterComponent>
+      <FilterComponent class="table4"></FilterComponent>
     </div>
     <div>
       <div class="filter-container">
@@ -236,7 +236,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped lang="scss">
 .Volunteer_table {
   table-layout: fixed;
   border-collapse: collapse;

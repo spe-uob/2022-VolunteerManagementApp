@@ -34,8 +34,8 @@
 
 <script>
 import $ from 'jquery';
-import addactionform from './addactionform.vue';
-import addreferralform from './addreferralform.vue'
+import addactionform from './add form/addactionform.vue';
+import addreferralform from './add form/addreferralform.vue'
 
 export default {
   data() {

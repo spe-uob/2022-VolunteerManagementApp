@@ -1,6 +1,6 @@
 <template>
   <div class="filter-container">
-    <div class="f-title">Volunteer Filters</div>
+    <div class="f-title">Filters</div>
     <div>
       <label for="id10">
         <input class="filter-head-input" id="id10" type="checkbox">

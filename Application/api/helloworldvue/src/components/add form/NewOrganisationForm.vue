@@ -1,6 +1,6 @@
 <template>
   <form>
-    <div @click="back()">back</div>
+    <div style="cursor: pointer" @click="back()">Back</div>
     <div>
       <h1 class="form-title">Create New Organisation</h1>
     </div>
