@@ -1,7 +1,9 @@
 <template>
     <div>
 
-        <button :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff'}" class="custom-button"
+        <button id="myButton"
+                :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff',color:selected ? '#ffffff' : '#000000'}"
+                class="custom-button"
                 @click="$emit('click', $event)">{{ label }}
         </button>
     </div>
@@ -51,19 +53,21 @@
         background-color: #f2f2f2;
     }
 
+
     .dark-button {
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        outline: none;
-        background: #6B818C;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
+        /*color: white;*/
+        /*border: none;*/
+        /*padding: 10px 20px;*/
+        /*outline: none;*/
+        /*background: #6B818C;*/
+        /*border-radius: 5px;*/
+        /*cursor: pointer;*/
+        /*transition: background-color 0.3s ease-in-out;*/
     }
 
     .clicked {
         background-color: #334756;
+
     }
 
 </style>
