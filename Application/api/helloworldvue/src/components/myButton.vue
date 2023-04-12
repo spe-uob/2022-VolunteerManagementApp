@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <button id="myButton"
+        <button
                 :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff',color:selected ? '#ffffff' : '#000000'}"
                 class="custom-button"
                 @click="$emit('click', $event)">{{ label }}
@@ -31,10 +31,10 @@
 </script>
 
 <style scoped>
-    .button-container {
-        display: flex;
-        justify-content: space-between;
-    }
+    /*.button-container {*/
+    /*    display: flex;*/
+    /*    justify-content: space-between;*/
+    /*}*/
 
     .custom-button {
         color: black;

@@ -35,7 +35,7 @@
                 <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label"
                           :left="item.left"
                           @click.native="selectButton(index)" :selected="item.selected"/>
-                <button class="callbtn" @click="Start_Call">Start Call</button>
+                <button class="callbtn active"  @click="Start_Call" :class="{ active: callbtnActive }">Start Call</button>
             </div>
         </header>
         <router-view></router-view>
@@ -53,6 +53,7 @@
         name: 'App',
         data() {
             return {
+                callbtnActive: false,
                 showContent: false,
                 companyIcon: companyIcon,
                 personIcon: personIcon,
@@ -117,11 +118,12 @@
                 this.updateCallStarted(this.$route.name)
             },
             Start_Call() {
+                this.callbtnActive = true;
                 this.$router.push("/Start_Call")
             },
             back() {
                 this.$emit('buttonClick')
-                this.$router.push("/All Activity")
+                this.$router.push("/AllActivity")
             },
             selectButton(index) {
                 this.buttons.forEach((item, i) => {
@@ -146,7 +148,7 @@
     }
 
     .callbtn {
-        position: fixed;
+        position: relative;
         width: 100px;
         height: 40px;
         right: 1vw;
@@ -156,11 +158,14 @@
         border-radius: 5px;
         color: white;
         cursor: pointer;
-        z-index: -1;
+        z-index: 1;
+
     }
-    .dropdown-content:hover + .callbtn {
-        z-index: 2;
+    .dropdown-content:hover .callbtn {
+        display: none;
     }
+
+
 
     /*@media screen and (max-width: 768px) {*/
     /*    .callbtn {*/
@@ -208,7 +213,7 @@
         margin: 10px;
         font-size: 2vw;
         color: black;
-        /*text-transform: uppercase;*/
+        text-transform: uppercase;
         transition: all 0.1s ease-in-out;
     }
 
@@ -225,9 +230,9 @@
     .btn:hover {
         color: white;
         /*border: 1px solid #3A4857;*/
-        background-color: #3A4857;
-        border-radius: 10px;
-        cursor: pointer;
+        /*background-color: #3A4857;*/
+        /*border-radius: 10px;*/
+        /*cursor: pointer;*/
     }
 
     .btn:active {
@@ -239,17 +244,17 @@
     /*    display: inline-block;*/
     /*}*/
 
-    .dropbtn {
-        background-color: #3A4857;
-        color: white;
-        font-size: 0.8rem;
-        border: none;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-        cursor: pointer;
-    }
+    /*.dropbtn {*/
+    /*    background-color: #3A4857;*/
+    /*    color: white;*/
+    /*    font-size: 0.8rem;*/
+    /*    border: none;*/
+    /*    display: flex;*/
+    /*    align-items: center;*/
+    /*    text-align: center;*/
+    /*    text-transform: uppercase;*/
+    /*    cursor: pointer;*/
+    /*}*/
 
     .dropdown-arrow {
         width: 1.8vw;
@@ -270,14 +275,20 @@
         border-radius: 4px;
         transition: all 0.3s ease-out;
         top: 100%;
-        z-index: 1;
+        z-index: 2
     }
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-    .dropdown-content:hover {
-        display: block;
-    }
+
+    /*.dropdown:hover .dropdown-content:hover {*/
+    /*    display: block;*/
+    /*    position: absolute;*/
+    /*    top: 100%;*/
+    /*    left: 0;*/
+    /*    background-color: white;*/
+    /*    min-width: 200px;*/
+    /*    z-index: 1;*/
+    /*    padding: 5px;*/
+    /*}*/
+
 
 
     /* Links inside the dropdown */
@@ -292,6 +303,13 @@
         transition: transform 0.2s ease-in-out;
 
     }
+    /*.dropdown-content:hover + .callbtn {*/
+    /*    z-index: -1;*/
+    /*}*/
+
+    /* .callbtn:hover {*/
+    /*    z-index: 1;*/
+    /*}*/
 
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
@@ -306,9 +324,11 @@
     }
 
     /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {
+    .dropdown-content:hover {
         font-weight: bold;
     }
+
+
 
     .dropdown-content a {
         border-bottom: 1px solid #eee;
@@ -365,6 +385,7 @@
         display: flex;
         align-items: center;
         color: #FFFFFF;
+
     }
 
     .gap {
@@ -379,6 +400,8 @@
         border: 2px solid RGB(114, 140, 159);
         border-radius: 5px;
     }
+
+
 
     /* Dropdown Content (Hidden by Default) */
     /*.dropdown-content {*/
