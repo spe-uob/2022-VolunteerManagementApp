@@ -21,7 +21,7 @@
                         <div class="dropdown-content">
                             <a href="#">Volunteer view</a>
                             <a href="#">Account settings</a>
-                            <a @click="Login_page" href="#">Log Out</a>
+                            <a @click="Login_page">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                 <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label"
                           :left="item.left"
                           @click.native="selectButton(index)" :selected="item.selected"/>
-                <button class="callbtn" @click="Start_Call">Start Call</button>
+                <button class="callbtn active"  @click="Start_Call" :class="{ active: callbtnActive }">Start Call</button>
             </div>
         </header>
         <router-view></router-view>
@@ -53,6 +53,7 @@
         name: 'App',
         data() {
             return {
+                callbtnActive: false,
                 showContent: false,
                 companyIcon: companyIcon,
                 personIcon: personIcon,
@@ -117,11 +118,12 @@
                 this.updateCallStarted(this.$route.name)
             },
             Start_Call() {
+                this.callbtnActive = true;
                 this.$router.push("/Start_Call")
             },
             back() {
                 this.$emit('buttonClick')
-                this.$router.push("/All Activity")
+                this.$router.push("/AllActivity")
             },
             selectButton(index) {
                 this.buttons.forEach((item, i) => {
@@ -141,41 +143,49 @@
 
 <style>
     body {
-        z-index: 1;
         padding-top: 4vw;
         font-family: 'Inter';
     }
 
     .callbtn {
+        /*position: fixed;*/
         width: 100px;
-        height: 40px;
-        right: 3vw;
-        /*top: 100px;*/
+        height: 45px;
+        /*right: 1vw;*/
+        top: 100px;
         margin-left: 3vw;
         background: #1C405A;
         border-radius: 5px;
         color: white;
         cursor: pointer;
+        z-index: 1;
+
+    }
+    .dropdown-content:hover .callbtn {
+        display: none;
     }
 
-    @media screen and (max-width: 768px) {
-        .callbtn {
-            width: 340px;
-            height: 32px;
-            top: 8%;
-            font-size: 0.8rem;
-        }
-    }
 
-    @media screen and (max-width: 480px) {
-        .callbtn {
-            width: 240px;
-            height: 24px;
-            top: 4%;
-            font-size: 0.6rem;
-            /*z-index: 1;*/
-        }
-    }
+
+    /*@media screen and (max-width: 768px) {*/
+    /*    .callbtn {*/
+    /*        width: 340px;*/
+    /*        height: 32px;*/
+    /*        top: 8%;*/
+    /*        font-size: 0.8rem;*/
+    /*        z-index: 1;*/
+    /*    }*/
+    /*}*/
+
+    /*@media screen and (max-width: 480px) {*/
+    /*    .callbtn {*/
+    /*        width: 240px;*/
+    /*        height: 24px;*/
+    /*        top: 4%;*/
+    /*        font-size: 0.6rem;*/
+    /*        z-index: 1;*/
+    /*    }*/
+    /*}*/
 
     router-link {
         text-decoration: none;
@@ -203,7 +213,7 @@
         margin: 10px;
         font-size: 2vw;
         color: black;
-        /*text-transform: uppercase;*/
+        text-transform: uppercase;
         transition: all 0.1s ease-in-out;
     }
 
@@ -220,9 +230,9 @@
     .btn:hover {
         color: white;
         /*border: 1px solid #3A4857;*/
-        background-color: #3A4857;
-        border-radius: 10px;
-        cursor: pointer;
+        /*background-color: #3A4857;*/
+        /*border-radius: 10px;*/
+        /*cursor: pointer;*/
     }
 
     .btn:active {
@@ -234,17 +244,17 @@
     /*    display: inline-block;*/
     /*}*/
 
-    .dropbtn {
-        background-color: #3A4857;
-        color: white;
-        font-size: 0.8rem;
-        border: none;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        text-transform: uppercase;
-        cursor: pointer;
-    }
+    /*.dropbtn {*/
+    /*    background-color: #3A4857;*/
+    /*    color: white;*/
+    /*    font-size: 0.8rem;*/
+    /*    border: none;*/
+    /*    display: flex;*/
+    /*    align-items: center;*/
+    /*    text-align: center;*/
+    /*    text-transform: uppercase;*/
+    /*    cursor: pointer;*/
+    /*}*/
 
     .dropdown-arrow {
         width: 1.8vw;
@@ -257,15 +267,29 @@
     }
 
     .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      border-radius: 4px;
-      transition: all 0.3s ease-out;
-      top: 100%;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        transition: all 0.3s ease-out;
+        top: 100%;
+        z-index: 2
     }
+
+    /*.dropdown:hover .dropdown-content:hover {*/
+    /*    display: block;*/
+    /*    position: absolute;*/
+    /*    top: 100%;*/
+    /*    left: 0;*/
+    /*    background-color: white;*/
+    /*    min-width: 200px;*/
+    /*    z-index: 1;*/
+    /*    padding: 5px;*/
+    /*}*/
+
+
 
     /* Links inside the dropdown */
     .dropdown-content a,
@@ -277,7 +301,15 @@
         display: block;
         background-color: transparent;
         transition: transform 0.2s ease-in-out;
+
     }
+    /*.dropdown-content:hover + .callbtn {*/
+    /*    z-index: -1;*/
+    /*}*/
+
+    /* .callbtn:hover {*/
+    /*    z-index: 1;*/
+    /*}*/
 
     /* Change color of dropdown links on hover */
     .dropdown-content a:hover {
@@ -292,9 +324,11 @@
     }
 
     /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {
+    .dropdown-content:hover {
         font-weight: bold;
     }
+
+
 
     .dropdown-content a {
         border-bottom: 1px solid #eee;
@@ -309,18 +343,18 @@
     }
 
     .symbol {
-      position: absolute;
-      width: 7vw;
-      height: 3vw;
-      left: 1em;
-      top: 3px;
-      transition: height 0.2s ease-in-out;
-      cursor: pointer;
+        position: absolute;
+        width: 7vw;
+        height: 3vw;
+        left: 1em;
+        top: 3px;
+        transition: height 0.2s ease-in-out;
+        cursor: pointer;
     }
 
-    .symbol:hover{
-      opacity: 0.8;
-      transition: opacity 0.3s ease-in-out;
+    .symbol:hover {
+        opacity: 0.8;
+        transition: opacity 0.3s ease-in-out;
     }
 
     .person {
@@ -340,10 +374,9 @@
     }
 
     .title {
-        position: absolute;
-        width: 4vw;
+        position: fixed;
         height: 2vw;
-        right: 20vw;
+        right: 1vw;
         top: 1vw;
         font-family: 'Inter';
         font-style: normal;
@@ -352,18 +385,23 @@
         display: flex;
         align-items: center;
         color: #FFFFFF;
+
     }
 
     .gap {
         padding-left: 2vw;
         padding-right: 2vw;
     }
-    .background-color{
-        background: darkgrey;
+
+    .background-color {
+        background: RGB(114, 140, 159);
+
         padding: 3px;
-        border: 2px solid darkgrey;
+        border: 2px solid RGB(114, 140, 159);
         border-radius: 5px;
     }
+
+
 
     /* Dropdown Content (Hidden by Default) */
     /*.dropdown-content {*/
