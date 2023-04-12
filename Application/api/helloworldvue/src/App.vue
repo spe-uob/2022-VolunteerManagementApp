@@ -141,41 +141,46 @@
 
 <style>
     body {
-        z-index: 1;
         padding-top: 4vw;
         font-family: 'Inter';
     }
 
     .callbtn {
+        position: fixed;
         width: 100px;
         height: 40px;
-        right: 3vw;
+        right: 1vw;
         /*top: 100px;*/
         margin-left: 3vw;
         background: #1C405A;
         border-radius: 5px;
         color: white;
         cursor: pointer;
+        z-index: -1;
+    }
+    .dropdown-content:hover + .callbtn {
+        z-index: 2;
     }
 
-    @media screen and (max-width: 768px) {
-        .callbtn {
-            width: 340px;
-            height: 32px;
-            top: 8%;
-            font-size: 0.8rem;
-        }
-    }
+    /*@media screen and (max-width: 768px) {*/
+    /*    .callbtn {*/
+    /*        width: 340px;*/
+    /*        height: 32px;*/
+    /*        top: 8%;*/
+    /*        font-size: 0.8rem;*/
+    /*        z-index: 1;*/
+    /*    }*/
+    /*}*/
 
-    @media screen and (max-width: 480px) {
-        .callbtn {
-            width: 240px;
-            height: 24px;
-            top: 4%;
-            font-size: 0.6rem;
-            /*z-index: 1;*/
-        }
-    }
+    /*@media screen and (max-width: 480px) {*/
+    /*    .callbtn {*/
+    /*        width: 240px;*/
+    /*        height: 24px;*/
+    /*        top: 4%;*/
+    /*        font-size: 0.6rem;*/
+    /*        z-index: 1;*/
+    /*    }*/
+    /*}*/
 
     router-link {
         text-decoration: none;
@@ -257,15 +262,23 @@
     }
 
     .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: white;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      border-radius: 4px;
-      transition: all 0.3s ease-out;
-      top: 100%;
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        transition: all 0.3s ease-out;
+        top: 100%;
+        z-index: 1;
     }
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropdown-content:hover {
+        display: block;
+    }
+
 
     /* Links inside the dropdown */
     .dropdown-content a,
@@ -277,6 +290,7 @@
         display: block;
         background-color: transparent;
         transition: transform 0.2s ease-in-out;
+
     }
 
     /* Change color of dropdown links on hover */
@@ -309,18 +323,18 @@
     }
 
     .symbol {
-      position: absolute;
-      width: 7vw;
-      height: 3vw;
-      left: 1em;
-      top: 3px;
-      transition: height 0.2s ease-in-out;
-      cursor: pointer;
+        position: absolute;
+        width: 7vw;
+        height: 3vw;
+        left: 1em;
+        top: 3px;
+        transition: height 0.2s ease-in-out;
+        cursor: pointer;
     }
 
-    .symbol:hover{
-      opacity: 0.8;
-      transition: opacity 0.3s ease-in-out;
+    .symbol:hover {
+        opacity: 0.8;
+        transition: opacity 0.3s ease-in-out;
     }
 
     .person {
@@ -357,11 +371,12 @@
         padding-left: 2vw;
         padding-right: 2vw;
     }
-    .background-color{
-        background: RGB(114, 140, 159 );
+
+    .background-color {
+        background: RGB(114, 140, 159);
 
         padding: 3px;
-        border: 2px solid RGB(114, 140, 159 );
+        border: 2px solid RGB(114, 140, 159);
         border-radius: 5px;
     }
 
