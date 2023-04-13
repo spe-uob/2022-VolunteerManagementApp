@@ -37,6 +37,9 @@ import $ from 'jquery';
     },
     props: ['id'],
     methods: {
+      baseURL: function(){
+        return window.location.origin
+      },
       async submitForm() {
         let action = {
             "help_type": this.help_type,
@@ -48,7 +51,7 @@ import $ from 'jquery';
         }
         const csrftoken = this.getCookie('csrftoken')
         const json = await $.ajax({
-            url: "http://localhost:8000/" + "api/referrals/",
+            url: this.baseURL() + "/api/referrals/",
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
             },

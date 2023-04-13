@@ -198,10 +198,13 @@ export default {
     toggleHide() {
       this.toggle = !this.toggle;
     },
+    baseURL: function(){
+        return window.location.origin
+      },
     getActions: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/actions/",
+        url: this.baseURL() + '/api/actions/',
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },

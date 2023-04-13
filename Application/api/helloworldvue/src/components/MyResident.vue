@@ -24,134 +24,16 @@
       </tr>
 
       <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
-        <td style="color:  black;">{{item.name}}</td>
-        <td style="color:  black;">{{item.age}}</td>
-        <td style="color:  black;">{{item.phone}}</td>
-        <td style="color:  black;">{{item.email}}</td>
-        <td style="color:  black;">{{item.time}}</td>
-        <td style="color:  black;">{{item.consent}}</td>
+        <td style="color:  black;">{{item.FirstName}}</td>
+        <td style="color:  black;">{{item.LastName}}</td>
+        <td style="color:  black;">{{item.PhoneNumber}}</td>
+        <td style="color:  black;">{{item.Email}}</td>
+        <td style="color:  black;">{{item.TotalTimeReceived}}</td>
+        <td style="color:  black;">{{item.Consent}}</td>
       </tr>
       </tbody>
     </table>
-    <!--      <table class="table">-->
-    <!--        <thead>-->
-    <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-    <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Residents</td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--        <tbody>-->
 
-    <!--        <tr>-->
-    <!--          <th>First Name<div style="display: inline-block;position: absolute;top:45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Last Name<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Phone Number<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Email<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Total Time Received<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Consent<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--        </tr>-->
-    <!--        &lt;!&ndash; 用索引值除以 2 取余 &ndash;&gt;-->
-    <!--        <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
-    <!--          <td style="color:  black;">{{item.FirstName}}</td>-->
-    <!--          <td style="color:  black;">{{item.LastName}}</td>-->
-    <!--          <td style="color:  black;">{{item.PhoneNumber}}</td>-->
-    <!--          <td style="color:  black;">{{item.Email}}</td>-->
-    <!--          <td style="color:  black;">{{item.TotalTimeReceived}}</td>-->
-    <!--          <td style="color:  black;">{{item.Consent}}</td>-->
-    <!--        </tr>-->
-    <!--        </tbody>-->
-    <!--      </table>-->
-    <!--      <div class="table1">-->
-    <!--        <thead>-->
-    <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-    <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;">Filters</td>-->
-    <!--          <td></td>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--          <div>-->
-    <!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>Referral Type</td></div>-->
-    <!--          <div v-show="toggle" class="t-body">-->
-    <!--            <p><input type="radio" name="111" id="1">-->
-    <!--              <label for="1">foodbank</label></p >-->
-    <!--            <p><input type="radio" name="111" id="1">-->
-    <!--              <label for="1">gp</label></p >-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div>-->
-    <!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>Status</td></div>-->
-    <!--          <div v-show="toggle" class="t-body">-->
-    <!--&lt;!&ndash;            <p>1</p >&ndash;&gt;-->
-    <!--&lt;!&ndash;            <p>2</p >&ndash;&gt;-->
-    <!--&lt;!&ndash;            <p>3</p >&ndash;&gt;-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--        <div>-->
-    <!--          <div class="t-head" @click="toggleHide()"><td style=font-weight:bold;>organisation</td></div>-->
-    <!--          <div v-show="toggle" class="t-body">-->
-    <!--&lt;!&ndash;            <p>1</p >&ndash;&gt;-->
-    <!--&lt;!&ndash;            <p>2</p >&ndash;&gt;-->
-    <!--&lt;!&ndash;            <p>3</p >&ndash;&gt;-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--     <table class="table1">-->
-    <!--        <thead>-->
-    <!--        <tr>-->
-    <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-    <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;">Filters</td>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-
-    <!--        <tbody>-->
-    <!--        <tr class="info">-->
-    <!--          <td>referral type-->
-    <!--            <select class="classic">-->
-    <!--              <option></option>-->
-    <!--              <option>foodbank</option>-->
-    <!--              <option>gp</option>-->
-    <!--            </select>-->
-
-    <!--          </td>-->
-
-    <!--        </tr>-->
-    <!--        <tr>-->
-    <!--          <td>status-->
-    <!--            <select class="classic">-->
-    <!--              <option></option>-->
-    <!--              <option></option>-->
-    <!--              <option></option>-->
-    <!--            </select>-->
-    <!--          </td>-->
-
-    <!--        </tr>-->
-    <!--        <tr class="info">-->
-    <!--          <td>organisation-->
-    <!--            <select class="classic">-->
-    <!--              <option></option>-->
-    <!--              <option></option>-->
-    <!--              <option></option>-->
-    <!--            </select>-->
-    <!--          </td>-->
-    <!--        </tr>-->
-    <!--        </tbody>-->
-    <!--      </table>-->
     <div>
       <FilterComponent></FilterComponent>
     </div>
@@ -169,46 +51,46 @@ export default {
     return {
       toggle: false,
       list: [
-        {
-          name: 'Noel',
-          age: 'Wester',
-          phone: '01179123456',
-          email: 'noel.wester@gmail.com',
-          time:'1 day, 5 hours',
-          consent:'✓'
-        },
-        {
-          name: 'Noel',
-          age: 'Wes',
-          phone: '355667564532',
-          email: 'noel.wes@gmail.com',
-          time:'5 day, 2 hours',
-          consent:'✓'
-        },
-        {
-          name: 'Noe',
-          age: 'Wester',
-          phone: '465768778787',
-          email: 'noe.wester@gmail.com',
-          time:'1 day, 12 hours',
-          consent:'✓'
-        },
-        {
-          name: 'Noel',
-          age: 'Wester',
-          phone: '01179123456',
-          email: 'noel.wester@gmail.com',
-          time:'13 day, 24 hours',
-          consent:'✓'
-        },
-        {
-          name: 'Nel',
-          age: 'Weser',
-          phone: '0456667665',
-          email: 'nel.weser@gmail.com',
-          time:'1 day, 5 hours',
-          consent:'✓'
-        }
+        // {
+        //   name: 'Noel',
+        //   age: 'Wester',
+        //   phone: '01179123456',
+        //   email: 'noel.wester@gmail.com',
+        //   time:'1 day, 5 hours',
+        //   consent:'✓'
+        // },
+        // {
+        //   name: 'Noel',
+        //   age: 'Wes',
+        //   phone: '355667564532',
+        //   email: 'noel.wes@gmail.com',
+        //   time:'5 day, 2 hours',
+        //   consent:'✓'
+        // },
+        // {
+        //   name: 'Noe',
+        //   age: 'Wester',
+        //   phone: '465768778787',
+        //   email: 'noe.wester@gmail.com',
+        //   time:'1 day, 12 hours',
+        //   consent:'✓'
+        // },
+        // {
+        //   name: 'Noel',
+        //   age: 'Wester',
+        //   phone: '01179123456',
+        //   email: 'noel.wester@gmail.com',
+        //   time:'13 day, 24 hours',
+        //   consent:'✓'
+        // },
+        // {
+        //   name: 'Nel',
+        //   age: 'Weser',
+        //   phone: '0456667665',
+        //   email: 'nel.weser@gmail.com',
+        //   time:'1 day, 5 hours',
+        //   consent:'✓'
+        // }
       ],
       sortOrder:'',
     }
@@ -221,6 +103,9 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    baseURL: function(){
+        return window.location.origin
+      },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
@@ -239,7 +124,7 @@ export default {
     getResidents: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/residents/",
+        url: this.baseURL() + "/api/residents/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },

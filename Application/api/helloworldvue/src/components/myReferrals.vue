@@ -193,6 +193,9 @@ export default {
   },
 
   methods: {
+    baseURL: function(){
+        return window.location.origin
+      },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
@@ -215,7 +218,7 @@ export default {
     getReferrals: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/referrals/",
+        url: this.baseURL() + "/api/referrals/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },

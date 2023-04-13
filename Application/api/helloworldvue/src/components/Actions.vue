@@ -70,6 +70,9 @@ export default {
     handleClick(id){
       this.$router.push(`/action_page/${id}`)
     },
+    baseURL: function(){
+        return window.location.origin
+      },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
@@ -92,7 +95,7 @@ export default {
     getActions: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/actions/",
+        url: this.baseURL() + '/api/actions/',
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -128,7 +131,7 @@ export default {
       return cookieValue;
     },
   },
-  mounted(){
+  async mounted(){
     this.getActions().then((response) => {
       this.list = response.results.map((result) => {
         return {
@@ -141,6 +144,8 @@ export default {
           priority: result.action_priority
         }
       })
+
+      
     })
   },
 }

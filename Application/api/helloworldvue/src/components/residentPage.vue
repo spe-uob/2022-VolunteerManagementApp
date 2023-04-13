@@ -74,6 +74,9 @@ export default {
     }
   },
   methods: {
+    baseURL: function(){
+        return window.location.origin
+      },
     openActionform(){
         this.actionForm = false
         this.referralForm = true
@@ -85,7 +88,7 @@ export default {
     getActions: async function () {
         const csrftoken = this.getCookie('csrftoken')
           const json = await $.ajax({
-              url: `http://localhost:8000/api/actions/`,
+              url: this.baseURL() + '/api/actions/',
               beforeSend: function (xhr) {
                   xhr.setRequestHeader('X-CSRFToken', csrftoken)
               },
@@ -107,7 +110,7 @@ export default {
     getReferrals: async function (){
         const csrftoken = this.getCookie('csrftoken')
           const json = await $.ajax({
-              url: `http://localhost:8000/api/referrals/`,
+              url: this.baseURL() + '/api/referrals/',
               beforeSend: function (xhr) {
                   xhr.setRequestHeader('X-CSRFToken', csrftoken)
               },

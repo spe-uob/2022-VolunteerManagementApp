@@ -43,6 +43,9 @@ import $ from 'jquery';
       };
     },
     methods: {
+      baseURL: function(){
+        return window.location.origin
+      },
       async submitForm() {
         let resident = {
             "first_name": this.firstName,
@@ -53,7 +56,7 @@ import $ from 'jquery';
         }
         const csrftoken = this.getCookie('csrftoken')
         const json = await $.ajax({
-            url: "http://localhost:8000/" + "api/residents/",
+            url: this.baseURL() + "/api/residents/",
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
             },
