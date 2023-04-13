@@ -130,23 +130,73 @@ export default {
       }
       return cookieValue;
     },
+    getResidentByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/residents/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      return json.results.find(obj => obj.id === id);
+    },
+    getHelpTypeByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/helptypes/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      return json.results.find(obj => obj.id === id);
+    },
+    getStatusByID: async function(){
+
+    },
+    getPriorityByID: async function(){
+      
+    }
   },
   async mounted(){
-    this.getActions().then((response) => {
-      this.list = response.results.map((result) => {
-        return {
-          id: result.id,
-          resident: result.resident,
-          help_type: result.help_type,
-          Due: 'n/a',
-          assigned: 'n/a',
-          status: result.action_status,
-          priority: result.action_priority
-        }
-      })
-
-      
-    })
+    const response = await this.getActions();
+    this.list = response.results.map(async (result) => {
+      return {
+        id: result.id,
+        resident: await this.getResidentByID(result.resident),
+        help_type: await this.getHelpTypeByID(result.help_type),
+        Due: 'n/a',
+        assigned: 'n/a',
+        status: result.action_status,
+        priority: result.action_priority
+      };
+    });
+    
   },
 }
 </script>
