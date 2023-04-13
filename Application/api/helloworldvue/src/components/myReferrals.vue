@@ -255,7 +255,7 @@ export default {
     },
   },
   mounted(){
-    this.getReferrals().then((response) => {
+    this.getReferrals().then(async (response) => {
       this.list = response.results.map((result) => {
         return {
           resident: result.resident,
