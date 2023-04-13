@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    <button class="back-button" @click="back">&lt;</button>
+    <!-- <button class="back-button" @click="back">&lt;</button> -->
     <h1 class="call-title">
       Select Resident
     </h1>

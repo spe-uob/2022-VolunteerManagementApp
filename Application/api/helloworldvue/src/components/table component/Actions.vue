@@ -22,14 +22,6 @@
       </thead>
 
       <tbody>
-      <tr style="background-color: rgba(223, 226, 230, 1); height: 50px;">
-        <th class="sortable" @click="sortTable('help_type')">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('resident')">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('Due')">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('status')">Status<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <!-- <th class="sortable" @click="sortTable('assigned')">Assigned<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th> -->
-        <th class="sortable" @click="sortTable('priority')">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
-      </tr>
 
       <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
         <td>{{item.help_type}}</td>

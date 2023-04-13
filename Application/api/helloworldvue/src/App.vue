@@ -31,12 +31,12 @@
             <!--                            <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
             <!--                                      @click.native="selectButton(index)" :selected="item.selected"/>-->
 
-            <div v-if=!CallStarted class="buttons">
-                <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label"
-                          :left="item.left"
-                          @click.native="selectButton(index)" :selected="item.selected"/>
-                <button class="callbtn active"  @click="Start_Call" :class="{ active: callbtnActive }">Start Call</button>
-            </div>
+            <div v-if="!CallStarted && !$route.path.includes('/add')" class="buttons">
+            <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label"
+                    :left="item.left"
+                    @click.native="selectButton(index)" :selected="item.selected"/>
+            <button class="callbtn active"  @click="Start_Call" :class="{ active: callbtnActive }">Start Call</button>
+        </div>
         </header>
         <router-view></router-view>
     </div>
@@ -67,6 +67,7 @@
                     {label: 'Organisations', left: '1038px', selected: false},
                 ],
                 CallStarted: false,
+                previousPath: '',
                 options: ['Account']
             }
         },
@@ -108,9 +109,13 @@
                 window.location.href = "http://localhost:8000/";
             },
             updateCallStarted(routeName) {
-                this.CallStarted = (routeName === '/Start_Call' || routeName.startsWith('/add')) || routeName.startsWith('/action_page');
+                this.CallStarted = (
+                    routeName === '/Start_Call' ||
+                    routeName.startsWith('/add/') ||
+                    routeName.startsWith('/action_page')
+                );
                 localStorage.setItem('callStarted', this.CallStarted);
-            },
+                },
             onBeforeUnload() {
                 //code here
             },
