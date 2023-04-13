@@ -71,46 +71,6 @@ export default {
     return {
       toggle: false,
       list: [
-        // {
-        //   name: 'Noel',
-        //   age: 'Wester',
-        //   phone: '01179123456',
-        //   email: 'noel.wester@gmail.com',
-        //   time:'1 day, 5 hours',
-        //   consent:'✓'
-        // },
-        // {
-        //   name: 'Noel',
-        //   age: 'Wes',
-        //   phone: '355667564532',
-        //   email: 'noel.wes@gmail.com',
-        //   time:'5 day, 2 hours',
-        //   consent:'✓'
-        // },
-        // {
-        //   name: 'Noe',
-        //   age: 'Wester',
-        //   phone: '465768778787',
-        //   email: 'noe.wester@gmail.com',
-        //   time:'1 day, 12 hours',
-        //   consent:'✓'
-        // },
-        // {
-        //   name: 'Noel',
-        //   age: 'Wester',
-        //   phone: '01179123456',
-        //   email: 'noel.wester@gmail.com',
-        //   time:'13 day, 24 hours',
-        //   consent:'✓'
-        // },
-        // {
-        //   name: 'Nel',
-        //   age: 'Weser',
-        //   phone: '0456667665',
-        //   email: 'nel.weser@gmail.com',
-        //   time:'1 day, 5 hours',
-        //   consent:'✓'
-        // }
       ],
       search:"",
       sortOrder:'',
@@ -121,11 +81,11 @@ export default {
       return this.list.filter(resident => {
         // return resident.name.toLowerCase().includes(this.search.toLowerCase());
         return (
-            resident.name.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.age.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.phone.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.email.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.time.toLowerCase().includes(this.search.toLowerCase())
+            resident.FirstName.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.LastName.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.PhoneNumber.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.Email.toLowerCase().includes(this.search.toLowerCase()) ||
+            resident.TotalTimeReceived.toLowerCase().includes(this.search.toLowerCase())
         );
       });
     }
@@ -200,12 +160,12 @@ export default {
     this.getResidents().then((response) => {
       this.list = response.results.map((result) => {
         return {
-          name: result.first_name,
-          age: result.last_name,
-          phone: result.phone,
-          email: 'n/a',
-          time: 'n/a',
-          consent: '✓',
+          FirstName: result.first_name,
+          LastName: result.last_name,
+          PhoneNumber: result.phone,
+          Email: 'n/a',
+          TotalTimeReceived: 'n/a',
+          Consent: '✓',
         }
       })
     })
