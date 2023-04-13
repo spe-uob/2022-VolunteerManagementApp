@@ -196,13 +196,16 @@ export default {
     FilterComponent: require('./filter component/FilterComponent.vue').default
   },
   methods: {
+    baseURL: function(){
+        return window.location.origin
+      },
     toggleHide() {
       this.toggle = !this.toggle;
     },
     getReferrals: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/referrals/",
+        url: this.baseURL() + "/api/referrals/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },

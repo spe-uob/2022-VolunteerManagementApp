@@ -22,12 +22,21 @@
       </thead>
 
       <tbody>
-      <tr  v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
+      <tr style="background-color: rgba(223, 226, 230, 1); height: 50px;">
+        <th class="sortable" @click="sortTable('help_type')">Help Type<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th class="sortable" @click="sortTable('resident')">Resident<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th class="sortable" @click="sortTable('Due')">Due<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th class="sortable" @click="sortTable('status')">Status<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <!-- <th class="sortable" @click="sortTable('assigned')">Assigned<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th> -->
+        <th class="sortable" @click="sortTable('priority')">Priority<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+      </tr>
+
+      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
         <td>{{item.help_type}}</td>
         <td>{{item.resident}}</td>
         <td>{{item.Due}}</td>
         <td>{{item.status}}</td>
-        <td>{{item.assigned}}</td>
+        <!-- <td>{{item.assigned}}</td> -->
         <td>{{item.priority}}</td>
       </tr>
 
@@ -66,7 +75,9 @@ export default {
         { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' },
         { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' },
         { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' },
-    ],
+      ],
+      priority: ["High", "Medium", "Low"],
+      helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
       sortOrder:'',
     }
   },
@@ -85,6 +96,9 @@ export default {
     handleClick(id) {
       this.$router.push(`/action_page/$1`)
     },
+    baseURL: function(){
+        return window.location.origin
+      },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
@@ -107,7 +121,7 @@ export default {
     getActions: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/actions/",
+        url: this.baseURL() + '/api/actions/',
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -143,38 +157,82 @@ export default {
       }
       return cookieValue;
     },
+    getResidentByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/residents/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
+      return json.results.find(obj => obj.id === id).first_name;
+    },
+    getHelpTypeByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/helptypes/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+      return json.results.find(obj => obj.id === id).name;
+    },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = date.toLocaleString('default', { month: 'long' });
+      const day = date.getDate();
+      return `${month} ${day}, ${year}`;
   },
-  // mounted(){
-  //   this.getActions().then((response) => {
-  //         this.list = response.results.map((result) => {
-  //           return {
-  //             id: result.id,
-  //             resident: result.resident,
-  //             help_type: result.help_type,
-  //             Due: 'n/a',
-  //             assigned: 'n/a',
-  //             status: result.action_status,
-  //             priority: result.action_priority
-  //           }
-  //         })
-  //   })
-  // },
-
-   mounted() {
-    this.getActions().then(response => {
-      const results = response.results
-      const emptyRows = 12 - results.length
-      this.emptyRows = emptyRows > 0 ? emptyRows : 0
-      this.list = results.map(result => ({
-        id: result.id,
-        resident: result.resident,
-        help_type: result.help_type,
-        Due: 'n/a',
-        assigned: 'n/a',
-        status: result.action_status,
-        priority: result.action_priority
-      }))
-    })
+    getStatusByID: function(id){
+      return this.helpTypes[id - 1]
+    },
+    getPriorityByID: function(id){
+      return this.priority[id - 1]
+    }
+  },
+  async mounted(){
+    let response = await this.getActions();
+    response = response.results;
+    console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
+    this.list = await Promise.all(response.map(async (result) => {
+    return {
+      id: result.id,
+      resident: await this.getResidentByID(result.resident),
+      help_type: await this.getHelpTypeByID(result.help_type),
+      Due: this.formatDate(result.requested_datetime),
+      assigned: result.assigned_volunteers,
+      status: this.getStatusByID(result.action_status),
+      priority: this.getPriorityByID(result.action_priority)
+    };
+    }));
+    
   },
 
 

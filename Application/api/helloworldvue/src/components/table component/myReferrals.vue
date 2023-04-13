@@ -205,6 +205,9 @@ export default {
   },
 
   methods: {
+    baseURL: function(){
+        return window.location.origin
+      },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
@@ -227,7 +230,7 @@ export default {
     getReferrals: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/referrals/",
+        url: this.baseURL() + "/api/referrals/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -263,29 +266,17 @@ export default {
       return cookieValue;
     },
   },
-  // mounted(){
-  //   this.getReferrals().then((response) => {
-  //     this.list = response.results.map((result) => {
-  //       return {
-  //         resident: result.resident,
-  //         type: result.referral_type,
-  //         created: result.created_datetime,
-  //         status: result.referral_status,
-  //       }
-  //     })
-  //   })
-  // },
-  mounted() {
-    this.getReferrals().then(response => {
-      const results = response.results
-      const emptyRows = 12 - results.length
-      this.emptyRows = emptyRows > 0 ? emptyRows : 0
-      this.list = results.map(result => ({
-        resident: result.resident,
-        type: result.referral_type,
-        created: 'xxxx-xx-xx',
-        status: result.referral_status,
-      }))
+  mounted(){
+    this.getReferrals().then(async (response) => {
+      this.list = response.results.map((result) => {
+        return {
+          resident: result.resident,
+          type: result.referral_type,
+          created: result.created_datetime,
+          status: result.referral_status,
+          Completed: 'n/a'
+        }
+      })
     })
   },
 }

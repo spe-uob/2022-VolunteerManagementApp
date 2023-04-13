@@ -179,6 +179,8 @@ export default {
         {id:'15',help_type:'Volunteer Assigned', resident:'Alice',due:'Wed, Aug 11, 2023',status:'Ongoing',assigned:'1/2',priority:'Normal',volunteer:'D'},
         {id:'17',help_type:'Dog Walking', resident:'Sid',due:'Mon, Jan 1, 2023',status:'Ongoing',assigned:'0/1',priority:'Normal',volunteer:'A'},
       ],
+      priority: ["High", "Medium", "Low"],
+      helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
       sortOrder:'',
     }
   },
@@ -198,10 +200,13 @@ export default {
     toggleHide() {
       this.toggle = !this.toggle;
     },
+    baseURL: function(){
+        return window.location.origin
+      },
     getActions: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/actions/",
+        url: this.baseURL() + '/api/actions/',
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -236,23 +241,81 @@ export default {
       }
       return cookieValue;
     },
-  },
-  mounted(){
-    this.getActions().then((response) => {
-      this.list = response.results.map((result) => {
-        return {
-          id: result.id,
-          resident: result.resident,
-          help_type: result.help_type,
-          Due: 'n/a',
-          status: result.action_status,
-          assigned: result.assigned_date,
-          priority: result.action_priority,
-          volunteer: result.assigned_volunteers,
-          completed: 'n/a'
+    getResidentByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/residents/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
         }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
       })
-    })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
+      return json.results.find(obj => obj.id === id).first_name;
+    },
+    getHelpTypeByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/helptypes/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+      return json.results.find(obj => obj.id === id).name;
+    },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = date.toLocaleString('default', { month: 'long' });
+      const day = date.getDate();
+      return `${month} ${day}, ${year}`;
+  },
+    getStatusByID: function(id){
+      return this.helpTypes[id - 1]
+    },
+    getPriorityByID: function(id){
+      return this.priority[id - 1]
+    }
+  },
+  async mounted(){
+    let response = await this.getActions();
+    response = response.results;
+    console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
+    this.list = await Promise.all(response.map(async (result) => {
+    return {
+      id: result.id,
+      resident: await this.getResidentByID(result.resident),
+      help_type: await this.getHelpTypeByID(result.help_type),
+      Due: this.formatDate(result.requested_datetime),
+      assigned: result.assigned_volunteers,
+      status: this.getStatusByID(result.action_status),
+      priority: this.getPriorityByID(result.action_priority)
+    };
+    }));
   },
 }
 </script>
