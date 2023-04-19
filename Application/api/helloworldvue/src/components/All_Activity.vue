@@ -137,6 +137,21 @@ export default {
   }
 }
 
+@media (min-width: 1600px) {
+  .left-table{
+    position: relative;
+    margin-left: 50px;
+    width: 50%;
+  }
+
+  .right-table{
+    margin-left: 50%;
+    width: 50%;
+  }
+}
+
+
+
 
 /*table {*/
 /*  border-collapse: collapse;*/

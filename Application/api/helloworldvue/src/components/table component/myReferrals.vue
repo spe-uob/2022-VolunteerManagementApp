@@ -14,11 +14,20 @@
         </thead>
         <tbody>
         <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
-          <th class="sortable" @click="sortTable('type')">Type</th>
-          <th class="sortable" @click="sortTable('resident')">Resident</th>
-          <th class="sortable" @click="sortTable('created')">Created</th>
-          <th class="sortable" @click="sortTable('status')">Status</th>
+          <th>Type<span class="sortable1" :class="{ active: activeButton === 0 }" @click="sortTable('type')"></span></th>
+          <th>Resident<span class="sortable1" :class="{ active: activeButton === 1 }" @click="sortTable('resident')"></span></th>
+          <th>Created<span class="sortable1" :class="{ active: activeButton === 2 }" @click="sortTable('created')"></span></th>
+          <th>Status<span class="sortable1" :class="{ active: activeButton === 3 }" @click="sortTable('status')"></span></th>
         </tr>
+
+<!--        <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">-->
+<!--          <th>Type<span class="sortable1" :class="{ active: activeButton === 0 }" @click="sortTable('help_type')"></span></th>-->
+<!--          <th>Resident<span class="sortable1"  :class="{ active: activeButton === 1 }" @click="sortTable('resident')"></span></th>-->
+<!--          <th>Due<span class="sortable1"   :class="{ active: activeButton === 2 }" @click="sortTable('Due')"></span></th>-->
+<!--          <th>Status<span class="sortable1"   :class="{ active: activeButton === 3 }" @click="sortTable('status')"></span></th>-->
+<!--          <th>Assigned<span class="sortable1"  :class="{ active: activeButton === 4 }" @click="sortTable('assigned')"></span></th>-->
+<!--          <th>Priority<span class="sortable1"  :class="{ active: activeButton === 5 }" @click="sortTable('priority')"></span></th>-->
+<!--        </tr>-->
 
         <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
           <td>{{item.type}}</td>
@@ -172,6 +181,7 @@ export default {
       toggle: false,
       // list: 12,
       emptyRows: 0,
+      activeButton: -1,
       list:
       [
         {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
@@ -205,6 +215,15 @@ export default {
   },
 
   methods: {
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        // 当前按钮已经激活，反转状态
+        this.activeButton = -1;
+      } else {
+        // 切换激活状态到新的按钮
+        this.activeButton = index;
+      }
+    },
     baseURL: function(){
         return window.location.origin
       },
@@ -213,12 +232,16 @@ export default {
         this.list.reverse();
       } else {
         if (sortKey === 'created') {
+          this.toggleActive(2);
           this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
         } else if (sortKey === 'type') {
+          this.toggleActive(0);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'resident') {
+          this.toggleActive(1);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'status') {
+          this.toggleActive(3);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         }
         this.sortOrder = sortKey;
@@ -311,19 +334,27 @@ th,td{
 }
 
 th:hover {
-  background-color: #354a63;
+  background-color: #dddddd;
 }
 
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
+span.sortable1 {
+  display: inline-block;
+  width: 0;
+  height: 0;
   margin-left: 5px;
+  vertical-align: middle;
+  border-top: 0;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #999;
+  border-left: 4px solid transparent;
 }
 
-th.sortable:active:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
+span.sortable1.active{
+  transform: rotate(180deg);
+  border-top: 0;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid black;
+  border-left: 4px solid transparent;
 }
 
 td {

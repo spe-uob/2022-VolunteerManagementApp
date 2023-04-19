@@ -285,7 +285,7 @@ th,td{
 }
 
 th:hover {
-  background-color: #354a63;
+  background-color: #dddddd;
 }
 
 th.sortable:hover {

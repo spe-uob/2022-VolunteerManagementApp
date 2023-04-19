@@ -192,7 +192,7 @@ label{
   background-color: white;
 }
 
-@media (max-width: 1180px ){
+@media (max-width: 1350px ){
    .filter-container{
     display: none;
   }

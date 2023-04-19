@@ -11,12 +11,12 @@
       </tr>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
-        <th class="sortable" @click="sortTable('help_type')">Type</th>
-        <th class="sortable" @click="sortTable('resident')">Resident</th>
-        <th class="sortable" @click="sortTable('Due')">Due</th>
-        <th class="sortable" @click="sortTable('status')">Status</th>
-        <th class="sortable" @click="sortTable('assigned')">Assigned</th>
-        <th class="sortable" @click="sortTable('priority')">Priority</th>
+        <th>Type<span class="sortable1" :class="{ active: activeButton === 0 }" @click="sortTable('help_type')"></span></th>
+        <th>Resident<span class="sortable1"  :class="{ active: activeButton === 1 }" @click="sortTable('resident')"></span></th>
+        <th>Due<span class="sortable1"   :class="{ active: activeButton === 2 }" @click="sortTable('Due')"></span></th>
+        <th>Status<span class="sortable1"   :class="{ active: activeButton === 3 }" @click="sortTable('status')"></span></th>
+        <th>Assigned<span class="sortable1"  :class="{ active: activeButton === 4 }" @click="sortTable('assigned')"></span></th>
+        <th>Priority<span class="sortable1"  :class="{ active: activeButton === 5 }" @click="sortTable('priority')"></span></th>
       </tr>
 
       </thead>
@@ -28,7 +28,7 @@
         <td>{{item.resident}}</td>
         <td>{{item.Due}}</td>
         <td>{{item.status}}</td>
-        <!-- <td>{{item.assigned}}</td> -->
+         <td>{{item.assigned}}</td>
         <td>{{item.priority}}</td>
       </tr>
 
@@ -57,16 +57,17 @@ export default {
       toggle: false,
       // list: 12,
       emptyRows: 0,
+      activeButton: -1,
       list:
       [
-        { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' },
-        { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive' },
-        { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' },
-        { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' },
-        { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' },
-        { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' },
-        { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' },
-        { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' },
+        { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' , assigned:'A' , priority: 'High' },
+        { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive', assigned:'B' , priority: 'Medium' },
+        { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' , assigned:'C' , priority: 'Low'},
+        { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' , assigned:'D' , priority: 'Medium'},
+        { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' , assigned:'E' , priority: 'Low'},
+        { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' , assigned:'F' , priority: 'High'},
+        { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' , assigned:'G' , priority: 'Medium'},
+        { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' , assigned:'H' , priority: 'Low'},
       ],
       priority: ["High", "Medium", "Low"],
       helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
@@ -84,6 +85,15 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        // 当前按钮已经激活，反转状态
+        this.activeButton = -1;
+      } else {
+        // 切换激活状态到新的按钮
+        this.activeButton = index;
+      }
+    },
     // eslint-disable-next-line no-unused-vars
     handleClick(id) {
       this.$router.push(`/action_page/$1`)
@@ -96,12 +106,22 @@ export default {
         this.list.reverse();
       } else {
         if (sortKey === 'Due') {
+          this.toggleActive(2);
           this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
         } else if (sortKey === 'help_type') {
+          this.toggleActive(0);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'resident') {
+          this.toggleActive(1);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'status') {
+          this.toggleActive(3);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'assigned'){
+          this.toggleActive(4);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'priority'){
+          this.toggleActive(5);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         }
         this.sortOrder = sortKey;
@@ -259,23 +279,27 @@ th,td{
 }
 
 th:hover {
-  background-color: #354a63;
-}
-
-th.sortable:hover {
   background-color: #dddddd;
 }
 
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
+span.sortable1 {
+  display: inline-block;
+  width: 0;
+  height: 0;
   margin-left: 5px;
+  vertical-align: middle;
+  border-top: 0;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #999;
+  border-left: 4px solid transparent;
 }
 
-th.sortable.asc:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
+span.sortable1.active{
+  transform: rotate(180deg);
+  border-top: 0;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid black;
+  border-left: 4px solid transparent;
 }
 
 td {
