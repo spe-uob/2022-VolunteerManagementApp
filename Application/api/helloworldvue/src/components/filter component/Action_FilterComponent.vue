@@ -192,9 +192,11 @@ export default {
   transform: rotate(45deg);
   transition: transform 0.1s ease-in-out;
 }
+
 .filter-head1-input1{
   display: none;
 }
+
 .filter-head1-input1:checked+.filter-head1 .arrow-right1{
   transform: rotate(135deg);
   transition: transform 0.1s ease-in-out;
@@ -209,7 +211,7 @@ label{
   background-color: white;
 }
 
-@media (max-width: 1180px ){
+@media (max-width: 1350px ){
   .filter-container{
     display: none;
   }
