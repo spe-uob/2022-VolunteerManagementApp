@@ -115,7 +115,7 @@ This is where the Vue Application is rendered. Now all that is left is to enjoy!
 --------------------
 
 <h2 id="6"> 1.3 Possible Issues & Bugs </h2>
- 1.3.1 Found a bug !!!
+ <h3> 1.3.1 Found a bug !!!</h3>
 
 If you found a bug, you can use [issue template](https://github.com/spe-uob/2022-VolunteerManagementApp/blob/main/.github/ISSUE_TEMPLATE/bug.md) to [create an issue](https://github.com/spe-uob/2022-VolunteerManagementApp/issues/new) with the tag `bug`
 
