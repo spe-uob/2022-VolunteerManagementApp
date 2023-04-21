@@ -14,10 +14,10 @@
         </thead>
         <tbody>
         <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
-          <th>Type<span class="sortable1" :class="{ active: activeButton === 0 }" @click="sortTable('type')"></span></th>
-          <th>Resident<span class="sortable1" :class="{ active: activeButton === 1 }" @click="sortTable('resident')"></span></th>
-          <th>Created<span class="sortable1" :class="{ active: activeButton === 2 }" @click="sortTable('created')"></span></th>
-          <th>Status<span class="sortable1" :class="{ active: activeButton === 3 }" @click="sortTable('status')"></span></th>
+          <th @click="sortTable('type')">Type <span class="sortable1" :class="{ active: activeButton === 0 }" ></span></th>
+          <th @click="sortTable('resident')">Resident<span class="sortable1" :class="{ active: activeButton === 1 }" ></span></th>
+          <th @click="sortTable('created')">Created<span class="sortable1" :class="{ active: activeButton === 2 }" ></span></th>
+          <th @click="sortTable('status')">Status<span class="sortable1" :class="{ active: activeButton === 3 }" ></span></th>
         </tr>
 
 <!--        <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">-->
@@ -217,10 +217,8 @@ export default {
   methods: {
     toggleActive(index) {
       if (this.activeButton === index) {
-        // 当前按钮已经激活，反转状态
         this.activeButton = -1;
       } else {
-        // 切换激活状态到新的按钮
         this.activeButton = index;
       }
     },
@@ -308,7 +306,6 @@ export default {
 
 <style>
 .right_table {
-  table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 12px;
   font-size: 12px;
@@ -328,33 +325,9 @@ th,td{
   color: black;
   font-weight: bold;
   text-align: left;
-  padding: 10px 20px;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
-}
-
-th:hover {
-  background-color: #dddddd;
-}
-
-span.sortable1 {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 5px;
-  vertical-align: middle;
-  border-top: 0;
-  border-right: 4px solid transparent;
-  border-bottom: 4px solid #999;
-  border-left: 4px solid transparent;
-}
-
-span.sortable1.active{
-  transform: rotate(180deg);
-  border-top: 0;
-  border-right: 4px solid transparent;
-  border-bottom: 4px solid black;
-  border-left: 4px solid transparent;
 }
 
 td {
@@ -363,9 +336,7 @@ td {
   color: #333;
 }
 
-tr:hover {
-  background-color: #e6e6e6;
-}
+
 
 
 

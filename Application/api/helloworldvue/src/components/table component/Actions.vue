@@ -11,12 +11,12 @@
       </tr>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
-        <th>Type<span class="sortable1" :class="{ active: activeButton === 0 }" @click="sortTable('help_type')"></span></th>
-        <th>Resident<span class="sortable1"  :class="{ active: activeButton === 1 }" @click="sortTable('resident')"></span></th>
-        <th>Due<span class="sortable1"   :class="{ active: activeButton === 2 }" @click="sortTable('Due')"></span></th>
-        <th>Status<span class="sortable1"   :class="{ active: activeButton === 3 }" @click="sortTable('status')"></span></th>
-        <th>Assigned<span class="sortable1"  :class="{ active: activeButton === 4 }" @click="sortTable('assigned')"></span></th>
-        <th>Priority<span class="sortable1"  :class="{ active: activeButton === 5 }" @click="sortTable('priority')"></span></th>
+        <th  @click="sortTable('help_type')">Type<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+        <th  @click="sortTable('resident')">Resident<span class="sortable1"  :class="{ active: activeButton === 1 }" ></span></th>
+        <th  @click="sortTable('Due')">Due<span class="sortable1"   :class="{ active: activeButton === 2 }" ></span></th>
+        <th  @click="sortTable('status')">Status<span class="sortable1"   :class="{ active: activeButton === 3 }" ></span></th>
+        <th  @click="sortTable('assigned')">Assigned<span class="sortable1"  :class="{ active: activeButton === 4 }" ></span></th>
+        <th  @click="sortTable('priority')">Priority<span class="sortable1"  :class="{ active: activeButton === 5 }" ></span></th>
       </tr>
 
       </thead>
@@ -24,12 +24,12 @@
       <tbody>
 
       <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
-        <td>{{item.help_type}}</td>
-        <td>{{item.resident}}</td>
-        <td>{{item.Due}}</td>
-        <td>{{item.status}}</td>
-         <td>{{item.assigned}}</td>
-        <td>{{item.priority}}</td>
+        <td class="table_hover">{{item.help_type}}</td>
+        <td class="table_hover">{{item.resident}}</td>
+        <td class="table_hover">{{item.Due}}</td>
+        <td class="table_hover">{{item.status}}</td>
+        <td class="table_hover">{{item.assigned}}</td>
+        <td class="table_hover">{{item.priority}}</td>
       </tr>
 
       <tr v-for=" i in emptyRows" :class="'tr-color-' + i % 2" :key="i">
@@ -87,10 +87,8 @@ export default {
   methods: {
     toggleActive(index) {
       if (this.activeButton === index) {
-        // 当前按钮已经激活，反转状态
         this.activeButton = -1;
       } else {
-        // 切换激活状态到新的按钮
         this.activeButton = index;
       }
     },
@@ -264,6 +262,12 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+.table_hover:hover{
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
 th,td{
   border: none;
 }
@@ -273,20 +277,19 @@ th,td{
   color: black;
   font-weight: bold;
   text-align: left;
-  padding: 10px 20px;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 
-th:hover {
-  background-color: #dddddd;
-}
 
 span.sortable1 {
+  position: absolute;
   display: inline-block;
   width: 0;
   height: 0;
-  margin-left: 5px;
+  margin-top: 6px;
+  margin-left: 8px;
   vertical-align: middle;
   border-top: 0;
   border-right: 4px solid transparent;
@@ -303,13 +306,9 @@ span.sortable1.active{
 }
 
 td {
-  padding: 10px 20px;
+  padding: 0.75rem 2rem;
   border-bottom: 1px solid #ddd;
   color: #333;
-}
-
-tr:hover {
-  background-color: #e6e6e6;
 }
 
 

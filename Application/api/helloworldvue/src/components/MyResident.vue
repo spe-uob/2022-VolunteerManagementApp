@@ -20,15 +20,15 @@
       <tbody>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th class="sortable" @click="sortTable('FirstName')">First Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('LastName')">Last Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('PhoneNumber')">Phone Number<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('Email')">Email<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('TotalTimeReceived')">Total Time Received<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable" @click="sortTable('Consent')">Consent<div style="display: inline-block;position: absolute;"><span></span><br /><span  ></span></div></th>
+        <th  @click="sortTable('FirstName')">First Name<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+        <th  @click="sortTable('LastName')">Last Name<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
+        <th  @click="sortTable('PhoneNumber')">Phone Number<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
+        <th  @click="sortTable('Email')">Email<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
+        <th  @click="sortTable('TotalTimeReceived')">Total Time Received<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
+        <th  @click="sortTable('Consent')">Consent<span class="sortable1" :class="{ active: activeButton === 5 }"></span></th>
       </tr>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+      <tr v-for="(item, index) in filteredResidents" :class="'tr-color-' + index % 2" :key="index">
         <td style="color:  black;">{{item.FirstName}}</td>
         <td style="color:  black;">{{item.LastName}}</td>
         <td style="color:  black;">{{item.PhoneNumber}}</td>
@@ -71,9 +71,16 @@ export default {
     return {
       toggle: false,
       list: [
+        {FirstName: 'Bill',LastName:'LIU',PhoneNumber:'123124',Email:'kf21667@bristol',TotalTimeReceived:'10'},
+        {FirstName:'Amy',LastName:'gIU',PhoneNumber:'5',Email:'cf21667@bristol',TotalTimeReceived:'4'},
+        {FirstName:'dmy',LastName:'aIU',PhoneNumber:'33',Email:'df1667@bristol',TotalTimeReceived:'9'},
+        {FirstName:'emy',LastName:'hIU',PhoneNumber:'2',Email:'hret667@bristol',TotalTimeReceived:'6'},
+        {FirstName:'gmy',LastName:'vIU',PhoneNumber:'77',Email:'dfgcfdf21667@bristol',TotalTimeReceived:'2'},
+        {FirstName:'qmy',LastName:'saIU',PhoneNumber:'2',Email:'dfgcf21667@bristol',TotalTimeReceived:'8'},
       ],
       search:"",
       sortOrder:'',
+      activeButton: -1,
     }
   },
   computed: {
@@ -99,6 +106,13 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        this.activeButton = -1;
+      } else {
+        this.activeButton = index;
+      }
+    },
     baseURL: function(){
         return window.location.origin
       },
@@ -107,8 +121,22 @@ export default {
         this.list.reverse();
       } else {
         if (sortKey === 'FirstName') {
+          this.toggleActive(0);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'LastName') {
+          this.toggleActive(1);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }else if (sortKey === 'PhoneNumber') {
+          this.toggleActive(2);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        }else if (sortKey === 'Email') {
+          this.toggleActive(3);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }else if (sortKey === 'TotalTimeReceived') {
+          this.toggleActive(4);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        }else if (sortKey === 'Consent') {
+          this.toggleActive(5);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         }
         this.sortOrder = sortKey;
@@ -174,7 +202,7 @@ export default {
 
 </script>
 
-<style scoped lang="scss">
+<style>
 
 .Resident_table {
   table-layout: fixed;
@@ -200,7 +228,7 @@ th,td{
   border: none;
 }
 
-.Resident_table th {
+th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;
@@ -210,25 +238,6 @@ th,td{
   cursor: pointer;
 }
 
-th:hover {
-  background-color: #dddddd;
-}
-
-th.sortable:hover {
-  background-color: #dddddd;
-}
-
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-th.sortable.asc:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
-}
 
 td {
   padding: 0.75rem 2rem;
@@ -236,9 +245,6 @@ td {
   color: #333;
 }
 
-tr:hover {
-  background-color: #e6e6e6;
-}
 
 .tr-color-0 {
   background: #f2f2f2;
