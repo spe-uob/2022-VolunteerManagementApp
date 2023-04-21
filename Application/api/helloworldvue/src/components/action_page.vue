@@ -1,10 +1,10 @@
 <template>
-   <div class="container">
-        <div class="action-details-container">
+   <div class="parent-container">
+        <div class="child-container">
             <div class="details-title">
                 <header>Action Details</header>
             </div>
-            <div class="action-details">
+            <div class="details">
                 <ul>
                         <div>Resident: {{ action.resident }}</div>
                         <div>Action Type: {{ action.help_type }}</div>
@@ -13,17 +13,31 @@
             </div>
 
         </div>
-        <div class="assigned-container">
+        <div class="child-container">
             <div class="details-title">
                 <header>Assigned</header>
             </div>
-            <div class="assigned-details">
+            <div class="details">
                 <label for="selectedHelpType">Status:</label>
                 <select v-model="selectedHelpType">
                 <option v-for="helptype in helptypes" :key="helptype.id">{{ helptype.name }}</option>
                 </select>
 
             </div>
+        </div>
+        <div class="footer-container">
+            <div class="details-title">
+                <header>Assign Volunteers</header>
+            </div>
+            <div class="details">
+                <ul>
+                    <li class="details-item" v-for="(volunteer,index) in volunteers" :key="index">
+                        <div>{{ volunteer.name }}</div>
+                        <button style="float:right"> ASSIGN </button>
+                    </li>
+                </ul>
+            </div>
+
         </div>
    </div>
 </template>
@@ -48,7 +62,18 @@ export default {
                 { id: 6, name: "Couldn't complete" },
                 { id: 7, name: "No longer needed" },
             ],
-            selectedHelpType: null
+            selectedHelpType: null,
+            volunteers: [
+                {
+                name: "No One"
+                },
+                {
+                name: "No One"
+                },
+                {
+                name: "No One"
+                }
+            ]
 
         }
     },
@@ -124,41 +149,65 @@ export default {
             return json.results.find(obj => obj.id === id).first_name;
         },
         getHelpTypeByID: async function(id){
-        const csrftoken = this.getCookie('csrftoken')
-        const json = await $.ajax({
-            url: this.baseURL() + '/api/helptypes/',
-            beforeSend: function (xhr) {
-            xhr.setRequestHeader('X-CSRFToken', csrftoken)
-            },
-            method: "GET",
-            type: "GET",
-            contentType: 'application/json',
-            success: () => {
-            //this.$emit('removed-action', response)
-            console.log("success")
-            },
-            error: (err) => {
-            console.error(JSON.stringify(err))
-            }
-        }).catch((err) => {
-            console.err(JSON.stringify(err))
-        })
-        console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
-        return json.results.find(obj => obj.id === id).name;
+            const csrftoken = this.getCookie('csrftoken')
+            const json = await $.ajax({
+                url: this.baseURL() + '/api/helptypes/',
+                beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken)
+                },
+                method: "GET",
+                type: "GET",
+                contentType: 'application/json',
+                success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+                },
+                error: (err) => {
+                console.error(JSON.stringify(err))
+                }
+            }).catch((err) => {
+                console.err(JSON.stringify(err))
+            })
+            console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+            return json.results.find(obj => obj.id === id).name;
         },
         formatDate(dateString) {
-        const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = date.toLocaleString('default', { month: 'long' });
-        const day = date.getDate();
-        return `${month} ${day}, ${year}`;
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = date.toLocaleString('default', { month: 'long' });
+            const day = date.getDate();
+            return `${month} ${day}, ${year}`;
     },
         getStatusByID: function(id){
-        return this.helpTypes[id - 1]
-        },
+            return this.helpTypes[id - 1]
+    },
         getPriorityByID: function(id){
-        return this.priority[id - 1]
+            return this.priority[id - 1]
+    },
+    getVolunteers: async function () {
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + "/api/volunteers/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
         }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      return json;
+    },
+
     },
     async mounted(){
     let result = await this.getAction();
@@ -172,24 +221,31 @@ export default {
       status: this.getStatusByID(result.action_status),
       priority: this.getPriorityByID(result.action_priority)
     };    
+
+    let response = await this.getVolunteers()
+    this.volunteers = response.result.map((obj) => {
+        return {
+            name: obj.first_name + " " + obj.last_name,
+        }
+    });
   }
 }
 </script>
 
 <style scoped>
- .container {
-  display: inline-block;
+ .parent-container {
+  display: flex;
+  flex-wrap: wrap;
   background-color: green;
   width: 100%;
-  height: 90%;
+  height: 100%;
  }
- .action-details-container {
+ .child-container {
     background-color: blue;
-    width: 45%;
-    float: left;
-    height: 50%;
+    flex-basis: 45%;
     box-shadow: -5px -1px 10px rgba(62, 62, 62, 0.134);
     padding: 10px;
+    margin: 20px;
  }
  .details-title {
     border: 1px solid black;
@@ -197,16 +253,19 @@ export default {
     height: 10%;
     float: top;
  }
- .action-details {
+ .details {
     box-shadow: -5px -1px 10px rgba(62, 62, 62, 0.134);
     background-color: aqua;
  }
- .assigned-container {
-    background-color: turquoise;
-    width: 50%;
-    float: right;
-    height: 50%;
-    box-shadow: -5px -1px 10px rgba(62, 62, 62, 0.134);
- }
 
+ .details-item {
+    padding: 10px;
+ }
+.footer-container {
+    background-color: grey;
+    align-self: flex-end;
+    width: 100%;
+    height: 20%;
+    box-shadow: -5px -1px 10px rgba(62, 62, 62, 0.134);
+}
 </style>
