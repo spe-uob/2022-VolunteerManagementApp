@@ -69,7 +69,7 @@ import $ from 'jquery';
                 console.log("success")
             },
             error: (err) => {
-                console.error(JSON.stringify(err))
+                console.log(JSON.stringify(err))
             }
         }).catch((err) => {
             console.err(JSON.stringify(err))

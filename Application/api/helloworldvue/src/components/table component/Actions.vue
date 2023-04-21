@@ -94,7 +94,7 @@ export default {
     },
     // eslint-disable-next-line no-unused-vars
     handleClick(id) {
-      this.$router.push(`/action_page/$1`)
+      this.$router.push(`/action_page/${id}`)
     },
     baseURL: function(){
         return window.location.origin
