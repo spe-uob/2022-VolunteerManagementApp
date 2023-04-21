@@ -120,9 +120,6 @@ export default {
   margin-left: 700px;
   margin-top: 0px;
 }
-
-
-
   @media (max-width: 1000px) {
   .left-table{
     position: relative;
@@ -136,6 +133,21 @@ export default {
     margin-left: 5px;
   }
 }
+
+@media (min-width: 1600px) {
+  .left-table{
+    position: relative;
+    margin-left:50px;
+    width: 1000px;
+  }
+
+  .right-table{
+    margin-left: 90%;
+    width: 800px;
+  }
+}
+
+
 
 
 /*table {*/

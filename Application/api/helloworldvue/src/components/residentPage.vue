@@ -74,6 +74,9 @@ export default {
     }
   },
   methods: {
+    baseURL: function(){
+        return window.location.origin
+      },
     openActionform(){
       this.actionForm = false
       this.referralForm = true
@@ -83,48 +86,48 @@ export default {
       this.referralForm = false
     },
     getActions: async function () {
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: `http://localhost:8000/api/actions/`,
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      return json;
-    },
+        const csrftoken = this.getCookie('csrftoken')
+          const json = await $.ajax({
+              url: this.baseURL() + '/api/actions/',
+              beforeSend: function (xhr) {
+                  xhr.setRequestHeader('X-CSRFToken', csrftoken)
+              },
+              method: "GET",
+              type: "GET",
+              contentType: 'application/json',
+              success: () => {
+                  //this.$emit('removed-action', response)
+                  console.log("success")
+              },
+              error: (err) => {
+                  console.error(JSON.stringify(err))
+              }
+          }).catch((err) => {
+              console.err(JSON.stringify(err))
+          })
+          return json;
+      },
     getReferrals: async function (){
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: `http://localhost:8000/api/referrals/`,
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      return json;
+        const csrftoken = this.getCookie('csrftoken')
+          const json = await $.ajax({
+              url: this.baseURL() + '/api/referrals/',
+              beforeSend: function (xhr) {
+                  xhr.setRequestHeader('X-CSRFToken', csrftoken)
+              },
+              method: "GET",
+              type: "GET",
+              contentType: 'application/json',
+              success: () => {
+                  //this.$emit('removed-action', response)
+                  console.log("success")
+              },
+              error: (err) => {
+                  console.error(JSON.stringify(err))
+              }
+          }).catch((err) => {
+              console.err(JSON.stringify(err))
+          })
+          return json;
     },
     getCookie: function (name) {
       let cookieValue = null;

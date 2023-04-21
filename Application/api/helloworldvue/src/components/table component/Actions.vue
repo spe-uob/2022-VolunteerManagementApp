@@ -11,24 +11,25 @@
       </tr>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
-        <th class="sortable" @click="sortTable('help_type')">Type</th>
-        <th class="sortable" @click="sortTable('resident')">Resident</th>
-        <th class="sortable" @click="sortTable('Due')">Due</th>
-        <th class="sortable" @click="sortTable('status')">Status</th>
-        <th class="sortable" @click="sortTable('assigned')">Assigned</th>
-        <th class="sortable" @click="sortTable('priority')">Priority</th>
+        <th  @click="sortTable('help_type')">Type<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+        <th  @click="sortTable('resident')">Resident<span class="sortable1"  :class="{ active: activeButton === 1 }" ></span></th>
+        <th  @click="sortTable('Due')">Due<span class="sortable1"   :class="{ active: activeButton === 2 }" ></span></th>
+        <th  @click="sortTable('status')">Status<span class="sortable1"   :class="{ active: activeButton === 3 }" ></span></th>
+        <th  @click="sortTable('assigned')">Assigned<span class="sortable1"  :class="{ active: activeButton === 4 }" ></span></th>
+        <th  @click="sortTable('priority')">Priority<span class="sortable1"  :class="{ active: activeButton === 5 }" ></span></th>
       </tr>
 
       </thead>
 
       <tbody>
-      <tr  v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
-        <td>{{item.help_type}}</td>
-        <td>{{item.resident}}</td>
-        <td>{{item.Due}}</td>
-        <td>{{item.status}}</td>
-        <td>{{item.assigned}}</td>
-        <td>{{item.priority}}</td>
+
+      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
+        <td class="table_hover">{{item.help_type}}</td>
+        <td class="table_hover">{{item.resident}}</td>
+        <td class="table_hover">{{item.Due}}</td>
+        <td class="table_hover">{{item.status}}</td>
+        <td class="table_hover">{{item.assigned}}</td>
+        <td class="table_hover">{{item.priority}}</td>
       </tr>
 
       <tr v-for=" i in emptyRows" :class="'tr-color-' + i % 2" :key="i">
@@ -56,17 +57,20 @@ export default {
       toggle: false,
       // list: 12,
       emptyRows: 0,
+      activeButton: -1,
       list:
       [
-        { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' },
-        { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive' },
-        { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' },
-        { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' },
-        { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' },
-        { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' },
-        { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' },
-        { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' },
-    ],
+        { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' , assigned:'A' , priority: 'High' },
+        { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive', assigned:'B' , priority: 'Medium' },
+        { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' , assigned:'C' , priority: 'Low'},
+        { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' , assigned:'D' , priority: 'Medium'},
+        { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' , assigned:'E' , priority: 'Low'},
+        { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' , assigned:'F' , priority: 'High'},
+        { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' , assigned:'G' , priority: 'Medium'},
+        { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' , assigned:'H' , priority: 'Low'},
+      ],
+      priority: ["High", "Medium", "Low"],
+      helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
       sortOrder:'',
     }
   },
@@ -81,21 +85,41 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        this.activeButton = -1;
+      } else {
+        this.activeButton = index;
+      }
+    },
     // eslint-disable-next-line no-unused-vars
     handleClick(id) {
       this.$router.push(`/action_page/$1`)
     },
+    baseURL: function(){
+        return window.location.origin
+      },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
       } else {
         if (sortKey === 'Due') {
+          this.toggleActive(2);
           this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
         } else if (sortKey === 'help_type') {
+          this.toggleActive(0);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'resident') {
+          this.toggleActive(1);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'status') {
+          this.toggleActive(3);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'assigned'){
+          this.toggleActive(4);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'priority'){
+          this.toggleActive(5);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         }
         this.sortOrder = sortKey;
@@ -107,7 +131,7 @@ export default {
     getActions: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/actions/",
+        url: this.baseURL() + '/api/actions/',
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -143,38 +167,82 @@ export default {
       }
       return cookieValue;
     },
+    getResidentByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/residents/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
+      return json.results.find(obj => obj.id === id).first_name;
+    },
+    getHelpTypeByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/helptypes/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+      return json.results.find(obj => obj.id === id).name;
+    },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = date.toLocaleString('default', { month: 'long' });
+      const day = date.getDate();
+      return `${month} ${day}, ${year}`;
   },
-  // mounted(){
-  //   this.getActions().then((response) => {
-  //         this.list = response.results.map((result) => {
-  //           return {
-  //             id: result.id,
-  //             resident: result.resident,
-  //             help_type: result.help_type,
-  //             Due: 'n/a',
-  //             assigned: 'n/a',
-  //             status: result.action_status,
-  //             priority: result.action_priority
-  //           }
-  //         })
-  //   })
-  // },
-
-   mounted() {
-    this.getActions().then(response => {
-      const results = response.results
-      const emptyRows = 12 - results.length
-      this.emptyRows = emptyRows > 0 ? emptyRows : 0
-      this.list = results.map(result => ({
-        id: result.id,
-        resident: result.resident,
-        help_type: result.help_type,
-        Due: 'n/a',
-        assigned: 'n/a',
-        status: result.action_status,
-        priority: result.action_priority
-      }))
-    })
+    getStatusByID: function(id){
+      return this.helpTypes[id - 1]
+    },
+    getPriorityByID: function(id){
+      return this.priority[id - 1]
+    }
+  },
+  async mounted(){
+    let response = await this.getActions();
+    response = response.results;
+    console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
+    this.list = await Promise.all(response.map(async (result) => {
+    return {
+      id: result.id,
+      resident: await this.getResidentByID(result.resident),
+      help_type: await this.getHelpTypeByID(result.help_type),
+      Due: this.formatDate(result.requested_datetime),
+      assigned: result.assigned_volunteers,
+      status: this.getStatusByID(result.action_status),
+      priority: this.getPriorityByID(result.action_priority)
+    };
+    }));
+    
   },
 
 
@@ -194,6 +262,12 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+.table_hover:hover{
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
+
 th,td{
   border: none;
 }
@@ -203,39 +277,38 @@ th,td{
   color: black;
   font-weight: bold;
   text-align: left;
-  padding: 10px 20px;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 
-th:hover {
-  background-color: #354a63;
+
+span.sortable1 {
+  position: absolute;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-top: 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+  border-top: 0;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #999;
+  border-left: 4px solid transparent;
 }
 
-th.sortable:hover {
-  background-color: #dddddd;
-}
-
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-th.sortable.asc:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
+span.sortable1.active{
+  transform: rotate(180deg);
+  border-top: 0;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid black;
+  border-left: 4px solid transparent;
 }
 
 td {
-  padding: 10px 20px;
+  padding: 0.75rem 2rem;
   border-bottom: 1px solid #ddd;
   color: #333;
-}
-
-tr:hover {
-  background-color: #e6e6e6;
 }
 
 

@@ -14,19 +14,19 @@
       <tbody>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th class="sortable">First Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Last Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Phone Number<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Email<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Total Time Given<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th @click="sortTable('FirstName')">First Name<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+        <th @click="sortTable('LastName')">Last Name<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
+        <th @click="sortTable('PhoneNumber')">Phone Number<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
+        <th @click="sortTable('Email')">Email<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
+        <th @click="sortTable('TotalTimeReceived')" >Total Time Given<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
       </tr>
 
-      <tr v-for="(item, index) in filteredVolunteers" :class="'tr-color-' + index % 2" :key="index">
-        <td style="color:  black;">{{item.name}}</td>
-        <td style="color:  black;">{{item.age}}</td>
-        <td style="color:  black;">{{item.phone}}</td>
-        <td style="color:  black;">{{item.email}}</td>
-        <td style="color:  black;">{{item.time}}</td>
+      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+        <td style="color:  black;">{{item.FirstName}}</td>
+        <td style="color:  black;">{{item.LastName}}</td>
+        <td style="color:  black;">{{item.PhoneNumber}}</td>
+        <td style="color:  black;">{{item.Email}}</td>
+        <td style="color:  black;">{{item.TotalTimeReceived}}</td>
       </tr>
       </tbody>
     </table>
@@ -102,45 +102,10 @@ export default {
     return {
       toggle: false,
       list: [
-        {
-          name: 'Noel',
-          age: 'Wester',
-          phone: '01179123456',
-          email: 'noel.wester@gmail.com',
-          time:'1 day, 5 hours'
-        },
-        {
-          name: 'Noel',
-          age: 'Wes',
-          phone: '355667564532',
-          email: 'noel.wes@gmail.com',
-          time:'5 day, 2 hours',
-          consent:'✓'
-        },
-        {
-          name: 'Noe',
-          age: 'Wester',
-          phone: '465768778787',
-          email: 'noe.wester@gmail.com',
-          time:'1 day, 12 hours'
-        },
-        {
-          name: 'Noel',
-          age: 'Wester',
-          phone: '01179123456',
-          email: 'noel.wester@gmail.com',
-          time:'13 day, 24 hours'
-        },
-        {
-          name: 'Nel',
-          age: 'Weser',
-          phone: '0456667665',
-          email: 'nel.weser@gmail.com',
-          time:'1 day, 5 hours'
-        }
       ],
       search:"",
       sortOrder:'',
+      activeButton: -1,
     }
   },
   computed: {
@@ -148,11 +113,11 @@ export default {
       return this.list.filter(volunteer => {
         // return resident.name.toLowerCase().includes(this.search.toLowerCase());
         return (
-            volunteer.name.toLowerCase().includes(this.search.toLowerCase()) ||
-            volunteer.age.toLowerCase().includes(this.search.toLowerCase()) ||
-            volunteer.phone.toLowerCase().includes(this.search.toLowerCase()) ||
-            volunteer.email.toLowerCase().includes(this.search.toLowerCase()) ||
-            volunteer.time.toLowerCase().includes(this.search.toLowerCase())
+            volunteer.FirstName.toLowerCase().includes(this.search.toLowerCase()) ||
+            volunteer.LastName.toLowerCase().includes(this.search.toLowerCase()) ||
+            volunteer.PhoneNumber.toLowerCase().includes(this.search.toLowerCase()) ||
+            volunteer.Email.toLowerCase().includes(this.search.toLowerCase()) ||
+            volunteer.TotalTimeReceived.toLowerCase().includes(this.search.toLowerCase())
         );
       });
     }
@@ -165,25 +130,46 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        this.activeButton = -1;
+      } else {
+        this.activeButton = index;
+      }
+    },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
       } else {
         if (sortKey === 'FirstName') {
+          this.toggleActive(0);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'LastName') {
+          this.toggleActive(1);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }else if (sortKey === 'PhoneNumber') {
+          this.toggleActive(2);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        }else if (sortKey === 'Email') {
+          this.toggleActive(3);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }else if (sortKey === 'TotalTimeReceived') {
+          this.toggleActive(4);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
         }
         this.sortOrder = sortKey;
       }
     },
+    baseURL: function(){
+        return window.location.origin
+      },
     toggleHide() {
       this.toggle = !this.toggle;
     },
     getVolunteers: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/volunteers/",
+        url: this.baseURL() + "/api/volunteers/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -223,11 +209,11 @@ export default {
     this.getVolunteers().then((response) => {
       this.list = response.results.map((result) => {
         return {
-          name: result.first_name,
-          age: result.last_name,
-          phone: result.phone,
-          email: result.email,
-          time: 'n/a',
+          FirstName: result.first_name,
+          LastName: result.last_name,
+          PhoneNumber: result.phone,
+          Email: result.email,
+          TotalTimeReceived: 'n/a',
         }
       })
     })
@@ -271,10 +257,6 @@ th,td{
   cursor: pointer;
 }
 
-th:hover {
-  background-color: #354a63;
-}
-
 th.sortable:hover {
   background-color: #dddddd;
 }
@@ -297,9 +279,6 @@ td {
   color: #333;
 }
 
-tr:hover {
-  background-color: #e6e6e6;
-}
 
 .tr-color-0 {
   background: #f2f2f2;

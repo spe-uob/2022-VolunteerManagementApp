@@ -14,11 +14,20 @@
         </thead>
         <tbody>
         <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">
-          <th class="sortable" @click="sortTable('type')">Type</th>
-          <th class="sortable" @click="sortTable('resident')">Resident</th>
-          <th class="sortable" @click="sortTable('created')">Created</th>
-          <th class="sortable" @click="sortTable('status')">Status</th>
+          <th @click="sortTable('type')">Type <span class="sortable1" :class="{ active: activeButton === 0 }" ></span></th>
+          <th @click="sortTable('resident')">Resident<span class="sortable1" :class="{ active: activeButton === 1 }" ></span></th>
+          <th @click="sortTable('created')">Created<span class="sortable1" :class="{ active: activeButton === 2 }" ></span></th>
+          <th @click="sortTable('status')">Status<span class="sortable1" :class="{ active: activeButton === 3 }" ></span></th>
         </tr>
+
+<!--        <tr style="background-color: rgba(223, 226, 230, 1); height: 20px;">-->
+<!--          <th>Type<span class="sortable1" :class="{ active: activeButton === 0 }" @click="sortTable('help_type')"></span></th>-->
+<!--          <th>Resident<span class="sortable1"  :class="{ active: activeButton === 1 }" @click="sortTable('resident')"></span></th>-->
+<!--          <th>Due<span class="sortable1"   :class="{ active: activeButton === 2 }" @click="sortTable('Due')"></span></th>-->
+<!--          <th>Status<span class="sortable1"   :class="{ active: activeButton === 3 }" @click="sortTable('status')"></span></th>-->
+<!--          <th>Assigned<span class="sortable1"  :class="{ active: activeButton === 4 }" @click="sortTable('assigned')"></span></th>-->
+<!--          <th>Priority<span class="sortable1"  :class="{ active: activeButton === 5 }" @click="sortTable('priority')"></span></th>-->
+<!--        </tr>-->
 
         <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
           <td>{{item.type}}</td>
@@ -172,6 +181,7 @@ export default {
       toggle: false,
       // list: 12,
       emptyRows: 0,
+      activeButton: -1,
       list:
       [
         {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
@@ -205,17 +215,31 @@ export default {
   },
 
   methods: {
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        this.activeButton = -1;
+      } else {
+        this.activeButton = index;
+      }
+    },
+    baseURL: function(){
+        return window.location.origin
+      },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
       } else {
         if (sortKey === 'created') {
+          this.toggleActive(2);
           this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
         } else if (sortKey === 'type') {
+          this.toggleActive(0);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'resident') {
+          this.toggleActive(1);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'status') {
+          this.toggleActive(3);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         }
         this.sortOrder = sortKey;
@@ -227,7 +251,7 @@ export default {
     getReferrals: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/referrals/",
+        url: this.baseURL() + "/api/referrals/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -263,29 +287,17 @@ export default {
       return cookieValue;
     },
   },
-  // mounted(){
-  //   this.getReferrals().then((response) => {
-  //     this.list = response.results.map((result) => {
-  //       return {
-  //         resident: result.resident,
-  //         type: result.referral_type,
-  //         created: result.created_datetime,
-  //         status: result.referral_status,
-  //       }
-  //     })
-  //   })
-  // },
-  mounted() {
-    this.getReferrals().then(response => {
-      const results = response.results
-      const emptyRows = 12 - results.length
-      this.emptyRows = emptyRows > 0 ? emptyRows : 0
-      this.list = results.map(result => ({
-        resident: result.resident,
-        type: result.referral_type,
-        created: 'xxxx-xx-xx',
-        status: result.referral_status,
-      }))
+  mounted(){
+    this.getReferrals().then(async (response) => {
+      this.list = response.results.map((result) => {
+        return {
+          resident: result.resident,
+          type: result.referral_type,
+          created: result.created_datetime,
+          status: result.referral_status,
+          Completed: 'n/a'
+        }
+      })
     })
   },
 }
@@ -294,7 +306,6 @@ export default {
 
 <style>
 .right_table {
-  table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 12px;
   font-size: 12px;
@@ -314,25 +325,9 @@ th,td{
   color: black;
   font-weight: bold;
   text-align: left;
-  padding: 10px 20px;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
-}
-
-th:hover {
-  background-color: #354a63;
-}
-
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-th.sortable:active:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
 }
 
 td {
@@ -341,9 +336,7 @@ td {
   color: #333;
 }
 
-tr:hover {
-  background-color: #e6e6e6;
-}
+
 
 
 

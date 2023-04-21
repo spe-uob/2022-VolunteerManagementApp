@@ -57,6 +57,9 @@ export default {
     },
 
     methods: {
+        baseURL: function(){
+        return window.location.origin
+      },
         showDetails(id) {
             console.log("link working")
             this.$router.push({
@@ -67,7 +70,7 @@ export default {
         getResidents: async function () {
             const csrftoken = this.getCookie("csrftoken");
             const json = await $.ajax({
-                url: "http://localhost:8000/" + "api/residents/",
+                url: this.baseURL() + "/api/residents/",
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader("X-CSRFToken", csrftoken);
                 },

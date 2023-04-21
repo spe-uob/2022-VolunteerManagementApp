@@ -17,11 +17,11 @@
       <tbody>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th class="sortable" >Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Phone Number<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Address<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Main Contact<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Email<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th @click="sortTable('name')">Name<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+        <th @click="sortTable('phone')">Phone Number<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
+        <th @click="sortTable('address')">Address<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
+        <th @click="sortTable('contact')">Main Contact<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
+        <th @click="sortTable('email')">Email<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
       </tr>
 
       <tr v-for="(item, index) in filteredOrganisation" :class="'tr-color-' + index % 2" :key="index">
@@ -120,44 +120,45 @@ export default {
       // newFormFlag: false,
       toggle: false,
       list: [
-        {
-          name: 'Noel',
-          phone: '01179123456',
-          address:'A',
-          email: 'noel.wester@gmail.com',
-          contact:'Carol Lamentably',
-        },
-        {
-          name: 'Noel',
-          phone: '355667564532',
-          address:'A',
-          email: 'noel.wes@gmail.com',
-          contact:'Carol Lamentably',
-        },
-        {
-          name: 'Noe',
-          phone: '465768778787',
-          address:'A',
-          email: 'noe.wester@gmail.com',
-          contact:'Carol Lamentably',
-        },
-        {
-          name: 'Noel',
-          phone: '01179123456',
-          address:'A',
-          email: 'noel.wester@gmail.com',
-          contact:'Carol Lamentably',
-        },
-        {
-          name: 'Nel',
-          phone: '0456667665',
-          address:'A',
-          email: 'nel.weser@gmail.com',
-          contact:'Carol Lamentably',
-        }
+        // {
+        //   name: 'Noel',
+        //   phone: '01179123456',
+        //   address:'A',
+        //   email: 'noel.wester@gmail.com',
+        //   contact:'Carol Lamentably',
+        // },
+        // {
+        //   name: 'Noel',
+        //   phone: '355667564532',
+        //   address:'A',
+        //   email: 'noel.wes@gmail.com',
+        //   contact:'Carol Lamentably',
+        // },
+        // {
+        //   name: 'Noe',
+        //   phone: '465768778787',
+        //   address:'A',
+        //   email: 'noe.wester@gmail.com',
+        //   contact:'Carol Lamentably',
+        // },
+        // {
+        //   name: 'Noel',
+        //   phone: '01179123456',
+        //   address:'A',
+        //   email: 'noel.wester@gmail.com',
+        //   contact:'Carol Lamentably',
+        // },
+        // {
+        //   name: 'Nel',
+        //   phone: '0456667665',
+        //   address:'A',
+        //   email: 'nel.weser@gmail.com',
+        //   contact:'Carol Lamentably',
+        // }
       ],
       search:"",
       sortOrder:'',
+      activeButton: -1,
     }
   },
   computed: {
@@ -182,9 +183,36 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
-    // closeNewForm(){
-    //   this.newFormFlag = false;
-    // },
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        this.activeButton = -1;
+      } else {
+        this.activeButton = index;
+      }
+    },
+    sortTable(sortKey) {
+      if (this.sortOrder === sortKey) {
+        this.list.reverse();
+      } else {
+        if (sortKey === 'name') {
+          this.toggleActive(0);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'phone') {
+          this.toggleActive(1);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        } else if (sortKey === 'address') {
+          this.toggleActive(2);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'contact') {
+          this.toggleActive(3);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        } else if (sortKey === 'email'){
+          this.toggleActive(4);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }
+        this.sortOrder = sortKey;
+      }
+    },
     showNewForm(){
       this.$router.push("/createOrganisation");
       // this.newFormFlag = true;
@@ -198,10 +226,13 @@ export default {
     toggleHide() {
       this.toggle = !this.toggle;
     },
+    baseURL: function(){
+        return window.location.origin
+      },
     getOrganisations: async function () {
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/organisations/",
+        url: this.baseURL() + "/api/organisations/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -267,6 +298,13 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+@media (max-width: 900px) {
+  .Organisation_table{
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+
 th,td{
   border: none;
 }
@@ -279,10 +317,6 @@ th,td{
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
-}
-
-th:hover {
-  background-color: #354a63;
 }
 
 th.sortable:hover {
@@ -307,10 +341,6 @@ td {
   padding: 0.75rem 2rem;
   border-bottom: 1px solid #ddd;
   color: #333;
-}
-
-tr:hover {
-  background-color: #e6e6e6;
 }
 
 .tr-color-0 {
