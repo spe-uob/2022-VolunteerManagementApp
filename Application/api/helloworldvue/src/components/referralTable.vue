@@ -118,13 +118,13 @@
               </thead>
               <tbody>
               <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-                <th class="sortable">ID</th>
-                <th class="sortable">Referral Type</th>
-                <th class="sortable">Resident</th>
-                <th class="sortable">Created</th>
-                <th class="sortable">Status</th>
-                <th class="sortable">Organisation</th>
-                <th class="sortable">Completed</th>
+                <th @click="sortTable('id')">ID<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+                <th @click="sortTable('type')">Referral Type<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
+                <th @click="sortTable('resident')">Resident<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
+                <th @click="sortTable('created')">Created<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
+                <th @click="sortTable('status')">Status<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
+                <th @click="sortTable('organisation')">Organisation<span class="sortable1" :class="{ active: activeButton === 5 }"></span></th>
+                <th @click="sortTable('completed')">Completed<span class="sortable1" :class="{ active: activeButton === 6 }"></span></th>
               </tr>
 
               <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
@@ -164,15 +164,16 @@ export default {
     return {
       toggle: false,
       list: [
-        // {id:'1',type:'Dog Walking', resident:'John',created:'Fri, Feb 3, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Mon, Feb 6, 2023 - 09:15am'},
-        // {id:'9',type:'Food Bank', resident:'Liu',created:'Mon, Jan 15, 2023 - 10:15am',status:'Pending',organisation:'Surgery',completed:'Mon, Feb 6, 2023 - 09:15am'},
-        // {id:'11',type:'Shopping', resident:'Bob',created:'Mon, Jan 8, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Mon, Jan 15, 2023 - 10:15am'},
-        // {id:'27',type:'Prescription', resident:'Ally',created:'Sun, Feb19 , 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Sun, Feb19 , 2023 - 10:15am'},
-        // {id:'3',type:'Volunteer Assigned', resident:'Bill',created:'Sun, Feb12 , 2023 - 10:15am',status:'Pending',organisation:'Surgery',completed:'Sun, Feb12 , 2023 - 10:15am'},
-        // {id:'15',type:'Volunteer Assigned', resident:'Alice',created:'Wed, Aug 11, 2023 - 5:30pm',status:'Pending',organisation:'Surgery'},
-        // {id:'17',type:'Dog Walking', resident:'Sid',created:'Mon, Jan 1, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre'},
+        {id:'1',type:'Dog Walking', resident:'John',created:'Fri, Feb 3, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Mon, Feb 6, 2023 - 09:15am'},
+        {id:'9',type:'Food Bank', resident:'Liu',created:'Mon, Jan 15, 2023 - 10:15am',status:'Pending',organisation:'Surgery',completed:'Mon, Feb 6, 2023 - 09:15am'},
+        {id:'11',type:'Shopping', resident:'Bob',created:'Mon, Jan 8, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Mon, Jan 15, 2023 - 10:15am'},
+        {id:'27',type:'Prescription', resident:'Ally',created:'Sun, Feb19 , 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Sun, Feb19 , 2023 - 10:15am'},
+        {id:'3',type:'Volunteer Assigned', resident:'Bill',created:'Sun, Feb12 , 2023 - 10:15am',status:'Pending',organisation:'Surgery',completed:'Sun, Feb12 , 2023 - 10:15am'},
+        {id:'15',type:'Volunteer Assigned', resident:'Alice',created:'Wed, Aug 11, 2023 - 5:30pm',status:'Pending',organisation:'Surgery'},
+        {id:'17',type:'Dog Walking', resident:'Sid',created:'Mon, Jan 1, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre'},
       ],
       sortOrder:'',
+      activeButton: -1,
     }
   },
   props: {
@@ -196,6 +197,42 @@ export default {
     FilterComponent: require('./filter component/FilterComponent.vue').default
   },
   methods: {
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        this.activeButton = -1;
+      } else {
+        this.activeButton = index;
+      }
+    },
+    sortTable(sortKey) {
+      if (this.sortOrder === sortKey) {
+        this.list.reverse();
+      } else {
+        if (sortKey === 'id') {
+          this.toggleActive(0);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        } else if (sortKey === 'type') {
+          this.toggleActive(1);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'resident') {
+          this.toggleActive(2);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'created') {
+          this.toggleActive(3);
+          this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
+        } else if (sortKey === 'status'){
+          this.toggleActive(4);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'organisation'){
+          this.toggleActive(5);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        }else if (sortKey === 'completed'){
+          this.toggleActive(6);
+          this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
+        }
+        this.sortOrder = sortKey;
+      }
+    },
     baseURL: function(){
         return window.location.origin
       },
@@ -285,7 +322,7 @@ export default {
   }
 }
 
-.referral_table th,td{
+ th,td{
   border: none;
 }
 
@@ -294,35 +331,15 @@ export default {
   color: black;
   font-weight: bold;
   text-align: left;
-  padding: 10px 20px;
+   padding: 0.75rem 1rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 
-th:hover {
-  background-color: #dddddd;
-}
-
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-th.sortable:active:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
-}
-
- td {
-  padding: 1rem 1.5rem;
+td {
+  padding: 0.75rem 2rem;
   border-bottom: 1px solid #ddd;
   color: #333;
-}
-
-tr:hover {
-  background-color: #e6e6e6;
 }
 
 .filter{

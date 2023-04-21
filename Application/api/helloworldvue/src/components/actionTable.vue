@@ -128,15 +128,15 @@
         <tbody>
 
         <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-          <th class="sortable">ID</th>
-          <th class="sortable">Help Type</th>
-          <th class="sortable">Resident</th>
-          <th class="sortable">Due</th>
-          <th class="sortable">Status</th>
-          <th class="sortable">Assigned</th>
-          <th class="sortable">Priority</th>
-          <th class="sortable">Volunteer</th>
-          <th class="sortable">Completed</th>
+          <th @click="sortTable('id')">ID<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+          <th @click="sortTable('help_type')">Help Type<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
+          <th @click="sortTable('resident')">Resident<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
+          <th @click="sortTable('due')">Due<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
+          <th @click="sortTable('status')">Status<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
+          <th @click="sortTable('assigned')">Assigned<span class="sortable1" :class="{ active: activeButton === 5 }"></span></th>
+          <th @click="sortTable('priority')">Priority<span class="sortable1" :class="{ active: activeButton === 6 }"></span></th>
+          <th @click="sortTable('volunteer')">Volunteer<span class="sortable1" :class="{ active: activeButton === 7 }"></span></th>
+          <th @click="sortTable('completed')">Completed<span class="sortable1" :class="{ active: activeButton === 8 }"></span></th>
         </tr>
 
         <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
@@ -152,6 +152,18 @@
         </tr>
         </tbody>
       </table>
+
+
+<!--      <tr v-for="(item, index) in filteredOrganisation" :class="'tr-color-' + index % 2" :key="index">-->
+<!--        <td style="color:  black;" @click="goUpdate(item)">{{item.name}}</td>-->
+<!--        <td style="color:  black;">{{item.phone}}</td>-->
+<!--        <td style="color:  black;">{{item.address}}</td>-->
+<!--        <td style="color:  black;">{{item.contact}}</td>-->
+<!--        <td style="color:  black;">{{item.email}}</td>-->
+<!--      </tr>-->
+
+
+
 
     </div>
 
@@ -171,17 +183,18 @@ export default {
     return {
       toggle: false,
       list: [
-        // {id:'1',help_type:'Dog Walking', resident:'John',due:'Fri, Feb 3, 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'I',completed:'Mon, Feb 6, 2023'},
-        // {id:'9',help_type:'Food Bank', resident:'Liu',due:'Mon, Jan 15, 2023',status:'Ongoing',assigned:'2/2',priority:'Normal',volunteer:'F',completed:'Mon, Feb 6, 2023'},
-        // {id:'11',help_type:'Shopping', resident:'Bob',due:'Mon, Jan 8, 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'D',completed:'Mon, Jan 15, 2023'},
-        // {id:'27',help_type:'Prescription', resident:'Ally',due:'Sun, Feb19 , 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'A',completed:'Sun, Feb19 , 2023'},
-        // {id:'3',help_type:'Volunteer Assigned', resident:'Bill',due:'Sun, Feb12 , 2023',status:'Ongoing',assigned:'2/2',priority:'Normal',volunteer:'C',completed:'Sun, Feb12 , 2023'},
-        // {id:'15',help_type:'Volunteer Assigned', resident:'Alice',due:'Wed, Aug 11, 2023',status:'Ongoing',assigned:'1/2',priority:'Normal',volunteer:'D'},
-        // {id:'17',help_type:'Dog Walking', resident:'Sid',due:'Mon, Jan 1, 2023',status:'Ongoing',assigned:'0/1',priority:'Normal',volunteer:'A'},
+        {id:'1',help_type:'Dog Walking', resident:'John',due:'Fri, Feb 3, 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'I',completed:'Mon, Feb 6, 2023'},
+        {id:'9',help_type:'Food Bank', resident:'Liu',due:'Mon, Jan 15, 2023',status:'Ongoing',assigned:'2/2',priority:'Normal',volunteer:'F',completed:'Mon, Feb 6, 2023'},
+        {id:'11',help_type:'Shopping', resident:'Bob',due:'Mon, Jan 8, 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'D',completed:'Mon, Jan 15, 2023'},
+        {id:'27',help_type:'Prescription', resident:'Ally',due:'Sun, Feb19 , 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'A',completed:'Sun, Feb19 , 2023'},
+        {id:'3',help_type:'Volunteer Assigned', resident:'Bill',due:'Sun, Feb12 , 2023',status:'Ongoing',assigned:'2/2',priority:'Normal',volunteer:'C',completed:'Sun, Feb12 , 2023'},
+        {id:'15',help_type:'Volunteer Assigned', resident:'Alice',due:'Wed, Aug 11, 2023',status:'Ongoing',assigned:'1/2',priority:'Normal',volunteer:'D'},
+        {id:'17',help_type:'Dog Walking', resident:'Sid',due:'Mon, Jan 1, 2023',status:'Ongoing',assigned:'0/1',priority:'Normal',volunteer:'A'},
       ],
       priority: ["High", "Medium", "Low"],
       helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
       sortOrder:'',
+      activeButton: -1,
     }
   },
   props: {
@@ -197,8 +210,50 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        this.activeButton = -1;
+      } else {
+        this.activeButton = index;
+      }
+    },
     toggleHide() {
       this.toggle = !this.toggle;
+    },
+    sortTable(sortKey) {
+      if (this.sortOrder === sortKey) {
+        this.list.reverse();
+      } else {
+        if (sortKey === 'id') {
+          this.toggleActive(0);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        } else if (sortKey === 'help_type') {
+          this.toggleActive(1);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'resident') {
+          this.toggleActive(2);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'due') {
+          this.toggleActive(3);
+          this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
+        } else if (sortKey === 'status'){
+          this.toggleActive(4);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'assigned'){
+          this.toggleActive(5);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        }else if (sortKey === 'priority'){
+          this.toggleActive(6);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }else if (sortKey === 'volunteer'){
+          this.toggleActive(7);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }else if (sortKey === 'completed'){
+          this.toggleActive(8);
+          this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
+        }
+        this.sortOrder = sortKey;
+      }
     },
     baseURL: function(){
         return window.location.origin
@@ -329,7 +384,8 @@ export default {
   z-index: -1;
 }
 
-.Action_table {
+
+.Action_table{
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 50px;
@@ -349,11 +405,11 @@ export default {
   }
 }
 
- th,td{
+th,td{
   border: none;
 }
 
-.Action_table th {
+th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;
@@ -363,25 +419,6 @@ export default {
   cursor: pointer;
 }
 
-th:hover {
-  background-color: #dddddd;
-}
-
-th.sortable:hover {
-  background-color: #dddddd;
-}
-
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-th.sortable.asc:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
-}
 
 td {
   padding: 0.75rem 2rem;
@@ -389,9 +426,6 @@ td {
   color: #333;
 }
 
-tr:hover {
-  background-color: #e6e6e6;
-}
 
 .tr-color-0 {
   background: #f2f2f2;
@@ -399,6 +433,27 @@ tr:hover {
 
 .tr-color-1 {
   background: #fff;
+}
+
+span.sortable1 {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-top: 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+  border-top: 0;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #999;
+  border-left: 4px solid transparent;
+}
+
+span.sortable1.active{
+  transform: rotate(180deg);
+  border-top: 0;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid black;
+  border-left: 4px solid transparent;
 }
 
 .table4{

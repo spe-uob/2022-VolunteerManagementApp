@@ -14,11 +14,11 @@
       <tbody>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th class="sortable">First Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Last Name<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Phone Number<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Email<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
-        <th class="sortable">Total Time Given<div style="display: inline-block;position: absolute;"><span ></span><br /><span  ></span></div></th>
+        <th @click="sortTable('FirstName')">First Name<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+        <th @click="sortTable('LastName')">Last Name<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
+        <th @click="sortTable('PhoneNumber')">Phone Number<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
+        <th @click="sortTable('Email')">Email<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
+        <th @click="sortTable('TotalTimeReceived')" >Total Time Given<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
       </tr>
 
       <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
@@ -105,6 +105,7 @@ export default {
       ],
       search:"",
       sortOrder:'',
+      activeButton: -1,
     }
   },
   computed: {
@@ -129,14 +130,32 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
+    toggleActive(index) {
+      if (this.activeButton === index) {
+        this.activeButton = -1;
+      } else {
+        this.activeButton = index;
+      }
+    },
     sortTable(sortKey) {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
       } else {
         if (sortKey === 'FirstName') {
+          this.toggleActive(0);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'LastName') {
+          this.toggleActive(1);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }else if (sortKey === 'PhoneNumber') {
+          this.toggleActive(2);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+        }else if (sortKey === 'Email') {
+          this.toggleActive(3);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        }else if (sortKey === 'TotalTimeReceived') {
+          this.toggleActive(4);
+          this.list.sort((a, b) => a[sortKey] - b[sortKey]);
         }
         this.sortOrder = sortKey;
       }
@@ -238,10 +257,6 @@ th,td{
   cursor: pointer;
 }
 
-th:hover {
-  background-color: #dddddd;
-}
-
 th.sortable:hover {
   background-color: #dddddd;
 }
@@ -264,9 +279,6 @@ td {
   color: #333;
 }
 
-tr:hover {
-  background-color: #e6e6e6;
-}
 
 .tr-color-0 {
   background: #f2f2f2;
