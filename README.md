@@ -37,7 +37,6 @@
 We're working on a website that can be used by different communities to help self organise, keep track of need and effectively deploy help. We focus on building an intuitive front-end design and a system which all users can interact with.
 The application uses a Django project integrated with a vue application.
 
-
 ------------------
 
 <h2 id = "C">Contributors</h2>
@@ -70,10 +69,15 @@ The application uses a Django project integrated with a vue application.
 git clone https://github.com/spe-uob/2022-VolunteerManagementApp.git 
 ```
 
-- Start the applications using this command in the ```api``` directory: 
-``` 
-cd ./Application/api/
-docker-compose up --build 
+- There are some extre steps for windows user(mac user can skip this step)
+```
+run these commands in Application\api directory
+dos2unix setup.sh
+dos2unix run.sh
+dos2unix run-dev.sh
+
+Then run this command in Application\api\build_scripts
+dos2unix build-frontend-assets.sh
 ```
 
 - Then Run the following command in the ```Application``` directory ( This downloads all required node modules for the vue app ):
@@ -111,15 +115,6 @@ This is where the Vue Application is rendered. Now all that is left is to enjoy!
 --------------------
 
 <h2 id="6"> 1.3 Possible Issues & Bugs </h2>
-If you have a windows machine and you are having issues with setup.sh then run the following commands in your terminal:
-
-```
-dos2unix setup.sh
-dos2unix run.sh
-dos2unix run-dev.sh
-```
-Ensure you execute all commands in the specified order
-
 ### 1.3.1 Found a bug !!!
 If you found a bug, you can use [issue template](https://github.com/spe-uob/2022-VolunteerManagementApp/blob/main/.github/ISSUE_TEMPLATE/bug.md) to [create an issue](https://github.com/spe-uob/2022-VolunteerManagementApp/issues/new) with the tag `bug`
 
