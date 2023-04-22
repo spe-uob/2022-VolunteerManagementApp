@@ -9,6 +9,7 @@
                         <div>Resident: {{ action.resident }}</div>
                         <div>Action Type: {{ action.help_type }}</div>
                         <div>Due Date: {{ action.Due }}</div>
+                        <div>Priority: {{ action.priority }}</div>
                 </ul>
             </div>
 
@@ -19,10 +20,14 @@
             </div>
             <div class="details">
                 <label for="selectedHelpType">Status:</label>
-                <select v-model="selectedHelpType">
+                <select v-model="selectedHelpType" @change="onHelpTypeSelected(selectedHelpType)">
                 <option v-for="helptype in helpTypes" :key="helptype.id">{{ helptype.name }}</option>
                 </select>
-
+                <ul>
+                    <li v-for="(index, volunteer) in assigned_volunteers" :key="index">
+                        <div>{{ volunteer }}</div>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="footer-container">
@@ -30,10 +35,10 @@
                 <header class="this-title">Assign Volunteers</header>
             </div>
             <div class="details">
-                <ul>
+                <ul class="my-list">
                     <li class="details-item" v-for="(volunteer,index) in volunteers" :key="index">
                         <div>{{ volunteer.name }}</div>
-                        <button style="float:right"> ASSIGN </button>
+                        <button style="float:right" class="this-button" @click="assign(volunteer.pk)"> ASSIGN </button>
                     </li>
                 </ul>
             </div>
@@ -51,7 +56,8 @@ export default {
             action: {
                 resident: "Ismael Bencharef",
                 help_type: "Shopping",
-                Due: "20th March 2032"
+                Due: "20th March 2032",
+                priority: "high"
             },
             helpTypes: [
                 { id: 1, name: "Pending volunteer interest" },
@@ -74,7 +80,8 @@ export default {
                 name: "No One"
                 }
             ],
-            priority: ["High", "Medium", "Low"]
+            priority: ["High", "Medium", "Low"],
+            assigned_volunteers: []
 
         }
     },
@@ -87,13 +94,68 @@ export default {
     // },
   },
     methods: {
-            baseURL: function(){
-        return window.location.origin
+        baseURL: function(){
+            return window.location.origin
       },
+      onHelpTypeSelected: async function(id) {
+        let myHelpType = this.helpTypes.find(obj => obj.name === id)
+        const csrftoken = this.getCookie('csrftoken')
+            const json = await $.ajax({
+                url: this.baseURL() + `/api/actions/1/`,
+                beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken)
+                },
+                method: "PATCH",
+                type: "PATCH",
+                contentType: 'application/json',
+                data: JSON.stringify({'action_status': myHelpType.id}),
+                success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+                },
+                error: (err) => {
+                console.error(JSON.stringify(err))
+                },
+
+            }).catch((err) => {
+                console.error(JSON.stringify(err))
+            })
+            console.log(JSON.stringify(json))
+            return json;
+    },
+        assign: async function (volunteer) {
+            let assigned_volunteers = []
+            let action = await this.getAction()
+            assigned_volunteers = action.assigned_volunteers
+            assigned_volunteers.push(volunteer)
+            const csrftoken = this.getCookie('csrftoken')
+            const json = await $.ajax({
+                url: this.baseURL() + `/api/actions/1/`,
+                beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken)
+                },
+                method: "PATCH",
+                type: "PATCH",
+                contentType: 'application/json',
+                data: JSON.stringify({ 'assigned_volunteers': assigned_volunteers }),
+                success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+                },
+                error: (err) => {
+                console.error(JSON.stringify(err))
+                },
+
+            }).catch((err) => {
+                console.error(JSON.stringify(err))
+            })
+            console.log(JSON.stringify(json))
+            return json;
+        },
         getAction: async function () {
             const csrftoken = this.getCookie('csrftoken')
             const json = await $.ajax({
-                url: this.baseURL() + `/api/actions/1`,
+                url: this.baseURL() + `/api/actions/1/`,
                 beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
                 },
@@ -211,6 +273,19 @@ export default {
       console.log(JSON.stringify(json))
       return json;
     },
+    getVolunteerByPK: async function(pk){
+        let volunteers = await this.getVolunteers()
+        volunteers = volunteers.results
+        const volunteer = volunteers.find(obj => obj.pk === pk);
+        return volunteer.first_name + ' ' + volunteer.last_name
+    },
+    getVolunteersInfo: async function(pkArray) {
+        const volunteersInfo = await Promise.all(pkArray.map(async (pk) => {
+            const name = await this.getVolunteerByPK(pk);
+            return { pk, name };
+        }));
+        return volunteersInfo;
+    }
 
     },
     async mounted(){
@@ -223,7 +298,8 @@ export default {
       Due: this.formatDate(result.requested_datetime),
       assigned: result.assigned_volunteers,
       status: this.getStatusByID(result.action_status),
-      priority: this.getPriorityByID(result.action_priority)
+      priority: this.getPriorityByID(result.action_priority),
+      assigned_volunteers : result.assigned_volunteers
     };    
 
     let response = await this.getVolunteers();
@@ -231,10 +307,15 @@ export default {
     this.volunteers = response.results?.map((obj) => {
         return {
         name: obj.first_name + " " + obj.last_name,
+        pk: obj.pk
     }}) || [];
 
     console.log("this.volunteers: " + this.volunteers)
     console.log("this.action: " + this.action)
+
+    console.log("assigned_volunteers: " + this.action.assigned_volunteers)
+    this.assigned_volunteers = this.action.assigned_volunteers
+    this.assigned_volunteers = await getVolunteersInfo(this.assigned_volunteers)
 
   }
 }
@@ -261,9 +342,9 @@ export default {
     font: "Times New Roman";
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-    background-color: rgb(211, 209, 209);
+    background-color: rgb(231, 228, 228);
     border: 1px solid rgb(89, 89, 89);
-    padding: 5px;
+    padding: 10px;
     height: 10%;
     float: top;
  }
@@ -278,7 +359,7 @@ export default {
  }
 
  .details-item {
-    padding: 10px;
+    padding: 25px;
  }
 .footer-container {
     border-radius: 10px;
@@ -294,4 +375,27 @@ export default {
     font-weight: bold;
     font-size: 100%;
 }
+
+.this-button {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(25, 211, 25);
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.this-button:hover {
+    background-color: blue;
+}
+
+.my-list {
+  list-style-type: none;
+}
+
+
+
+
+
+
+
 </style>
