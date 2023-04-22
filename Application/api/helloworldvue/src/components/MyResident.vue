@@ -1,7 +1,8 @@
 <template>
   <div class="grid-container1">
 
-    <div class="resident_container"><table class="Resident_table">
+    <div class="resident_container">
+      <table class="Resident_table">
         <thead style="background-color: rgba(247, 247, 247, 1)">
 
         <tr style="font-size: 1rem;">
@@ -257,17 +258,13 @@ td {
   background: #fff;
 }
 
-
-
-
-
 .filter-container {
   font-weight: bold;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
   border: 0.1rem solid #f7f7f7;
-  width: 10rem;
+  width: 12rem;
 }
 
 
@@ -285,15 +282,13 @@ td {
   position: relative;
   left: 2.5px;
   top: 3px;
-  width:130px;
+  width:165px;
   height: 35px;
-  border: 2px solid rgba(223, 226, 230, 1);
 }
 
 .mi1 input{
   height: 10px;
 }
-
 
 .Resident_FilterComponent{
   position: static;

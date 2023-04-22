@@ -150,7 +150,7 @@
         </tr>
         </tbody>
       </table></div>
-    <div class="FilterComponent_container"><FilterComponent class="table4"></FilterComponent></div>
+    <div class="FilterComponent_container"><FilterComponent class="action_filterComponent"></FilterComponent></div>
   </div>
 
 </template>
@@ -449,15 +449,14 @@ span.sortable1.active{
   border-left: 4px solid transparent;
 }
 
-.table4{
-  z-index: -1;
+.action_filterComponent{
+  position: static;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
+  width: 12rem;
   border: 0.1rem solid #f7f7f7;
-  width: 10rem;
-  right: 10px;
-  top: 200px;
+  top: 400px;
 }
 
 /*table {*/

@@ -315,7 +315,7 @@ export default {
 
     console.log("assigned_volunteers: " + this.action.assigned_volunteers)
     this.assigned_volunteers = this.action.assigned_volunteers
-    this.assigned_volunteers = await getVolunteersInfo(this.assigned_volunteers)
+    // this.assigned_volunteers = await getVolunteersInfo(this.assigned_volunteers)
 
   }
 }
