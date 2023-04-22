@@ -290,7 +290,6 @@ td {
 
 .filter-container {
   font-weight: bold;
-  margin-top: 20px;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
@@ -298,7 +297,6 @@ td {
   width: 10rem;
   position: absolute;
   right: 0.5%;
-  top: 23%;
 }
 
 .f-title{

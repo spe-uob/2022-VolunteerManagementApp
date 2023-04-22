@@ -29,7 +29,7 @@
 <!--          <th>Priority<span class="sortable1"  :class="{ active: activeButton === 5 }" @click="sortTable('priority')"></span></th>-->
 <!--        </tr>-->
 
-        <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+        <tr  v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
           <td>{{item.type}}</td>
           <td>{{item.resident}}</td>
           <td>{{item.created}}</td>
@@ -305,6 +305,7 @@ export default {
 </script>
 
 <style>
+
 .right_table {
   border-collapse: collapse;
   border-spacing: 12px;
@@ -325,7 +326,7 @@ th,td{
   color: black;
   font-weight: bold;
   text-align: left;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }

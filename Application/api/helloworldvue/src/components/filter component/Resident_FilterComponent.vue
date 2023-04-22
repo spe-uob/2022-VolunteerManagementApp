@@ -113,38 +113,32 @@ export default {
 
 <style scoped>
 
-.filter-container {
-  font-weight: bold;
-  margin-top: 175px;
-  background: #ebecf0;
-  color: rgba(31, 31, 31, 0.7);
-  border-radius: 0.5rem;
-  border: 0.1rem solid #f7f7f7;
-  width: 10rem;
-  position: absolute;
-  right: 0.5%;
-  top: 23%;
-}
 
 .f-title{
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   line-height: 1.5;
-  padding: 6px;
+  padding: 4px;
   color: black;
   background-color: rgba(247, 247, 247, 1);
 }
 
 .filter-head{
   background: #eee;
-  padding: 10px;
+  padding: 8px;
   font-size: 10px;
-  border-bottom: 1px solid #D8D8D8;
   border-top: 1px solid #D8D8D8;
-  margin: -1px 0;
+  margin: 1px 0;
   color: black;
 }
 
+.filter-head:hover{
+  background-color: #dddddd;
+}
+
+.filter-head-input{
+  display: none;
+}
 .arrow-right {
   display: inline-block;
   width: 0.45rem;
@@ -155,9 +149,7 @@ export default {
   transform: rotate(45deg);
   transition: transform 0.1s ease-in-out;
 }
-.filter-head-input{
-  display: none;
-}
+
 .filter-head-input:checked+.filter-head .arrow-right{
   transform: rotate(135deg);
   transition: transform 0.1s ease-in-out;
@@ -170,12 +162,6 @@ label{
 
 .filter-body{
   background-color: white;
-}
-
-@media (max-width: 1180px ){
-  .filter-container{
-    display: none;
-  }
 }
 
 </style>

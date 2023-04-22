@@ -254,7 +254,7 @@ export default {
 .left_table {
   border-collapse: collapse;
   font-size: 12px;
-  float: left;
+  border-spacing: 12px;
   width: 80%;
   background-color: #f8f8f8;
   border-radius: 4px;
@@ -277,18 +277,17 @@ th,td{
   color: black;
   font-weight: bold;
   text-align: left;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 1rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
 }
 
 
 span.sortable1 {
-  position: absolute;
   display: inline-block;
   width: 0;
   height: 0;
-  margin-top: 6px;
+  margin-top: 0px;
   margin-left: 8px;
   vertical-align: middle;
   border-top: 0;

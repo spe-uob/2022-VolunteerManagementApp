@@ -1,5 +1,5 @@
 <template>
-  <div class="filter-container">
+  <div>
     <div class="f-title">Action Filters</div>
     <div>
       <label for="id1">
@@ -154,23 +154,26 @@ export default {
 
 <style scoped>
 
-.filter-container {
-  font-weight: bold;
-  background: #ebecf0;
-  color: rgba(31, 31, 31, 0.7);
-  width: 10rem;
-  position: absolute;
-  right: 10px;
-  top: 140px;
-}
+/*.filter-container {*/
+/*  font-weight: bold;*/
+/*  background: #ebecf0;*/
+/*  color: rgba(31, 31, 31, 0.7);*/
+/*  width: 10rem;*/
+/*  position: absolute;*/
+/*  right: 10px;*/
+/*  top: 140px;*/
+/*}*/
 
 .f-title{
   font-size: 15px;
   font-weight: 600;
-  line-height: 1.5;
   padding: 4px;
   color: black;
   background-color: rgba(247, 247, 247, 1);
+}
+
+.filter-head1:hover{
+  background-color: #dddddd;
 }
 
 .filter-head1{
@@ -204,17 +207,11 @@ export default {
 
 label{
   font-size: 10px;
-  color: black;
 }
+
 
 .filter-body1{
   background-color: white;
-}
-
-@media (max-width: 1350px ){
-  .filter-container{
-    display: none;
-  }
 }
 
 </style>

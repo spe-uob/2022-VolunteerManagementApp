@@ -1,108 +1,7 @@
 <template>
-  <div>
-    <div>
-      <!--        <table class="table">-->
-      <!--          <thead>-->
-      <!--          <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-      <!--            <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Referrals</td>-->
-      <!--            <td></td>-->
-      <!--            <td></td>-->
-      <!--            <td></td>-->
-      <!--            <td></td>-->
-      <!--          </tr>-->
-      <!--          </thead>-->
-      <!--          <tbody>-->
 
-      <!--          <tr>-->
-      <!--            <th>ID<div style="display: inline-block;position: absolute;top:45px;">-->
-      <!--              <span-->
-      <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-      <!--              </div>-->
-      <!--            </th>-->
-      <!--            <th>Resident<div style="display: inline-block;position: absolute;top: 45px;">-->
-      <!--              <span-->
-      <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-      <!--              </div>-->
-      <!--            </th>-->
-      <!--            <th>Help Type<div style="display: inline-block;position: absolute;top: 45px;">-->
-      <!--              <span-->
-      <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-      <!--              </div>-->
-      <!--            </th>-->
-      <!--            <th>Organisation<div style="display: inline-block;position: absolute;top: 45px;">-->
-      <!--              <span-->
-      <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-      <!--              </div>-->
-      <!--            </th>-->
-      <!--            <th>Completed<div style="display: inline-block;position: absolute;top: 45px;">-->
-      <!--              <span-->
-      <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-      <!--              </div>-->
-      <!--            </th>-->
-      <!--          </tr>-->
-      <!--          &lt;!&ndash; 用索引值除以 2 取余 &ndash;&gt;-->
-      <!--          <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
-      <!--            <td style="color:  black;">{{item.id}}</td>-->
-      <!--            <td style="color:  black;">{{item.resident}}</td>-->
-      <!--            <td style="color:  black;">{{item.help_type}}</td>-->
-      <!--            <td style="color:  black;">{{item.Organisation}}</td>-->
-      <!--            <td style="color:  black;">{{item.Completed}}</td>-->
-      <!--          </tr>-->
-      <!--          </tbody>-->
-      <!--        </table>-->
-      <div>
-        <div>
-          <!--        <table class="table">-->
-          <!--          <thead>-->
-          <!--          <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-          <!--            <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Referrals</td>-->
-          <!--            <td></td>-->
-          <!--            <td></td>-->
-          <!--            <td></td>-->
-          <!--            <td></td>-->
-          <!--          </tr>-->
-          <!--          </thead>-->
-          <!--          <tbody>-->
-
-          <!--          <tr>-->
-          <!--            <th>ID<div style="display: inline-block;position: absolute;top:45px;">-->
-          <!--              <span-->
-          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-          <!--              </div>-->
-          <!--            </th>-->
-          <!--            <th>Resident<div style="display: inline-block;position: absolute;top: 45px;">-->
-          <!--              <span-->
-          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-          <!--              </div>-->
-          <!--            </th>-->
-          <!--            <th>Help Type<div style="display: inline-block;position: absolute;top: 45px;">-->
-          <!--              <span-->
-          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-          <!--              </div>-->
-          <!--            </th>-->
-          <!--            <th>Organisation<div style="display: inline-block;position: absolute;top: 45px;">-->
-          <!--              <span-->
-          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-          <!--              </div>-->
-          <!--            </th>-->
-          <!--            <th>Completed<div style="display: inline-block;position: absolute;top: 45px;">-->
-          <!--              <span-->
-          <!--                class="arrow asc"></span><br /><span class="arrow dsc"></span>-->
-          <!--              </div>-->
-          <!--            </th>-->
-          <!--          </tr>-->
-          <!--          &lt;!&ndash; 用索引值除以 2 取余 &ndash;&gt;-->
-          <!--          <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
-          <!--            <td style="color:  black;">{{item.id}}</td>-->
-          <!--            <td style="color:  black;">{{item.resident}}</td>-->
-          <!--            <td style="color:  black;">{{item.help_type}}</td>-->
-          <!--            <td style="color:  black;">{{item.Organisation}}</td>-->
-          <!--            <td style="color:  black;">{{item.Completed}}</td>-->
-          <!--          </tr>-->
-          <!--          </tbody>-->
-          <!--        </table>-->
-          <div class="container-table">
-            <table class="referral_table">
+  <div class="grid-container">
+    <div class="action_container"><table class="referral_table">
               <thead style="background-color: rgba(247, 247, 247, 1)">
 
               <tr style="font-size: 1rem;">
@@ -137,23 +36,12 @@
                 <td>{{item.completed}}</td>
               </tr>
               </tbody>
-            </table>
-          </div>
+            </table></div>
 
-          <div>
-            <FilterComponent class="filter"></FilterComponent>
-          </div>
-
-        </div>
-
-
-<!--      <div>-->
-<!--        <FilterComponent></FilterComponent>-->
-<!--      </div>-->
-
-    </div>
+    <div class="FilterComponent_container"><FilterComponent class="filter"></FilterComponent></div>
   </div>
-  </div>
+
+
 </template>
 
 <script>
@@ -297,19 +185,13 @@ export default {
 </script>
 
 <style>
-.container-table{
-  position: absolute;
-  top: 150px;
-  z-index: -1;
-}
-
 .referral_table {
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 50px;
   font-size: 12px;
-  width: 80%;
-  margin-left: 40px;
+  width: 100%;
+  margin-left: 10px;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
