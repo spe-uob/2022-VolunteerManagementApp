@@ -1,5 +1,4 @@
 <template>
-  <div>
     <!--     api version-->
 
     <!--    <div class='table-container' :style="{ width: containerSize + 'px', height: containerSize + 'px'}">-->
@@ -109,9 +108,8 @@
     <!--        </div>-->
     <!--      </div>-->
 
-
-    <div class="container-table">
-      <table class="Action_table">
+    <div class="grid-container">
+    <div class="action_container"><table class="Action_table">
         <thead style="background-color: rgba(247, 247, 247, 1)">
         <tr style="font-size: 1rem;">
           <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>
@@ -151,27 +149,10 @@
           <td>{{item.completed}}</td>
         </tr>
         </tbody>
-      </table>
-
-
-<!--      <tr v-for="(item, index) in filteredOrganisation" :class="'tr-color-' + index % 2" :key="index">-->
-<!--        <td style="color:  black;" @click="goUpdate(item)">{{item.name}}</td>-->
-<!--        <td style="color:  black;">{{item.phone}}</td>-->
-<!--        <td style="color:  black;">{{item.address}}</td>-->
-<!--        <td style="color:  black;">{{item.contact}}</td>-->
-<!--        <td style="color:  black;">{{item.email}}</td>-->
-<!--      </tr>-->
-
-
-
-
-    </div>
-
-    <div>
-      <FilterComponent class="table4"></FilterComponent>
-    </div>
-
+      </table></div>
+    <div class="FilterComponent_container"><FilterComponent class="action_filterComponent"></FilterComponent></div>
   </div>
+
 </template>
 
 <script>
@@ -378,10 +359,22 @@ export default {
 
 <style>
 
-.container-table{
-  position: absolute;
-  top: 150px;
-  z-index: -1;
+.grid-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 20px;
+}
+
+.action_container{
+  grid-column-start: 1;
+  grid-column-end: col4-start;
+  grid-row-start: 1;
+  grid-row-end: third-line;
+}
+
+.FilterComponent_container{
+  grid-area: 1 / col4-start / third-line / 6 ;
 }
 
 
@@ -390,8 +383,8 @@ export default {
   border-collapse: collapse;
   border-spacing: 50px;
   font-size: 12px;
-  width: 80%;
-  margin-left: 40px;
+  width: 100%;
+  margin-left: 10px;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
@@ -456,15 +449,14 @@ span.sortable1.active{
   border-left: 4px solid transparent;
 }
 
-.table4{
-  z-index: -1;
+.action_filterComponent{
+  position: static;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
+  width: 12rem;
   border: 0.1rem solid #f7f7f7;
-  width: 10rem;
-  right: 10px;
-  top: 200px;
+  top: 400px;
 }
 
 /*table {*/

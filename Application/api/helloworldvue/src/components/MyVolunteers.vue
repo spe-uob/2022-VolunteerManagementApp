@@ -1,7 +1,9 @@
 <template>
-  <div>
 
-    <table class="Volunteer_table">
+  <div class="grid-container2">
+
+    <div class="Volunteer_container">
+      <table class="Volunteer_table">
       <thead style="background-color: rgba(247, 247, 247, 1)">
       <tr style="font-size: 1rem;">
         <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Volunteers</td>
@@ -29,69 +31,18 @@
         <td style="color:  black;">{{item.TotalTimeReceived}}</td>
       </tr>
       </tbody>
-    </table>
+    </table></div>
 
-    <!--      <table class="table">-->
-    <!--        <thead>-->
-    <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-    <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Volunteers</td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--        <tbody>-->
 
-    <!--        <tr>-->
-    <!--          <th>First Name<div style="display: inline-block;position: absolute;top:45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Last Name<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Phone Number<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Email<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Total Time Given<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--        </tr>-->
-    <!--        &lt;!&ndash; 用索引值除以 2 取余 &ndash;&gt;-->
-    <!--        <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
-    <!--          <td style="color:  black;">{{item.FirstName}}</td>-->
-    <!--          <td style="color:  black;">{{item.LastName}}</td>-->
-    <!--          <td style="color:  black;">{{item.PhoneNumber}}</td>-->
-    <!--          <td style="color:  black;">{{item.Email}}</td>-->
-    <!--          <td style="color:  black;">{{item.TotalTimeGiven}}</td>-->
-    <!--        </tr>-->
-    <!--        </tbody>-->
-    <!--      </table>-->
-    <div>
-      <FilterComponent class="table4"></FilterComponent>
-    </div>
-    <div>
+    <div class="FilterComponent_container2">
       <div class="filter-container">
-        <div class="f-title">Search</div>
-        <!--    <div class="mi">-->
-        <!--          <input type="search" name="" id="" placeholder="">-->
-        <!--          <button type="button">Search</button>-->
-        <!--        </div>-->
-        <div>
-          <div class="mi">
-            <input type="text" v-model="search"/>
-            <!--          <button type="button">Search</button>-->
-          </div>
-        </div>
+        <div class="f-title">Search</div><div class="mi1"><input type="text" v-model="search"/></div>
       </div>
+      <FilterComponent class="Volunteers_FilterComponent"></FilterComponent>
     </div>
-<!--    <div>-->
-<!--      <filterComponent></filterComponent>-->
-<!--    </div>-->
+
   </div>
+
 </template>
 
 <script>
@@ -223,13 +174,34 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.Volunteer_table {
+
+.grid-container2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 20px;
+}
+
+.Volunteer_container{
+  grid-column-start: 1;
+  grid-column-end: col4-start;
+  grid-row-start: 1;
+  grid-row-end: third-line;
+}
+
+.FilterComponent_container2{
+  grid-area: 1 / col4-start / third-line / 6 ;
+}
+
+
+
+.Volunteer_table{
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 50px;
   font-size: 12px;
-  width: 80%;
-  margin-left: 40px;
+  width: 100%;
+  margin-left: 10px;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
@@ -247,7 +219,7 @@ th,td{
   border: none;
 }
 
-.Volunteer_table th {
+th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;
@@ -257,28 +229,12 @@ th,td{
   cursor: pointer;
 }
 
-th.sortable:hover {
-  background-color: #dddddd;
-}
-
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-th.sortable.asc:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
-}
 
 td {
   padding: 0.75rem 2rem;
   border-bottom: 1px solid #ddd;
   color: #333;
 }
-
 
 .tr-color-0 {
   background: #f2f2f2;
@@ -288,18 +244,16 @@ td {
   background: #fff;
 }
 
+
 .filter-container {
   font-weight: bold;
-  margin-top: 20px;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
   border: 0.1rem solid #f7f7f7;
-  width: 10rem;
-  position: absolute;
-  right: 0.5%;
-  top: 23%;
+  width: 12rem;
 }
+
 
 .f-title{
   font-size: 18px;
@@ -311,41 +265,26 @@ td {
 }
 
 
-@media (max-width: 1180px ){
-  .filter-container{
-    display: none;
-  }
-}
-
-.mi {
+.mi1 {
   position: relative;
   left: 2.5px;
   top: 3px;
-  width:150px;
-  height: 30px;
-  border: 2px solid rgba(223, 226, 230, 1);
+  width:165px;
+  height: 35px;
 }
 
-.mi input {
-  float: left;
-  width: 130px;
-  height: 33px;
-  padding: 0 10px;
-  font-size: 14px;
-  line-height: 48px;
-  border: 1px solid #e0e0e0;
-  outline: none;
-  transition: all 0.3s;
+.mi1 input{
+  height: 10px;
 }
 
-.table4{
+.Volunteers_FilterComponent{
+  position: static;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
+  width: 12rem;
   border: 0.1rem solid #f7f7f7;
-  width: 10rem;
-  right: 10px;
-  top: 300px;
+  top: 400px;
 }
 
 

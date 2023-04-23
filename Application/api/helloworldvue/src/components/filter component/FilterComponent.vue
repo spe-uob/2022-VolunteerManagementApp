@@ -1,5 +1,5 @@
 <template>
-    <div class="filter-container">
+    <div class="filter_container">
       <div class="f-title">Referral Filters</div>
       <div>
         <label for="id4">
@@ -135,16 +135,18 @@
 
 <style scoped>
 
-.filter-container {
-  font-weight: bold;
-  margin-top: 20px;
-  background: #ebecf0;
-  color: rgba(31, 31, 31, 0.7);
-  width: 150px;
-  position: absolute;
-  right: 10px;
-  top: 120px;
-}
+
+
+/*.filter-container {*/
+/*  font-weight: bold;*/
+/*  margin-top: 20px;*/
+/*  background: #ebecf0;*/
+/*  color: rgba(31, 31, 31, 0.7);*/
+/*  width: 150px;*/
+/*  position: absolute;*/
+/*  right: 10px;*/
+/*  top: 120px;*/
+/*}*/
 
 .f-title{
   font-size: 15px;
@@ -162,6 +164,10 @@
   border-top: 1px solid #D8D8D8;
   margin: 1px 0;
   color: black;
+}
+
+.filter-head:hover{
+  background-color: #dddddd;
 }
 
 .filter-head-input{
@@ -190,12 +196,6 @@ label{
 
 .filter-body{
   background-color: white;
-}
-
-@media (max-width: 1350px ){
-   .filter-container{
-    display: none;
-  }
 }
 
 </style>

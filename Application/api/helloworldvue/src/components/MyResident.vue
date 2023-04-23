@@ -1,65 +1,50 @@
 <template>
-  <div>
+  <div class="grid-container1">
 
-<!--    <div class="container-search">-->
-<!--    <input type="text" v-model="search" placeholder="Search">-->
-<!--    </div>-->
+    <div class="resident_container">
+      <table class="Resident_table">
+        <thead style="background-color: rgba(247, 247, 247, 1)">
 
+        <tr style="font-size: 1rem;">
+          <td rowspan="4" style="font-size: 1rem;font-weight:bold;">Residents</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
 
-    <table class="Resident_table">
-      <thead style="background-color: rgba(247, 247, 247, 1)">
-      <tr style="font-size: 1rem;">
-        <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Residents</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      </thead>
+        </thead>
+        <tbody>
+        <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
+          <th  @click="sortTable('FirstName')">First Name<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+          <th  @click="sortTable('LastName')">Last Name<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
+          <th  @click="sortTable('PhoneNumber')">Phone Number<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
+          <th  @click="sortTable('Email')">Email<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
+          <th  @click="sortTable('TotalTimeReceived')">Total Time Received<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
+          <th  @click="sortTable('Consent')">Consent<span class="sortable1" :class="{ active: activeButton === 5 }"></span></th>
+        </tr>
 
-      <tbody>
+        <tr v-for="(item, index) in filteredResidents" :class="'tr-color-' + index % 2" :key="index">
+          <td style="color:  black;">{{item.FirstName}}</td>
+          <td style="color:  black;">{{item.LastName}}</td>
+          <td style="color:  black;">{{item.PhoneNumber}}</td>
+          <td style="color:  black;">{{item.Email}}</td>
+          <td style="color:  black;">{{item.TotalTimeReceived}}</td>
+          <td style="color:  black;">{{item.Consent}}</td>
+        </tr>
 
-      <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th  @click="sortTable('FirstName')">First Name<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
-        <th  @click="sortTable('LastName')">Last Name<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
-        <th  @click="sortTable('PhoneNumber')">Phone Number<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
-        <th  @click="sortTable('Email')">Email<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
-        <th  @click="sortTable('TotalTimeReceived')">Total Time Received<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
-        <th  @click="sortTable('Consent')">Consent<span class="sortable1" :class="{ active: activeButton === 5 }"></span></th>
-      </tr>
+        </tbody>
+      </table></div>
 
-      <tr v-for="(item, index) in filteredResidents" :class="'tr-color-' + index % 2" :key="index">
-        <td style="color:  black;">{{item.FirstName}}</td>
-        <td style="color:  black;">{{item.LastName}}</td>
-        <td style="color:  black;">{{item.PhoneNumber}}</td>
-        <td style="color:  black;">{{item.Email}}</td>
-        <td style="color:  black;">{{item.TotalTimeReceived}}</td>
-        <td style="color:  black;">{{item.Consent}}</td>
-      </tr>
-      </tbody>
-    </table>
-
-    <div>
-      <FilterComponent class="table4"></FilterComponent>
-    </div>
-<!--    <div>-->
-<!--      <SearchComponent></SearchComponent>-->
-<!--    </div>-->
-    <div>
+    <div class="FilterComponent_container1">
       <div class="filter-container">
-        <div class="f-title">Search</div>
-        <!--    <div class="mi">-->
-        <!--          <input type="search" name="" id="" placeholder="">-->
-        <!--          <button type="button">Search</button>-->
-        <!--        </div>-->
-        <div>
-          <div class="mi">
-            <input type="text" v-model="search"/>
-            <!--          <button type="button">Search</button>-->
-          </div>
-        </div>
+      <div class="f-title">Search</div><div class="mi1"><input type="text" v-model="search"/></div>
       </div>
+      <FilterComponent class="Resident_FilterComponent"></FilterComponent>
+
     </div>
+
   </div>
 </template>
 
@@ -204,13 +189,32 @@ export default {
 
 <style>
 
-.Resident_table {
+.grid-container1{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-gap: 20px;
+}
+
+.resident_container{
+  grid-column-start: 1;
+  grid-column-end: col4-start;
+  grid-row-start: 1;
+  grid-row-end: third-line;
+}
+
+.FilterComponent_container1{
+  grid-area: 1 / col4-start / third-line / 6 ;
+}
+
+
+.Resident_table{
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 50px;
   font-size: 12px;
-  width: 80%;
-  margin-left: 40px;
+  width: 100%;
+  margin-left: 10px;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
@@ -256,16 +260,13 @@ td {
 
 .filter-container {
   font-weight: bold;
-  margin-top: 20px;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
   border: 0.1rem solid #f7f7f7;
-  width: 10rem;
-  position: absolute;
-  right: 0.5%;
-  top: 23%;
+  width: 12rem;
 }
+
 
 .f-title{
   font-size: 18px;
@@ -277,42 +278,40 @@ td {
 }
 
 
-@media (max-width: 1180px ){
-  .filter-container{
-    display: none;
-  }
-}
-
-.mi {
+.mi1 {
   position: relative;
   left: 2.5px;
   top: 3px;
-  width:150px;
-  height: 30px;
-  border: 2px solid rgba(223, 226, 230, 1);
+  width:165px;
+  height: 35px;
 }
 
-.mi input {
-  float: left;
-  width: 130px;
-  height: 33px;
-  padding: 0 10px;
-  font-size: 14px;
-  line-height: 48px;
-  border: 1px solid #e0e0e0;
-  outline: none;
-  transition: all 0.3s;
+.mi1 input{
+  height: 10px;
 }
 
-.table4{
+.Resident_FilterComponent{
+  position: static;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
+  width: 12rem;
   border: 0.1rem solid #f7f7f7;
-  width: 10rem;
-  right: 10px;
   top: 400px;
 }
+
+
+/*.mi input {*/
+/*  float: left;*/
+/*  width: 130px;*/
+/*  height: 33px;*/
+/*  padding: 0 10px;*/
+/*  font-size: 14px;*/
+/*  line-height: 48px;*/
+/*  border: 1px solid #e0e0e0;*/
+/*  outline: none;*/
+/*  transition: all 0.3s;*/
+/*}*/
 
 
 /*.container1 {*/

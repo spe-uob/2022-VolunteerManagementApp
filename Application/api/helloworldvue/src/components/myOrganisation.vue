@@ -1,8 +1,7 @@
 <template>
-  <div>
-  <div>
+  <div class="grid-container1">
 
-    <table class="Organisation_table">
+    <div class="organisation_contain"><table class="Organisation_table">
       <thead style="background-color: rgba(247, 247, 247, 1)">
       <tr style="font-size: 1rem;">
         <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Organisations</td>
@@ -33,80 +32,21 @@
       </tr>
 
       </tbody>
-    </table>
-    <!--      <table class="table">-->
-    <!--        <thead>-->
-    <!--        <tr style="font-size: 17px;background-color: #f7f7f7;">-->
-    <!--          <td rowspan="4" style="font-size: 17px;font-weight:bold;color: black">Organisations</td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
-    <!--          <td></td>-->
+    </table></div>
 
-    <!--        </tr>-->
-    <!--        </thead>-->
-    <!--        <tbody>-->
-
-    <!--        <tr>-->
-    <!--          <th>Name<div style="display: inline-block;position: absolute;top:45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Phone Number<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Address<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Main Contact<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-    <!--          <th>Email<div style="display: inline-block;position: absolute;top: 45px;"><span-->
-    <!--              class="arrow asc"></span><br /><span class="arrow dsc"></span></div>-->
-    <!--          </th>-->
-
-    <!--        </tr>-->
-    <!--        &lt;!&ndash; 用索引值除以 2 取余 &ndash;&gt;-->
-    <!--        <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">-->
-    <!--          <td style="color:  black;">{{item.Name}}</td>-->
-    <!--          <td style="color:  black;">{{item.PhoneNumber}}</td>-->
-    <!--          <td style="color:  black;">{{item.Address}}</td>-->
-    <!--          <td style="color:  black;">{{item.MainContact}}</td>-->
-    <!--          <td style="color:  black;">{{item.Email}}</td>-->
-    <!--        </tr>-->
-    <!--        </tbody>-->
-    <!--      </table>-->
-    <!-- <div class="search_wrap" :style="searchWrapStyle">
-      <header class="searchBox">
-        <input
-            type="text"
-            class="input"
-            :placeholder="placeholder"
-            v-model="searchValue"
-            @keyup.enter="handleSearch"
-        />
-      </header>
-    </div> -->
-<!--    <div>-->
-<!--      <FilterComponent></FilterComponent>-->
-<!--    </div>-->
-    <div>
+    <div class="FilterComponent_container1">
       <div class="filter-container">
         <div class="f-title">Search</div>
-        <!--    <div class="mi">-->
-        <!--          <input type="search" name="" id="" placeholder="">-->
-        <!--          <button type="button">Search</button>-->
-        <!--        </div>-->
         <div>
-          <div class="mi">
+          <div class="mi1">
             <input type="text" v-model="search"/>
-            <!--          <button type="button">Search</button>-->
           </div>
         </div>
       </div>
     </div>
+
   </div>
-<!--    <Form v-if="newFormFlag" @back="closeNewForm()"></Form>-->
-  </div>
+
 </template>
 
 <script>
@@ -120,41 +60,41 @@ export default {
       // newFormFlag: false,
       toggle: false,
       list: [
-        // {
-        //   name: 'Noel',
-        //   phone: '01179123456',
-        //   address:'A',
-        //   email: 'noel.wester@gmail.com',
-        //   contact:'Carol Lamentably',
-        // },
-        // {
-        //   name: 'Noel',
-        //   phone: '355667564532',
-        //   address:'A',
-        //   email: 'noel.wes@gmail.com',
-        //   contact:'Carol Lamentably',
-        // },
-        // {
-        //   name: 'Noe',
-        //   phone: '465768778787',
-        //   address:'A',
-        //   email: 'noe.wester@gmail.com',
-        //   contact:'Carol Lamentably',
-        // },
-        // {
-        //   name: 'Noel',
-        //   phone: '01179123456',
-        //   address:'A',
-        //   email: 'noel.wester@gmail.com',
-        //   contact:'Carol Lamentably',
-        // },
-        // {
-        //   name: 'Nel',
-        //   phone: '0456667665',
-        //   address:'A',
-        //   email: 'nel.weser@gmail.com',
-        //   contact:'Carol Lamentably',
-        // }
+        {
+          name: 'Noel',
+          phone: '01179123456',
+          address:'A',
+          email: 'noel.wester@gmail.com',
+          contact:'Carol Lamentably',
+        },
+        {
+          name: 'Noel',
+          phone: '355667564532',
+          address:'A',
+          email: 'noel.wes@gmail.com',
+          contact:'Carol Lamentably',
+        },
+        {
+          name: 'Noe',
+          phone: '465768778787',
+          address:'A',
+          email: 'noe.wester@gmail.com',
+          contact:'Carol Lamentably',
+        },
+        {
+          name: 'Noel',
+          phone: '01179123456',
+          address:'A',
+          email: 'noel.wester@gmail.com',
+          contact:'Carol Lamentably',
+        },
+        {
+          name: 'Nel',
+          phone: '0456667665',
+          address:'A',
+          email: 'nel.weser@gmail.com',
+          contact:'Carol Lamentably',
+        }
       ],
       search:"",
       sortOrder:'',
@@ -285,13 +225,27 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.Organisation_table {
+
+.organisation_contain{
+  grid-column-start: 1;
+  grid-column-end: col4-start;
+  grid-row-start: 1;
+  grid-row-end: third-line;
+}
+
+
+.FilterComponent_container1{
+  grid-area: 1 / col4-start / third-line / 6 ;
+}
+
+
+.Organisation_table{
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 50px;
   font-size: 12px;
-  min-width: 80%;
-  margin-left: 40px;
+  width: 100%;
+  margin-left: 10px;
   background-color: #f8f8f8;
   border-radius: 4px;
   overflow: hidden;
@@ -309,7 +263,7 @@ th,td{
   border: none;
 }
 
-.Organisation_table th {
+th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
   font-weight: bold;
@@ -319,29 +273,13 @@ th,td{
   cursor: pointer;
 }
 
-th.sortable:hover {
-  background-color: #dddddd;
-}
-
-th.sortable:after {
-  content: "\25B2";
-  font-size: 12px;
-  margin-left: 5px;
-}
-
-th.sortable.asc:after {
-  content: "\25BC";
-  font-size: 12px;
-  margin-left: 5px;
-}
 
 td {
-  font-size: 12px;
-  height: 20px;
   padding: 0.75rem 2rem;
   border-bottom: 1px solid #ddd;
   color: #333;
 }
+
 
 .tr-color-0 {
   background: #f2f2f2;
@@ -350,18 +288,16 @@ td {
 .tr-color-1 {
   background: #fff;
 }
+
 .filter-container {
   font-weight: bold;
-  margin-top: 20px;
   background: #ebecf0;
   color: rgba(31, 31, 31, 0.7);
   border-radius: 0.5rem;
   border: 0.1rem solid #f7f7f7;
-  width: 10rem;
-  position: absolute;
-  right: 0.5%;
-  top: 23%;
+  width: 12rem;
 }
+
 
 .f-title{
   font-size: 18px;
@@ -373,33 +309,17 @@ td {
 }
 
 
-@media (max-width: 1180px ){
-  .filter-container{
-    display: none;
-  }
-}
-
-.mi {
+.mi1 {
   position: relative;
   left: 2.5px;
   top: 3px;
-  width:150px;
-  height: 30px;
-  border: 2px solid rgba(223, 226, 230, 1);
+  width:165px;
+  height: 35px;
 }
 
-.mi input {
-  float: left;
-  width: 130px;
-  height: 33px;
-  padding: 0 10px;
-  font-size: 14px;
-  line-height: 48px;
-  border: 1px solid #e0e0e0;
-  outline: none;
-  transition: all 0.3s;
+.mi1 input{
+  height: 10px;
 }
-
 
 /*.container1 {*/
 /*  position: relative;*/
