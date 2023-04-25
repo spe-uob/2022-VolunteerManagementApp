@@ -244,7 +244,7 @@
     }
     /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown-content:hover {
-        font-weight: bold;
+        /*font-weight: bold;*/
     }
     .dropdown-content a {
         border-bottom: 1px solid #eee;
