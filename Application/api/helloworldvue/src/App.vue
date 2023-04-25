@@ -228,27 +228,7 @@
     /*    cursor: pointer;*/
     /*}*/
 
-    .dropdown-arrow {
-        width: 1.8vw;
-        height: 2vw;
-        transition: all 0.2s ease-out;
-        margin-left: 1vw;
-        /*font-size: 0.5rem;*/
-        /*transition: transform 0.2s ease-in-out;*/
-        /*transform: rotate(180deg);*/
-    }
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        border-radius: 4px;
-        transition: all 0.3s ease-out;
-        top: 100%;
-        z-index: 2
-    }
 
     /*.dropdown:hover .dropdown-content:hover {*/
     /*    display: block;*/

@@ -6,16 +6,18 @@
 
             <img class="symbol" :src="companyIcon" @click="goToHomePage"/>
 
-            <div class="title">
-                 <span>
-                    Coordinator
-                </span>
-                <span class="gap"></span>
-
+            <div>
                 <div class="person-wrapper">
                     <div class="person-wrapper ">
+                        <span class="coordinator">Coordinator</span>
+                        <span class="gap"></span>
                         <img class="person" :src="dropdown"/>
 
+                        <button id="burgerMenuButton" class="burger-menu-button">
+                            <div class="burger-line"></div>
+                            <div class="burger-line"></div>
+                            <div class="burger-line"></div>
+                        </button>
                     </div>
                     <div class="dropdown-content">
                         <a href="#">Volunteer view</a>
@@ -40,7 +42,7 @@
         data() {
             return {
                 companyIcon: companyIcon,
-                dropdown : dropdown,
+                dropdown: dropdown,
                 // personIcon: personIcon,
                 // arrow: arrow,
             }
@@ -75,6 +77,7 @@
         align-items: center;
         z-index: 100;
     }
+
     .symbol {
         position: absolute;
         width: 60px;
@@ -90,21 +93,69 @@
         transition: opacity 0.3s ease-in-out;
     }
 
+    .burger-menu-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 50px;
+        height: 30px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-    .title {
-        position: fixed;
-        height: 2vw;
-        right: 1vw;
-        top: 1vw;
+    .burger-line {
+        width: 70%;
+        height: 2.5px;
+        background-color: white;
+        border-radius: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        transition: all 0.3s ease;
+    }
+
+
+    .burger-line:nth-child(1) {
+        top: 60%;
+    }
+
+    .burger-line:nth-child(2) {
+        top: 50%;
+    }
+
+    .burger-line:nth-child(3) {
+        top: 60%;
+    }
+
+
+
+    .burger-menu-button.active .burger-line:nth-child(1) {
+        transform: translateY(5px) rotate(45deg);
+    }
+
+    .burger-menu-button.active .burger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger-menu-button.active .burger-line:nth-child(3) {
+        transform: translateY(-5px) rotate(-45deg);
+    }
+
+
+    .coordinator {
+        color: #FFFFFF;
         font-family: 'Inter';
         font-style: normal;
-        font-weight: 600;
-        font-size: 1.5vw;
-        display: flex;
+        top: 20px;
+        font-size: 15px;
         align-items: center;
-        color: #FFFFFF;
-
     }
+   .burger-menu-button{
+       display: none;
+    }
+
     .person-wrapper {
         display: flex;
         align-items: center;
@@ -112,9 +163,7 @@
         padding-top: 2px;
     }
 
-    .person-wrapper:hover .dropdown-arrow {
-        transform: rotate(180deg);
-    }
+
     .person-wrapper:hover .dropdown-content {
         display: block;
         pointer-events: initial;
@@ -122,39 +171,60 @@
 
     .person {
         /*position: absolute;*/
-        width: 2vw;
-        height: 2vw;
-        right: 1vw;
+        display: block;
+        width: 50px;
+        padding-right: 20px;
         top: 3px;
         transition: height 0.2s ease-in-out;
     }
 
+    @media (max-width: 850px) {
+        .burger-menu-button{
+            position: absolute;
+            display: flex;
+            right: 30px;
+
+        }
+
+        .coordinator{
+            display: none;
+        }
+        .person{
+            display: none;
+        }
+    }
 
 
     /* Links inside the dropdown */
-    .dropdown-content a,
-    .dropdown-content a:hover {
-        color: black;
-        font-size: 18px;
-        padding: 0.8em 1.5em;
-        text-decoration: none;
-        display: block;
-        background-color: transparent;
-        transition: transform 0.2s ease-in-out;
+    /*.dropdown-content a,*/
+    /*.dropdown-content a:hover {*/
+    /*    color: black;*/
+    /*    font-size: 18px;*/
+    /*    padding: 0.8em 1.5em;*/
+    /*    text-decoration: none;*/
+    /*    display: block;*/
+    /*    background-color: transparent;*/
+    /*    transition: transform 0.2s ease-in-out;*/
 
-    }
-    .dropdown-content a:hover {
-        display: block;
-        background-color: #eee;
-    }
+    /*}*/
+
+    /*.dropdown-content a:hover {*/
+    /*    display: block;*/
+    /*    background-color: #eee;*/
+    /*}*/
 
     /* Show the dropdown menu on hover */
 
     /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown-content:hover {
-        font-weight: bold;
-    }
-
+    /*.dropdown-content:hover {*/
+    /*    color: black;*/
+    /*    font-size: 18px;*/
+    /*    !*padding: 0.8em 1.5em;*!*/
+    /*    text-decoration: none;*/
+    /*    display: block;*/
+    /*    background-color: transparent;*/
+    /*    transition: transform 0.2s ease-in-out;*/
+    /*}*/
 
 
     .dropdown-content a {
@@ -163,6 +233,27 @@
 
     .dropdown-content a:last-child {
         border-bottom: none;
+    }
+    .dropdown-arrow {
+        width: 1.8vw;
+        height: 2vw;
+        transition: all 0.2s ease-out;
+        margin-left: 1vw;
+        /*font-size: 0.5rem;*/
+        /*transition: transform 0.2s ease-in-out;*/
+        /*transform: rotate(180deg);*/
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        transition: all 0.3s ease-out;
+        top: 100%;
+        z-index: 2
     }
 
 
@@ -178,7 +269,6 @@
         border: 2px solid RGB(114, 140, 159);
         border-radius: 5px;
     }
-
 
 
 </style>
