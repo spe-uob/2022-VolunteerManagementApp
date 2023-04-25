@@ -10,8 +10,8 @@
                 <div class="person-wrapper">
                     <span class="coordinator">Coordinator</span>
                     <span class="gap"></span>
-                    <img class="person" :src="dropdown" />
-                    <button id="burgerMenuButton" class="burger-menu-button">
+                    <img class="person" :src="dropdown" @click="toggleDropdown" />
+                    <button id="burgerMenuButton" class="burger-menu-button" @click="toggleDropdown">
                         <div class="burger-line"></div>
                         <div class="burger-line"></div>
                         <div class="burger-line"></div>
@@ -39,6 +39,7 @@
             return {
                 companyIcon: companyIcon,
                 dropdown: dropdown,
+                dropDownVisible: false,
                 // personIcon: personIcon,
                 // arrow: arrow,
             }
@@ -54,6 +55,9 @@
             Login_page() {
                 window.location.href = "http://localhost:8000/";
             },
+            toggleDropdown(){
+                this.dropDownVisible =! this.dropDownVisible;
+            }
         }
     }
 </script>
