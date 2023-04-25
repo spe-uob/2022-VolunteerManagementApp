@@ -2,31 +2,27 @@
 <template>
     <div>
         <nav class="nav">
-            <navbar/>
+            <navbar />
 
-            <img class="symbol" :src="companyIcon" @click="goToHomePage"/>
+            <img class="symbol" :src="companyIcon" @click="goToHomePage" />
 
-            <div>
+            <div class="person-wrapper">
                 <div class="person-wrapper">
-                    <div class="person-wrapper ">
-                        <span class="coordinator">Coordinator</span>
-                        <span class="gap"></span>
-                        <img class="person" :src="dropdown"/>
-
-                        <button id="burgerMenuButton" class="burger-menu-button">
-                            <div class="burger-line"></div>
-                            <div class="burger-line"></div>
-                            <div class="burger-line"></div>
-                        </button>
-                    </div>
-                    <div class="dropdown-content">
-                        <a href="#">Volunteer view</a>
-                        <a href="#">Account settings</a>
-                        <a @click="Login_page">Log Out</a>
-                    </div>
+                    <span class="coordinator">Coordinator</span>
+                    <span class="gap"></span>
+                    <img class="person" :src="dropdown" />
+                    <button id="burgerMenuButton" class="burger-menu-button">
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                    </button>
+                </div>
+                <div class="dropdown-content">
+                    <a href="#">Volunteer view</a>
+                    <a href="#">Account settings</a>
+                    <a @click="Login_page">Log Out</a>
                 </div>
             </div>
-
         </nav>
     </div>
 
@@ -161,6 +157,7 @@
         align-items: center;
         justify-content: flex-end;
         padding-top: 2px;
+        position: relative;
     }
 
 
@@ -206,26 +203,33 @@
     /*    background-color: transparent;*/
     /*    transition: transform 0.2s ease-in-out;*/
 
-    /*}*/
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background-color: #FFFFFF;
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        min-width: 200px;
+        border-radius: 4px;
+        overflow: hidden;
+    }
 
-    /*.dropdown-content a:hover {*/
-    /*    display: block;*/
-    /*    background-color: #eee;*/
-    /*}*/
+    .dropdown-content a {
+        display: block;
+        padding: 12px 16px;
+        color: black;
+        text-decoration: none;
+        font-family: 'Inter';
+        font-style: normal;
+        font-size: 15px;
+        white-space: nowrap;
+    }
 
-    /* Show the dropdown menu on hover */
-
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    /*.dropdown-content:hover {*/
-    /*    color: black;*/
-    /*    font-size: 18px;*/
-    /*    !*padding: 0.8em 1.5em;*!*/
-    /*    text-decoration: none;*/
-    /*    display: block;*/
-    /*    background-color: transparent;*/
-    /*    transition: transform 0.2s ease-in-out;*/
-    /*}*/
-
+    .dropdown-content a:hover {
+        background-color: #F0F0F0;
+    }
 
     .dropdown-content a {
         border-bottom: 1px solid #eee;
