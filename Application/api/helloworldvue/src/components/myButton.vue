@@ -46,7 +46,20 @@
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;
         font-size: 1vw;
-        font-family: Inter;
+        font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                "Helvetica Neue",
+                Arial,
+                "Noto Sans",
+                "Liberation Sans",
+                sans-serif,
+                "Apple Color Emoji",
+                "Segoe UI Emoji",
+                "Segoe UI Symbol",
+                "Noto Color Emoji";
     }
 
     .custom-button:hover {

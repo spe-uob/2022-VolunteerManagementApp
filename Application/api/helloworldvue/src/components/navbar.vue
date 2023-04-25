@@ -225,7 +225,20 @@
         padding: 12px 16px;
         color: black;
         text-decoration: none;
-        font-family: 'Inter';
+        font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                "Helvetica Neue",
+                Arial,
+                "Noto Sans",
+                "Liberation Sans",
+                sans-serif,
+                "Apple Color Emoji",
+                "Segoe UI Emoji",
+                "Segoe UI Symbol",
+                "Noto Color Emoji";
         font-style: normal;
         font-size: 15px;
         white-space: nowrap;
