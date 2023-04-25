@@ -18,7 +18,7 @@
                     </button>
                 </div>
                 <div class="dropdown-content" v-if="dropdownVisible">
-                    <a href="#">Volunteer view</a>
+<!--                    <a href="#">Volunteer view</a>-->
                     <a href="#">Account settings</a>
                     <a @click="Login_page">Log Out</a>
                 </div>
@@ -229,6 +229,7 @@
         font-style: normal;
         font-size: 15px;
         white-space: nowrap;
+        text-align: center; /* Align text to the center */
     }
 
     /*.dropdown-content a:hover {*/
