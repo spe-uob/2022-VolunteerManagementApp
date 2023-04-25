@@ -17,7 +17,7 @@
                         <div class="burger-line"></div>
                     </button>
                 </div>
-                <div class="dropdown-content">
+                <div class="dropdown-content" v-if="dropdownVisible">
                     <a href="#">Volunteer view</a>
                     <a href="#">Account settings</a>
                     <a @click="Login_page">Log Out</a>
@@ -39,7 +39,7 @@
             return {
                 companyIcon: companyIcon,
                 dropdown: dropdown,
-                dropDownVisible: false,
+                dropdownVisible: false,
                 // personIcon: personIcon,
                 // arrow: arrow,
             }
@@ -56,7 +56,7 @@
                 window.location.href = "http://localhost:8000/";
             },
             toggleDropdown(){
-                this.dropDownVisible =! this.dropDownVisible;
+                this.dropdownVisible =! this.dropdownVisible;
             }
         }
     }
@@ -231,9 +231,9 @@
         white-space: nowrap;
     }
 
-    .dropdown-content a:hover {
-        background-color: #F0F0F0;
-    }
+    /*.dropdown-content a:hover {*/
+    /*    background-color: #F0F0F0;*/
+    /*}*/
 
     .dropdown-content a {
         border-bottom: 1px solid #eee;
@@ -250,18 +250,6 @@
         /*font-size: 0.5rem;*/
         /*transition: transform 0.2s ease-in-out;*/
         /*transform: rotate(180deg);*/
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: white;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        border-radius: 4px;
-        transition: all 0.3s ease-out;
-        top: 100%;
-        z-index: 2
     }
 
 
