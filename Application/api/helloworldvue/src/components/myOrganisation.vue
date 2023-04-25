@@ -155,7 +155,7 @@ export default {
     },
     showNewForm(){
       this.$router.push("/createOrganisation");
-      // this.newFormFlag = true;
+       this.newFormFlag = true;
     },
     goUpdate(data){
       console.log(data);
