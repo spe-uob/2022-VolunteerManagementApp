@@ -108,7 +108,7 @@
 
     .burger-line {
         width: 70%;
-        height: 2.5px;
+        height: 2px;
         background-color: white;
         border-radius: 1px;
         margin-left: auto;
