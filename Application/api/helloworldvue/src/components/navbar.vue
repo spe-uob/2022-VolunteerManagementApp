@@ -146,7 +146,7 @@
 
     .coordinator {
         color: #FFFFFF;
-        font-family: 'Inter';
+        font-family:"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         font-style: normal;
         top: 20px;
         font-size: 15px;
