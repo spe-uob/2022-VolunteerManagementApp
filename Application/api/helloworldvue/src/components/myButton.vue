@@ -2,6 +2,7 @@
     <div>
 
         <button
+                :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff',color:selected ? '#ffffff' : '#000000'}"
                 class="custom-button"  @click="$emit('click', $event)">{{ label }}
         </button>
     </div>
@@ -61,7 +62,9 @@
     }
 
     .custom-button:hover {
-        color: #3A4857;
+        color: #808080;
+        /*background-color: #f2f2f2;*/
+
     }
 
 

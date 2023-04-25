@@ -146,68 +146,11 @@
         padding-top: 4vw;
         font-family: 'Inter';
     }
-
-
-    .coordinator-text {
-        font-family: 'Inter';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 1.5rem;
-        color: #FFFFFF;
-        margin-right: 0.5rem;
-    }
-
-    .person {
-
-    }
-
-    .person-wrapper {
-        display: flex;
-        align-items: center;
-        margin-right: 1rem;
-    }
-
-    .burger-menu {
-        font-size: 1.5rem;
-        cursor: pointer;
-        display: none;
-        position: absolute;
-        /*top: 0;*/
-        /*right: 0;*/
-        /*height: 30px;*/
-        /*background-color: transparent;*/
-        /*border: none;*/
-        /*outline: none;*/
-    }
-
-
-    @media screen and (max-width: 850px) {
-        .person {
-            display: none;
-        }
-
-        .burger-menu {
-            display: block;
-        }
-
-        .coordinator-text {
-            display: none;
-        }
-    }
-
-    @media screen and (min-width: 851px) {
-        .person {
-            display: block;
-        }
-
-        .burger-menu {
-            display: none;
-        }
-    }
-
     .callbtn {
+        /*position: fixed;*/
         width: 100px;
         height: 45px;
+        /*right: 1vw;*/
         top: 100px;
         margin-left: 3vw;
         background: #1C405A;
@@ -216,23 +159,47 @@
         cursor: pointer;
         z-index: 1;
     }
-
+    .dropdown-content:hover .callbtn {
+        display: none;
+    }
+    /*@media screen and (max-width: 768px) {*/
+    /*    .callbtn {*/
+    /*        width: 340px;*/
+    /*        height: 32px;*/
+    /*        top: 8%;*/
+    /*        font-size: 0.8rem;*/
+    /*        z-index: 1;*/
+    /*    }*/
+    /*}*/
+    /*@media screen and (max-width: 480px) {*/
+    /*    .callbtn {*/
+    /*        width: 240px;*/
+    /*        height: 24px;*/
+    /*        top: 4%;*/
+    /*        font-size: 0.6rem;*/
+    /*        z-index: 1;*/
+    /*    }*/
+    /*}*/
+    router-link {
+        text-decoration: none;
+        color: inherit;
+    }
     .buttons .btn {
         font-weight: 500;
         margin: 10px;
         font-size: 20px;
         color: black;
+        /*text-transform: uppercase;*/
         transition: all 0.1s ease-in-out;
     }
-
     .buttons {
         margin: 10px;
         display: flex;
         justify-content: center;
         outline: none;
-        font-family: 'Inter';
-    }
+        font-family:"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
+    }
     .btn {
         margin: 10px;
         font-size: 2vw;
@@ -240,11 +207,22 @@
         text-transform: uppercase;
         transition: all 0.1s ease-in-out;
     }
-
-    .btn:hover {
-        color: white;
+    .btn[label="All Activity"],
+    .btn[label="Actions"],
+    .btn[label="Referrals"],
+    .btn[label="Residents"],
+    .btn[label="Volunteers"],
+    .btn[label="Organisations"] {
+        /*update the font size*/
+        font-size: 2vw;
     }
-
+    /*.btn:hover {*/
+    /*    color: white;*/
+    /*    !*border: 1px solid #3A4857;*!*/
+    /*    !*background-color: #3A4857;*!*/
+    /*    !*border-radius: 10px;*!*/
+    /*    !*cursor: pointer;*!*/
+    /*}*/
     .btn:active {
         transform: scale(1.15);
     }
@@ -258,9 +236,8 @@
         border-radius: 4px;
         transition: all 0.3s ease-out;
         top: 100%;
-        z-index: 2;
+        z-index: 2
     }
-
     .dropdown-content a,
     .dropdown-content a:hover {
         color: black;
@@ -271,46 +248,29 @@
         background-color: transparent;
         transition: transform 0.2s ease-in-out;
     }
-
     .dropdown-content a:hover {
         display: block;
         background-color: #eee;
     }
-
+    /* Show the dropdown menu on hover */
     .person-wrapper:hover .dropdown-content {
         display: block;
         pointer-events: initial;
     }
-
+    /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown-content:hover {
         font-weight: bold;
     }
-
     .dropdown-content a {
         border-bottom: 1px solid #eee;
     }
-
     .dropdown-content a:last-child {
         border-bottom: none;
     }
-
     .person-wrapper:hover .dropdown-arrow {
         transform: rotate(180deg);
     }
 
-    .symbol {
-        position: absolute;
-        width: 60px;
-        left: 1em;
-        top: 3px;
-        transition: height 0.2s ease-in-out;
-        cursor: pointer;
-    }
-
-    .symbol:hover {
-        opacity: 0.8;
-        transition: opacity 0.3s ease-in-out;
-    }
 
 
 </style>
