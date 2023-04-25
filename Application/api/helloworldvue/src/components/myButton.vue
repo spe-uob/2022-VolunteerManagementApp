@@ -71,7 +71,7 @@
     }
 
     .custom-button:hover {
-        color: #808080;
+        color: #3A4857;
 
 
     }
