@@ -2,8 +2,8 @@
     <div>
 
         <button
-                :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff',color:selected ? '#ffffff' : '#000000'}"
-                class="custom-button"  @click="$emit('click', $event)">{{ label }}
+                class="custom-button" :class="selected ? 'selected-button' : 'unselected-button'"
+                  @click="$emit('click', $event)">{{ label }}
         </button>
     </div>
     <!-- <button :style="{left: left + 'px'}"
@@ -60,10 +60,19 @@
                 "Segoe UI Symbol",
                 "Noto Color Emoji";
     }
+    .selected-button {
+        background-color: #6B818C;
+        color: #ffffff;
+    }
+
+    .unselected-button {
+        background-color: #ffffff;
+        color: #000000;
+    }
 
     .custom-button:hover {
         color: #808080;
-        /*background-color: #f2f2f2;*/
+
 
     }
 

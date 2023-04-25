@@ -159,27 +159,12 @@
         cursor: pointer;
         z-index: 1;
     }
+    .callbtn:hover{
+        color: #F0F0F0;
+    }
     .dropdown-content:hover .callbtn {
         display: none;
     }
-    /*@media screen and (max-width: 768px) {*/
-    /*    .callbtn {*/
-    /*        width: 340px;*/
-    /*        height: 32px;*/
-    /*        top: 8%;*/
-    /*        font-size: 0.8rem;*/
-    /*        z-index: 1;*/
-    /*    }*/
-    /*}*/
-    /*@media screen and (max-width: 480px) {*/
-    /*    .callbtn {*/
-    /*        width: 240px;*/
-    /*        height: 24px;*/
-    /*        top: 4%;*/
-    /*        font-size: 0.6rem;*/
-    /*        z-index: 1;*/
-    /*    }*/
-    /*}*/
     router-link {
         text-decoration: none;
         color: inherit;
