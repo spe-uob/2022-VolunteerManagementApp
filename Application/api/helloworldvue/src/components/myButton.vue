@@ -2,9 +2,8 @@
     <div>
 
         <button
-                :style="{ backgroundColor: selected ? '#6B818C' : '#ffffff',color:selected ? '#ffffff' : '#000000'}"
-                class="custom-button"
-                @click="$emit('click', $event)">{{ label }}
+                class="custom-button" :class="selected ? 'selected-button' : 'unselected-button'"
+                  @click="$emit('click', $event)">{{ label }}
         </button>
     </div>
     <!-- <button :style="{left: left + 'px'}"
@@ -46,11 +45,35 @@
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;
         font-size: 1vw;
-        font-family: Inter;
+        font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                "Helvetica Neue",
+                Arial,
+                "Noto Sans",
+                "Liberation Sans",
+                sans-serif,
+                "Apple Color Emoji",
+                "Segoe UI Emoji",
+                "Segoe UI Symbol",
+                "Noto Color Emoji";
+    }
+    .selected-button {
+        background-color: #6B818C;
+        color: #ffffff;
+    }
+
+    .unselected-button {
+        background-color: #ffffff;
+        color: #000000;
     }
 
     .custom-button:hover {
-        background-color: #f2f2f2;
+        color: #3A4857;
+
+
     }
 
 

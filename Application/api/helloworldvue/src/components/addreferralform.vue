@@ -21,7 +21,7 @@
     <button type="submit" @click.prevent="submitForm" class="btn btn-primary">Save</button>
     </form>
   </template>
-  
+
   <script>
 import $ from 'jquery';
   export default {
@@ -126,7 +126,20 @@ form header {
 }
 
 .form-group:first-of-type input {
-  font-family: 'Times New Roman', Times, serif;
+    font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            "Helvetica Neue",
+            Arial,
+            "Noto Sans",
+            "Liberation Sans",
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
   width: 80%;
   padding: 5px;
   font-size: 14px;
@@ -137,7 +150,20 @@ form header {
 }
 
 .form-group input {
-  font-family: 'Times New Roman', Times, serif;
+    font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            "Helvetica Neue",
+            Arial,
+            "Noto Sans",
+            "Liberation Sans",
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
   width: 80%;
   padding: 5px;
   font-size: 14px;
@@ -148,7 +174,20 @@ form header {
 }
 
 .btn {
-  font-family: Arial, sans-serif;
+    font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            "Helvetica Neue",
+            Arial,
+            "Noto Sans",
+            "Liberation Sans",
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
   font-size: 16px;
   font-weight: bold;
   color: #fff;

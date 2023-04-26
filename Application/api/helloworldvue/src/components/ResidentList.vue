@@ -136,7 +136,20 @@ export default {
   }
 
 .search-box {
-  font-family: 'Times New Roman', Times, serif;
+    font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            "Helvetica Neue",
+            Arial,
+            "Noto Sans",
+            "Liberation Sans",
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
   width: 60%;
   padding: 10px;
   font-size: 16px;
@@ -166,7 +179,20 @@ export default {
 
 .name {
     color: #333;
-    font-family:'Times New Roman', Times, serif;
+    font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            "Helvetica Neue",
+            Arial,
+            "Noto Sans",
+            "Liberation Sans",
+            sans-serif,
+            "Apple Color Emoji",
+            "Segoe UI Emoji",
+            "Segoe UI Symbol",
+            "Noto Color Emoji";
     font-size: 20px;
   }
 
@@ -175,7 +201,20 @@ export default {
   }
   .address {
     color: #555;
-    font-family:'Times New Roman', Times, serif;
+      font-family:
+              -apple-system,
+              BlinkMacSystemFont,
+              "Segoe UI",
+              Roboto,
+              "Helvetica Neue",
+              Arial,
+              "Noto Sans",
+              "Liberation Sans",
+              sans-serif,
+              "Apple Color Emoji",
+              "Segoe UI Emoji",
+              "Segoe UI Symbol",
+              "Noto Color Emoji";
     font-size: 16px;
   }
 </style>
