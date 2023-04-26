@@ -11,6 +11,8 @@ import MyVolunteers from './components/MyVolunteers'
 import MyOrganisations from './components/myOrganisation'
 import CreateOrganisation from './components/add form/NewOrganisationForm.vue'
 import UpdateOrganisation from './components/UpdateOrganisationForm'
+import NewVolunteerForm from "@/components/add form/NewVolunteerForm";
+import UpdateVolunteerForm from './components/UpdateVolunteerForm'
 import VueRouter from 'vue-router'
 import { loremIpsum } from "lorem-ipsum"
 
@@ -33,7 +35,9 @@ const routes = [
   { path: '/Volunteers', component: MyVolunteers },
   { path: '/organisations', component: MyOrganisations},
   { path: '/createOrganisation', component: CreateOrganisation},
-  { path: '/updateOrganisation', component: UpdateOrganisation}
+  { path: '/updateOrganisation', component: UpdateOrganisation},
+  { path: '/createVolunteer',component: NewVolunteerForm},
+  { path: '/updateVolunteer',component: UpdateVolunteerForm}
 ]
 
 const router = new VueRouter({

@@ -9,7 +9,9 @@
         <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Volunteers</td>
         <td></td>
         <td></td>
-        <td></td>
+        <td style="text-align:right">
+          <button  style="cursor: pointer;" @click="showNewForm()">Add</button>
+        </td>
       </tr>
       </thead>
 
@@ -23,7 +25,7 @@
         <th @click="sortTable('TotalTimeReceived')" >Total Time Given<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
       </tr>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+      <tr v-for="(item, index) in filteredVolunteers" :class="'tr-color-' + index % 2" :key="index">
         <td style="color:  black;">{{item.FirstName}}</td>
         <td style="color:  black;">{{item.LastName}}</td>
         <td style="color:  black;">{{item.PhoneNumber}}</td>
@@ -81,7 +83,20 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   methods: {
-    toggleActive(index) {
+    // closeNewForm(){
+    //   this.newFormFlag = false;
+    // },
+    showNewForm(){
+      this.$router.push("/createVolunteer");
+      // this.newFormFlag = true;
+    },
+    goUpdate(data) {
+      console.log(data);
+      localStorage.setItem("org", JSON.stringify(data));
+      this.$router.push("/updateVolunteer");
+    },
+
+     toggleActive(index) {
       if (this.activeButton === index) {
         this.activeButton = -1;
       } else {
