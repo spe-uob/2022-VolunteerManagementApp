@@ -95,13 +95,13 @@
         methods: {
             goToHomePage() {
                 //first one for frontend test
-                window.location.href = "http://localhost:8000/index";
-                window.location.href = "http://localhost:8080/AllActivity";
+                window.location.href = "https://uob.tofro.app/index/";
+                // window.location.href = "http://localhost:8080/AllActivity";
                 //this is the url
                 // window.location.href="http://localhost:8000/index";
             },
             Login_page() {
-                window.location.href = "http://localhost:8000/";
+                window.location.href = "http://10.20.51.117:8000/";
             },
             updateCallStarted(routeName) {
                 this.CallStarted = (

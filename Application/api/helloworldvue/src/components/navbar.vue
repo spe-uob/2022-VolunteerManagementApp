@@ -2,15 +2,15 @@
 <template>
     <div>
         <nav class="nav">
-            <navbar />
+            <navbar/>
 
-            <img class="symbol" :src="companyIcon" @click="goToHomePage" />
+            <img class="symbol" :src="companyIcon" @click="goToHomePage"/>
 
             <div class="person-wrapper">
                 <div class="person-wrapper">
                     <span class="coordinator">Coordinator</span>
                     <span class="gap"></span>
-                    <img class="person" :src="dropdown" @click="toggleDropdown" />
+                    <img class="person" :src="dropdown" @click="toggleDropdown"/>
                     <button id="burgerMenuButton" class="burger-menu-button" @click="toggleDropdown">
                         <div class="burger-line"></div>
                         <div class="burger-line"></div>
@@ -18,7 +18,7 @@
                     </button>
                 </div>
                 <div class="dropdown-content" v-if="dropdownVisible">
-<!--                    <a href="#">Volunteer view</a>-->
+                    <!--                    <a href="#">Volunteer view</a>-->
                     <a href="#">Account settings</a>
                     <a @click="Login_page">Log Out</a>
                 </div>
@@ -55,8 +55,8 @@
             Login_page() {
                 window.location.href = "http://localhost:8000/";
             },
-            toggleDropdown(){
-                this.dropdownVisible =! this.dropdownVisible;
+            toggleDropdown() {
+                this.dropdownVisible = !this.dropdownVisible;
             }
         }
     }
@@ -130,7 +130,6 @@
     }
 
 
-
     .burger-menu-button.active .burger-line:nth-child(1) {
         transform: translateY(5px) rotate(45deg);
     }
@@ -146,14 +145,15 @@
 
     .coordinator {
         color: #FFFFFF;
-        font-family:"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         font-style: normal;
         top: 20px;
         font-size: 15px;
         align-items: center;
     }
-   .burger-menu-button{
-       display: none;
+
+    .burger-menu-button {
+        display: none;
     }
 
     .person-wrapper {
@@ -180,17 +180,18 @@
     }
 
     @media (max-width: 850px) {
-        .burger-menu-button{
+        .burger-menu-button {
             position: absolute;
             display: flex;
             right: 30px;
 
         }
 
-        .coordinator{
+        .coordinator {
             display: none;
         }
-        .person{
+
+        .person {
             display: none;
         }
     }
@@ -225,20 +226,19 @@
         padding: 12px 16px;
         color: black;
         text-decoration: none;
-        font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                "Helvetica Neue",
-                Arial,
-                "Noto Sans",
-                "Liberation Sans",
-                sans-serif,
-                "Apple Color Emoji",
-                "Segoe UI Emoji",
-                "Segoe UI Symbol",
-                "Noto Color Emoji";
+        font-family: -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        "Noto Sans",
+        "Liberation Sans",
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
         font-style: normal;
         font-size: 15px;
         white-space: nowrap;
@@ -256,6 +256,7 @@
     .dropdown-content a:last-child {
         border-bottom: none;
     }
+
     .dropdown-arrow {
         width: 1.8vw;
         height: 2vw;
