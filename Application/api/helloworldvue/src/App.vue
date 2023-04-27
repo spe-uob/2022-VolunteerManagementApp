@@ -101,7 +101,7 @@
                 // window.location.href="http://localhost:8000/index";
             },
             Login_page() {
-                window.location.href = "http://10.20.51.117:8000/";
+                window.location.href = "http://10.20.51.117:8000";
             },
             updateCallStarted(routeName) {
                 this.CallStarted = (
