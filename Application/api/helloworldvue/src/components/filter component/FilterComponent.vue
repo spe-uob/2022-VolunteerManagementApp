@@ -10,14 +10,19 @@
           </div>
           <div v-show="toggle1" class="filter-body">
             <div>
+              <label for="quan">
+                <input id="quan" type="checkbox" @click="checkAll($event)"> Select all
+              </label>
+            </div>
+            <div>
               <label>
-                <input type="checkbox">
+                <input class="checkItem" type="checkbox" value="foodbank" v-model="checkData">
                foodbank
               </label>
             </div>
             <div>
               <label>
-                <input type="checkbox">
+                <input class="checkItem" type="checkbox" value="gp" v-model="checkData">
                 gp
               </label>
             </div>
@@ -110,27 +115,52 @@
     </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                toggle1: false,
-                toggle2: false,
-                toggle3: false,
-            }
-        },
-        methods: {
-            setToggle1() {
-                this.toggle1 = !this.toggle1;
-            },
-            setToggle2() {
-                this.toggle2 = !this.toggle2;
-            },
-            setToggle3() {
-                this.toggle3 = !this.toggle3;
-            }
-
+export default {
+  data() {
+    return {
+      checkData: [],
+      toggle1: false,
+      toggle2: false,
+      toggle3: false,
+    }
+  },
+  watch: {
+    checkData: {
+      handler() {
+        if (this.checkData.length == 3) {
+          document.querySelector('#quan').checked = true;
+        } else {
+          document.querySelector('#quan').checked = false;
+        }
+      },
+      deep: true
+    }
+  },
+  methods: {
+    setToggle1() {
+      this.toggle1 = !this.toggle1;
+    },
+    setToggle2() {
+      this.toggle2 = !this.toggle2;
+    },
+    setToggle3() {
+      this.toggle3 = !this.toggle3;
+    },
+    checkAll(e){
+      var checkObj = document.querySelectorAll('.checkItem');
+      if(e.target.checked){
+        for(var i=0;i<checkObj.length;i++){
+          if(!checkObj[i].checked){
+            this.checkData.push(checkObj[i].value);
+          }
+        }
+      }else {
+        this.checkData = [];
+      }
+    }
   }
 }
+
 </script>
 
 <style scoped>
