@@ -63,20 +63,59 @@
         </div>
         <div v-show="toggle2" class="filter-body">
           <div>
-            <label>
-              <input type="checkbox">
-              sub type1
+            <label for="select">
+              <input id="select" type="checkbox" @click="checkall($event)"> Select all
             </label>
           </div>
           <div>
             <label>
-              <input type="checkbox">
-              sub type2
+              <input class="checkItem" type="checkbox" value="Shielded" v-model="checkdata">
+              Shielded
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Internet Access" v-model="checkdata">
+              Internet Access
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Smart Device" v-model="checkdata">
+              Smart Device
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Online Shopping" v-model="checkdata">
+              Online Shopping
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Online Comms" v-model="checkdata">
+              Online Comms
             </label>
           </div>
         </div>
       </label>
     </div>
+
+    <!--          <div>-->
+<!--            <label>-->
+<!--              <input type="checkbox">-->
+<!--              sub type1-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--            <label>-->
+<!--              <input type="checkbox">-->
+<!--              sub type2-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </label>-->
+<!--    </div>-->
 
     <div>
       <label for="id9">
@@ -87,14 +126,19 @@
         </div>
         <div v-show="toggle3" class="filter-body">
           <div>
+            <label for="all">
+              <input id="all" type="checkbox" @click="Checkall($event)"> Select all
+            </label>
+          </div>
+          <div>
             <label>
-              <input type="checkbox">
+              <input class="checkItem" type="checkbox" value="sub type1" v-model="Checkdata">
               sub type1
             </label>
           </div>
           <div>
             <label>
-              <input type="checkbox">
+              <input class="checkItem" type="checkbox" value="sub type2" v-model="Checkdata">
               sub type2
             </label>
           </div>
@@ -109,6 +153,8 @@ export default {
   data() {
     return {
       checkData: [],
+      checkdata: [],
+      Checkdata: [],
       toggle1: false,
       toggle2: false,
       toggle3: false,
@@ -121,6 +167,26 @@ export default {
           document.querySelector('#quan').checked = true;
         } else {
           document.querySelector('#quan').checked = false;
+        }
+      },
+      deep: true
+    },
+    checkdata: {
+      handler() {
+        if (this.checkData.length == 3) {
+          document.querySelector('#select').checked = true;
+        } else {
+          document.querySelector('#select').checked = false;
+        }
+      },
+      deep: true
+    },
+    Checkdata: {
+      handler() {
+        if (this.checkData.length == 3) {
+          document.querySelector('#all').checked = true;
+        } else {
+          document.querySelector('#all').checked = false;
         }
       },
       deep: true
@@ -146,6 +212,30 @@ export default {
         }
       }else {
         this.checkData = [];
+      }
+    },
+    checkall(e){
+      var checkObj = document.querySelectorAll('.checkItem');
+      if(e.target.checked){
+        for(var i=0;i<checkObj.length;i++){
+          if(!checkObj[i].checked){
+            this.checkdata.push(checkObj[i].value);
+          }
+        }
+      }else {
+        this.checkdata = [];
+      }
+    },
+    Checkall(e){
+      var checkObj = document.querySelectorAll('.checkItem');
+      if(e.target.checked){
+        for(var i=0;i<checkObj.length;i++){
+          if(!checkObj[i].checked){
+            this.Checkdata.push(checkObj[i].value);
+          }
+        }
+      }else {
+        this.Checkdata = [];
       }
     }
   }
