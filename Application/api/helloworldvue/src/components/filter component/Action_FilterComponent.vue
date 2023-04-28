@@ -173,7 +173,7 @@ export default {
     },
     checkdata: {
       handler() {
-        if (this.checkData.length == 3) {
+        if (this.checkdata.length == 3) {
           document.querySelector('#select').checked = true;
         } else {
           document.querySelector('#select').checked = false;
@@ -183,7 +183,7 @@ export default {
     },
     Checkdata: {
       handler() {
-        if (this.checkData.length == 3) {
+        if (this.Checkdata.length == 3) {
           document.querySelector('#all').checked = true;
         } else {
           document.querySelector('#all').checked = false;
