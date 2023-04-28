@@ -6,7 +6,7 @@
         <input class="filter-head-input" id="id7" type="checkbox">
         <div @click="setToggle1" class="filter-head">
           <i class="arrow-right"></i>
-          Status
+          Help Type
         </div>
         <div v-show="toggle1" class="filter-body">
           <div>
@@ -16,32 +16,38 @@
           </div>
           <div>
             <label>
-              <input class="checkItem" type="checkbox" value="Shielded" v-model="checkData">
-              Shielded
+              <input class="checkItem" type="checkbox" value="Dog Walking" v-model="checkData">
+              Dog Walking
             </label>
           </div>
           <div>
             <label>
-              <input class="checkItem" type="checkbox" value="Internet Access" v-model="checkData">
-              Internet Access
+              <input class="checkItem" type="checkbox" value="Food Parcel" v-model="checkData">
+              Food Parcel
             </label>
           </div>
           <div>
             <label>
-              <input class="checkItem" type="checkbox" value="Smart Device" v-model="checkData">
-              Smart Device
+              <input class="checkItem" type="checkbox" value="Leafleting" v-model="checkData">
+              Leafleting
             </label>
           </div>
           <div>
             <label>
-              <input class="checkItem" type="checkbox" value="Online Shopping" v-model="checkData">
-              Online Shopping
+              <input class="checkItem" type="checkbox" value="Prescription" v-model="checkData">
+              Prescription
             </label>
           </div>
           <div>
             <label>
-              <input class="checkItem" type="checkbox" value="Online Comms" v-model="checkData">
-              Online Comms
+              <input class="checkItem" type="checkbox" value="shopping" v-model="checkData">
+              Shopping
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Volunteer Assigned" v-model="checkData">
+              Volunteer Assigned
             </label>
           </div>
         </div>
@@ -53,7 +59,7 @@
         <input class="filter-head-input" id="id8" type="checkbox">
         <div @click="setToggle2" class="filter-head">
           <i class="arrow-right"></i>
-          Ward
+          Status
         </div>
         <div v-show="toggle2" class="filter-body">
           <div>
@@ -77,13 +83,19 @@
         <input class="filter-head-input" id="id9" type="checkbox">
         <div @click="setToggle3" class="filter-head">
           <i class="arrow-right"></i>
-          Account
+          Priority
         </div>
         <div v-show="toggle3" class="filter-body">
           <div>
             <label>
               <input type="checkbox">
-              Consent Expiring
+              sub type1
+            </label>
+          </div>
+          <div>
+            <label>
+              <input type="checkbox">
+              sub type2
             </label>
           </div>
         </div>
