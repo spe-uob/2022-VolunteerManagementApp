@@ -10,32 +10,38 @@
       </div>
       <div v-show="toggle1" class="filter-body">
         <div>
+          <label for="quan">
+            <!-- 这里的 $event 是将当前对象传入进去，具体详情请参照vue官方文档 -->
+            <input id="quan" type="checkbox" @click="checkAll($event)"> Select all
+          </label>
+        </div>
+        <div>
           <label>
-            <input type="checkbox">
+            <input class="checkItem" type="checkbox" value="Shielded" v-model="checkData">
             Shielded
           </label>
         </div>
         <div>
           <label>
-            <input type="checkbox">
+            <input class="checkItem" type="checkbox" value="Internet Access" v-model="checkData">
             Internet Access
           </label>
         </div>
         <div>
           <label>
-            <input type="checkbox">
+            <input class="checkItem" type="checkbox" value="Smart Device" v-model="checkData">
             Smart Device
           </label>
         </div>
         <div>
           <label>
-            <input type="checkbox">
+            <input class="checkItem" type="checkbox" value="Online Shopping" v-model="checkData">
             Online Shopping
           </label>
         </div>
         <div>
           <label>
-            <input type="checkbox">
+            <input class="checkItem" type="checkbox" value="Online Comms" v-model="checkData">
             Online Comms
           </label>
         </div>
@@ -91,24 +97,49 @@
 export default {
   data() {
     return {
+      checkData: [],
       toggle1: false,
       toggle2: false,
       toggle3: false,
     }
   },
-  methods: {
-    setToggle1() {
-      this.toggle1 = !this.toggle1;
-    },
-    setToggle2() {
-      this.toggle2 = !this.toggle2;
-    },
-    setToggle3() {
-      this.toggle3 = !this.toggle3;
+  watch: { // 监视双向绑定的数据数组
+    checkData: {
+      handler() { // 数据数组有变化将触发此函数
+        if (this.checkData.length == 3) {
+          document.querySelector('#quan').checked = true;
+        } else {
+          document.querySelector('#quan').checked = false;
+        }
+      },
+      deep: true // 深度监视
     }
-
+  },
+    methods: {
+      setToggle1() {
+        this.toggle1 = !this.toggle1;
+      },
+      setToggle2() {
+        this.toggle2 = !this.toggle2;
+      },
+      setToggle3() {
+        this.toggle3 = !this.toggle3;
+      },
+      checkAll(e){ // 点击全选事件函数
+        var checkObj = document.querySelectorAll('.checkItem'); // 获取所有checkbox项
+        if(e.target.checked){ // 判定全选checkbox的勾选状态
+          for(var i=0;i<checkObj.length;i++){
+            if(!checkObj[i].checked){ // 将未勾选的checkbox选项push到绑定数组中
+              this.checkData.push(checkObj[i].value);
+            }
+          }
+        }else { // 如果是去掉全选则清空checkbox选项绑定数组
+          this.checkData = [];
+        }
+      }
+    }
   }
-}
+
 </script>
 
 <style scoped>
