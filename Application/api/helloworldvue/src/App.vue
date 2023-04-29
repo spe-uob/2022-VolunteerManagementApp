@@ -107,7 +107,8 @@
                 this.CallStarted = (
                     routeName === '/Start_Call' ||
                     routeName.startsWith('/add/') ||
-                    routeName.startsWith('/action_page')
+                    routeName.startsWith('/action_page') ||
+                    routeName.startsWith('/referral_page')
                 );
                 localStorage.setItem('callStarted', this.CallStarted);
             },
@@ -136,6 +137,10 @@
             openActionPage() {
                 this.CallStarted = true
                 this.$router.push("/action_page/1")
+            },
+            openReferralPage() {
+                this.CallStarted = true
+                this.$router.push("/referral_page/1")
             }
         }
     }
