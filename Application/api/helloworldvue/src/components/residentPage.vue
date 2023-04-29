@@ -235,14 +235,14 @@ export default {
     let response = await this.getReferrals();
     this.referrals = await Promise.all(response.results.map(async (result) => {
           return {
-            resident: await this.getResidentByID(result.resident),
+            resident: result.resident,
             type: result.referral_type,
           }
         }))
     response = await this.getActions()
     this.actions = await Promise.all(response.results.map(async (result) => {
           return {
-            resident: await this.getResidentByID(result.resident),
+            resident: result.resident,
             type: await this.getHelpTypeByID(result.help_type),
             date: await this.formatDate(result.requested_datetime),
           }

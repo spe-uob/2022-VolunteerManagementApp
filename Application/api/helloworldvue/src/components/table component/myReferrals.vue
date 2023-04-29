@@ -314,10 +314,10 @@ export default {
       console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
       return json.results.find(obj => obj.id === id).first_name;
     },
-    getHelpTypeByID: async function(id){
+    getReferralTypeByID: async function(id){
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: this.baseURL() + '/api/helptypes/',
+        url: this.baseURL() + '/api/referraltypes/',
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -359,11 +359,10 @@ export default {
     return {
       id: result.id,
       resident: await this.getResidentByID(result.resident),
-      help_type: await this.getHelpTypeByID(result.help_type),
+      type: await this.getReferralTypeByID(result.referral_type),
       Due: this.formatDate(result.requested_datetime),
       assigned: result.assigned_volunteers,
-      status: this.getStatusByID(result.action_status),
-      priority: this.getPriorityByID(result.action_priority)
+      status: this.getStatusByID(result.referral_status),
     };
     }));
     

@@ -213,7 +213,8 @@
     let response = await this.getReferrals();
     this.referrals = await Promise.all(response.results.map(async (result) => {
           return {
-            resident: await this.getResidentByID(result.resident),
+            //change this to volunteer, from all referrals filter the ones with the relevanted inputted volunteer
+            resident: result.resident,
             type: result.referral_type,
           }
         }))

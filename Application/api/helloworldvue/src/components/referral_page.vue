@@ -7,7 +7,7 @@
              <div class="details">
                  <ul>
                          <div>Resident: {{ referral.resident }}</div>
-                         <div>Referral Type: {{ referral.help_type }}</div>
+                         <div>Referral Type: {{ referral.referral_type }}</div>
                          <div>Due Date: {{ referral.Due }}</div>
                          <div>Priority: {{ referral.priority }}</div>
                  </ul>
@@ -152,10 +152,10 @@
              console.log(JSON.stringify(json))
              return json;
          },
-         getAction: async function () {
+         getReferral: async function () {
              const csrftoken = this.getCookie('csrftoken')
              const json = await $.ajax({
-                 url: this.baseURL() + `/api/actions/1/`,
+                 url: this.baseURL() + `/api/referrals/1/`,
                  beforeSend: function (xhr) {
                  xhr.setRequestHeader('X-CSRFToken', csrftoken)
                  },
@@ -214,10 +214,10 @@
              console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
              return json.results.find(obj => obj.id === id).first_name;
          },
-         getHelpTypeByID: async function(id){
+         getReferralTypeByID: async function(id){
              const csrftoken = this.getCookie('csrftoken')
              const json = await $.ajax({
-                 url: this.baseURL() + '/api/helptypes/',
+                 url: this.baseURL() + '/api/referraltypes/',
                  beforeSend: function (xhr) {
                  xhr.setRequestHeader('X-CSRFToken', csrftoken)
                  },
@@ -289,12 +289,12 @@
  
      },
      async mounted(){
-     let result = await this.getAction();
+     let result = await this.getReferral();
      console.log("GETACTIONS RESPONSE: " + JSON.stringify(result));
-     this.action = {
+     this.referral = {
        id: result.id,
        resident: await this.getResidentByID(result.resident),
-       help_type: await this.getHelpTypeByID(result.help_type),
+       referral_type: await this.getReferralTypeByID(result.referral_type),
        Due: this.formatDate(result.requested_datetime),
        assigned: result.assigned_volunteers,
        status: this.getStatusByID(result.action_status),
@@ -311,10 +311,10 @@
      }}) || [];
  
      console.log("this.volunteers: " + this.volunteers)
-     console.log("this.action: " + this.action)
+     console.log("this.referral: " + this.referral)
  
-     console.log("assigned_volunteers: " + this.action.assigned_volunteers)
-     this.assigned_volunteers = this.action.assigned_volunteers
+    //  console.log("assigned_volunteers: " + this.action.assigned_volunteers)
+    //  this.assigned_volunteers = this.action.assigned_volunteers
      // this.assigned_volunteers = await getVolunteersInfo(this.assigned_volunteers)
  
    }
