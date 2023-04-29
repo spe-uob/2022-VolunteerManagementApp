@@ -108,7 +108,8 @@
                     routeName === '/Start_Call' ||
                     routeName.startsWith('/add/') ||
                     routeName.startsWith('/action_page') ||
-                    routeName.startsWith('/referral_page')
+                    routeName.startsWith('/referral_page') ||
+                    routeName.startsWith('/volunteer_page')
                 );
                 localStorage.setItem('callStarted', this.CallStarted);
             },

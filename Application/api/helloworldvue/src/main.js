@@ -11,6 +11,7 @@ import referral_page from "@/components/referral_page";
 import MyVolunteers from './components/MyVolunteers'
 import MyOrganisations from './components/myOrganisation'
 import CreateOrganisation from './components/add form/NewOrganisationForm.vue'
+import volunteer_page from '@/components/volunteer_page'
 import UpdateOrganisation from './components/UpdateOrganisationForm'
 import NewVolunteerForm from "@/components/add form/NewVolunteerForm";
 import UpdateVolunteerForm from './components/UpdateVolunteerForm'
@@ -33,6 +34,7 @@ const routes = [
   { path: '/add/:id', component: residentPage, name: 'add'},
   { path: '/action_page/:id', component: action_page, name: 'action_page'},
   { path: '/referral_page/:id', component: referral_page, name: 'referral_page'},
+  { path: '/volunteer_page/:id', component: volunteer_page, name: 'volunteer_page'},
   { path: '/residents', component: MyResident},
   { path: '/Volunteers', component: MyVolunteers },
   { path: '/organisations', component: MyOrganisations},

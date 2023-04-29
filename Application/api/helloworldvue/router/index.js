@@ -12,6 +12,7 @@ import Router from 'vue-router'
 import Start_Call from "@/components/Start_Call";
 import action_page from "@/components/action_page";
 import referral_page from "@/components/referral_page";
+import volunteer_page from '@/components/volunteer_page'
 
 
 Vue.use(Router)
@@ -69,11 +70,16 @@ const routes = [
                 name: 'action_page',
                 component: action_page
             },
-                        {
+            {
                 path: './referral_page/:id',
                 name: 'referral_page',
                 component: referral_page
-            }
+            },
+            {
+                path: './volunteer_page/:id',
+                name: 'volunteer_page',
+                component: volunteer_page
+            },
         ]
     }
 
