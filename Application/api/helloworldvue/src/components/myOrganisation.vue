@@ -16,19 +16,19 @@
       <tbody>
 
       <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-        <th @click="sortTable('name')">Name<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
-        <th @click="sortTable('phone')">Phone Number<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
+        <th @click="sortTable('Name')">Name<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
+        <th @click="sortTable('PhoneNumber')">Phone Number<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
         <th @click="sortTable('address')">Address<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
-        <th @click="sortTable('contact')">Main Contact<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
-        <th @click="sortTable('email')">Email<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
+        <th @click="sortTable('MainContact')">Main Contact<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
+        <th @click="sortTable('Email')">Email<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
       </tr>
 
       <tr v-for="(item, index) in filteredOrganisation" :class="'tr-color-' + index % 2" :key="index">
-        <td style="color:  black;" @click="goUpdate(item)">{{item.name}}</td>
-        <td style="color:  black;">{{item.phone}}</td>
+        <td style="color:  black;" @click="goUpdate(item)">{{item.Name}}</td>
+        <td style="color:  black;">{{item.PhoneNumber}}</td>
         <td style="color:  black;">{{item.address}}</td>
-        <td style="color:  black;">{{item.contact}}</td>
-        <td style="color:  black;">{{item.email}}</td>
+        <td style="color:  black;">{{item.MainContact}}</td>
+        <td style="color:  black;">{{item.Email}}</td>
       </tr>
 
       </tbody>
@@ -60,41 +60,41 @@ export default {
       // newFormFlag: false,
       toggle: false,
       list: [
-        {
-          name: 'Noel',
-          phone: '01179123456',
-          address:'A',
-          email: 'noel.wester@gmail.com',
-          contact:'Carol Lamentably',
-        },
-        {
-          name: 'Noel',
-          phone: '355667564532',
-          address:'A',
-          email: 'noel.wes@gmail.com',
-          contact:'Carol Lamentably',
-        },
-        {
-          name: 'Noe',
-          phone: '465768778787',
-          address:'A',
-          email: 'noe.wester@gmail.com',
-          contact:'Carol Lamentably',
-        },
-        {
-          name: 'Noel',
-          phone: '01179123456',
-          address:'A',
-          email: 'noel.wester@gmail.com',
-          contact:'Carol Lamentably',
-        },
-        {
-          name: 'Nel',
-          phone: '0456667665',
-          address:'A',
-          email: 'nel.weser@gmail.com',
-          contact:'Carol Lamentably',
-        }
+        // {
+        //   name: 'Noel',
+        //   phone: '01179123456',
+        //   address:'A',
+        //   email: 'noel.wester@gmail.com',
+        //   contact:'Carol Lamentably',
+        // },
+        // {
+        //   name: 'Noel',
+        //   phone: '355667564532',
+        //   address:'A',
+        //   email: 'noel.wes@gmail.com',
+        //   contact:'Carol Lamentably',
+        // },
+        // {
+        //   name: 'Noe',
+        //   phone: '465768778787',
+        //   address:'A',
+        //   email: 'noe.wester@gmail.com',
+        //   contact:'Carol Lamentably',
+        // },
+        // {
+        //   name: 'Noel',
+        //   phone: '01179123456',
+        //   address:'A',
+        //   email: 'noel.wester@gmail.com',
+        //   contact:'Carol Lamentably',
+        // },
+        // {
+        //   name: 'Nel',
+        //   phone: '0456667665',
+        //   address:'A',
+        //   email: 'nel.weser@gmail.com',
+        //   contact:'Carol Lamentably',
+        // }
       ],
       search:"",
       sortOrder:'',
@@ -106,11 +106,12 @@ export default {
       return this.list.filter(organisation => {
         // return resident.name.toLowerCase().includes(this.search.toLowerCase());
         return (
-            organisation.name.toLowerCase().includes(this.search.toLowerCase()) ||
-            organisation.phone.toLowerCase().includes(this.search.toLowerCase()) ||
+            organisation.Name.toLowerCase().includes(this.search.toLowerCase()) ||
+            organisation.PhoneNumber.toLowerCase().includes(this.search.toLowerCase()) ||
             organisation.address.toLowerCase().includes(this.search.toLowerCase()) ||
-            organisation.email.toLowerCase().includes(this.search.toLowerCase()) ||
-            organisation.contact.toLowerCase().includes(this.search.toLowerCase())
+            organisation.Email.toLowerCase().includes(this.search.toLowerCase()) ||
+            organisation.MainContact.toLowerCase().includes(this.search.toLowerCase())||
+            organisation.postcode.toLowerCase().includes(this.search.toLowerCase())
         );
       });
     }
@@ -134,23 +135,26 @@ export default {
       if (this.sortOrder === sortKey) {
         this.list.reverse();
       } else {
-        if (sortKey === 'name') {
+        if (sortKey === 'Name') {
           this.toggleActive(0);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-        } else if (sortKey === 'phone') {
+        } else if (sortKey === 'PhoneNumber') {
           this.toggleActive(1);
           this.list.sort((a, b) => a[sortKey] - b[sortKey]);
         } else if (sortKey === 'address') {
           this.toggleActive(2);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-        } else if (sortKey === 'contact') {
+        } else if (sortKey === 'MainContact') {
           this.toggleActive(3);
           this.list.sort((a, b) => a[sortKey] - b[sortKey]);
-        } else if (sortKey === 'email'){
+        } else if (sortKey === 'Email') {
           this.toggleActive(4);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+        } else if (sortKey === 'postcode') {
+          this.toggleActive(4);
+          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          this.sortOrder = sortKey;
         }
-        this.sortOrder = sortKey;
       }
     },
     showNewForm(){
@@ -213,10 +217,11 @@ export default {
       this.list = response.results.map((result) => {
         return {
           Name: result.name,
-          PhoneNumber: result.phone_number,
-          Address: result.address_line_1,
+          PhoneNumber: result.phone,
+          address: result.address_line_1,
           MainContact: result.contact_name,
-          Email: result.email
+          Email: result.email,
+          postcode:result.postcode,
         }
       })
     })

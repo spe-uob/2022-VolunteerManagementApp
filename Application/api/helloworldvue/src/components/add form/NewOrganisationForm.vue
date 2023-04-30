@@ -1,16 +1,16 @@
 <template>
   <form>
-    <div style="cursor: pointer" @click="back()">Back</div>
+    <div style="cursor: pointer" @click="back()">back</div>
     <div>
       <h1 class="form-title">Create New Organisation</h1>
     </div>
     <div class="form-group">
       <label for="Name">Name</label>
-      <input type="text" class="form-control" id="Name" v-model="Name" placeholder="Name">
+      <input type="text" class="form-control" id="Name" v-model="Name" placeholder="Name of organisation">
     </div>
     <div class="form-group">
       <label for="PhoneNumber">Phone Number</label>
-      <input type="text" class="form-control" id="PhoneNumber" v-model="PhoneNumber" placeholder="Phone Number">
+      <input type="text" class="form-control" id="PhoneNumber" v-model="PhoneNumber" placeholder="Main phone number for organisation contact.">
     </div>
     <div class="form-group">
       <label for="address">Address</label>
@@ -18,11 +18,15 @@
     </div>
     <div class="form-group">
       <label for="MainContact">Main Contact</label>
-      <input type="text" class="form-control" id="MainContact" v-model="MainContact" placeholder="MainContact">
+      <input type="text" class="form-control" id="MainContact" v-model="MainContact" placeholder="Name of organisation contact.">
     </div>
     <div class="form-group">
       <label for="Email">Email</label>
-      <input type="text" class="form-control" id="Email" v-model="Email" placeholder="Email">
+      <input type="text" class="form-control" id="Email" v-model="Email" placeholder="Main email for organisation contact.">
+    </div>
+    <div class="form-group">
+      <label for="postcode">Postcode</label>
+      <input type="text" class="form-control" id="postcode" v-model="postcode" placeholder="Address postcode.">
     </div>
     <div class="form-group">
       <button type="submit" @click.prevent="submitForm" class="btn btn-primary">Save</button>
@@ -40,25 +44,31 @@ export default {
       PhoneNumber: '',
       address: '',
       MainContact: '',
-      Email: ''
+      Email: '',
+      postcode: '',
     };
   },
   methods: {
+    baseURL: function(){
+      return window.location.origin
+    },
     back(){
       // this.$emit("back");
       this.$router.back();
     },
     async submitForm() {
       let Organisation = {
-        "Name": this.Name,
-        "PhoneNumber": this.PhoneNumber,
-        "address": this.address,
-        "postcode": this.postcode,
-        "Email": this.email,
+        "name": this.Name,
+        "phone_number": this.PhoneNumber,
+        "address_line_1": this.address,
+        "contact_name": this.MainContact,
+        "email": this.Email,
+        "postcode":this.postcode
+
       }
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/organisations/",
+        url: this.baseURL()+ "/api/organisations/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },

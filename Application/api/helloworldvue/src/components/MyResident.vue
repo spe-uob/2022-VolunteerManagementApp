@@ -26,7 +26,7 @@
         </tr>
 
         <tr v-for="(item, index) in filteredResidents" :class="'tr-color-' + index % 2" :key="index">
-          <td style="color:  black;">{{item.FirstName}}</td>
+          <td style="color:  black;" @click="goUpdate(item)">{{item.FirstName}}</td>
           <td style="color:  black;">{{item.LastName}}</td>
           <td style="color:  black;">{{item.PhoneNumber}}</td>
           <td style="color:  black;">{{item.Email}}</td>
@@ -126,6 +126,16 @@ export default {
         }
         this.sortOrder = sortKey;
       }
+    },
+    // showNewForm(){
+    //   this.$router.push("/createOrganisation");
+    //    this.newFormFlag = true;
+    // },
+    goUpdate(data){
+      console.log(data);
+      localStorage.setItem("org",JSON.stringify(data));
+      this.$router.push("/updateResident");
+
     },
     toggleHide() {
       this.toggle = !this.toggle;
