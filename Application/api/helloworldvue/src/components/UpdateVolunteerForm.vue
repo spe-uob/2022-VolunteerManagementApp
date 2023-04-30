@@ -2,10 +2,10 @@
   <form>
     <div style="cursor: pointer" @click="back()">back</div>
     <div>
-      <h1 class="form-title">Create New Volunteer</h1>
+      <h1 class="form-title">Update Volunteer</h1>
     </div>
     <div class="form-group">
-      <label for="FirstName">Name</label>
+      <label for="FirstName">First Name</label>
       <input type="text" class="form-control" id="Name" v-model="FirstName" placeholder="FirstName">
     </div>
     <div class="form-group">
@@ -21,9 +21,13 @@
       <input type="text" class="form-control" id="Email" v-model="Email" placeholder="Email">
     </div>
     <div class="form-group">
-      <label for="TotalTimeGiven">Total Time Given</label>
-      <input type="text" class="form-control" id="TotalTimeGiven" v-model="TotalTimeGiven" placeholder="TotalTimeGiven">
+      <label for="ExternalVolunteerID">External Volunteer ID</label>
+      <input type="text" class="form-control" id="ExternalVolunteerID" v-model="ExternalVolunteerID" placeholder="ExternalVolunteerID">
     </div>
+<!--    <div class="form-group">-->
+<!--      <label for="TotalTimeGiven">Total Time Given</label>-->
+<!--      <input type="text" class="form-control" id="TotalTimeGiven" v-model="TotalTimeGiven" placeholder="TotalTimeGiven">-->
+<!--    </div>-->
     <div class="form-group">
       <button type="submit" @click.prevent="submitForm" class="btn btn-primary">Save</button>
     </div>
@@ -34,17 +38,21 @@
 import $ from 'jquery';
 export default {
   props:["detail"],
-  name: "NewResidentForm",
+  name: "NewVolunteerForm",
   data() {
     return {
       FirstName: '',
       LastName: '',
       PhoneNumber: '',
       Email: '',
-      TotalTimeGiven: ''
+      ExternalVolunteerID: '',
+      // TotalTimeGiven: ''
     };
   },
   methods: {
+    baseURL: function(){
+      return window.location.origin
+    },
     back(){
       // this.$emit("back");
       this.$router.back();
@@ -52,15 +60,16 @@ export default {
 
     async submitForm() {
       let Volunteer = {
-        "FirstName": this.FirstName,
-        "LastName": this.LastName,
-        "PhoneNumber": this.PhoneNumber,
-        "Email": this.email,
-        "TotalTimeGiven": this.TotalTimeGiven
+        "first_name": this.FirstName,
+        "last_name": this.LastName,
+        "phone": this.PhoneNumber,
+        "email": this.Email,
+        "user_id":this.ExternalVolunteerID,
+        // "TotalTimeGiven": this.TotalTimeGiven,
       }
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: "http://localhost:8000/" + "api/volunteers/",
+        url: this.baseURL() + "/api/volunteers/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -100,11 +109,12 @@ export default {
     // {"name":"Noel","phone":"01179123456","address":"A","email":"noel.wester@gmail.com","contact":"Carol Lamentably"}
     let data =JSON.parse(localStorage.getItem("org"));
     if(data){
-      this.FirstName = data.name;
-      this.LastName = data.name;
-      this.PhoneNumber = data.number;
+      this.FirstName = data.first_name;
+      this.LastName = data.last_name;
+      this.PhoneNumber = data.phone;
       this.Email = data.email;
-      this.TotalTimeGiven = data.time;
+      this.ExternalVolunteerID =data.user_id;
+      this.TotalTimeGiven = 'na';
     }
   }
 };
