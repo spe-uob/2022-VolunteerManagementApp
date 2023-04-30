@@ -25,12 +25,12 @@
         <th @click="sortTable('TotalTimeReceived')" >Total Time Given<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
       </tr>
 
-      <tr v-for="(item, index) in filteredVolunteers" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
-        <td style="color:  black;" class="table_hover">{{item.FirstName}}</td>
-        <td style="color:  black;" class="table_hover">{{item.LastName}}</td>
-        <td style="color:  black;" class="table_hover">{{item.PhoneNumber}}</td>
-        <td style="color:  black;" class="table_hover">{{item.Email}}</td>
-        <td style="color:  black;" class="table_hover">{{item.TotalTimeReceived}}</td>
+      <tr v-for="(item, index) in filteredVolunteers" :class="'tr-color-' + index % 2" :key="index">
+        <td style="color:  black;" @click="goUpdate(item)">{{item.FirstName}}</td>
+        <td style="color:  black;">{{item.LastName}}</td>
+        <td style="color:  black;">{{item.PhoneNumber}}</td>
+        <td style="color:  black;">{{item.Email}}</td>
+        <td style="color:  black;">{{item.TotalTimeReceived}}</td>
       </tr>
       </tbody>
     </table></div>
@@ -77,7 +77,8 @@ export default {
             volunteer.LastName.toLowerCase().includes(this.search.toLowerCase()) ||
             volunteer.PhoneNumber.toLowerCase().includes(this.search.toLowerCase()) ||
             volunteer.Email.toLowerCase().includes(this.search.toLowerCase()) ||
-            volunteer.TotalTimeReceived.toLowerCase().includes(this.search.toLowerCase())
+            volunteer.ExternalVolunteerID.toLowerCase().includes(this.search.toLocaleLowerCase())
+            // volunteer.TotalTimeReceived.toLowerCase().includes(this.search.toLowerCase())
         );
       });
     }
@@ -129,11 +130,15 @@ export default {
         }else if (sortKey === 'Email') {
           this.toggleActive(3);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-        }else if (sortKey === 'TotalTimeReceived') {
+        } else if (sortKey === 'ExternalVolunteerID') {
           this.toggleActive(4);
           this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+          // }else if (sortKey === 'TotalTimeReceived') {
+          //   this.toggleActive(4);
+          //   this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+          // }
+          this.sortOrder = sortKey;
         }
-        this.sortOrder = sortKey;
       }
     },
     baseURL: function(){
@@ -189,6 +194,7 @@ export default {
           LastName: result.last_name,
           PhoneNumber: result.phone,
           Email: result.email,
+          ExternalVolunteerID: result.user_id,
           TotalTimeReceived: 'n/a',
         }
       })
