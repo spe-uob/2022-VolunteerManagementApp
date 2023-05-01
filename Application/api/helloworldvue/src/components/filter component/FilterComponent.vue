@@ -1,144 +1,144 @@
 <template>
-    <div class="filter_container">
-      <div class="f-title">Referral Filters</div>
-      <div>
-        <label for="id4">
-          <input class="filter-head-input" id="id4" type="checkbox">
-          <div @click="setToggle1" class="filter-head">
-            <i class="arrow-right"></i>
-            Referral Type
+  <div class="filter_container">
+    <div class="f-title">Referral Filters</div>
+    <div>
+      <label for="id4">
+        <input class="filter-head-input" id="id4" type="checkbox">
+        <div @click="setToggle1" class="filter-head">
+          <i class="arrow-right"></i>
+          Referral Type
+        </div>
+        <div v-show="toggle1" class="filter-body">
+          <div>
+            <label for="quan">
+              <input id="quan" type="checkbox" @click="checkAll($event)"> Select all
+            </label>
           </div>
-          <div v-show="toggle1" class="filter-body">
-            <div>
-              <label for="quan">
-                <input id="quan" type="checkbox" @click="checkAll($event)"> Select all
-              </label>
-            </div>
-            <div>
-              <label>
-                <input class="checkItem" type="checkbox" value="foodbank" v-model="checkData">
-               foodbank
-              </label>
-            </div>
-            <div>
-              <label>
-                <input class="checkItem" type="checkbox" value="gp" v-model="checkData">
-                gp
-              </label>
-            </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="foodbank" v-model="checkData">
+              foodbank
+            </label>
           </div>
-        </label>
-      </div>
-<!--        <div>-->
-<!--            <div class="filter-head" @click="setToggle1"><i class="arrow-right"></i> Referral Type</div>-->
-<!--            <div v-show="toggle1" class="filter-body">-->
-<!--                <div>-->
-<!--                    <label>-->
-<!--                        <input type="checkbox">-->
-<!--                        foodbank-->
-<!--                    </label>-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <label>-->
-<!--                        <input type="checkbox">-->
-<!--                        gp-->
-<!--                    </label>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-      <div>
-        <label for="id8">
-          <input class="filter-head-input" id="id5" type="checkbox">
-          <div @click="setToggle2" class="filter-head">
-            <i class="arrow-right"></i>
-            Status
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="gp" v-model="checkData">
+              gp
+            </label>
           </div>
-          <div v-show="toggle2" class="filter-body">
-            <div>
-              <label for="select">
-                <input id="select" type="checkbox" @click="checkall($event)"> Select all
-              </label>
-            </div>
-            <div>
-              <label>
-                <input class="checkItem" type="checkbox" value="Shielded" v-model="checkdata">
-                Shielded
-              </label>
-            </div>
-            <div>
-              <label>
-                <input class="checkItem" type="checkbox" value="Internet Access" v-model="checkdata">
-                Internet Access
-              </label>
-            </div>
-            <div>
-              <label>
-                <input class="checkItem" type="checkbox" value="Smart Device" v-model="checkdata">
-                Smart Device
-              </label>
-            </div>
-            <div>
-              <label>
-                <input class="checkItem" type="checkbox" value="Online Shopping" v-model="checkdata">
-                Online Shopping
-              </label>
-            </div>
-            <div>
-              <label>
-                <input class="checkItem" type="checkbox" value="Online Comms" v-model="checkdata">
-                Online Comms
-              </label>
-            </div>
-          </div>
-        </label>
-      </div>
-
-      <!--          <div>-->
-      <!--            <label>-->
-      <!--              <input type="checkbox">-->
-      <!--              sub type1-->
-      <!--            </label>-->
-      <!--          </div>-->
-      <!--          <div>-->
-      <!--            <label>-->
-      <!--              <input type="checkbox">-->
-      <!--              sub type2-->
-      <!--            </label>-->
-      <!--          </div>-->
-      <!--        </div>-->
-      <!--      </label>-->
-      <!--    </div>-->
-
-      <div>
-        <label for="id9">
-          <input class="filter-head-input" id="id6" type="checkbox">
-          <div @click="setToggle3" class="filter-head">
-            <i class="arrow-right"></i>
-            Conpleted
-          </div>
-          <div v-show="toggle3" class="filter-body">
-            <div>
-              <label for="all">
-                <input id="all" type="checkbox" @click="Checkall($event)"> Select all
-              </label>
-            </div>
-            <div>
-              <label>
-                <input class="checkItem" type="checkbox" value="sub type1" v-model="Checkdata">
-                sub type1
-              </label>
-            </div>
-            <div>
-              <label>
-                <input class="checkItem" type="checkbox" value="sub type2" v-model="Checkdata">
-                sub type2
-              </label>
-            </div>
-          </div>
-        </label>
-      </div>
+        </div>
+      </label>
     </div>
+    <!--        <div>-->
+    <!--            <div class="filter-head" @click="setToggle1"><i class="arrow-right"></i> Referral Type</div>-->
+    <!--            <div v-show="toggle1" class="filter-body">-->
+    <!--                <div>-->
+    <!--                    <label>-->
+    <!--                        <input type="checkbox">-->
+    <!--                        foodbank-->
+    <!--                    </label>-->
+    <!--                </div>-->
+    <!--                <div>-->
+    <!--                    <label>-->
+    <!--                        <input type="checkbox">-->
+    <!--                        gp-->
+    <!--                    </label>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+
+    <div>
+      <label for="id5">
+        <input class="filter-head-input" id="id5" type="checkbox">
+        <div @click="setToggle2" class="filter-head">
+          <i class="arrow-right"></i>
+          Status
+        </div>
+        <div v-show="toggle2" class="filter-body">
+          <div>
+            <label for="select">
+              <input id="select" type="checkbox" @click="checkall($event)"> Select all
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Shielded" v-model="checkdata">
+              Shielded
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Internet Access" v-model="checkdata">
+              Internet Access
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Smart Device" v-model="checkdata">
+              Smart Device
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Online Shopping" v-model="checkdata">
+              Online Shopping
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Online Comms" v-model="checkdata">
+              Online Comms
+            </label>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <!--          <div>-->
+    <!--            <label>-->
+    <!--              <input type="checkbox">-->
+    <!--              sub type1-->
+    <!--            </label>-->
+    <!--          </div>-->
+    <!--          <div>-->
+    <!--            <label>-->
+    <!--              <input type="checkbox">-->
+    <!--              sub type2-->
+    <!--            </label>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </label>-->
+    <!--    </div>-->
+
+    <div>
+      <label for="id6">
+        <input class="filter-head-input" id="id6" type="checkbox">
+        <div @click="setToggle3" class="filter-head">
+          <i class="arrow-right"></i>
+          Conpleted
+        </div>
+        <div v-show="toggle3" class="filter-body">
+          <div>
+            <label for="all">
+              <input id="all" type="checkbox" @click="Checkall($event)"> Select all
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="sub type1" v-model="Checkdata">
+              sub type1
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="sub type2" v-model="Checkdata">
+              sub type2
+            </label>
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
 </template>
 <script>
 export default {
