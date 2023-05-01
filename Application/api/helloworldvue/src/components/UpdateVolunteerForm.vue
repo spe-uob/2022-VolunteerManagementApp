@@ -46,7 +46,7 @@ export default {
       PhoneNumber: '',
       Email: '',
       ExternalVolunteerID: '',
-      // TotalTimeGiven: ''
+      TotalTimeGiven: ''
     };
   },
   methods: {
@@ -65,7 +65,7 @@ export default {
         "phone": this.PhoneNumber,
         "email": this.Email,
         "user_id":this.ExternalVolunteerID,
-        // "TotalTimeGiven": this.TotalTimeGiven,
+        "TotalTimeGiven": this.TotalTimeGiven,
       }
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
