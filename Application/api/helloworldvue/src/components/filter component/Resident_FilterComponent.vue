@@ -6,45 +6,45 @@
         <input class="filter-head-input" id="id7" type="checkbox">
         <div @click="setToggle1" class="filter-head">
           <i class="arrow-right"></i>
-        Status
-      </div>
-      <div v-show="toggle1" class="filter-body">
-        <div>
-          <label for="quan">
-            <input id="quan" type="checkbox" @click="checkAll($event)"> Select all
-          </label>
+          Status
         </div>
-        <div>
-          <label>
-            <input class="checkItem" type="checkbox" value="Shielded" v-model="checkData">
-            Shielded
-          </label>
+        <div v-show="toggle1" class="filter-body">
+          <div>
+            <label for="quan">
+              <input id="quan" type="checkbox" @click="checkAll($event)"> Select all
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Shielded" v-model="checkData">
+              Shielded
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Internet Access" v-model="checkData">
+              Internet Access
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Smart Device" v-model="checkData">
+              Smart Device
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Online Shopping" v-model="checkData">
+              Online Shopping
+            </label>
+          </div>
+          <div>
+            <label>
+              <input class="checkItem" type="checkbox" value="Online Comms" v-model="checkData">
+              Online Comms
+            </label>
+          </div>
         </div>
-        <div>
-          <label>
-            <input class="checkItem" type="checkbox" value="Internet Access" v-model="checkData">
-            Internet Access
-          </label>
-        </div>
-        <div>
-          <label>
-            <input class="checkItem" type="checkbox" value="Smart Device" v-model="checkData">
-            Smart Device
-          </label>
-        </div>
-        <div>
-          <label>
-            <input class="checkItem" type="checkbox" value="Online Shopping" v-model="checkData">
-            Online Shopping
-          </label>
-        </div>
-        <div>
-          <label>
-            <input class="checkItem" type="checkbox" value="Online Comms" v-model="checkData">
-            Online Comms
-          </label>
-        </div>
-      </div>
       </label>
     </div>
 
@@ -53,18 +53,23 @@
         <input class="filter-head-input" id="id8" type="checkbox">
         <div @click="setToggle2" class="filter-head">
           <i class="arrow-right"></i>
-          Ward
+          Checks
         </div>
         <div v-show="toggle2" class="filter-body">
           <div>
+            <label for="select">
+              <input id="select" type="checkbox" @click="checkall($event)"> Select all
+            </label>
+          </div>
+          <div>
             <label>
-              <input type="checkbox">
+              <input class="checkItem" type="checkbox" value="sub type1" v-model="checkdata">
               sub type1
             </label>
           </div>
           <div>
             <label>
-              <input type="checkbox">
+              <input class="checkItem" type="checkbox" value="sub type2" v-model="checkdata">
               sub type2
             </label>
           </div>
@@ -79,14 +84,14 @@
           <i class="arrow-right"></i>
           Account
         </div>
-      <div v-show="toggle3" class="filter-body">
-        <div>
-          <label>
-            <input type="checkbox">
-            Consent Expiring
-          </label>
+        <div v-show="toggle3" class="filter-body">
+          <div>
+            <label>
+              <input type="checkbox">
+              Consent Expiring
+            </label>
+          </div>
         </div>
-      </div>
       </label>
     </div>
   </div>
@@ -97,6 +102,7 @@ export default {
   data() {
     return {
       checkData: [],
+      checkdata: [],
       toggle1: false,
       toggle2: false,
       toggle3: false,
@@ -112,32 +118,54 @@ export default {
         }
       },
       deep: true
+    },
+    checkdata: {
+      handler() {
+        if (this.checkdata.length == 3) {
+          document.querySelector('#select').checked = true;
+        } else {
+          document.querySelector('#select').checked = false;
+        }
+      },
+      deep: true
     }
   },
-    methods: {
-      setToggle1() {
-        this.toggle1 = !this.toggle1;
-      },
-      setToggle2() {
-        this.toggle2 = !this.toggle2;
-      },
-      setToggle3() {
-        this.toggle3 = !this.toggle3;
-      },
-      checkAll(e){
-        var checkObj = document.querySelectorAll('.checkItem');
-        if(e.target.checked){
-          for(var i=0;i<checkObj.length;i++){
-            if(!checkObj[i].checked){
-              this.checkData.push(checkObj[i].value);
-            }
+  methods: {
+    setToggle1() {
+      this.toggle1 = !this.toggle1;
+    },
+    setToggle2() {
+      this.toggle2 = !this.toggle2;
+    },
+    setToggle3() {
+      this.toggle3 = !this.toggle3;
+    },
+    checkAll(e){
+      var checkObj = document.querySelectorAll('.checkItem');
+      if(e.target.checked){
+        for(var i=0;i<checkObj.length;i++){
+          if(!checkObj[i].checked){
+            this.checkData.push(checkObj[i].value);
           }
-        }else {
-          this.checkData = [];
         }
+      }else {
+        this.checkData = [];
+      }
+    },
+    checkall(e){
+      var checkObj = document.querySelectorAll('.checkItem');
+      if(e.target.checked){
+        for(var i=0;i<checkObj.length;i++){
+          if(!checkObj[i].checked){
+            this.checkdata.push(checkObj[i].value);
+          }
+        }
+      }else {
+        this.checkdata = [];
       }
     }
   }
+}
 
 </script>
 
