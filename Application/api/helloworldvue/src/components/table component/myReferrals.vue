@@ -29,7 +29,7 @@
 <!--          <th>Priority<span class="sortable1"  :class="{ active: activeButton === 5 }" @click="sortTable('priority')"></span></th>-->
 <!--        </tr>-->
 
-        <tr  v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
+        <tr  v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
           <td class="table_hover">{{item.type}}</td>
           <td class="table_hover">{{item.resident}}</td>
           <td class="table_hover">{{item.created}}</td>
@@ -194,7 +194,11 @@ export default {
         {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
       ],
       priority: ["High", "Medium", "Low"],
-      helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
+      referralStatus: [
+          { id: 1, name: "Chosen" },
+          { id: 2, name: "Contacted" },
+          { id: 3, name: "Complete"},
+        ],
       sortOrder:'',
     }
   },
@@ -344,12 +348,9 @@ export default {
       const day = date.getDate();
       return `${month} ${day}, ${year}`;
   },
-    getStatusByID: function(id){
-      return this.helpTypes[id - 1]
-    },
-    getPriorityByID: function(id){
-      return this.priority[id - 1]
-    }
+  getStatusByID: function(id){
+             return this.referralStatus[id - 1]
+     },
   },
   async mounted(){
     let response = await this.getReferrals();
@@ -360,9 +361,8 @@ export default {
       id: result.id,
       resident: await this.getResidentByID(result.resident),
       type: await this.getReferralTypeByID(result.referral_type),
-      Due: this.formatDate(result.requested_datetime),
-      assigned: result.assigned_volunteers,
-      status: this.getStatusByID(result.referral_status),
+      created: this.formatDate(result.created_datetime),
+      status: this.getStatusByID(result.referral_status).name,
     };
     }));
     

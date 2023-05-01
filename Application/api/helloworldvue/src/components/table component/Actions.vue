@@ -23,7 +23,7 @@
 
       <tbody>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(1)">
+      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
         <td class="table_hover">{{item.help_type}}</td>
         <td class="table_hover">{{item.resident}}</td>
         <td class="table_hover">{{item.Due}}</td>

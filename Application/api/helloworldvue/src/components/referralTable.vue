@@ -165,21 +165,80 @@ export default {
       }
       return cookieValue;
     },
-  },
-  mounted(){
-    this.getReferrals().then((response) => {
-      this.list = response.results.map((result) => {
-        return {
-          id: result.id,
-          type: result.referral_type,
-          resident: result.resident,
-          created: result.created_datetime,
-          status: result.referral_status,
-          organisation: result.referral_organisation,
-          completed: result.completed_date
+    getResidentByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/residents/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
         }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
       })
-    })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
+      return json.results.find(obj => obj.id === id).first_name;
+    },
+    getReferralTypeByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/referraltypes/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+      return json.results.find(obj => obj.id === id).name;
+    },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+      const month = date.toLocaleString('default', { month: 'long' });
+      const day = date.getDate();
+      return `${month} ${day}, ${year}`;
+  },
+    getStatusByID: function(id){
+      return this.helpTypes[id - 1]
+    },
+    getPriorityByID: function(id){
+      return this.priority[id - 1]
+    }
+  },
+  async mounted(){
+    let response = await this.getReferrals();
+    response = response.results;
+    console.log("GETREFERRALS RESPONSE: " + JSON.stringify(response));
+    this.list = await Promise.all(response.map(async (result) => {
+    return {
+      id: result.id,
+      resident: await this.getResidentByID(result.resident),
+      type: await this.getReferralTypeByID(result.referral_type),
+      created: this.formatDate(result.created_datetime),
+      status: this.getStatusByID(result.referral_status),
+    };
+    }));
+    
   },
 }
 </script>

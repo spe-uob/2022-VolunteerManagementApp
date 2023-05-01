@@ -8,20 +8,20 @@
                  <ul>
                          <div>Resident: {{ referral.resident }}</div>
                          <div>Referral Type: {{ referral.referral_type }}</div>
-                         <div>Due Date: {{ referral.Due }}</div>
-                         <div>Priority: {{ referral.priority }}</div>
+                         <div>Organisation: {{ referral.organisation }}</div>
+                         <div>Status: {{ referral.status }}</div>
                  </ul>
              </div>
  
          </div>
          <div class="child-container">
              <div class="details-title">
-                 <header class="this-title">Assigned</header>
+                 <header class="this-title">Change Status</header>
              </div>
              <div class="details">
                  <label for="selectedHelpType">Status:</label>
                  <select v-model="selectedHelpType" @change="onHelpTypeSelected(selectedHelpType)">
-                 <option v-for="helptype in helpTypes" :key="helptype.id">{{ helptype.name }}</option>
+                 <option v-for="status in referralStatus" :key="status.id">{{ status.name }}</option>
                  </select>
                  <ul>
                      <li v-for="(index, volunteer) in assigned_volunteers" :key="index">
@@ -30,7 +30,7 @@
                  </ul>
              </div>
          </div>
-         <div class="footer-container">
+         <!-- <div class="footer-container">
              <div class="details-title">
                  <header class="this-title">Assign Volunteers</header>
              </div>
@@ -43,7 +43,7 @@
                  </ul>
              </div>
  
-         </div>
+         </div> -->
     </div>
  </template>
  
@@ -59,15 +59,6 @@
                  Due: "20th March 2032",
                  priority: "high"
              },
-             helpTypes: [
-                 { id: 1, name: "Pending volunteer interest" },
-                 { id: 2, name: "Volunteer interest" },
-                 { id: 3, name: "Volunteer assigned" },
-                 { id: 4, name: "Ongoing" },
-                 { id: 5, name: "Completed" },
-                 { id: 6, name: "Couldn't complete" },
-                 { id: 7, name: "No longer needed" },
-             ],
              selectedHelpType: null,
              volunteers: [
                  {
@@ -80,8 +71,12 @@
                  name: "No One"
                  }
              ],
-             priority: ["High", "Medium", "Low"],
-             assigned_volunteers: []
+
+             referralStatus: [
+                { id: 1, name: "Chosen" },
+                { id: 2, name: "Contacted" },
+                { id: 3, name: "Complete"},
+                ]
  
          }
      },
@@ -98,17 +93,17 @@
              return window.location.origin
        },
        onHelpTypeSelected: async function(id) {
-         let myHelpType = this.helpTypes.find(obj => obj.name === id)
+         let myReferralStatus = this.referralStatus.find(obj => obj.name === id)
          const csrftoken = this.getCookie('csrftoken')
              const json = await $.ajax({
-                 url: this.baseURL() + `/api/actions/1/`,
+                 url: this.baseURL() + `/api/referrals/${this.id}/`,
                  beforeSend: function (xhr) {
                  xhr.setRequestHeader('X-CSRFToken', csrftoken)
                  },
                  method: "PATCH",
                  type: "PATCH",
                  contentType: 'application/json',
-                 data: JSON.stringify({'action_status': myHelpType.id}),
+                 data: JSON.stringify({'referral_status': myReferralStatus.id}),
                  success: () => {
                  //this.$emit('removed-action', response)
                  console.log("success")
@@ -123,39 +118,10 @@
              console.log(JSON.stringify(json))
              return json;
      },
-         assign: async function (volunteer) {
-             let assigned_volunteers = []
-             let action = await this.getAction()
-             assigned_volunteers = action.assigned_volunteers
-             assigned_volunteers.push(volunteer)
-             const csrftoken = this.getCookie('csrftoken')
-             const json = await $.ajax({
-                 url: this.baseURL() + `/api/actions/1/`,
-                 beforeSend: function (xhr) {
-                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
-                 },
-                 method: "PATCH",
-                 type: "PATCH",
-                 contentType: 'application/json',
-                 data: JSON.stringify({ 'assigned_volunteers': assigned_volunteers }),
-                 success: () => {
-                 //this.$emit('removed-action', response)
-                 console.log("success")
-                 },
-                 error: (err) => {
-                 console.error(JSON.stringify(err))
-                 },
- 
-             }).catch((err) => {
-                 console.error(JSON.stringify(err))
-             })
-             console.log(JSON.stringify(json))
-             return json;
-         },
          getReferral: async function () {
              const csrftoken = this.getCookie('csrftoken')
              const json = await $.ajax({
-                 url: this.baseURL() + `/api/referrals/1/`,
+                 url: this.baseURL() + `/api/referrals/${this.id}/`,
                  beforeSend: function (xhr) {
                  xhr.setRequestHeader('X-CSRFToken', csrftoken)
                  },
@@ -245,7 +211,7 @@
              return `${month} ${day}, ${year}`;
      },
          getStatusByID: function(id){
-             return this.helpTypes[id - 1]
+             return this.referralStatus[id - 1]
      },
          getPriorityByID: function(id){
              return this.priority[id - 1]
@@ -285,8 +251,33 @@
              return { pk, name };
          }));
          return volunteersInfo;
+     },
+     getOrganisationById: async function(id){
+        const csrftoken = this.getCookie('csrftoken')
+             const json = await $.ajax({
+                 url: this.baseURL() + '/api/organisations/',
+                 beforeSend: function (xhr) {
+                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
+                 },
+                 method: "GET",
+                 type: "GET",
+                 contentType: 'application/json',
+                 success: () => {
+                 //this.$emit('removed-action', response)
+                 console.log("success")
+                 },
+                 error: (err) => {
+                 console.error(JSON.stringify(err))
+                 }
+             }).catch((err) => {
+                 console.err(JSON.stringify(err))
+             })
+             console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+             if(json.results.find(obj => obj.id === id).name === null)
+                return "None"
+            else
+                return json.results.find(obj => obj.id === id).name;
      }
- 
      },
      async mounted(){
      let result = await this.getReferral();
@@ -295,11 +286,8 @@
        id: result.id,
        resident: await this.getResidentByID(result.resident),
        referral_type: await this.getReferralTypeByID(result.referral_type),
-       Due: this.formatDate(result.requested_datetime),
-       assigned: result.assigned_volunteers,
-       status: this.getStatusByID(result.action_status),
-       priority: this.getPriorityByID(result.action_priority),
-       assigned_volunteers : result.assigned_volunteers
+       organisation: await this.getOrganisationById(result.referral_organisation),
+       status: this.getStatusByID(result.referral_status).name,
      };    
  
      let response = await this.getVolunteers();
