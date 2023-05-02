@@ -36,8 +36,8 @@
 
 We're working on a website that can be used by different communities to help self organise, keep track of need and effectively deploy help. We focus on building an intuitive front-end design and a system which all users can interact with.
 The application uses a Django project integrated with a vue application.
-And this is the website page https://uob.tofro.app/index/
-And here is the login pagehttp://10.20.51.117:8000/
+And here is the website page https://uob.tofro.app/index/
+
 
 ------------------
 

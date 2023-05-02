@@ -17,8 +17,8 @@
     <div class="container-dum">
       <header>Referrals</header>
       <ul class="action-list">
-        <li class="action-item" v-for="action in filteredActions" :key="action.id">
-          <a class="name">{{ action.type}}</a>
+        <li class="action-item" v-for="referral in filteredReferrals" :key="referral.id">
+          <a class="name">{{ referral.type}}</a>
         </li>
       </ul>
       <button class="addbtn" @click="openReferralform">New Referral</button>
@@ -51,6 +51,15 @@ export default {
           type: "dog walk",
           date: "today"
         }
+      ],
+      helpTypes: [
+                { id: 1, name: "Pending volunteer interest" },
+                { id: 2, name: "Volunteer interest" },
+                { id: 3, name: "Volunteer assigned" },
+                { id: 4, name: "Ongoing" },
+                { id: 5, name: "Completed" },
+                { id: 6, name: "Couldn't complete" },
+                { id: 7, name: "No longer needed" },
       ],
       referrals: [],
       actionForm: false,
@@ -143,31 +152,127 @@ export default {
         }
       }
       return cookieValue;
-    }
+    },
+    getResidentByID: async function(id){
+            const csrftoken = this.getCookie('csrftoken')
+            const json = await $.ajax({
+            url: this.baseURL() + '/api/residents/',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken)
+            },
+            method: "GET",
+            type: "GET",
+            contentType: 'application/json',
+            success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+            },
+            error: (err) => {
+                console.error(JSON.stringify(err))
+            }
+            }).catch((err) => {
+            console.err(JSON.stringify(err))
+            })
+            console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
+            return json.results.find(obj => obj.id === id).first_name;
+        },
+        getHelpTypeByID: async function(id){
+            const csrftoken = this.getCookie('csrftoken')
+            const json = await $.ajax({
+                url: this.baseURL() + '/api/helptypes/',
+                beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken)
+                },
+                method: "GET",
+                type: "GET",
+                contentType: 'application/json',
+                success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+                },
+                error: (err) => {
+                console.error(JSON.stringify(err))
+                }
+            }).catch((err) => {
+                console.err(JSON.stringify(err))
+            })
+            console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+            return json.results.find(obj => obj.id === id).name;
+        },
+        formatDate(dateString) {
+            const date = new Date(dateString);
+            const year = date.getFullYear();
+            const month = date.toLocaleString('default', { month: 'long' });
+            const day = date.getDate();
+            return `${month} ${day}, ${year}`;
+    },
+    getReferralTypeByID: async function(id){
+             const csrftoken = this.getCookie('csrftoken')
+             const json = await $.ajax({
+                 url: this.baseURL() + '/api/referraltypes/',
+                 beforeSend: function (xhr) {
+                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
+                 },
+                 method: "GET",
+                 type: "GET",
+                 contentType: 'application/json',
+                 success: () => {
+                 //this.$emit('removed-action', response)
+                 console.log("success")
+                 },
+                 error: (err) => {
+                 console.error(JSON.stringify(err))
+                 }
+             }).catch((err) => {
+                 console.err(JSON.stringify(err))
+             })
+             console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+             return json.results.find(obj => obj.id === id).name;
+         },
   },
-  mounted() {
-    console.log(this.id)
-    this.getReferrals().then((response) => {
-      this.referrals = response.results.map((result) => {
-        return {
-          resident: result.resident,
-          type: result.referral_type,
-        }
-      })
-    })
-    this.getActions().then((response) => {
-      console.log("response.results:" + + response.results)
-      this.actions = response.results.map((result) => {
-        return {
-          resident: result.resident,
-          type: result.help_type,
-          date: result.requested_datetime
-        }
-      })
-      console.log("this.actions: " + JSON.stringify(this.actions))
-      console.log("filtered actions: " + this.filteredActions)
-    })
-  }
+  // mounted() {
+  //   console.log(this.id)
+  //   this.getReferrals().then((response) => {
+  //     this.referrals = response.results.map((result) => {
+  //       return {
+  //         resident: result.resident,
+  //         type: result.referral_type,
+  //       }
+  //     })
+  //   })
+  //   this.getActions().then((response) => {
+  //     console.log("response.results:" + + response.results)
+  //     this.actions = response.results.map((result) => {
+  //       return {
+  //         resident: result.resident,
+  //         type: result.help_type,
+  //         date: result.requested_datetime
+  //       }
+  //     })
+  //     console.log("this.actions: " + JSON.stringify(this.actions))
+  //     console.log("filtered actions: " + this.filteredActions)
+  //   })
+    
+  // }
+  async mounted() {
+    let response = await this.getReferrals();
+    this.referrals = await Promise.all(response.results.map(async (result) => {
+          return {
+            resident: result.resident,
+            type: await this.getReferralTypeByID(result.referral_type),
+          }
+        }))
+    response = await this.getActions()
+    this.actions = await Promise.all(response.results.map(async (result) => {
+          return {
+            resident: result.resident,
+            type: await this.getHelpTypeByID(result.help_type),
+            date: await this.formatDate(result.requested_datetime),
+          }
+        }))
+        console.log("this.actions: " + JSON.stringify(this.actions))
+        console.log("filtered actions: " + this.filteredActions)
+    }
 }
 </script>
 

@@ -26,7 +26,7 @@
         </tr>
 
         <tr v-for="(item, index) in filteredResidents" :class="'tr-color-' + index % 2" :key="index">
-          <td style="color:  black;">{{item.FirstName}}</td>
+          <td style="color:  black;" @click="goUpdate(item)">{{item.FirstName}}</td>
           <td style="color:  black;">{{item.LastName}}</td>
           <td style="color:  black;">{{item.PhoneNumber}}</td>
           <td style="color:  black;">{{item.Email}}</td>
@@ -127,6 +127,16 @@ export default {
         this.sortOrder = sortKey;
       }
     },
+    // showNewForm(){
+    //   this.$router.push("/createOrganisation");
+    //    this.newFormFlag = true;
+    // },
+    goUpdate(data){
+      console.log(data);
+      localStorage.setItem("org",JSON.stringify(data));
+      this.$router.push("/updateResident");
+
+    },
     toggleHide() {
       this.toggle = !this.toggle;
     },
@@ -168,6 +178,11 @@ export default {
       }
       return cookieValue;
     },
+    checkConsent: function (dateString) {
+      const today = new Date();
+      const dateToCheck = new Date(dateString);
+      return dateToCheck < today;
+    }
   },
   mounted(){
     this.getResidents().then((response) => {
@@ -175,10 +190,10 @@ export default {
         return {
           FirstName: result.first_name,
           LastName: result.last_name,
-          PhoneNumber: result.phone,
-          Email: 'n/a',
-          TotalTimeReceived: 'n/a',
-          Consent: '✓',
+          PhoneNumber: result.phone? result.phone : "N/A",
+          Email: result.email,
+          TotalTimeReceived: result.time_received? result.time_received : "N/A",
+          Consent: this.checkConsent(result.data_consent_date)? '✓' : '✗',
         }
       })
     })

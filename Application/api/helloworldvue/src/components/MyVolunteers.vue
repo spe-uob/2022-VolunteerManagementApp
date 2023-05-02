@@ -25,12 +25,13 @@
         <th @click="sortTable('TotalTimeReceived')" >Total Time Given<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
       </tr>
 
-      <tr v-for="(item, index) in filteredVolunteers" :class="'tr-color-' + index % 2" :key="index">
-        <td style="color:  black;">{{item.FirstName}}</td>
-        <td style="color:  black;">{{item.LastName}}</td>
-        <td style="color:  black;">{{item.PhoneNumber}}</td>
-        <td style="color:  black;">{{item.Email}}</td>
-        <td style="color:  black;">{{item.TotalTimeReceived}}</td>
+      <tr v-for="(item, index) in filteredVolunteers" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
+        <td style="color:  black;" class="table_hover">{{item.FirstName}}</td>
+        <td style="color:  black;" class="table_hover">{{item.LastName}}</td>
+        <td style="color:  black;" class="table_hover">{{item.PhoneNumber}}</td>
+        <td style="color:  black;" class="table_hover">{{item.Email}}</td>
+        <td style="color:  black;" class="table_hover">{{item.TotalTimeReceived}}</td>
+
       </tr>
       </tbody>
     </table></div>
@@ -55,6 +56,13 @@ export default {
     return {
       toggle: false,
       list: [
+        {
+          FirstName: "Adam",
+          LastName: "Bencharef",
+          PhoneNumber: "088098802",
+          Email: "adambencharef@gmail.com",
+          TotalTimeReceived: "3 Days"
+        }
       ],
       search:"",
       sortOrder:'',
@@ -70,7 +78,8 @@ export default {
             volunteer.LastName.toLowerCase().includes(this.search.toLowerCase()) ||
             volunteer.PhoneNumber.toLowerCase().includes(this.search.toLowerCase()) ||
             volunteer.Email.toLowerCase().includes(this.search.toLowerCase()) ||
-            volunteer.TotalTimeReceived.toLowerCase().includes(this.search.toLowerCase())
+            volunteer.ExternalVolunteerID.toLowerCase().includes(this.search.toLocaleLowerCase())
+            // volunteer.TotalTimeReceived.toLowerCase().includes(this.search.toLowerCase())
         );
       });
     }
@@ -89,6 +98,9 @@ export default {
     showNewForm(){
       this.$router.push("/createVolunteer");
       // this.newFormFlag = true;
+    },
+    handleClick(id) {
+      this.$router.push(`/volunteer_page/${id}`)
     },
     goUpdate(data) {
       console.log(data);
@@ -119,11 +131,15 @@ export default {
         }else if (sortKey === 'Email') {
           this.toggleActive(3);
           this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-        }else if (sortKey === 'TotalTimeReceived') {
+        } else if (sortKey === 'ExternalVolunteerID') {
           this.toggleActive(4);
           this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+          // }else if (sortKey === 'TotalTimeReceived') {
+          //   this.toggleActive(4);
+          //   this.list.sort((a, b) => a[sortKey] - b[sortKey]);
+          // }
+          this.sortOrder = sortKey;
         }
-        this.sortOrder = sortKey;
       }
     },
     baseURL: function(){
@@ -175,10 +191,12 @@ export default {
     this.getVolunteers().then((response) => {
       this.list = response.results.map((result) => {
         return {
+          id: result.pk,
           FirstName: result.first_name,
           LastName: result.last_name,
           PhoneNumber: result.phone,
           Email: result.email,
+          ExternalVolunteerID: result.user_id,
           TotalTimeReceived: 'n/a',
         }
       })
@@ -208,6 +226,11 @@ export default {
   grid-area: 1 / col4-start / third-line / 6 ;
 }
 
+.table_hover:hover{
+  text-decoration: underline;
+  color: blue;
+  cursor: pointer;
+}
 
 
 .Volunteer_table{

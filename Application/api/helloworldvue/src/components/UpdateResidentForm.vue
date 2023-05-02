@@ -2,31 +2,31 @@
   <form>
     <div style="cursor: pointer" @click="back()">back</div>
     <div>
-      <h1 class="form-title">Update Volunteer</h1>
+      <h1 class="form-title">Update Resident</h1>
     </div>
     <div class="form-group">
-      <label for="FirstName">First Name</label>
-      <input type="text" class="form-control" id="Name" v-model="FirstName" placeholder="FirstName">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" v-model="firstName" placeholder="First Name">
     </div>
     <div class="form-group">
-      <label for="LastName">Last Name</label>
-      <input type="text" class="form-control" id="LastName" v-model="LastName" placeholder="LastName">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" v-model="lastName" placeholder="Last Name">
     </div>
     <div class="form-group">
-      <label for="PhoneNumber">Phone Number</label>
-      <input type="text" class="form-control" id="PhoneNumber" v-model="PhoneNumber" placeholder="PhoneNumber">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" class="form-control" id="phoneNumber" v-model="phoneNumber" placeholder="Main phone number for the user.">
     </div>
     <div class="form-group">
-      <label for="Email">Email</label>
-      <input type="text" class="form-control" id="Email" v-model="Email" placeholder="Email">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" id="email" v-model="email" placeholder="Main email for the user. ">
     </div>
     <div class="form-group">
-      <label for="ExternalVolunteerID">External Volunteer ID</label>
-      <input type="text" class="form-control" id="ExternalVolunteerID" v-model="ExternalVolunteerID" placeholder="ExternalVolunteerID">
+      <label for="totalTimeReceived">Total Time Received</label>
+      <input type="text" class="form-control" id="email" v-model="totalTimeReceived" placeholder="">
     </div>
 <!--    <div class="form-group">-->
-<!--      <label for="TotalTimeGiven">Total Time Given</label>-->
-<!--      <input type="text" class="form-control" id="TotalTimeGiven" v-model="TotalTimeGiven" placeholder="TotalTimeGiven">-->
+<!--      <label for="date">Date:</label>-->
+<!--      <input type="date" id="date" v-model="date">-->
 <!--    </div>-->
     <div class="form-group">
       <button type="submit" @click.prevent="submitForm" class="btn btn-primary">Save</button>
@@ -38,15 +38,15 @@
 import $ from 'jquery';
 export default {
   props:["detail"],
-  name: "NewVolunteerForm",
+  name: "newResidentForm",
   data() {
     return {
-      FirstName: '',
-      LastName: '',
-      PhoneNumber: '',
-      Email: '',
-      ExternalVolunteerID: '',
-      // TotalTimeGiven: ''
+      firstName: '',
+      lastName: '',
+      phoneNumber: '',
+      email: '',
+      totalTimeReceived: '',
+      // date: ''
     };
   },
   methods: {
@@ -59,24 +59,24 @@ export default {
     },
 
     async submitForm() {
-      let Volunteer = {
-        "first_name": this.FirstName,
-        "last_name": this.LastName,
-        "phone": this.PhoneNumber,
-        "email": this.Email,
-        "user_id":this.ExternalVolunteerID,
-        // "TotalTimeGiven": this.TotalTimeGiven,
-      }
+        let Resident = {
+          "first_name": this.firstName,
+          "last_name": this.lastName,
+          "phone": this.phoneNumber,
+          "email": this.email,
+          // "data_consent_date": this.date,
+        }
+
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
-        url: this.baseURL() + "/api/volunteers/",
+        url: this.baseURL() + "/api/residents/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
         method: "POST",
         type: "POST",
         contentType: 'application/json',
-        data: JSON.stringify(Volunteer),
+        data: JSON.stringify(Resident),
         success: () => {
           //this.$emit('removed-action', response)
           console.log("success")
@@ -113,8 +113,10 @@ export default {
       this.LastName = data.last_name;
       this.PhoneNumber = data.phone;
       this.Email = data.email;
-      this.ExternalVolunteerID =data.user_id;
-      this.TotalTimeGiven = 'na';
+      this.TotalTimeGiven ='n/a';
+      this.consent = 'n/a';
+
+
     }
   }
 };
