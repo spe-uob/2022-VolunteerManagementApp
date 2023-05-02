@@ -9,11 +9,6 @@
           Help Type
         </div>
         <div v-show="toggle1" class="filter-body">
-          <!--          <div>-->
-          <!--            <label for="quan">-->
-          <!--              <input id="quan" type="checkbox" @click="checkAll($event)"> Select all-->
-          <!--            </label>-->
-          <!--          </div>-->
           <div>
             <label v-for="(helpType, index) in help_Types" :key="index">
               <input class="checkItem" type="checkbox" v-model="selectedValues" :value="helpType">
@@ -80,7 +75,7 @@
 </template>
 
 <script>
-import $ from "jquery";
+// import $ from "jquery";
 
 export default {
   data() {
@@ -91,17 +86,15 @@ export default {
       toggle1: false,
       toggle2: false,
       toggle3: false,
-      help_Types:["A","Y"],
-      statuses:["Active","Inactive"],
-      Priority:["Low","Medium","High"],
-      helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
-      priority: ["High", "Medium", "Low"],
-      selectedValues: []
+      help_Types:["Shopping","Food parcel","Prescription","Call","Dog walk","Chores"],
+      statuses:["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
+      Priority: ["Low","Medium","High"],
+      selectedValues: [],
     }
   },
   watch: {
     selectedValues(newValues) {
-      this.$emit('update', newValues) // 触发update事件，将新的selectedValues值传递给父组件
+      this.$emit('update', newValues)
     },
     checkData: {
       handler() {
@@ -180,95 +173,87 @@ export default {
         this.Checkdata = [];
       }
     },
-    baseURL: function(){
-      return window.location.origin
-    },
-    getActions: async function () {
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: this.baseURL() + '/api/actions/',
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        },
-
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-      return json;
-    },
-    getCookie: function (name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
-        }
-      }
-      return cookieValue;
-    },
-    getHelpTypeByID: async function(id){
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: this.baseURL() + '/api/helptypes/',
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
-      return json.results.find(obj => obj.id === id).name;
-    },
-    getStatusByID: function(id){
-      return this.helpTypes[id - 1]
-    },
-    getPriorityByID: function(id){
-      return this.priority[id - 1]
-    },
-  },
-  async mounted() {
-
-    let response = await this.getActions();
-    response = response.results;
-    console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
-
-    this.help_Types = await Promise.all(response.map(async (result) => {
-      return await this.getHelpTypeByID(result.help_type);
-    }));
-
-    this.statuses = response.map((result) => {
-      return this.getStatusByID(result.action_status)
-    });
-
-    this.Priority = response.map((result) => {
-      return this.getPriorityByID(result.action_priority)
-    });
+  //   baseURL: function(){
+  //     return window.location.origin
+  //   },
+  //   getActions: async function () {
+  //     const csrftoken = this.getCookie('csrftoken')
+  //     const json = await $.ajax({
+  //       url: this.baseURL() + '/api/actions/',
+  //       beforeSend: function (xhr) {
+  //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+  //       },
+  //       method: "GET",
+  //       type: "GET",
+  //       contentType: 'application/json',
+  //       success: () => {
+  //         //this.$emit('removed-action', response)
+  //         console.log("success")
+  //       },
+  //       error: (err) => {
+  //         console.error(JSON.stringify(err))
+  //       },
+  //
+  //     }).catch((err) => {
+  //       console.err(JSON.stringify(err))
+  //     })
+  //     console.log(JSON.stringify(json))
+  //     return json;
+  //   },
+  //   getCookie: function (name) {
+  //     let cookieValue = null;
+  //     if (document.cookie && document.cookie !== '') {
+  //       const cookies = document.cookie.split(';');
+  //       for (let i = 0; i < cookies.length; i++) {
+  //         const cookie = cookies[i].trim();
+  //         // Does this cookie string begin with the name we want?
+  //         if (cookie.substring(0, name.length + 1) === (name + '=')) {
+  //           cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+  //           break;
+  //         }
+  //       }
+  //     }
+  //     return cookieValue;
+  //   },
+  //   getHelpTypeByID: async function(id){
+  //     const csrftoken = this.getCookie('csrftoken')
+  //     const json = await $.ajax({
+  //       url: this.baseURL() + '/api/helptypes/',
+  //       beforeSend: function (xhr) {
+  //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+  //       },
+  //       method: "GET",
+  //       type: "GET",
+  //       contentType: 'application/json',
+  //       success: () => {
+  //         //this.$emit('removed-action', response)
+  //         console.log("success")
+  //       },
+  //       error: (err) => {
+  //         console.error(JSON.stringify(err))
+  //       }
+  //     }).catch((err) => {
+  //       console.err(JSON.stringify(err))
+  //     })
+  //     console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+  //     return json.results.find(obj => obj.id === id).name;
+  //   },
+  //   getStatusByID: function(id){
+  //     return this.helpTypes[id - 1]
+  //   },
+  //   getPriorityByID: function(id){
+  //     return this.priority[id - 1]
+  //   },
+  // },
+  // async mounted() {
+  //
+  //   let response = await this.getActions();
+  //   response = response.results;
+  //   console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
+  //
+  //   this.help_Types = await Promise.all(response.map(async (result) => {
+  //     return await this.getHelpTypeByID(result.help_type);
+  //   }));
   },
 }
 

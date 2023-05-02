@@ -2,11 +2,11 @@
 
   <div class="wrapper">
     <div class="grid-1"><Action_table :table-data="data" @request-sort="sortData" :data="filteredData" class="left-table"></Action_table></div>
-    <div class="grid-2"><Referral_table  class="right-table"></Referral_table></div>
+    <div class="grid-2"><Referral_table :referral-data="referral_data" @request-sort1="sortData1" :referral_data="filteredReferralData"   class="right-table"></Referral_table></div>
 
     <div class="grid-3">
       <Action_FilterComponent @update="handleUpdate" class="Action_FilterComponent"></Action_FilterComponent>
-      <Referral_FilterComponent class="Referral_FilterComponent"></Referral_FilterComponent>
+      <Referral_FilterComponent @updatereferral="handleUpdate1" class="Referral_FilterComponent"></Referral_FilterComponent>
     </div>
   </div>
 
@@ -15,6 +15,8 @@
 <script>
 import Action_table from "@/components/table component/Actions.vue";
 import Action_FilterComponent from "@/components/filter component/Action_FilterComponent.vue";
+import Referral_table from "@/components/table component/myReferrals.vue";
+import Referral_FilterComponent from "@/components/filter component/FilterComponent.vue";
 import $ from "jquery";
 
 export default {
@@ -22,26 +24,41 @@ export default {
   data(){
     return {
       data: [
-        { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' , assigned:'A' , priority: 'High' },
-        { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive', assigned:'B' , priority: 'Medium' },
-        { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' , assigned:'C' , priority: 'Low'},
-        { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' , assigned:'D' , priority: 'Medium'},
-        { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' , assigned:'E' , priority: 'Low'},
-        { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' , assigned:'F' , priority: 'High'},
-        { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' , assigned:'G' , priority: 'Medium'},
-        { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' , assigned:'H' , priority: 'Low'},
+        { help_type: "Shopping", resident: 'John Doe', Due: '2021-01-01', status: 'Pending volunteer interest' , assigned:'A' , priority: 'High' },
+        { help_type: 'Food parcel', resident: 'Amy', Due: '2020-02-01', status: 'Volunteer interest', assigned:'B' , priority: 'Medium' },
+        { help_type: 'Call', resident: 'Annie', Due: '2019-02-01', status: 'Ongoing' , assigned:'C' , priority: 'Low'},
+        { help_type: 'Shopping', resident: 'Bill', Due: '2018-02-01', status: 'Ongoing' , assigned:'D' , priority: 'Medium'},
+        { help_type: 'Prescription', resident: 'Lin', Due: '2022-02-01', status: 'Volunteer assigned' , assigned:'E' , priority: 'Low'},
+        { help_type: 'Dog walk', resident: 'Skill', Due: '2014-02-01', status: 'Volunteer interest' , assigned:'F' , priority: 'High'},
+        { help_type: 'Chores', resident: 'miss', Due: '2013-02-01', status: 'Completed' , assigned:'G' , priority: 'Medium'},
+        { help_type: 'Call', resident: 'doctor', Due: '2007-02-01', status: 'Volunteer assigned' , assigned:'H' , priority: 'Low'},
       ],
       selectedValues: [],
       helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
       priority: ["High", "Medium", "Low"],
+      referral_data:[
+        {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Ongoing'},
+        {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Pending volunteer interest'},
+        {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Ongoing'},
+        {type:'Food parcel', resident:'john',created:'2022-01-02',status:'Completed'},
+        {type:'teaching', resident:'Bill',created:'2022-08-19',status:'Pending volunteer interest'},
+        {type:'selling', resident:'William',created:'2020-12-01',status:'Volunteer assigned'},
+        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Completed'},
+        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Volunteer assigned'},
+      ],
+      selectedValues1: [],
+      referralStatus: [
+        { id: 1, name: "Chosen" },
+        { id: 2, name: "Contacted" },
+        { id: 3, name: "Complete"},
+      ],
     }
   },
   components: {
     Action_table,
     Action_FilterComponent,
-    Referral_table: require('./table component/myReferrals.vue').default,
-    Referral_FilterComponent: require('./filter component/FilterComponent.vue').default,
-
+    Referral_table,
+    Referral_FilterComponent,
   },
   computed: {
     filteredData() {
@@ -54,14 +71,30 @@ export default {
               this.selectedValues.includes(item.priority)
         })
       }
+    },
+    filteredReferralData(){
+      if (this.selectedValues1.length === 0) {
+        return this.referral_data
+      } else {
+        return this.referral_data.filter(item => {
+          return this.selectedValues1.includes(item.type) ||
+              this.selectedValues1.includes(item.status)
+        })
+      }
     }
   },
   methods: {
     handleUpdate(newValues) {
       this.selectedValues = newValues
     },
+    handleUpdate1(newValues) {
+      this.selectedValues1 = newValues
+    },
     sortData(sortedData) {
       this.data = sortedData;
+    },
+    sortData1(sortedData) {
+      this.referral_data = sortedData;
     },
     baseURL: function(){
       return window.location.origin
@@ -84,6 +117,29 @@ export default {
           console.error(JSON.stringify(err))
         },
 
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      return json;
+    },
+    getReferrals: async function () {
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + "/api/referrals/",
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
       }).catch((err) => {
         console.err(JSON.stringify(err))
       })
@@ -128,6 +184,29 @@ export default {
       console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
       return json.results.find(obj => obj.id === id).first_name;
     },
+    getReferralTypeByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/referraltypes/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+      return json.results.find(obj => obj.id === id).name;
+    },
     getHelpTypeByID: async function(id){
       const csrftoken = this.getCookie('csrftoken')
       const json = await $.ajax({
@@ -163,7 +242,10 @@ export default {
     },
     getPriorityByID: function(id){
       return this.priority[id - 1]
-    }
+    },
+    getStatusByID_referral: function(id){
+      return this.referralStatus[id - 1]
+    },
   },
   async mounted(){
     let response = await this.getActions();
@@ -178,6 +260,19 @@ export default {
         assigned: result.assigned_volunteers,
         status: this.getStatusByID(result.action_status),
         priority: this.getPriorityByID(result.action_priority)
+      };
+    }));
+
+    let referral_response = await this.getReferrals();
+    referral_response = referral_response.results;
+    console.log("GETREFERRALS RESPONSE: " + JSON.stringify(referral_response));
+    this.referral_data = await Promise.all(referral_response.map(async (result) => {
+      return {
+        id: result.id,
+        resident: await this.getResidentByID(result.resident),
+        type: await this.getReferralTypeByID(result.referral_type),
+        created: this.formatDate(result.created_datetime),
+        status: this.getStatusByID_referral(result.referral_status).name,
       };
     }));
   },

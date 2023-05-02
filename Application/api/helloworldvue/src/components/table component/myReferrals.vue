@@ -29,7 +29,7 @@
 <!--          <th>Priority<span class="sortable1"  :class="{ active: activeButton === 5 }" @click="sortTable('priority')"></span></th>-->
 <!--        </tr>-->
 
-        <tr  v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
+        <tr  v-for="(item, index) in referral_data" :key="index"  :class="'tr-color-' + index % 2" @click="handleClick(item.id)">
           <td class="table_hover">{{item.type}}</td>
           <td class="table_hover">{{item.resident}}</td>
           <td class="table_hover">{{item.created}}</td>
@@ -173,7 +173,7 @@
 </template>
 
 <script>
-import $ from "jquery";
+// import $ from "jquery";
 
 export default {
   data() {
@@ -182,17 +182,6 @@ export default {
       // list: 12,
       emptyRows: 0,
       activeButton: -1,
-      list:
-      [
-        {type:'dog walking', resident:'Liu',created:'2021-01-01',status:'Inactive'},
-        {type:'shopping', resident:'Zhang',created:'2023-01-01',status:'Active'},
-        {type:'cooking', resident:'Lin',created:'2022-07-18',status:'Active'},
-        {type:'Food parcel', resident:'john',created:'2022-01-02',status:'Inactive'},
-        {type:'teaching', resident:'Bill',created:'2022-08-19',status:'Inactive'},
-        {type:'selling', resident:'William',created:'2020-12-01',status:'Active'},
-        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
-        {type:'playing', resident:'Amy',created:'2023-03-17',status:'Inactive'},
-      ],
       priority: ["High", "Medium", "Low"],
       referralStatus: [
           { id: 1, name: "Chosen" },
@@ -203,6 +192,11 @@ export default {
     }
   },
   props: {
+    referral_data:{
+      type: Array,
+      required: true,
+      default: () => [],
+    },
     containerSize: {
       type: Number,
       required: true
@@ -214,7 +208,7 @@ export default {
     top: {
       type: Number,
       required: false
-    }
+    },
   },
   created() {
     this.tableData = this.$store.state.tableData
@@ -231,142 +225,144 @@ export default {
     handleClick(id) {
       this.$router.push(`/referral_page/${id}`)
     },
-    baseURL: function(){
-        return window.location.origin
-      },
+    // baseURL: function(){
+    //     return window.location.origin
+    //   },
     sortTable(sortKey) {
+      let sortedData = [...this.referral_data];
       if (this.sortOrder === sortKey) {
-        this.list.reverse();
+        sortedData.reverse();
       } else {
         if (sortKey === 'created') {
           this.toggleActive(2);
-          this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
+          sortedData.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
         } else if (sortKey === 'type') {
           this.toggleActive(0);
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'resident') {
           this.toggleActive(1);
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'status') {
           this.toggleActive(3);
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         }
         this.sortOrder = sortKey;
       }
+      this.$emit('request-sort1',  sortedData);
     },
     toggleHide() {
       this.toggle = !this.toggle;
     },
-    getReferrals: async function () {
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: this.baseURL() + "/api/referrals/",
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-      return json;
-    },
-    getCookie: function (name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
-        }
-      }
-      return cookieValue;
-    },
-    getResidentByID: async function(id){
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: this.baseURL() + '/api/residents/',
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
-      return json.results.find(obj => obj.id === id).first_name;
-    },
-    getReferralTypeByID: async function(id){
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: this.baseURL() + '/api/referraltypes/',
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
-      return json.results.find(obj => obj.id === id).name;
-    },
-    formatDate(dateString) {
-      const date = new Date(dateString);
-      const year = date.getFullYear();
-      const month = date.toLocaleString('default', { month: 'long' });
-      const day = date.getDate();
-      return `${month} ${day}, ${year}`;
+  //   getReferrals: async function () {
+  //     const csrftoken = this.getCookie('csrftoken')
+  //     const json = await $.ajax({
+  //       url: this.baseURL() + "/api/referrals/",
+  //       beforeSend: function (xhr) {
+  //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+  //       },
+  //       method: "GET",
+  //       type: "GET",
+  //       contentType: 'application/json',
+  //       success: () => {
+  //         //this.$emit('removed-action', response)
+  //         console.log("success")
+  //       },
+  //       error: (err) => {
+  //         console.error(JSON.stringify(err))
+  //       }
+  //     }).catch((err) => {
+  //       console.err(JSON.stringify(err))
+  //     })
+  //     console.log(JSON.stringify(json))
+  //     return json;
+  //   },
+  //   getCookie: function (name) {
+  //     let cookieValue = null;
+  //     if (document.cookie && document.cookie !== '') {
+  //       const cookies = document.cookie.split(';');
+  //       for (let i = 0; i < cookies.length; i++) {
+  //         const cookie = cookies[i].trim();
+  //         // Does this cookie string begin with the name we want?
+  //         if (cookie.substring(0, name.length + 1) === (name + '=')) {
+  //           cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+  //           break;
+  //         }
+  //       }
+  //     }
+  //     return cookieValue;
+  //   },
+  //   getResidentByID: async function(id){
+  //     const csrftoken = this.getCookie('csrftoken')
+  //     const json = await $.ajax({
+  //       url: this.baseURL() + '/api/residents/',
+  //       beforeSend: function (xhr) {
+  //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+  //       },
+  //       method: "GET",
+  //       type: "GET",
+  //       contentType: 'application/json',
+  //       success: () => {
+  //         //this.$emit('removed-action', response)
+  //         console.log("success")
+  //       },
+  //       error: (err) => {
+  //         console.error(JSON.stringify(err))
+  //       }
+  //     }).catch((err) => {
+  //       console.err(JSON.stringify(err))
+  //     })
+  //     console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
+  //     return json.results.find(obj => obj.id === id).first_name;
+  //   },
+  //   getReferralTypeByID: async function(id){
+  //     const csrftoken = this.getCookie('csrftoken')
+  //     const json = await $.ajax({
+  //       url: this.baseURL() + '/api/referraltypes/',
+  //       beforeSend: function (xhr) {
+  //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+  //       },
+  //       method: "GET",
+  //       type: "GET",
+  //       contentType: 'application/json',
+  //       success: () => {
+  //         //this.$emit('removed-action', response)
+  //         console.log("success")
+  //       },
+  //       error: (err) => {
+  //         console.error(JSON.stringify(err))
+  //       }
+  //     }).catch((err) => {
+  //       console.err(JSON.stringify(err))
+  //     })
+  //     console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+  //     return json.results.find(obj => obj.id === id).name;
+  //   },
+  //   formatDate(dateString) {
+  //     const date = new Date(dateString);
+  //     const year = date.getFullYear();
+  //     const month = date.toLocaleString('default', { month: 'long' });
+  //     const day = date.getDate();
+  //     return `${month} ${day}, ${year}`;
+  // },
+  // getStatusByID: function(id){
+  //            return this.referralStatus[id - 1]
+  //    },
   },
-  getStatusByID: function(id){
-             return this.referralStatus[id - 1]
-     },
-  },
-  async mounted(){
-    let response = await this.getReferrals();
-    response = response.results;
-    console.log("GETREFERRALS RESPONSE: " + JSON.stringify(response));
-    this.list = await Promise.all(response.map(async (result) => {
-    return {
-      id: result.id,
-      resident: await this.getResidentByID(result.resident),
-      type: await this.getReferralTypeByID(result.referral_type),
-      created: this.formatDate(result.created_datetime),
-      status: this.getStatusByID(result.referral_status).name,
-    };
-    }));
-    
-  },
+  // async mounted(){
+  //   let response = await this.getReferrals();
+  //   response = response.results;
+  //   console.log("GETREFERRALS RESPONSE: " + JSON.stringify(response));
+  //   this.list = await Promise.all(response.map(async (result) => {
+  //   return {
+  //     id: result.id,
+  //     resident: await this.getResidentByID(result.resident),
+  //     type: await this.getReferralTypeByID(result.referral_type),
+  //     created: this.formatDate(result.created_datetime),
+  //     status: this.getStatusByID(result.referral_status).name,
+  //   };
+  //   }));
+  //
+  // },
 }
 
 </script>

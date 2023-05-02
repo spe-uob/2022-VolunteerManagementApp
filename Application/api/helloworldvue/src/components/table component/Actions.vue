@@ -58,17 +58,6 @@ export default {
       // list: 12,
       emptyRows: 0,
       activeButton: -1,
-      list:
-          [
-            // { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' , assigned:'A' , priority: 'High' },
-            // { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive', assigned:'B' , priority: 'Medium' },
-            // { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' , assigned:'C' , priority: 'Low'},
-            // { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' , assigned:'D' , priority: 'Medium'},
-            // { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' , assigned:'E' , priority: 'Low'},
-            // { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' , assigned:'F' , priority: 'High'},
-            // { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' , assigned:'G' , priority: 'Medium'},
-            // { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' , assigned:'H' , priority: 'Low'},
-          ],
       priority: ["High", "Medium", "Low"],
       helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
       sortOrder:'',
@@ -227,22 +216,22 @@ export default {
     //     return this.priority[id - 1]
     //   }
   },
-  async mounted(){
-    let response = await this.getActions();
-    response = response.results;
-    console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
-    this.list = await Promise.all(response.map(async (result) => {
-      return {
-        id: result.id,
-        resident: await this.getResidentByID(result.resident),
-        help_type: await this.getHelpTypeByID(result.help_type),
-        Due: this.formatDate(result.requested_datetime),
-        assigned: result.assigned_volunteers,
-        status: this.getStatusByID(result.action_status),
-        priority: this.getPriorityByID(result.action_priority)
-      };
-    }));
-  },
+  // async mounted(){
+  //   let response = await this.getActions();
+  //   response = response.results;
+  //   console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
+  //   this.list = await Promise.all(response.map(async (result) => {
+  //     return {
+  //       id: result.id,
+  //       resident: await this.getResidentByID(result.resident),
+  //       help_type: await this.getHelpTypeByID(result.help_type),
+  //       Due: this.formatDate(result.requested_datetime),
+  //       assigned: result.assigned_volunteers,
+  //       status: this.getStatusByID(result.action_status),
+  //       priority: this.getPriorityByID(result.action_priority)
+  //     };
+  //   }));
+  // },
 
 
 }
