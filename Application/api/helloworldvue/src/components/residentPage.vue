@@ -17,8 +17,8 @@
     <div class="container-dum">
       <header>Referrals</header>
       <ul class="action-list">
-        <li class="action-item" v-for="action in filteredActions" :key="action.id">
-          <a class="name">{{ action.type}}</a>
+        <li class="action-item" v-for="referral in filteredReferrals" :key="referral.id">
+          <a class="name">{{ referral.type}}</a>
         </li>
       </ul>
       <button class="addbtn" @click="openReferralform">New Referral</button>
@@ -206,6 +206,29 @@ export default {
             const day = date.getDate();
             return `${month} ${day}, ${year}`;
     },
+    getReferralTypeByID: async function(id){
+             const csrftoken = this.getCookie('csrftoken')
+             const json = await $.ajax({
+                 url: this.baseURL() + '/api/referraltypes/',
+                 beforeSend: function (xhr) {
+                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
+                 },
+                 method: "GET",
+                 type: "GET",
+                 contentType: 'application/json',
+                 success: () => {
+                 //this.$emit('removed-action', response)
+                 console.log("success")
+                 },
+                 error: (err) => {
+                 console.error(JSON.stringify(err))
+                 }
+             }).catch((err) => {
+                 console.err(JSON.stringify(err))
+             })
+             console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+             return json.results.find(obj => obj.id === id).name;
+         },
   },
   // mounted() {
   //   console.log(this.id)
@@ -236,7 +259,7 @@ export default {
     this.referrals = await Promise.all(response.results.map(async (result) => {
           return {
             resident: result.resident,
-            type: result.referral_type,
+            type: await this.getReferralTypeByID(result.referral_type),
           }
         }))
     response = await this.getActions()

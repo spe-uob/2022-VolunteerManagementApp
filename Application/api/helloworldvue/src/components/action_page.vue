@@ -24,7 +24,8 @@
                 <option v-for="helptype in helpTypes" :key="helptype.id">{{ helptype.name }}</option>
                 </select>
                 <ul>
-                    <li v-for="(index, volunteer) in assigned_volunteers" :key="index">
+                    <label for="assignedVolunteers"> ASSIGNED VOLUNTEERS</label>
+                    <li v-for="(volunteer, index) in assigned_volunteers" :key="index">
                         <div>{{ volunteer }}</div>
                     </li>
                 </ul>
@@ -101,7 +102,7 @@ export default {
         let myHelpType = this.helpTypes.find(obj => obj.name === id)
         const csrftoken = this.getCookie('csrftoken')
             const json = await $.ajax({
-                url: this.baseURL() + `/api/actions/1/`,
+                url: this.baseURL() + `/api/actions/${this.id}/`,
                 beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
                 },
@@ -130,7 +131,7 @@ export default {
             assigned_volunteers.push(volunteer)
             const csrftoken = this.getCookie('csrftoken')
             const json = await $.ajax({
-                url: this.baseURL() + `/api/actions/1/`,
+                url: this.baseURL() + `/api/actions/${this.id}/`,
                 beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
                 },
@@ -155,7 +156,7 @@ export default {
         getAction: async function () {
             const csrftoken = this.getCookie('csrftoken')
             const json = await $.ajax({
-                url: this.baseURL() + `/api/actions/1/`,
+                url: this.baseURL() + `/api/actions/${this.id}/`,
                 beforeSend: function (xhr) {
                 xhr.setRequestHeader('X-CSRFToken', csrftoken)
                 },
@@ -276,8 +277,7 @@ export default {
     getVolunteerByPK: async function(pk){
         let volunteers = await this.getVolunteers()
         volunteers = volunteers.results
-        const volunteer = volunteers.find(obj => obj.pk === pk);
-        return volunteer.first_name + ' ' + volunteer.last_name
+        return volunteers.find(obj => obj.pk === pk);
     },
     getVolunteersInfo: async function(pkArray) {
         const volunteersInfo = await Promise.all(pkArray.map(async (pk) => {
@@ -300,21 +300,25 @@ export default {
       status: this.getStatusByID(result.action_status),
       priority: this.getPriorityByID(result.action_priority),
       assigned_volunteers : result.assigned_volunteers
-    };    
+    };
 
-    let response = await this.getVolunteers();
-    console.log(response.results)
-    this.volunteers = response.results?.map((obj) => {
+    let allVolunteers = await this.getVolunteers();
+    this.volunteers = allVolunteers.results?.map((obj) => {
         return {
         name: obj.first_name + " " + obj.last_name,
         pk: obj.pk
     }}) || [];
 
+    let pkArray = this.action.assigned_volunteers
+
+    this.assigned_volunteers = allVolunteers.results
+        .filter(volunteer => pkArray.includes(volunteer.pk))
+        .map(volunteer => `${volunteer.first_name} ${volunteer.last_name}`);
+
     console.log("this.volunteers: " + this.volunteers)
     console.log("this.action: " + this.action)
 
-    console.log("assigned_volunteers: " + this.action.assigned_volunteers)
-    this.assigned_volunteers = this.action.assigned_volunteers
+    console.log("assigned_volunteers: " + this.assigned_volunteers)
     // this.assigned_volunteers = await getVolunteersInfo(this.assigned_volunteers)
 
   }

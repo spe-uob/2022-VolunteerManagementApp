@@ -1,6 +1,6 @@
 <!--header-->
 <template>
-    <div>
+    <div class="layout">
         <nav class="nav">
             <navbar/>
 
@@ -10,12 +10,10 @@
                 <div class="person-wrapper">
                     <span class="coordinator">Coordinator</span>
                     <span class="gap"></span>
-                    <img class="person" :src="dropdown" @click="toggleDropdown"/>
-                    <button id="burgerMenuButton" class="burger-menu-button" @click="toggleDropdown">
-                        <div class="burger-line"></div>
-                        <div class="burger-line"></div>
-                        <div class="burger-line"></div>
-                    </button>
+                    <img :class="{ 'highlighted': dropdownVisible,'no-hover': dropdownVisible  }" class="person" :src="dropdown" @click="toggleDropdown"/>
+                    <img id="burgerMenuButton" class="burger-menu-button" :src="Burger" alt="Burger Menu"
+                         @click="toggleDropdown">
+
                 </div>
                 <div class="dropdown-content" v-if="dropdownVisible">
                     <!--                    <a href="#">Volunteer view</a>-->
@@ -31,6 +29,7 @@
 <script>
     import companyIcon from "../../img/CompanyIcon.png";
     import dropdown from "../../img/dropdown.png"
+    import Burger from "../../img/BurgerMenu.png"
     // import personIcon from "../img/person.png"
     // import arrow from "../img/arrow.png"
     export default {
@@ -40,6 +39,8 @@
                 companyIcon: companyIcon,
                 dropdown: dropdown,
                 dropdownVisible: false,
+                Burger: Burger,
+                dropdownHighlighted: false,
                 // personIcon: personIcon,
                 // arrow: arrow,
             }
@@ -47,43 +48,52 @@
         methods: {
             goToHomePage() {
                 //first one for frontend test
-                window.location.href = "http://localhost:8000/index";
-                window.location.href = "http://localhost:8080/AllActivity";
-                //this is the url
-                // window.location.href="http://localhost:8000/index";
+                // window.location.href = "http://localhost:8000/index";
+                window.location.href = "https://uob.tofro.app/index/";
+
             },
             Login_page() {
-                window.location.href = "http://localhost:8000/";
+                window.location.href = "https://dev.tofro.app/";
             },
             toggleDropdown() {
                 this.dropdownVisible = !this.dropdownVisible;
-            }
+                this.dropdownHighlighted = this.dropdownVisible;
+            },
+
         }
     }
 </script>
 
 <style>
-
+    .layout {
+     padding-bottom: 100px;
+    }
 
     .nav {
         position: fixed;
         left: 0;
         top: 0;
-        width: 100vw;
-        height: 40px;
+        width: 100%;
+        height: 43.667px;
         background: #3A4857;
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 100;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .symbol {
         position: absolute;
-        width: 60px;
-        height: 30px;
-        left: 1em;
-        top: 3px;
+        width: 75px;
+        height: 33.667px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        /*left: 1em;*/
+        /*top: 3px;*/
         transition: height 0.2s ease-in-out;
         cursor: pointer;
     }
@@ -97,13 +107,13 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        width: 50px;
-        height: 30px;
+        width: 54px;
+        height: 38px;
         background-color: transparent;
         border: none;
         cursor: pointer;
         padding: 0;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 0.667px solid transparent;
     }
 
     .burger-line {
@@ -115,7 +125,6 @@
         margin-right: auto;
         transition: all 0.3s ease;
     }
-
 
     .burger-line:nth-child(1) {
         top: 60%;
@@ -129,7 +138,6 @@
         top: 60%;
     }
 
-
     .burger-menu-button.active .burger-line:nth-child(1) {
         transform: translateY(5px) rotate(45deg);
     }
@@ -141,7 +149,6 @@
     .burger-menu-button.active .burger-line:nth-child(3) {
         transform: translateY(-5px) rotate(-45deg);
     }
-
 
     .coordinator {
         color: #FFFFFF;
@@ -160,31 +167,47 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        padding-top: 2px;
-        position: relative;
+        /*!*padding-top: 2px;*!*/
+       padding-right: 26px;
+        margin-left: auto;
     }
 
-
     .person-wrapper:hover .dropdown-content {
-        display: block;
+        display: flex;
         pointer-events: initial;
     }
 
     .person {
         /*position: absolute;*/
-        display: block;
-        width: 50px;
-        padding-right: 20px;
-        top: 3px;
+        display: flex;
+        width: 63px;
+        height: 38px;
+        /*padding-right: 20px;*/
+        /*top: 3px;*/
         transition: height 0.2s ease-in-out;
+    }
+
+    .highlighted {
+
+
+        border: 2px solid #3A4857;
+        /*border-radius: 50%;*/
+
+
+        box-shadow: 0 0 4px #5E6D7F;
+        /*box-shadow: 0 0 8px #5E6D7F;*/
+
+
+        /*background-color: #fff;*/
     }
 
     @media (max-width: 850px) {
         .burger-menu-button {
+            width: 54px;
+            height: 44px;
             position: absolute;
             display: flex;
-            right: 30px;
-
+            /*right: 30px;*/
         }
 
         .coordinator {
@@ -196,7 +219,6 @@
         }
     }
 
-
     /* Links inside the dropdown */
     /*.dropdown-content a,*/
     /*.dropdown-content a:hover {*/
@@ -207,7 +229,6 @@
     /*    display: block;*/
     /*    background-color: transparent;*/
     /*    transition: transform 0.2s ease-in-out;*/
-
     .dropdown-content {
         display: none;
         position: absolute;
@@ -248,7 +269,6 @@
     /*.dropdown-content a:hover {*/
     /*    background-color: #F0F0F0;*/
     /*}*/
-
     .dropdown-content a {
         border-bottom: 1px solid #eee;
     }
@@ -267,7 +287,6 @@
         /*transform: rotate(180deg);*/
     }
 
-
     .gap {
         padding-left: 4px;
         padding-right: 4px;
@@ -275,13 +294,10 @@
 
     .background-color {
         background: RGB(114, 140, 159);
-
         padding: 3px;
         border: 2px solid RGB(114, 140, 159);
         border-radius: 5px;
     }
-
-
 </style>
 
 

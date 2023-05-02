@@ -1,25 +1,29 @@
 <template>
     <div id="app">
         <header>
-            <template>
-                <nav class="nav">
-                    <navbar/>
 
-                    <img class="symbol" :src="companyIcon" @click="goToHomePage"/>
+                <navbar/>
+<!--                <nav class="nav">-->
+<!--                    <img class="symbol" :src="companyIcon" @click="goToHomePage"/>-->
 
-                    <div class="person-wrapper">
-                        <span class="coordinator-text">Coordinator</span>
-
-                        <img class="person" :src="dropdown"/>
-                        <button class="burger-menu dropdown-content">☰</button>
-                        <div class="dropdown-content">
-                            <a href="#">Volunteer view</a>
-                            <a href="#">Account settings</a>
-                            <a @click="Login_page">Log Out</a>
-                        </div>
-                    </div>
-                </nav>
-            </template>
+<!--                    <div class="person-wrapper">-->
+<!--                        <div class="person-wrapper">-->
+<!--                            <span class="coordinator">Coordinator</span>-->
+<!--                            <span class="gap"></span>-->
+<!--                            <img class="person" :src="dropdown" @click="toggleDropdown"/>-->
+<!--                            <button id="burgerMenuButton" class="burger-menu-button" @click="toggleDropdown">-->
+<!--                                <div class="burger-line"></div>-->
+<!--                                <div class="burger-line"></div>-->
+<!--                                <div class="burger-line"></div>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                        <div class="dropdown-content" v-if="dropdownVisible">-->
+<!--                            &lt;!&ndash;                    <a href="#">Volunteer view</a>&ndash;&gt;-->
+<!--                            <a href="/accounts/settings">Account settings</a>-->
+<!--                            <a @click="Login_page">Log Out</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </nav>-->
 
 
             <!--                            <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
@@ -101,7 +105,7 @@
                 // window.location.href="http://localhost:8000/index";
             },
             Login_page() {
-                window.location.href = "http://10.20.51.117:8000";
+                window.location.href = "https://dev.tofro.app/";
             },
             updateCallStarted(routeName) {
                 this.CallStarted = (
@@ -149,9 +153,16 @@
 
 <style>
     body {
-        padding-top: 4vw;
-        font-family: 'Inter';
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
     }
+
     .callbtn {
         /*position: fixed;*/
         width: 100px;
@@ -165,16 +176,20 @@
         cursor: pointer;
         z-index: 1;
     }
-    .callbtn:hover{
+
+    .callbtn:hover {
         color: #F0F0F0;
     }
+
     .dropdown-content:hover .callbtn {
         display: none;
     }
+
     router-link {
         text-decoration: none;
         color: inherit;
     }
+
     .buttons .btn {
         font-weight: 500;
         margin: 10px;
@@ -183,14 +198,15 @@
         /*text-transform: uppercase;*/
         transition: all 0.1s ease-in-out;
     }
+
     .buttons {
-        margin: 10px;
         display: flex;
         justify-content: center;
         outline: none;
-        font-family:"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
     }
+
     .btn {
         margin: 10px;
         font-size: 2vw;
@@ -198,6 +214,7 @@
         text-transform: uppercase;
         transition: all 0.1s ease-in-out;
     }
+
     .btn[label="All Activity"],
     .btn[label="Actions"],
     .btn[label="Referrals"],
@@ -207,6 +224,7 @@
         /*update the font size*/
         font-size: 2vw;
     }
+
     /*.btn:hover {*/
     /*    color: white;*/
     /*    !*border: 1px solid #3A4857;*!*/
@@ -229,6 +247,7 @@
         top: 100%;
         z-index: 2
     }
+
     .dropdown-content a,
     .dropdown-content a:hover {
         color: black;
@@ -239,29 +258,34 @@
         background-color: transparent;
         transition: transform 0.2s ease-in-out;
     }
+
     .dropdown-content a:hover {
         display: block;
         background-color: #eee;
     }
+
     /* Show the dropdown menu on hover */
     .person-wrapper:hover .dropdown-content {
         display: block;
         pointer-events: initial;
     }
+
     /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown-content:hover {
         /*font-weight: bold;*/
     }
+
     .dropdown-content a {
         border-bottom: 1px solid #eee;
     }
+
     .dropdown-content a:last-child {
         border-bottom: none;
     }
+
     .person-wrapper:hover .dropdown-arrow {
         transform: rotate(180deg);
     }
-
 
 
 </style>

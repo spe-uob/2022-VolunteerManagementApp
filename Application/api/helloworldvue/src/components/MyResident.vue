@@ -178,6 +178,11 @@ export default {
       }
       return cookieValue;
     },
+    checkConsent: function (dateString) {
+      const today = new Date();
+      const dateToCheck = new Date(dateString);
+      return dateToCheck < today;
+    }
   },
   mounted(){
     this.getResidents().then((response) => {
@@ -185,10 +190,10 @@ export default {
         return {
           FirstName: result.first_name,
           LastName: result.last_name,
-          PhoneNumber: result.phone,
-          Email: 'n/a',
-          TotalTimeReceived: 'n/a',
-          Consent: '✓',
+          PhoneNumber: result.phone? result.phone : "N/A",
+          Email: result.email,
+          TotalTimeReceived: result.time_received? result.time_received : "N/A",
+          Consent: this.checkConsent(result.data_consent_date)? '✓' : '✗',
         }
       })
     })
