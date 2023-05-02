@@ -1,88 +1,75 @@
 <template>
-  <div>
+  <div class="filter-container">
     <div class="f-title">Action Filters</div>
     <div>
-      <label for="id1">
-        <input class="filter-head1-input1" id="id1" type="checkbox">
-        <div @click="setToggle1_1" class="filter-head1">
-          <i class="arrow-right1"></i>
-          HelpType
+      <label for="id7">
+        <input class="filter-head-input" id="id7" type="checkbox">
+        <div @click="setToggle1" class="filter-head">
+          <i class="arrow-right"></i>
+          Help Type
         </div>
-        <div v-show="toggle1" class="filter-body1">
+        <div v-show="toggle1" class="filter-body">
+<!--          <div>-->
+<!--            <label for="quan">-->
+<!--              <input id="quan" type="checkbox" @click="checkAll($event)"> Select all-->
+<!--            </label>-->
+<!--          </div>-->
           <div>
             <label v-for="(helpType, index) in help_Types" :key="index">
-              <input type="checkbox">
+              <input class="checkItem" type="checkbox" v-model="selectedValues" :value="helpType">
               {{helpType}}
             </label>
           </div>
         </div>
       </label>
     </div>
-    <!--    <div>-->
-    <!--      <div @click="setToggle1" class="filter-head1"><i class="arrow-right1"></i> Help Type</div>-->
-    <!--      <div v-show="toggle1" class="filter-body1">-->
-    <!--        <div>-->
-    <!--          <label>-->
-    <!--            <input type="checkbox">-->
-    <!--            feedback-->
-    <!--          </label>-->
-    <!--        </div>-->
-    <!--        <div>-->
-    <!--          <label>-->
-    <!--            <input type="checkbox">-->
-    <!--            gp-->
-    <!--          </label>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
 
     <div>
-      <label for="id2">
-        <input class="filter-head1-input1" id="id2" type="checkbox">
-        <div @click="setToggle2_2" class="filter-head1">
-          <i class="arrow-right1"></i>
+      <label for="id8">
+        <input class="filter-head-input" id="id8" type="checkbox">
+        <div @click="setToggle2" class="filter-head">
+          <i class="arrow-right"></i>
           Status
         </div>
-        <div v-show="toggle2" class="filter-body1">
+        <div v-show="toggle2" class="filter-body">
           <div>
             <label v-for="(status, index) in statuses" :key="index">
-              <input type="checkbox">
+              <input class="checkItem" type="checkbox" v-model="selectedValues" :value="status">
               {{status}}
             </label>
           </div>
+
         </div>
       </label>
     </div>
 
-    <!--    <div>-->
-    <!--      <div class="filter-head1" @click="setToggle2"><i class="arrow-right1"></i> Status</div>-->
-    <!--      <div v-show="toggle2" class="filter-body1">-->
-    <!--        <div>-->
-    <!--          <label>-->
-    <!--            <input type="checkbox">-->
-    <!--            sub type1-->
-    <!--          </label>-->
+    <!--          <div>-->
+    <!--            <label>-->
+    <!--              <input type="checkbox">-->
+    <!--              sub type1-->
+    <!--            </label>-->
+    <!--          </div>-->
+    <!--          <div>-->
+    <!--            <label>-->
+    <!--              <input type="checkbox">-->
+    <!--              sub type2-->
+    <!--            </label>-->
+    <!--          </div>-->
     <!--        </div>-->
-    <!--        <div>-->
-    <!--          <label>-->
-    <!--            <input type="checkbox">-->
-    <!--            sub type1-->
-    <!--          </label>-->
-    <!--        </div>-->
-    <!--      </div>-->
+    <!--      </label>-->
     <!--    </div>-->
 
     <div>
-      <label for="id3">
-        <input class="filter-head1-input1" id="id3" type="checkbox">
-        <div @click="setToggle3_3" class="filter-head1">
-          <i class="arrow-right1"></i>
+      <label for="id9">
+        <input class="filter-head-input" id="id9" type="checkbox">
+        <div @click="setToggle3" class="filter-head">
+          <i class="arrow-right"></i>
           Priority
         </div>
-        <div v-show="toggle3" class="filter-body1">
+        <div v-show="toggle3" class="filter-body">
           <div>
-            <label v-for="(priority, index) in Priority" :key="index">
-              <input type="checkbox">
+            <label  v-for="(priority, index) in Priority" :key="index">
+              <input class="checkItem" type="checkbox" v-model="selectedValues" :value="priority">
               {{priority}}
             </label>
           </div>
@@ -90,51 +77,108 @@
       </label>
     </div>
   </div>
-
-  <!--    <div>-->
-  <!--      <div class="filter-head1" @click="setToggle3()"> <i class="arrow-right1"></i> Priority</div>-->
-  <!--      <div v-show="toggle3" class="filter-body1">-->
-  <!--        <div>-->
-  <!--          <label>-->
-  <!--            <input type="checkbox">-->
-  <!--            sub type1-->
-  <!--          </label>-->
-  <!--        </div>-->
-  <!--        <div>-->
-  <!--          <label>-->
-  <!--            <input type="checkbox">-->
-  <!--            sub type1-->
-  <!--          </label>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
 </template>
+
 <script>
 import $ from "jquery";
 
 export default {
   data() {
     return {
+      checkData: [],
+      checkdata: [],
+      Checkdata: [],
       toggle1: false,
       toggle2: false,
       toggle3: false,
-      help_Types:[],
-      statuses:[],
-      Priority:[],
+      help_Types:["A","Y"],
+      statuses:["Active","Inactive"],
+      Priority:["Low","Medium","High"],
       helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
       priority: ["High", "Medium", "Low"],
+      selectedValues: []
+    }
+  },
+  watch: {
+    selectedValues(newValues) {
+      this.$emit('update', newValues) // 触发update事件，将新的selectedValues值传递给父组件
+    },
+    checkData: {
+      handler() {
+        if (this.checkData.length == 3) {
+          document.querySelector('#quan').checked = true;
+        } else {
+          document.querySelector('#quan').checked = false;
+        }
+      },
+      deep: true
+    },
+    checkdata: {
+      handler() {
+        if (this.checkdata.length == 3) {
+          document.querySelector('#select').checked = true;
+        } else {
+          document.querySelector('#select').checked = false;
+        }
+      },
+      deep: true
+    },
+    Checkdata: {
+      handler() {
+        if (this.Checkdata.length == 3) {
+          document.querySelector('#all').checked = true;
+        } else {
+          document.querySelector('#all').checked = false;
+        }
+      },
+      deep: true
     }
   },
   methods: {
-    setToggle1_1() {
+    setToggle1() {
       this.toggle1 = !this.toggle1;
     },
-    setToggle2_2() {
+    setToggle2() {
       this.toggle2 = !this.toggle2;
     },
-    setToggle3_3() {
+    setToggle3() {
       this.toggle3 = !this.toggle3;
+    },
+    checkAll(e){
+      var checkObj = document.querySelectorAll('.checkItem');
+      if(e.target.checked){
+        for(var i=0;i<checkObj.length;i++){
+          if(!checkObj[i].checked){
+            this.checkData.push(checkObj[i].value);
+          }
+        }
+      }else {
+        this.checkData = [];
+      }
+    },
+    checkall(e){
+      var checkObj = document.querySelectorAll('.checkItem');
+      if(e.target.checked){
+        for(var i=0;i<checkObj.length;i++){
+          if(!checkObj[i].checked){
+            this.checkdata.push(checkObj[i].value);
+          }
+        }
+      }else {
+        this.checkdata = [];
+      }
+    },
+    Checkall(e){
+      var checkObj = document.querySelectorAll('.checkItem');
+      if(e.target.checked){
+        for(var i=0;i<checkObj.length;i++){
+          if(!checkObj[i].checked){
+            this.Checkdata.push(checkObj[i].value);
+          }
+        }
+      }else {
+        this.Checkdata = [];
+      }
     },
     baseURL: function(){
       return window.location.origin
@@ -225,36 +269,24 @@ export default {
     this.Priority = response.map((result) => {
       return this.getPriorityByID(result.action_priority)
     });
-  }
-
+  },
 }
+
 </script>
 
 <style scoped>
 
-/*.filter-container {*/
-/*  font-weight: bold;*/
-/*  background: #ebecf0;*/
-/*  color: rgba(31, 31, 31, 0.7);*/
-/*  width: 10rem;*/
-/*  position: absolute;*/
-/*  right: 10px;*/
-/*  top: 140px;*/
-/*}*/
 
 .f-title{
   font-size: 15px;
   font-weight: 600;
+  line-height: 1.5;
   padding: 4px;
   color: black;
   background-color: rgba(247, 247, 247, 1);
 }
 
-.filter-head1:hover{
-  background-color: #dddddd;
-}
-
-.filter-head1{
+.filter-head{
   background: #eee;
   padding: 8px;
   font-size: 10px;
@@ -263,7 +295,14 @@ export default {
   color: black;
 }
 
-.arrow-right1 {
+.filter-head:hover{
+  background-color: #dddddd;
+}
+
+.filter-head-input{
+  display: none;
+}
+.arrow-right {
   display: inline-block;
   width: 0.45rem;
   height: 0.45rem;
@@ -274,21 +313,17 @@ export default {
   transition: transform 0.1s ease-in-out;
 }
 
-.filter-head1-input1{
-  display: none;
-}
-
-.filter-head1-input1:checked+.filter-head1 .arrow-right1{
+.filter-head-input:checked+.filter-head .arrow-right{
   transform: rotate(135deg);
   transition: transform 0.1s ease-in-out;
 }
 
 label{
   font-size: 10px;
+  color: black;
 }
 
-
-.filter-body1{
+.filter-body{
   background-color: white;
 }
 
