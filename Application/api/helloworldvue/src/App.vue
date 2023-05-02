@@ -93,15 +93,18 @@
             // FilterComponent
         },
         methods: {
+            baseURL: function(){
+                return window.location.origin
+            },
             goToHomePage() {
                 //first one for frontend test
-                window.location.href = "https://uob.tofro.app/index/";
+                window.location.href = this.baseURL() + "/index/";
                 // window.location.href = "http://localhost:8080/AllActivity";
                 //this is the url
                 // window.location.href="http://localhost:8000/index";
             },
             Login_page() {
-                window.location.href = "http://10.20.51.117:8000";
+                window.location.href = this.baseURL();
             },
             updateCallStarted(routeName) {
                 this.CallStarted = (
