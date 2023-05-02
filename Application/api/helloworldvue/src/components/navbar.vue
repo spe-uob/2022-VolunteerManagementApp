@@ -48,13 +48,12 @@
         methods: {
             goToHomePage() {
                 //first one for frontend test
-                window.location.href = "http://localhost:8000/index";
-                window.location.href = "http://localhost:8080/AllActivity";
-                //this is the url
-                // window.location.href="http://localhost:8000/index";
+                // window.location.href = "http://localhost:8000/index";
+                window.location.href = "https://uob.tofro.app/index/";
+
             },
             Login_page() {
-                window.location.href = "http://localhost:8000/";
+                window.location.href = "https://dev.tofro.app/";
             },
             toggleDropdown() {
                 this.dropdownVisible = !this.dropdownVisible;
