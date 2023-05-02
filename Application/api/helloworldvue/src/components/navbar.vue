@@ -66,7 +66,7 @@
 
 <style>
     .layout {
-
+     padding-bottom: 100px;
     }
 
     .nav {

@@ -200,7 +200,6 @@
     }
 
     .buttons {
-        margin-top: 70px;
         display: flex;
         justify-content: center;
         outline: none;
