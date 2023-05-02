@@ -16,6 +16,7 @@ import UpdateOrganisation from './components/UpdateOrganisationForm'
 import NewVolunteerForm from "@/components/add form/NewVolunteerForm";
 import UpdateVolunteerForm from './components/UpdateVolunteerForm'
 import UpdateResidentForm from "@/components/UpdateResidentForm";
+// import resident_page from "@/components/resident_page";
 import VueRouter from 'vue-router'
 import { loremIpsum } from "lorem-ipsum"
 
@@ -43,7 +44,8 @@ const routes = [
   { path: '/updateOrganisation', component: UpdateOrganisation},
   { path: '/createVolunteer',component: NewVolunteerForm},
   { path: '/updateVolunteer',component: UpdateVolunteerForm},
-  { path: '/updateResident',component: UpdateResidentForm}
+  { path: '/updateResident',component: UpdateResidentForm},
+  // {path: '/resident_page/:id',component: resident_page, name: 'resident_page'}
 ]
 
 const router = new VueRouter({

@@ -300,7 +300,7 @@ export default {
       status: this.getStatusByID(result.action_status),
       priority: this.getPriorityByID(result.action_priority),
       assigned_volunteers : result.assigned_volunteers
-    };    
+    };
 
     let allVolunteers = await this.getVolunteers();
     this.volunteers = allVolunteers.results?.map((obj) => {
@@ -310,7 +310,7 @@ export default {
     }}) || [];
 
     let pkArray = this.action.assigned_volunteers
-    
+
     this.assigned_volunteers = allVolunteers.results
         .filter(volunteer => pkArray.includes(volunteer.pk))
         .map(volunteer => `${volunteer.first_name} ${volunteer.last_name}`);
