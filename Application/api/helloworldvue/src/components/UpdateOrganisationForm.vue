@@ -141,5 +141,76 @@ input[type="text"], input[type="date"]{
   border-radius: 5px;
   width: 100%;
 }
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #F4F4F4;
+  border-radius: 5px;
+}
+
+.form-title {
+  font-size: 30px;
+  margin: 20px 0;
+  color: #3A4857;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #3A4857;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #BEBEBE;
+  background-color: #FFFFFF;
+  font-size: 16px;
+  color: #3A4857;
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #3A4857;
+  color: #FFFFFF;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4D5E70;
+}
+
+div[style="cursor: pointer"] {
+  font-size: 16px;
+  color: #3A4857;
+  margin-bottom: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+div[style="cursor: pointer"]:hover {
+  color: #4D5E70;
+}
+.btn{
+  color: white;
+}
 
 </style>

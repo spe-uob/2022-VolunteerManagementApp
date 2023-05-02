@@ -1,6 +1,6 @@
 <template>
-  <form>
-    <div style="cursor: pointer" @click="back()">back</div>
+  <form class="form-header">
+    <div class="back-link" style="cursor: pointer" @click="back()">back</div>
     <div>
       <h1 class="form-title">Update Resident</h1>
     </div>
@@ -144,6 +144,8 @@ input[type="text"], input[type="date"]{
   border-radius: 5px;
   width: 100%;
 }
+
+
 form {
   display: flex;
   flex-direction: column;
@@ -155,6 +157,24 @@ form {
   background-color: #F4F4F4;
   border-radius: 5px;
 }
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.form-header .back-link {
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
 
 .form-title {
   font-size: 30px;
@@ -215,7 +235,7 @@ div[style="cursor: pointer"]:hover {
   .btn{
     color: white;
   }
-  
+
 
 
 </style>
