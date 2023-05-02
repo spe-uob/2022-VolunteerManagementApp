@@ -137,7 +137,7 @@
                 <th @click="sortTable('completed')">Completed<span class="sortable1" :class="{ active: activeButton === 8 }"></span></th>
             </tr>
 
-            <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index">
+            <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
                 <td>{{item.id}}</td>
                 <td>{{item.help_type}}</td>
                 <td>{{item.resident}}</td>
@@ -200,6 +200,9 @@
             },
             toggleHide() {
                 this.toggle = !this.toggle;
+            },
+            handleClick(id) {
+                this.$router.push(`/action_page/${id}`)
             },
             sortTable(sortKey) {
                 if (this.sortOrder === sortKey) {
@@ -346,7 +349,7 @@
                     id: result.id,
                     resident: await this.getResidentByID(result.resident),
                     help_type: await this.getHelpTypeByID(result.help_type),
-                    Due: this.formatDate(result.requested_datetime),
+                    due: this.formatDate(result.requested_datetime),
                     assigned: result.assigned_volunteers,
                     status: this.getStatusByID(result.action_status),
                     priority: this.getPriorityByID(result.action_priority)
