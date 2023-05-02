@@ -1,14 +1,14 @@
 <template>
 
-    <div class="wrapper">
-      <div class="grid-1"><Action_table :table-data="data" @request-sort="sortData" :data="filteredData" class="left-table"></Action_table></div>
-      <div class="grid-2"><Referral_table  class="right-table"></Referral_table></div>
+  <div class="wrapper">
+    <div class="grid-1"><Action_table :table-data="data" @request-sort="sortData" :data="filteredData" class="left-table"></Action_table></div>
+    <div class="grid-2"><Referral_table  class="right-table"></Referral_table></div>
 
-      <div class="grid-3">
+    <div class="grid-3">
       <Action_FilterComponent @update="handleUpdate" class="Action_FilterComponent"></Action_FilterComponent>
       <Referral_FilterComponent class="Referral_FilterComponent"></Referral_FilterComponent>
-      </div>
     </div>
+  </div>
 
 </template>
 
@@ -50,8 +50,8 @@ export default {
       } else {
         return this.data.filter(item => {
           return this.selectedValues.includes(item.help_type) ||
-                 this.selectedValues.includes(item.status) ||
-                 this.selectedValues.includes(item.priority)
+              this.selectedValues.includes(item.status) ||
+              this.selectedValues.includes(item.priority)
         })
       }
     }
@@ -267,88 +267,88 @@ export default {
 
 }
 
-  /*@media (max-width: 1350px ){*/
-  /*  .filter-container{*/
-  /*    display: none;*/
-  /*  }*/
-  /*}*/
-  /*  @media (max-width: 1000px) {*/
-  /*  .left-table{*/
-  /*    position: relative;*/
-  /*    width: 120%;*/
-  /*    margin-left: 5px;*/
-  /*    bottom: 20px;*/
-  /*  }*/
-  /*  .right-table{*/
-  /*    width: 120%;*/
-  /*    margin-left: 5px;*/
-  /*  }*/
-  /*}*/
-  /*@media (min-width: 1600px) {*/
-  /*  .left-table{*/
-  /*    position: relative;*/
-  /*    margin-left:50px;*/
-  /*    width: 1000px;*/
-  /*  }*/
-  /*  .right-table{*/
-  /*    margin-left: 90%;*/
-  /*    width: 800px;*/
-  /*  }*/
-  /*}*/
-  /*table {*/
-  /*  border-collapse: collapse;*/
-  /*  width: 20%;*/
-  /*  min-width: 20rem;*/
-  /*  margin: 0rem;*/
-  /*  float: left;*/
-  /*  background-color: #f8f8f8;*/
-  /*  border-radius: 4px;*/
-  /*  overflow: hidden;*/
-  /*  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);*/
-  /*}*/
-  /*th,td{*/
-  /*  border: none;*/
-  /*}*/
-  /*th {*/
-  /*  background-color: rgba(234, 236, 239, 1);*/
-  /*  color: black;*/
-  /*  font-weight: bold;*/
-  /*  text-align: left;*/
-  /*  padding: 0.75rem 1rem;*/
-  /*  border-bottom: 1px solid #ddd;*/
-  /*  cursor: pointer;*/
-  /*}*/
-  /*th:hover {*/
-  /*  background-color: #354a63;*/
-  /*}*/
-  /*th.sortable:hover {*/
-  /*  background-color: #dddddd;*/
-  /*}*/
-  /*th.sortable:after {*/
-  /*  content: "\25B2";*/
-  /*  font-size: 12px;*/
-  /*  margin-left: 5px;*/
-  /*}*/
-  /*th.sortable.asc:after {*/
-  /*  content: "\25BC";*/
-  /*  font-size: 12px;*/
-  /*  margin-left: 5px;*/
-  /*}*/
-  /*td {*/
-  /*  padding: 0.75rem 2rem;*/
-  /*  border-bottom: 1px solid #ddd;*/
-  /*  color: #333;*/
-  /*}*/
-  /*tr:hover {*/
-  /*  background-color: #e6e6e6;*/
-  /*}*/
-  .tr-color-0 {
-    background: #f2f2f2;
-  }
+/*@media (max-width: 1350px ){*/
+/*  .filter-container{*/
+/*    display: none;*/
+/*  }*/
+/*}*/
+/*  @media (max-width: 1000px) {*/
+/*  .left-table{*/
+/*    position: relative;*/
+/*    width: 120%;*/
+/*    margin-left: 5px;*/
+/*    bottom: 20px;*/
+/*  }*/
+/*  .right-table{*/
+/*    width: 120%;*/
+/*    margin-left: 5px;*/
+/*  }*/
+/*}*/
+/*@media (min-width: 1600px) {*/
+/*  .left-table{*/
+/*    position: relative;*/
+/*    margin-left:50px;*/
+/*    width: 1000px;*/
+/*  }*/
+/*  .right-table{*/
+/*    margin-left: 90%;*/
+/*    width: 800px;*/
+/*  }*/
+/*}*/
+/*table {*/
+/*  border-collapse: collapse;*/
+/*  width: 20%;*/
+/*  min-width: 20rem;*/
+/*  margin: 0rem;*/
+/*  float: left;*/
+/*  background-color: #f8f8f8;*/
+/*  border-radius: 4px;*/
+/*  overflow: hidden;*/
+/*  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);*/
+/*}*/
+/*th,td{*/
+/*  border: none;*/
+/*}*/
+/*th {*/
+/*  background-color: rgba(234, 236, 239, 1);*/
+/*  color: black;*/
+/*  font-weight: bold;*/
+/*  text-align: left;*/
+/*  padding: 0.75rem 1rem;*/
+/*  border-bottom: 1px solid #ddd;*/
+/*  cursor: pointer;*/
+/*}*/
+/*th:hover {*/
+/*  background-color: #354a63;*/
+/*}*/
+/*th.sortable:hover {*/
+/*  background-color: #dddddd;*/
+/*}*/
+/*th.sortable:after {*/
+/*  content: "\25B2";*/
+/*  font-size: 12px;*/
+/*  margin-left: 5px;*/
+/*}*/
+/*th.sortable.asc:after {*/
+/*  content: "\25BC";*/
+/*  font-size: 12px;*/
+/*  margin-left: 5px;*/
+/*}*/
+/*td {*/
+/*  padding: 0.75rem 2rem;*/
+/*  border-bottom: 1px solid #ddd;*/
+/*  color: #333;*/
+/*}*/
+/*tr:hover {*/
+/*  background-color: #e6e6e6;*/
+/*}*/
+.tr-color-0 {
+  background: #f2f2f2;
+}
 
-  .tr-color-1 {
-    background: #fff;
-  }
+.tr-color-1 {
+  background: #fff;
+}
 
 
 </style>

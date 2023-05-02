@@ -9,11 +9,11 @@
           Help Type
         </div>
         <div v-show="toggle1" class="filter-body">
-<!--          <div>-->
-<!--            <label for="quan">-->
-<!--              <input id="quan" type="checkbox" @click="checkAll($event)"> Select all-->
-<!--            </label>-->
-<!--          </div>-->
+          <!--          <div>-->
+          <!--            <label for="quan">-->
+          <!--              <input id="quan" type="checkbox" @click="checkAll($event)"> Select all-->
+          <!--            </label>-->
+          <!--          </div>-->
           <div>
             <label v-for="(helpType, index) in help_Types" :key="index">
               <input class="checkItem" type="checkbox" v-model="selectedValues" :value="helpType">
