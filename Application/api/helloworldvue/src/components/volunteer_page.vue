@@ -153,6 +153,29 @@
         }
         return cookieValue;
       },
+      getResidentByID: async function(id){
+            const csrftoken = this.getCookie('csrftoken')
+            const json = await $.ajax({
+            url: this.baseURL() + '/api/residents/',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('X-CSRFToken', csrftoken)
+            },
+            method: "GET",
+            type: "GET",
+            contentType: 'application/json',
+            success: () => {
+                //this.$emit('removed-action', response)
+                console.log("success")
+            },
+            error: (err) => {
+                console.error(JSON.stringify(err))
+            }
+            }).catch((err) => {
+            console.err(JSON.stringify(err))
+            })
+            console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
+            return json.results.find(obj => obj.id === id).first_name;
+        },
       getVolunteerByID: async function(id){
             const csrftoken = this.getCookie('csrftoken')
             const json = await $.ajax({
@@ -219,15 +242,21 @@
           }
         }))
     response = await this.getActions()
-    this.actions = await Promise.all(response.results.map(async (result) => {
-          return {
-            resident: await this.getVolunteerByID(result.resident),
-            type: await this.getHelpTypeByID(result.help_type),
-            date: await this.formatDate(result.requested_datetime),
-          }
-        }))
-        console.log("this.actions: " + JSON.stringify(this.actions))
-        console.log("filtered actions: " + this.filteredActions)
+    // this.actions = await Promise.all(response.results.map(async (result) => {
+    //       return {
+    //         residentID: result.resident,
+    //         residentName: await this.getResidentByID(result.resident),
+    //         type: await this.getHelpTypeByID(result.help_type),
+    //         date: await this.formatDate(result.requested_datetime),
+    //         assigned_volunteers: result.assigned_volunteers
+    //       }
+    //     }))
+    this.actions = response.results
+      .filter(action => action.assigned_volunteers.includes(this.id))
+      // .map(async action => `${await this.getHelpTypeByID(action.help_type)}`)
+
+      console.log("this.actions: " + JSON.stringify(this.actions))
+      console.log("filtered actions: " + this.filteredActions)
     }
   }
   </script>
