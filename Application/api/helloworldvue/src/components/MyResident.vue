@@ -313,6 +313,11 @@ td {
   border: 0.1rem solid #f7f7f7;
   top: 400px;
 }
+@media (max-width: 1350px) {
+  .FilterComponent_container1{
+    display: none;
+  }
+}
 
 
 /*.mi input {*/
