@@ -23,12 +23,12 @@
         <th @click="sortTable('Email')">Email<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
       </tr>
 
-      <tr v-for="(item, index) in filteredOrganisation" :class="'tr-color-' + index % 2" :key="index">
-        <td style="color:  black;" @click="goUpdate(item)">{{item.Name}}</td>
-        <td style="color:  black;">{{item.PhoneNumber}}</td>
-        <td style="color:  black;">{{item.address}}</td>
-        <td style="color:  black;">{{item.MainContact}}</td>
-        <td style="color:  black;">{{item.Email}}</td>
+      <tr v-for="(item, index) in filteredOrganisation" :class="'tr-color-' + index % 2" :key="index" @click="goUpdate(item)">
+        <td class="table_hover">{{item.Name}}</td>
+        <td class="table_hover">{{item.PhoneNumber}}</td>
+        <td class="table_hover">{{item.address}}</td>
+        <td class="table_hover">{{item.MainContact}}</td>
+        <td class="table_hover">{{item.Email}}</td>
       </tr>
 
       </tbody>

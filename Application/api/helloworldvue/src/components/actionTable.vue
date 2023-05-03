@@ -44,23 +44,22 @@
                     </th>
                 </tr>
 
-                <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index"
-                    @click="handleClick(item.id)">
-                    <td>{{item.id}}</td>
-                    <td>{{item.help_type}}</td>
-                    <td>{{item.resident}}</td>
-                    <td>{{item.due}}</td>
-                    <td>{{item.status}}</td>
-                    <td>{{item.assigned}}</td>
-                    <td>{{item.priority}}</td>
-                    <td>{{item.volunteer}}</td>
-                    <td>{{item.completed}}</td>
+                <tr v-for="(item, index) in filteredData" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
+                    <td class="table_hover">{{item.id}}</td>
+                    <td class="table_hover">{{item.help_type}}</td>
+                    <td class="table_hover">{{item.resident}}</td>
+                    <td class="table_hover">{{item.due}}</td>
+                    <td class="table_hover">{{item.status}}</td>
+                    <td class="table_hover">{{item.assigned}}</td>
+                    <td class="table_hover">{{item.priority}}</td>
+                    <td class="table_hover">{{item.volunteer}}</td>
+                    <td class="table_hover">{{item.completed}}</td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <div class="FilterComponent_container">
-            <FilterComponent class="action_filterComponent"></FilterComponent>
+            <FilterComponent :selected-values="selectedValues" @update="handleUpdate" class="action_filterComponent"></FilterComponent>
         </div>
     </div>
     <!--     api version-->
@@ -175,6 +174,7 @@
 
 <script>
     import $ from 'jquery';
+    import FilterComponent from '@/components/filter component/Actions-filter.vue'
 
     export default {
         name: 'actionTable',
@@ -258,10 +258,11 @@
                         volunteer: 'A'
                     },
                 ],
-                priority: ["High", "Medium", "Low"],
-                helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
-                sortOrder: '',
-                activeButton: -1,
+              priority: ["High", "Medium", "Low"],
+              helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
+              sortOrder: '',
+              activeButton: -1,
+              selectedValues:[],
             }
         },
         props: {
@@ -270,13 +271,30 @@
                 required: true
             },
         },
+
         components: {
-            FilterComponent: require('./filter component/Action_FilterComponent.vue').default
+            FilterComponent,
         },
         created() {
             this.tableData = this.$store.state.tableData
         },
+      computed:{
+        filteredData() {
+          if (this.selectedValues.length === 0) {
+            return this.list
+          } else {
+            return this.list.filter(item => {
+              return this.selectedValues.includes(item.help_type) ||
+                  this.selectedValues.includes(item.status) ||
+                  this.selectedValues.includes(item.priority)
+            })
+          }
+        },
+      },
         methods: {
+          handleUpdate(newValues) {
+            this.selectedValues = newValues
+          },
             toggleActive(index) {
                 if (this.activeButton === index) {
                     this.activeButton = -1;

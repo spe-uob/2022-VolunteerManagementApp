@@ -11,8 +11,7 @@
 
         <div class="grid-3">
             <Action_FilterComponent @update="handleUpdate" class="Action_FilterComponent"></Action_FilterComponent>
-            <Referral_FilterComponent @updatereferral="handleUpdate1"
-                                      class="Referral_FilterComponent"></Referral_FilterComponent>
+            <Referral_FilterComponent @updatereferral="handleUpdate1" class="Referral_FilterComponent"></Referral_FilterComponent>
         </div>
     </div>
 
@@ -465,8 +464,14 @@
                 margin-left: 10px;
             }
 
+          .FilterComponent_container1{
+            display: none;
+          }
 
         }
+
+
+
 
         /*@media (max-width: 1350px ){*/
         /*  .filter-container{*/

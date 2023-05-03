@@ -87,6 +87,7 @@ export default {
         console.err(JSON.stringify(err))
       })
       console.log(JSON.stringify(json))
+      this.back()
     },
     getCookie: function (name) {
       let cookieValue = null;
