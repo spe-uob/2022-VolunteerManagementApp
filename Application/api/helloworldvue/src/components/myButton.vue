@@ -60,6 +60,48 @@
                 "Segoe UI Symbol",
                 "Noto Color Emoji";
     }
+
+    @media only screen and (max-width: 890px) {
+        .custom-button {
+            color: black;
+            border: none;
+            padding: 10px 25px;
+            outline: none;
+            background: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            font-size: 2vw;
+            font-family:
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    "Helvetica Neue",
+                    Arial,
+                    "Noto Sans",
+                    "Liberation Sans",
+                    sans-serif,
+                    "Apple Color Emoji",
+                    "Segoe UI Emoji",
+                    "Segoe UI Symbol",
+                    "Noto Color Emoji";
+        }
+
+        .callbtn {
+            /*position: fixed;*/
+            /*width: 220px;*/
+            /*height: 45px;*/
+            /*!*right: 1vw;*!*/
+            /*!*top: 100px;*!*/
+            /*!*margin-left: 3vw;*!*/
+            /*background: #1C405A;*/
+            /*border-radius: 5px;*/
+            /*color: white;*/
+            /*cursor: pointer;*/
+            /*z-index: 1;*/
+        }
+    }
     .selected-button {
         background-color: #6B818C;
         color: #ffffff;
