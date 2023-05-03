@@ -412,6 +412,13 @@
         top: 300px;
     }
 
+    @media screen and (min-width: 1000px) and (max-width: 1350px){
+      .grid-3{
+        display: none;
+      }
+    }
+
+
 
     @media screen and (max-width: 1000px) {
         .wrapper {
@@ -463,10 +470,6 @@
             .right-table {
                 margin-left: 10px;
             }
-
-          .FilterComponent_container1{
-            display: none;
-          }
 
         }
 
