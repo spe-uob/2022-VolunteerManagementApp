@@ -1,4 +1,68 @@
 <template>
+    <div class="grid-container">
+        <div class="action_container">
+            <table class="Action_table">
+                <thead style="background-color: rgba(247, 247, 247, 1)">
+                <tr style="font-size: 1rem;">
+                    <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
+                    <th @click="sortTable('id')">ID<span class="sortable1"
+                                                         :class="{ active: activeButton === 0 }"></span></th>
+                    <th @click="sortTable('help_type')">Help Type<span class="sortable1"
+                                                                       :class="{ active: activeButton === 1 }"></span>
+                    </th>
+                    <th @click="sortTable('resident')">Resident<span class="sortable1"
+                                                                     :class="{ active: activeButton === 2 }"></span>
+                    </th>
+                    <th @click="sortTable('due')">Due<span class="sortable1"
+                                                           :class="{ active: activeButton === 3 }"></span></th>
+                    <th @click="sortTable('status')">Status<span class="sortable1"
+                                                                 :class="{ active: activeButton === 4 }"></span></th>
+                    <th @click="sortTable('assigned')">Assigned<span class="sortable1"
+                                                                     :class="{ active: activeButton === 5 }"></span>
+                    </th>
+                    <th @click="sortTable('priority')">Priority<span class="sortable1"
+                                                                     :class="{ active: activeButton === 6 }"></span>
+                    </th>
+                    <th @click="sortTable('volunteer')">Volunteer<span class="sortable1"
+                                                                       :class="{ active: activeButton === 7 }"></span>
+                    </th>
+                    <th @click="sortTable('completed')">Completed<span class="sortable1"
+                                                                       :class="{ active: activeButton === 8 }"></span>
+                    </th>
+                </tr>
+
+                <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index"
+                    @click="handleClick(item.id)">
+                    <td>{{item.id}}</td>
+                    <td>{{item.help_type}}</td>
+                    <td>{{item.resident}}</td>
+                    <td>{{item.due}}</td>
+                    <td>{{item.status}}</td>
+                    <td>{{item.assigned}}</td>
+                    <td>{{item.priority}}</td>
+                    <td>{{item.volunteer}}</td>
+                    <td>{{item.completed}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="FilterComponent_container">
+            <FilterComponent class="action_filterComponent"></FilterComponent>
+        </div>
+    </div>
     <!--     api version-->
 
     <!--    <div class='table-container' :style="{ width: containerSize + 'px', height: containerSize + 'px'}">-->
@@ -107,52 +171,6 @@
     <!--          <FilterComponent class="table1"></FilterComponent>-->
     <!--        </div>-->
     <!--      </div>-->
-
-    <div class="grid-container">
-        <div class="action_container"><table class="Action_table">
-            <thead style="background-color: rgba(247, 247, 247, 1)">
-            <tr style="font-size: 1rem;">
-                <td colspan="2" style=" font-size: 1rem;font-weight:bold;">Actions</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            </thead>
-
-            <tbody>
-
-            <tr style="background-color: rgba(223, 226, 230, 1); height: 1.5rem;">
-                <th @click="sortTable('id')">ID<span class="sortable1" :class="{ active: activeButton === 0 }"></span></th>
-                <th @click="sortTable('help_type')">Help Type<span class="sortable1" :class="{ active: activeButton === 1 }"></span></th>
-                <th @click="sortTable('resident')">Resident<span class="sortable1" :class="{ active: activeButton === 2 }"></span></th>
-                <th @click="sortTable('due')">Due<span class="sortable1" :class="{ active: activeButton === 3 }"></span></th>
-                <th @click="sortTable('status')">Status<span class="sortable1" :class="{ active: activeButton === 4 }"></span></th>
-                <th @click="sortTable('assigned')">Assigned<span class="sortable1" :class="{ active: activeButton === 5 }"></span></th>
-                <th @click="sortTable('priority')">Priority<span class="sortable1" :class="{ active: activeButton === 6 }"></span></th>
-                <th @click="sortTable('volunteer')">Volunteer<span class="sortable1" :class="{ active: activeButton === 7 }"></span></th>
-                <th @click="sortTable('completed')">Completed<span class="sortable1" :class="{ active: activeButton === 8 }"></span></th>
-            </tr>
-
-            <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
-                <td>{{item.id}}</td>
-                <td>{{item.help_type}}</td>
-                <td>{{item.resident}}</td>
-                <td>{{item.due}}</td>
-                <td>{{item.status}}</td>
-                <td>{{item.assigned}}</td>
-                <td>{{item.priority}}</td>
-                <td>{{item.volunteer}}</td>
-                <td>{{item.completed}}</td>
-            </tr>
-            </tbody>
-        </table></div>
-        <div class="FilterComponent_container"><FilterComponent class="action_filterComponent"></FilterComponent></div>
-    </div>
-
 </template>
 
 <script>
@@ -164,17 +182,85 @@
             return {
                 toggle: false,
                 list: [
-                    {id:'1',help_type:'Dog Walking', resident:'John',due:'Fri, Feb 3, 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'I',completed:'Mon, Feb 6, 2023'},
-                    {id:'9',help_type:'Food Bank', resident:'Liu',due:'Mon, Jan 15, 2023',status:'Ongoing',assigned:'2/2',priority:'Normal',volunteer:'F',completed:'Mon, Feb 6, 2023'},
-                    {id:'11',help_type:'Shopping', resident:'Bob',due:'Mon, Jan 8, 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'D',completed:'Mon, Jan 15, 2023'},
-                    {id:'27',help_type:'Prescription', resident:'Ally',due:'Sun, Feb19 , 2023',status:'Ongoing',assigned:'1/1',priority:'Normal',volunteer:'A',completed:'Sun, Feb19 , 2023'},
-                    {id:'3',help_type:'Volunteer Assigned', resident:'Bill',due:'Sun, Feb12 , 2023',status:'Ongoing',assigned:'2/2',priority:'Normal',volunteer:'C',completed:'Sun, Feb12 , 2023'},
-                    {id:'15',help_type:'Volunteer Assigned', resident:'Alice',due:'Wed, Aug 11, 2023',status:'Ongoing',assigned:'1/2',priority:'Normal',volunteer:'D'},
-                    {id:'17',help_type:'Dog Walking', resident:'Sid',due:'Mon, Jan 1, 2023',status:'Ongoing',assigned:'0/1',priority:'Normal',volunteer:'A'},
+                    {
+                        id: '1',
+                        help_type: 'Dog Walking',
+                        resident: 'John',
+                        due: 'Fri, Feb 3, 2023',
+                        status: 'Ongoing',
+                        assigned: '1/1',
+                        priority: 'Normal',
+                        volunteer: 'I',
+                        completed: 'Mon, Feb 6, 2023'
+                    },
+                    {
+                        id: '9',
+                        help_type: 'Food Bank',
+                        resident: 'Liu',
+                        due: 'Mon, Jan 15, 2023',
+                        status: 'Ongoing',
+                        assigned: '2/2',
+                        priority: 'Normal',
+                        volunteer: 'F',
+                        completed: 'Mon, Feb 6, 2023'
+                    },
+                    {
+                        id: '11',
+                        help_type: 'Shopping',
+                        resident: 'Bob',
+                        due: 'Mon, Jan 8, 2023',
+                        status: 'Ongoing',
+                        assigned: '1/1',
+                        priority: 'Normal',
+                        volunteer: 'D',
+                        completed: 'Mon, Jan 15, 2023'
+                    },
+                    {
+                        id: '27',
+                        help_type: 'Prescription',
+                        resident: 'Ally',
+                        due: 'Sun, Feb19 , 2023',
+                        status: 'Ongoing',
+                        assigned: '1/1',
+                        priority: 'Normal',
+                        volunteer: 'A',
+                        completed: 'Sun, Feb19 , 2023'
+                    },
+                    {
+                        id: '3',
+                        help_type: 'Volunteer Assigned',
+                        resident: 'Bill',
+                        due: 'Sun, Feb12 , 2023',
+                        status: 'Ongoing',
+                        assigned: '2/2',
+                        priority: 'Normal',
+                        volunteer: 'C',
+                        completed: 'Sun, Feb12 , 2023'
+                    },
+                    {
+                        id: '15',
+                        help_type: 'Volunteer Assigned',
+                        resident: 'Alice',
+                        due: 'Wed, Aug 11, 2023',
+                        status: 'Ongoing',
+                        assigned: '1/2',
+                        priority: 'Normal',
+                        volunteer: 'D'
+                    },
+                    {
+                        id: '17',
+                        help_type: 'Dog Walking',
+                        resident: 'Sid',
+                        due: 'Mon, Jan 1, 2023',
+                        status: 'Ongoing',
+                        assigned: '0/1',
+                        priority: 'Normal',
+                        volunteer: 'A'
+                    },
                 ],
                 priority: ["High", "Medium", "Low"],
                 helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
-                sortOrder:'',
+                sortOrder: '',
                 activeButton: -1,
             }
         },
@@ -220,26 +306,26 @@
                     } else if (sortKey === 'due') {
                         this.toggleActive(3);
                         this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
-                    } else if (sortKey === 'status'){
+                    } else if (sortKey === 'status') {
                         this.toggleActive(4);
                         this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-                    } else if (sortKey === 'assigned'){
+                    } else if (sortKey === 'assigned') {
                         this.toggleActive(5);
                         this.list.sort((a, b) => a[sortKey] - b[sortKey]);
-                    }else if (sortKey === 'priority'){
+                    } else if (sortKey === 'priority') {
                         this.toggleActive(6);
                         this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-                    }else if (sortKey === 'volunteer'){
+                    } else if (sortKey === 'volunteer') {
                         this.toggleActive(7);
                         this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-                    }else if (sortKey === 'completed'){
+                    } else if (sortKey === 'completed') {
                         this.toggleActive(8);
                         this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
                     }
                     this.sortOrder = sortKey;
                 }
             },
-            baseURL: function(){
+            baseURL: function () {
                 return window.location.origin
             },
             getActions: async function () {
@@ -280,7 +366,7 @@
                 }
                 return cookieValue;
             },
-            getResidentByID: async function(id){
+            getResidentByID: async function (id) {
                 const csrftoken = this.getCookie('csrftoken')
                 const json = await $.ajax({
                     url: this.baseURL() + '/api/residents/',
@@ -303,7 +389,7 @@
                 console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
                 return json.results.find(obj => obj.id === id).first_name;
             },
-            getHelpTypeByID: async function(id){
+            getHelpTypeByID: async function (id) {
                 const csrftoken = this.getCookie('csrftoken')
                 const json = await $.ajax({
                     url: this.baseURL() + '/api/helptypes/',
@@ -329,18 +415,18 @@
             formatDate(dateString) {
                 const date = new Date(dateString);
                 const year = date.getFullYear();
-                const month = date.toLocaleString('default', { month: 'long' });
+                const month = date.toLocaleString('default', {month: 'long'});
                 const day = date.getDate();
                 return `${month} ${day}, ${year}`;
             },
-            getStatusByID: function(id){
+            getStatusByID: function (id) {
                 return this.helpTypes[id - 1]
             },
-            getPriorityByID: function(id){
+            getPriorityByID: function (id) {
                 return this.priority[id - 1]
             }
         },
-        async mounted(){
+        async mounted() {
             let response = await this.getActions();
             response = response.results;
             console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
@@ -362,26 +448,63 @@
 
 <style>
 
-    .grid-container{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        grid-gap: 20px;
-    }
+    /*.grid-container {*/
+    /*    display: grid;*/
+    /*    grid-template-columns: repeat(10, 1fr);*/
+    /*    grid-template-areas: "t t t t t t t t f f" "t t t t t t t t f f" "t t t t t t t t . ." ". . . . . . . . . .";*/
+    /*    grid-gap: 1rem;*/
+    /*    align-items: center;*/
+    /*}*/
 
-    .action_container{
-        grid-column-start: 1;
-        grid-column-end: col4-start;
-        grid-row-start: 1;
-        grid-row-end: third-line;
-    }
+    /*.action_container {*/
+    /*    grid-area: t;*/
+    /*}*/
 
-    .FilterComponent_container{
-        grid-area: 1 / col4-start / third-line / 6 ;
-    }
+    /*.FilterComponent_container {*/
+    /*    grid-area: f;*/
+    /*    display: flex;*/
+    /*    justify-content: center;*/
+    /*    align-items: center;*/
+    /*    height: 15rem;*/
+    /*}*/
+
+    /*@media only screen and (max-width: 600px) {*/
+    /*    .grid-container {*/
+    /*        grid-template-areas: "t t t t t t t t" "f f f f f f f f" ". . . . . . . . . .";*/
+    /*        grid-template-columns: repeat(8, 1fr);*/
+    /*    }*/
+
+    /*    .FilterComponent_container {*/
+    /*        order: 1;*/
+    /*        height: auto;*/
+    /*    }*/
+
+    /*    .action_container {*/
+    /*        order: 2;*/
+    /*    }*/
+    /*}*/
 
 
-    .Action_table{
+        .grid-container{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            grid-gap: 20px;
+        }
+
+        .action_container{
+            grid-column-start: 1;
+            grid-column-end: col4-start;
+            grid-row-start: 1;
+            grid-row-end: third-line;
+        }
+
+        .FilterComponent_container{
+            grid-area: 1 / col4-start / third-line / 6 ;
+        }
+
+
+    .Action_table {
         table-layout: fixed;
         border-collapse: collapse;
         border-spacing: 50px;
@@ -394,73 +517,73 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
-    @media (max-width: 900px) {
-        .Action_table{
-            width: 100%;
-            margin-left: 0px;
-        }
-    }
+    /*    @media (max-width: 900px) {*/
+    /*        .Action_table{*/
+    /*            width: 100%;*/
+    /*            margin-left: 0px;*/
+    /*        }*/
+    /*    }*/
 
-    th,td{
-        border: none;
-    }
+    /*    th,td{*/
+    /*        border: none;*/
+    /*    }*/
 
-    th {
-        background-color: rgba(234, 236, 239, 1);
-        color: black;
-        font-weight: bold;
-        text-align: left;
-        padding: 0.75rem 1rem;
-        border-bottom: 1px solid #ddd;
-        cursor: pointer;
-    }
-
-
-    td {
-        padding: 0.75rem 2rem;
-        border-bottom: 1px solid #ddd;
-        color: #333;
-    }
+    /*    th {*/
+    /*        background-color: rgba(234, 236, 239, 1);*/
+    /*        color: black;*/
+    /*        font-weight: bold;*/
+    /*        text-align: left;*/
+    /*        padding: 0.75rem 1rem;*/
+    /*        border-bottom: 1px solid #ddd;*/
+    /*        cursor: pointer;*/
+    /*    }*/
 
 
-    .tr-color-0 {
-        background: #f2f2f2;
-    }
+    /*    td {*/
+    /*        padding: 0.75rem 2rem;*/
+    /*        border-bottom: 1px solid #ddd;*/
+    /*        color: #333;*/
+    /*    }*/
 
-    .tr-color-1 {
-        background: #fff;
-    }
 
-    span.sortable1 {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        margin-top: 6px;
-        margin-left: 8px;
-        vertical-align: middle;
-        border-top: 0;
-        border-right: 4px solid transparent;
-        border-bottom: 4px solid #999;
-        border-left: 4px solid transparent;
-    }
+    /*    .tr-color-0 {*/
+    /*        background: #f2f2f2;*/
+    /*    }*/
 
-    span.sortable1.active{
-        transform: rotate(180deg);
-        border-top: 0;
-        border-right: 4px solid transparent;
-        border-bottom: 4px solid black;
-        border-left: 4px solid transparent;
-    }
+    /*    .tr-color-1 {*/
+    /*        background: #fff;*/
+    /*    }*/
 
-    .action_filterComponent{
-        position: static;
-        background: #ebecf0;
-        color: rgba(31, 31, 31, 0.7);
-        border-radius: 0.5rem;
-        width: 12rem;
-        border: 0.1rem solid #f7f7f7;
-        top: 400px;
-    }
+    /*    span.sortable1 {*/
+    /*        display: inline-block;*/
+    /*        width: 0;*/
+    /*        height: 0;*/
+    /*        margin-top: 6px;*/
+    /*        margin-left: 8px;*/
+    /*        vertical-align: middle;*/
+    /*        border-top: 0;*/
+    /*        border-right: 4px solid transparent;*/
+    /*        border-bottom: 4px solid #999;*/
+    /*        border-left: 4px solid transparent;*/
+    /*    }*/
+
+    /*    span.sortable1.active{*/
+    /*        transform: rotate(180deg);*/
+    /*        border-top: 0;*/
+    /*        border-right: 4px solid transparent;*/
+    /*        border-bottom: 4px solid black;*/
+    /*        border-left: 4px solid transparent;*/
+    /*    }*/
+
+    /*    .action_filterComponent{*/
+    /*        position: static;*/
+    /*        background: #ebecf0;*/
+    /*        color: rgba(31, 31, 31, 0.7);*/
+    /*        border-radius: 0.5rem;*/
+    /*        width: 12rem;*/
+    /*        border: 0.1rem solid #f7f7f7;*/
+    /*        top: 400px;*/
+    /*    }*/
 
     /*table {*/
     /*  border-collapse: collapse;*/

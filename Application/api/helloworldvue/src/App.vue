@@ -2,6 +2,29 @@
   <div id="app">
     <header>
 
+
+            <!--                <nav class="nav">-->
+            <!--                    <img class="symbol" :src="companyIcon" @click="goToHomePage"/>-->
+
+            <!--                    <div class="person-wrapper">-->
+            <!--                        <div class="person-wrapper">-->
+            <!--                            <span class="coordinator">Coordinator</span>-->
+            <!--                            <span class="gap"></span>-->
+            <!--                            <img class="person" :src="dropdown" @click="toggleDropdown"/>-->
+            <!--                            <button id="burgerMenuButton" class="burger-menu-button" @click="toggleDropdown">-->
+            <!--                                <div class="burger-line"></div>-->
+            <!--                                <div class="burger-line"></div>-->
+            <!--                                <div class="burger-line"></div>-->
+            <!--                            </button>-->
+            <!--                        </div>-->
+            <!--                        <div class="dropdown-content" v-if="dropdownVisible">-->
+            <!--                            &lt;!&ndash;                    <a href="#">Volunteer view</a>&ndash;&gt;-->
+            <!--                            <a href="/accounts/settings">Account settings</a>-->
+            <!--                            <a @click="Login_page">Log Out</a>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </nav>-->
+
       <navbar/>
       <!--                <nav class="nav">-->
       <!--                    <img class="symbol" :src="companyIcon" @click="goToHomePage"/>-->
@@ -39,6 +62,7 @@
     </header>
     <router-view></router-view>
   </div>
+
 </template>
 
 <script>
@@ -163,6 +187,19 @@ body {
   background-color: #fff;
 }
 
+    .callbtn {
+        /*position: fixed;*/
+        width: 130px;
+        height: 45px;
+        /*right: 1vw;*/
+        /*top: 100px;*/
+        margin-left: 3vw;
+        background: #1C405A;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        z-index: 1;
+    }
 .callbtn {
   /*position: fixed;*/
   width: 120px;
@@ -207,6 +244,31 @@ router-link {
 
 }
 
+
+    @media only screen and (max-width: 895px) {
+        .buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            padding-bottom: 2vw;
+        }
+
+        .callbtn {
+            width: 150px;
+        }
+        .btn-start-call {
+            margin: 10px 0;
+        }
+    }
+
+    .btn {
+        margin: 10px;
+        font-size: 2vw;
+        color: black;
+        text-transform: uppercase;
+        transition: all 0.1s ease-in-out;
+    }
+
 .btn {
   margin: 10px;
   font-size: 2vw;
@@ -214,6 +276,7 @@ router-link {
   text-transform: uppercase;
   transition: all 0.1s ease-in-out;
 }
+>
 
 .btn[label="All Activity"],
 .btn[label="Actions"],
@@ -224,6 +287,18 @@ router-link {
   /*update the font size*/
   font-size: 2vw;
 }
+
+
+    /*.btn:hover {*/
+    /*    color: white;*/
+    /*    !*border: 1px solid #3A4857;*!*/
+    /*    !*background-color: #3A4857;*!*/
+    /*    !*border-radius: 10px;*!*/
+    /*    !*cursor: pointer;*!*/
+    /*}*/
+    .btn:active {
+        transform: scale(1.15);
+    }
 
 /*.btn:hover {*/
 /*    color: white;*/
