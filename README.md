@@ -24,7 +24,7 @@
    - <a href="#5">Getting running</a>
 - <a href="#6">Possible Issues & Bugs</a>
 - <a href="#api"> API Guide </a>
-- <a href="#CI">Continuous Integration</a>
+- <a href="#CI">Continuous Integration / Continuous deployment</a>
 - <a href="#7">UX design</a>
    - <a href="#8">Requirements</a>
    - <a href="#9">User Stories</a>
