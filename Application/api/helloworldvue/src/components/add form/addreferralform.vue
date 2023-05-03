@@ -1,10 +1,17 @@
 <template>
   <form>
     <header>Create New Referral</header>
-    <div class="form-group">
-      <label for="help_type">Help Type</label>
-      <input class="form-control" id="help_type" v-model="help_type" placeholder="help_type">
-      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    <div class="details">
+      <label for="selectedHelpType">Help Type</label>
+      <select v-model="selectedHelpType" @change="onHelpTypeSelected($event.target.value)">
+        <option v-for="helptype in helpTypes" :key="helptype.id" :value="helptype.id">{{ helptype.name }}</option>
+      </select>
+    </div>
+    <div class="details">
+      <label for="selectedHelpType">Coordinators</label>
+      <select v-model="selectedCoordinator" @change="onCoordinatorSelected($event.target.value)">
+        <option v-for="coordinator in coordinators" :key="coordinator.id" :value="coordinator.id">{{ coordinator.first_name + ' ' + coordinator.last_name }}</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="datetime">Select date and time:</label>
@@ -30,17 +37,24 @@ export default {
     return {
       help_type: '',
       dateTime: '',
+      added_by: '',
+      coordinator: '',
       resident: this.id,
       publicDescription: '',
       privateDescription: '',
+      helpTypes: [],
+      coordinators: []
     };
   },
   props: ['id'],
   methods: {
     async submitForm() {
       let action = {
-        "help_type": this.help_type,
+        "referral_type": this.help_type,
         "resident": this.id,
+        "added_by": this.added_by,
+        "referral_status": "3",
+        "coordinator": this.coordinator,
         "data_consent_date": this.dateTime,
         "action_uuid": this.generateUUID(),
         "public_description": "",
@@ -97,7 +111,123 @@ export default {
     updateISO() {
       this.isoDateTime = new Date(this.dateTime).toISOString();
     },
+    baseURL: function(){
+      return window.location.origin
+    },
+    onHelpTypeSelected: async function(id) {
+      // let myHelpType = this.helpTypes.find(obj => obj.name === id)
+      // const csrftoken = this.getCookie('csrftoken')
+      // const json = await $.ajax({
+      //   url: this.baseURL() + `/api/actions/${this.id}/`,
+      //   beforeSend: function (xhr) {
+      //     xhr.setRequestHeader('X-CSRFToken', csrftoken)
+      //   },
+      //   method: "PATCH",
+      //   type: "PATCH",
+      //   contentType: 'application/json',
+      //   data: JSON.stringify({'action_status': myHelpType.id}),
+      //   success: () => {
+      //     //this.$emit('removed-action', response)
+      //     console.log("success")
+      //   },
+      //   error: (err) => {
+      //     console.error(JSON.stringify(err))
+      //   },
+      //
+      // }).catch((err) => {
+      //   console.error(JSON.stringify(err))
+      // })
+      // console.log(JSON.stringify(json))
+      // return json;
+      this.help_type = id
+      console.log( "Inputted helptype: "+ this.help_type)
+    },
+    onCoordinatorSelected: async function(id) {
+      // let myCoordinator = this.coordinators.find(obj => obj.name === id)
+      // const csrftoken = this.getCookie('csrftoken')
+      // const json = await $.ajax({
+      //   url: this.baseURL() + `/api/actions/${this.id}/`,
+      //   beforeSend: function (xhr) {
+      //     xhr.setRequestHeader('X-CSRFToken', csrftoken)
+      //   },
+      //   method: "PATCH",
+      //   type: "PATCH",
+      //   contentType: 'application/json',
+      //   data: JSON.stringify({'action_status': myCoordinator.id}),
+      //   success: () => {
+      //     //this.$emit('removed-action', response)
+      //     console.log("success")
+      //   },
+      //   error: (err) => {
+      //     console.error(JSON.stringify(err))
+      //   },
+      //
+      // }).catch((err) => {
+      //   console.error(JSON.stringify(err))
+      // })
+      // console.log(JSON.stringify(json))
+      // return json;
+      this.added_by = id
+      this.coordinator = id
+      console.log( "Inputted coordinator: "+ this.added_by)
+
+    },
+    getReferralTypes: async function () {
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + `/api/referraltypes/`,
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        },
+
+      }).catch((err) => {
+        console.error(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      return json;
+    },
+    getCoordinators: async function () {
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + `/api/coordinators/`,
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        },
+
+      }).catch((err) => {
+        console.error(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      return json;
+    },
   },
+  async mounted() {
+    let response = await this.getReferralTypes()
+    response = response.results
+    this.helpTypes = response
+    response = await this.getCoordinators()
+    this.coordinators = response.results
+  }
 
 };
 </script>
