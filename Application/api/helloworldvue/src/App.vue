@@ -2,8 +2,7 @@
   <div id="app">
     <header>
 
-<<<<<<< HEAD
-            <navbar/>
+
             <!--                <nav class="nav">-->
             <!--                    <img class="symbol" :src="companyIcon" @click="goToHomePage"/>-->
 
@@ -25,7 +24,7 @@
             <!--                        </div>-->
             <!--                    </div>-->
             <!--                </nav>-->
-=======
+
       <navbar/>
       <!--                <nav class="nav">-->
       <!--                    <img class="symbol" :src="companyIcon" @click="goToHomePage"/>-->
@@ -48,24 +47,11 @@
       <!--                        </div>-->
       <!--                    </div>-->
       <!--                </nav>-->
->>>>>>> 782ae71f133342774b53db0cc110fd4dba10f1d6
 
 
       <!--                            <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label" :left="item.left"-->
       <!--                                      @click.native="selectButton(index)" :selected="item.selected"/>-->
 
-<<<<<<< HEAD
-            <div v-if="!CallStarted && !$route.path.includes('/add')" class="buttons">
-                <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label"
-                          :left="item.left"
-                          @click.native="selectButton(index)" :selected="item.selected"/>
-                <button class="callbtn active btn-start-call" @click="Start_Call" :class="{ active: callbtnActive }">Start Call
-                </button>
-            </div>
-        </header>
-        <router-view></router-view>
-    </div>
-=======
       <div v-if="!CallStarted && !$route.path.includes('/add')" class="buttons">
         <myButton class="btn" v-for="(item, index) in buttons" :key="index" :label="item.label"
                   :left="item.left"
@@ -76,7 +62,7 @@
     </header>
     <router-view></router-view>
   </div>
->>>>>>> 782ae71f133342774b53db0cc110fd4dba10f1d6
+
 </template>
 
 <script>
@@ -201,7 +187,6 @@ body {
   background-color: #fff;
 }
 
-<<<<<<< HEAD
     .callbtn {
         /*position: fixed;*/
         width: 130px;
@@ -215,7 +200,6 @@ body {
         cursor: pointer;
         z-index: 1;
     }
-=======
 .callbtn {
   /*position: fixed;*/
   width: 120px;
@@ -229,7 +213,6 @@ body {
   cursor: pointer;
   z-index: 1;
 }
->>>>>>> 782ae71f133342774b53db0cc110fd4dba10f1d6
 
 .callbtn:hover {
   color: #F0F0F0;
@@ -261,7 +244,7 @@ router-link {
 
 }
 
-<<<<<<< HEAD
+
     @media only screen and (max-width: 895px) {
         .buttons {
             flex-direction: column;
@@ -285,7 +268,7 @@ router-link {
         text-transform: uppercase;
         transition: all 0.1s ease-in-out;
     }
-=======
+
 .btn {
   margin: 10px;
   font-size: 2vw;
@@ -293,7 +276,7 @@ router-link {
   text-transform: uppercase;
   transition: all 0.1s ease-in-out;
 }
->>>>>>> 782ae71f133342774b53db0cc110fd4dba10f1d6
+>
 
 .btn[label="All Activity"],
 .btn[label="Actions"],
@@ -305,7 +288,6 @@ router-link {
   font-size: 2vw;
 }
 
-<<<<<<< HEAD
 
     /*.btn:hover {*/
     /*    color: white;*/
@@ -317,7 +299,7 @@ router-link {
     .btn:active {
         transform: scale(1.15);
     }
-=======
+
 /*.btn:hover {*/
 /*    color: white;*/
 /*    !*border: 1px solid #3A4857;*!*/
@@ -328,7 +310,6 @@ router-link {
 .btn:active {
   transform: scale(1.15);
 }
->>>>>>> 782ae71f133342774b53db0cc110fd4dba10f1d6
 
 .dropdown-content {
   display: none;
