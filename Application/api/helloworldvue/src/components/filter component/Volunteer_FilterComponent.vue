@@ -167,7 +167,7 @@ export default {
   watch: {
     checkData: {
       handler() {
-        if (this.checkData.length == 3) {
+        if (this.checkData.length == this.ajaxData.length) {
           document.querySelector('#quan').checked = true;
         } else {
           document.querySelector('#quan').checked = false;
@@ -177,7 +177,7 @@ export default {
     },
     checkdata: {
       handler() {
-        if (this.checkdata.length == 3) {
+        if (this.checkdata.length == this.ajaxData.length) {
           document.querySelector('#select').checked = true;
         } else {
           document.querySelector('#select').checked = false;
@@ -187,7 +187,7 @@ export default {
     },
     Checkdata: {
       handler() {
-        if (this.Checkdata.length == 3) {
+        if (this.Checkdata.length == this.ajaxData.length) {
           document.querySelector('#all').checked = true;
         } else {
           document.querySelector('#all').checked = false;
@@ -197,7 +197,7 @@ export default {
     },
     CheckData: {
       handler() {
-        if (this.CheckData.length == 3) {
+        if (this.CheckData.length == this.ajaxData.length) {
           document.querySelector('#All').checked = true;
         } else {
           document.querySelector('#All').checked = false;
@@ -264,7 +264,7 @@ export default {
           }
         }
       }else {
-        this.Checkdata = [];
+        this.CheckData = [];
       }
     }
   }
