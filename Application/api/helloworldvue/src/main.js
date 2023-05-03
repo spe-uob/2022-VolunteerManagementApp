@@ -44,7 +44,7 @@ const routes = [
   { path: '/updateOrganisation', component: UpdateOrganisation},
   { path: '/createVolunteer',component: NewVolunteerForm},
   { path: '/updateVolunteer',component: UpdateVolunteerForm},
-  { path: '/updateResident',component: UpdateResidentForm},
+  { path: '/updateResident/:id',component: UpdateResidentForm, name: 'UpdateResidentForm'},
   // {path: '/resident_page/:id',component: resident_page, name: 'resident_page'}
 ]
 

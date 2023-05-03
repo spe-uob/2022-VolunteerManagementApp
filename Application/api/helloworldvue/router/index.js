@@ -13,6 +13,7 @@ import Start_Call from "@/components/Start_Call";
 import action_page from "@/components/action_page";
 import referral_page from "@/components/referral_page";
 import volunteer_page from '@/components/volunteer_page'
+import UpdateResidentForm from "@/components/UpdateResidentForm.vue";
 
 
 Vue.use(Router)
@@ -80,6 +81,9 @@ const routes = [
                 name: 'volunteer_page',
                 component: volunteer_page
             },
+            { path: '/updateResident/:id',
+                component: UpdateResidentForm,
+                name: 'UpdateResidentForm'},
         ]
     }
 

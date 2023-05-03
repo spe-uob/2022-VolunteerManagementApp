@@ -46,8 +46,14 @@ export default {
       phoneNumber: '',
       email: '',
       totalTimeReceived: '',
+      resident: {}
       // date: ''
     };
+  },
+  computed: {
+    id() {
+      return this.$route.params.id;
+    },
   },
   methods: {
     baseURL: function(){
@@ -57,19 +63,46 @@ export default {
       // this.$emit("back");
       this.$router.back();
     },
+    async getResident(){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + `/api/residents/${this.id}`,
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.error(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+    },
 
     async submitForm() {
         let Resident = {
+          "id": this.id,
           "first_name": this.firstName,
           "last_name": this.lastName,
           "phone": this.phoneNumber,
           "email": this.email,
+          "address_line_1": "n/a",
+          "postcode": "n/a",
+          "data_consent_date": "n/a",
           // "data_consent_date": this.date,
         }
 
       const csrftoken = this.getCookie('csrftoken')
+      console.log("this.id is: " + this.id)
       const json = await $.ajax({
-        url: this.baseURL() + "/api/residents/",
+        url: this.baseURL() + `/api/residents/${this.id}`,
         beforeSend: function (xhr) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken)
         },
@@ -85,7 +118,31 @@ export default {
           console.error(JSON.stringify(err))
         }
       }).catch((err) => {
-        console.err(JSON.stringify(err))
+        console.error(JSON.stringify(err))
+      })
+      console.log(JSON.stringify(json))
+      this.back()
+    },
+    patchForm: async function(field, data){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + `/api/resident/${this.id}`,
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "PATCH",
+        type: "PATCH",
+        contentType: 'application/json',
+        data: JSON.stringify({field: data}),
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.error(JSON.stringify(err))
       })
       console.log(JSON.stringify(json))
     },
@@ -105,7 +162,7 @@ export default {
       return cookieValue;
     },
   },
-  mounted() {
+  async mounted() {
     // {"name":"Noel","phone":"01179123456","address":"A","email":"noel.wester@gmail.com","contact":"Carol Lamentably"}
     let data =JSON.parse(localStorage.getItem("org"));
     if(data){
@@ -115,9 +172,9 @@ export default {
       this.Email = data.email;
       this.TotalTimeGiven ='n/a';
       this.consent = 'n/a';
-
-
     }
+    this.resident = await this.getResident()
+    console.log("Obtained Resident: " + JSON.stringify(this.resident))
   }
 };
 </script>
