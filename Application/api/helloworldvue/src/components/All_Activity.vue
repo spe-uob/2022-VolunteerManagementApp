@@ -287,7 +287,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
-  grid-gap: 20px;
+  grid-gap: 10px;
 }
 
 .grid-1 {
@@ -307,6 +307,7 @@ export default {
 }
 
 .right-table{
+  margin-left: 10px;
   width: 100%;
 }
 

@@ -3,8 +3,8 @@
     <div class="f-title">Referral Filters</div>
     <div>
       <label for="id4">
-        <input class="filter-head-input" id="id4" type="checkbox">
-        <div @click="setToggle1" class="filter-head">
+        <input @click="setToggle1" class="filter-head-input" id="id4" type="checkbox">
+        <div class="filter-head">
           <i class="arrow-right"></i>
           Referral Type
         </div>
@@ -38,8 +38,8 @@
 
     <div>
       <label for="id5">
-        <input class="filter-head-input" id="id5" type="checkbox">
-        <div @click="setToggle2" class="filter-head">
+        <input @click="setToggle2" class="filter-head-input" id="id5" type="checkbox">
+        <div class="filter-head">
           <i class="arrow-right"></i>
           Status
         </div>
