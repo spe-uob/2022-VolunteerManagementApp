@@ -355,10 +355,12 @@
     }
 
     .grid-1 {
-        grid-area: 1 / 1 / 4 / 2;
+        /*background: #3385FF;*/
+        grid-area: 1 / -1 / 4 / 2;
     }
 
     .grid-2 {
+        /*background: #3385FF;*/
         grid-area: 1 / 2 / 4 / 3;
     }
 
