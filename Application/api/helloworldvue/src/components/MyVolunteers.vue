@@ -37,11 +37,11 @@
 
                 <tr v-for="(item, index) in filteredVolunteers" :class="'tr-color-' + index % 2" :key="index"
                     @click="handleClick(item.id)">
-                    <td style="color:  black;" class="table_hover">{{item.FirstName}}</td>
-                    <td style="color:  black;" class="table_hover">{{item.LastName}}</td>
-                    <td style="color:  black;" class="table_hover">{{item.PhoneNumber}}</td>
-                    <td style="color:  black;" class="table_hover">{{item.Email}}</td>
-                    <td style="color:  black;" class="table_hover">{{item.TotalTimeReceived}}</td>
+                    <td  class="table_hover">{{item.FirstName}}</td>
+                    <td  class="table_hover">{{item.LastName}}</td>
+                    <td  class="table_hover">{{item.PhoneNumber}}</td>
+                    <td  class="table_hover">{{item.Email}}</td>
+                    <td  class="table_hover">{{item.TotalTimeReceived}}</td>
                 </tr>
                 </tbody>
             </table>

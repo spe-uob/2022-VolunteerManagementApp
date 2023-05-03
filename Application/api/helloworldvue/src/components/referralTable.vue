@@ -26,19 +26,19 @@
                 <th @click="sortTable('completed')">Completed<span class="sortable1" :class="{ active: activeButton === 6 }"></span></th>
               </tr>
 
-              <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
-                <td>{{item.id}}</td>
-                <td>{{item.type}}</td>
-                <td>{{item.resident}}</td>
-                <td>{{item.created}}</td>
-                <td>{{item.status}}</td>
-                <td>{{item.organisation}}</td>
-                <td>{{item.completed}}</td>
+              <tr v-for="(item, index) in filteredData" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
+                <td class="table_hover">{{item.id}}</td>
+                <td class="table_hover">{{item.type}}</td>
+                <td class="table_hover">{{item.resident}}</td>
+                <td class="table_hover">{{item.created}}</td>
+                <td class="table_hover">{{item.status}}</td>
+                <td class="table_hover">{{item.organisation}}</td>
+                <td class="table_hover">{{item.completed}}</td>
               </tr>
               </tbody>
             </table></div>
 
-    <div class="FilterComponent_container"><FilterComponent class="referral_filterComponent"></FilterComponent></div>
+    <div class="FilterComponent_container"><FilterComponent :selected-values="selectedValues1" @update="handleUpdate" class="referral_filterComponent"></FilterComponent></div>
   </div>
 
 
@@ -46,19 +46,20 @@
 
 <script>
 import $ from 'jquery';
+import FilterComponent from '@/components/filter component/Referrals-filter.vue'
 
 export default {
   data() {
     return {
       toggle: false,
       list: [
-        {id:'1',type:'Dog Walking', resident:'John',created:'Fri, Feb 3, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Mon, Feb 6, 2023 - 09:15am'},
-        {id:'9',type:'Food Bank', resident:'Liu',created:'Mon, Jan 15, 2023 - 10:15am',status:'Pending',organisation:'Surgery',completed:'Mon, Feb 6, 2023 - 09:15am'},
-        {id:'11',type:'Shopping', resident:'Bob',created:'Mon, Jan 8, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Mon, Jan 15, 2023 - 10:15am'},
-        {id:'27',type:'Prescription', resident:'Ally',created:'Sun, Feb19 , 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre',completed:'Sun, Feb19 , 2023 - 10:15am'},
-        {id:'3',type:'Volunteer Assigned', resident:'Bill',created:'Sun, Feb12 , 2023 - 10:15am',status:'Pending',organisation:'Surgery',completed:'Sun, Feb12 , 2023 - 10:15am'},
-        {id:'15',type:'Volunteer Assigned', resident:'Alice',created:'Wed, Aug 11, 2023 - 5:30pm',status:'Pending',organisation:'Surgery'},
-        {id:'17',type:'Dog Walking', resident:'Sid',created:'Mon, Jan 1, 2023 - 10:15am',status:'Pending',organisation:'Fliwood Food Centre'},
+        {id:'1',type:'Dog Walking', resident:'John',created:'Fri, Feb 3, 2023 - 10:15am',status:'Complete',organisation:'Fliwood Food Centre',completed:'Mon, Feb 6, 2023 - 09:15am'},
+        {id:'9',type:'Food Bank', resident:'Liu',created:'Mon, Jan 15, 2023 - 10:15am',status:'Complete',organisation:'Surgery',completed:'Mon, Feb 6, 2023 - 09:15am'},
+        {id:'11',type:'Shopping', resident:'Bob',created:'Mon, Jan 8, 2023 - 10:15am',status:'Contacted',organisation:'Fliwood Food Centre',completed:'Mon, Jan 15, 2023 - 10:15am'},
+        {id:'27',type:'Prescription', resident:'Ally',created:'Sun, Feb19 , 2023 - 10:15am',status:'Chosen',organisation:'Fliwood Food Centre',completed:'Sun, Feb19 , 2023 - 10:15am'},
+        {id:'3',type:'Volunteer Assigned', resident:'Bill',created:'Sun, Feb12 , 2023 - 10:15am',status:'Complete',organisation:'Surgery',completed:'Sun, Feb12 , 2023 - 10:15am'},
+        {id:'15',type:'Volunteer Assigned', resident:'Alice',created:'Wed, Aug 11, 2023 - 5:30pm',status:'Contacted',organisation:'Surgery'},
+        {id:'17',type:'Dog Walking', resident:'Sid',created:'Mon, Jan 1, 2023 - 10:15am',status:'Pending',organisation:'Chosen'},
       ],
       referralStatus: [
           { id: 1, name: "Chosen" },
@@ -67,6 +68,7 @@ export default {
         ],
       sortOrder:'',
       activeButton: -1,
+      selectedValues1: [],
     }
   },
   props: {
@@ -87,9 +89,25 @@ export default {
     this.tableData = this.$store.state.tableData
   },
   components: {
-    FilterComponent: require('./filter component/FilterComponent.vue').default
+    FilterComponent,
+  },
+  computed:{
+    filteredData() {
+      if (this.selectedValues1.length === 0) {
+        return this.list
+      } else {
+        return this.list.filter(item => {
+          return this.selectedValues1.includes(item.type) ||
+              this.selectedValues1.includes(item.status) ||
+              this.selectedValues1.includes(item.organisation)
+        })
+      }
+    },
   },
   methods: {
+    handleUpdate(newValues) {
+      this.selectedValues1 = newValues
+    },
     toggleActive(index) {
       if (this.activeButton === index) {
         this.activeButton = -1;
@@ -266,7 +284,7 @@ export default {
       resident: await this.getResidentByID(result.resident),
       type: await this.getReferralTypeByID(result.referral_type),
       created: this.formatDate(result.created_datetime),
-      status: this.getStatusByID(result.referral_status).name,
+      status: this.getStatusByID(result.referral_status),
       organisation: await this.getOrganisationById(result.referral_organisation),
       completed: this.formatDate(result.completed_date)
     };

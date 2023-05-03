@@ -4,10 +4,12 @@
     <div>
       <label for="id7">
         <input @click="setToggle1" class="filter-head-input" id="id7" type="checkbox">
+
         <div class="filter-head">
           <i class="arrow-right"></i>
           Status
         </div>
+
         <div v-show="toggle1" class="filter-body">
           <div>
             <label for="quan">

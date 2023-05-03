@@ -2,13 +2,13 @@
   <form>
     <header class="form-header">Create New Action</header>
     <div class="details">
-      <label for="selectedHelpType">Help Type</label>
+      <label for="selectedHelpType" style="text-align: center;">Help Type</label>
       <select v-model="selectedHelpType" @change="onHelpTypeSelected($event.target.value)">
         <option v-for="helptype in helpTypes" :key="helptype.id" :value="helptype.id">{{ helptype.name }}</option>
       </select>
     </div>
     <div class="details">
-      <label for="selectedHelpType">Coordinators</label>
+      <label style="text-align: center;" for="selectedHelpType" >Coordinators</label>
       <select v-model="selectedCoordinator" @change="onCoordinatorSelected($event.target.value)">
         <option v-for="coordinator in coordinators" :key="coordinator.id" :value="coordinator.id">{{ coordinator.first_name + ' ' + coordinator.last_name }}</option>
       </select>
@@ -239,6 +239,11 @@ export default {
 </script>
 <style scoped>
 /* CSS for the form header */
+
+select{
+  width: 120px;
+}
+
 form header {
   font-size: 24px;
   font-weight: bold;

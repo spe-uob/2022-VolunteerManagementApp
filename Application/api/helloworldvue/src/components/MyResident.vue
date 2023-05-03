@@ -25,13 +25,13 @@
           <th  @click="sortTable('Consent')">Consent<span class="sortable1" :class="{ active: activeButton === 5 }"></span></th>
         </tr>
 
-        <tr v-for="(item, index) in filteredResidents" :class="'tr-color-' + index % 2" :key="index">
-          <td style="color:  black;" @click="goUpdate(item, item.id)">{{item.FirstName}}</td>
-          <td style="color:  black;">{{item.LastName}}</td>
-          <td style="color:  black;">{{item.PhoneNumber}}</td>
-          <td style="color:  black;">{{item.Email}}</td>
-          <td style="color:  black;">{{item.TotalTimeReceived}}</td>
-          <td style="color:  black;">{{item.Consent}}</td>
+        <tr v-for="(item, index) in filteredResidents" :class="'tr-color-' + index % 2" :key="index" @click="goUpdate(item, item.id)">
+          <td class="table_hover">{{item.FirstName}}</td>
+          <td class="table_hover">{{item.LastName}}</td>
+          <td class="table_hover">{{item.PhoneNumber}}</td>
+          <td class="table_hover">{{item.Email}}</td>
+          <td class="table_hover">{{item.TotalTimeReceived}}</td>
+          <td class="table_hover">{{item.Consent}}</td>
         </tr>
 
         </tbody>
@@ -66,6 +66,13 @@ export default {
       search:"",
       sortOrder:'',
       activeButton: -1,
+    }
+  },
+  props: {
+    data: {
+      type: Array,
+      required: true,
+      default: () => [],
     }
   },
   computed: {
@@ -186,10 +193,9 @@ export default {
     this.getResidents().then((response) => {
       this.list = response.results.map((result) => {
         return {
-          id: result.id,
           FirstName: result.first_name,
           LastName: result.last_name,
-          PhoneNumber: result.phone? result.phone : "N/A",
+          PhoneNumber: result.phone,
           Email: result.email,
           TotalTimeReceived: result.time_received? result.time_received : "N/A",
           Consent: this.checkConsent(result.data_consent_date)? '✓' : '✗',
@@ -312,6 +318,12 @@ td {
   width: 12rem;
   border: 0.1rem solid #f7f7f7;
   top: 400px;
+}
+
+@media (max-width: 1350px) {
+  .FilterComponent_container1{
+    display: none;
+  }
 }
 
 
