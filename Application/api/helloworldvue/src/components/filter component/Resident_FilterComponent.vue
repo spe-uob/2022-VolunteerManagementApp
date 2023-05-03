@@ -113,7 +113,7 @@ export default {
   watch: {
     checkData: {
       handler() {
-        if (this.checkData.length == 3) {
+        if (this.checkData.length == this.ajaxData.length) {
           document.querySelector('#quan').checked = true;
         } else {
           document.querySelector('#quan').checked = false;
@@ -123,7 +123,7 @@ export default {
     },
     checkdata: {
       handler() {
-        if (this.checkdata.length == 3) {
+        if (this.checkdata.length == this.ajaxData.length) {
           document.querySelector('#select').checked = true;
         } else {
           document.querySelector('#select').checked = false;
