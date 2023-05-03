@@ -140,13 +140,20 @@ If you found a bug, you can use [issue template](https://github.com/spe-uob/2022
 
 --------------------
 
-<h2 id="CI"> 1.5 Continuous Integration </h2>
+<h2 id="CI"> 1.5 Continuous Integration / Continuous deployment</h2>
+
+#### CI:
 
 We decided to use GitHub actions that triggers whenever we start a pull request into ``` main ```
-
 There are two tests, one for the frontend and one for the backend
 - [x] Frontend Tests
 - [x] Backend Tests
+
+#### CD:
+
+The deployment is achieved by pushing the code to a virtual machine, and the process of updating involves accessing the virtual machine, locating the corresponding file path, and pulling the latest code from GitHub. 
+
+The latest code is then deployed to https://uob.tofro.app/index/
 
 --------------------
 
