@@ -105,7 +105,7 @@ export default {
       toggle1: false,
       toggle2: false,
       toggle3: false,
-      referralTypes:[],
+      referralTypes:["Food Bank","GP"],
       statuses:["Complete", "Contacted", "Chosen"],
       Organisations:[],
       selectedValues1: [],
