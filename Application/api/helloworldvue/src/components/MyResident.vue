@@ -74,10 +74,7 @@ export default {
         // return resident.name.toLowerCase().includes(this.search.toLowerCase());
         return (
             resident.FirstName.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.LastName.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.PhoneNumber.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.Email.toLowerCase().includes(this.search.toLowerCase()) ||
-            resident.TotalTimeReceived.toLowerCase().includes(this.search.toLowerCase())
+            resident.LastName.toLowerCase().includes(this.search.toLowerCase())
         );
       });
     }

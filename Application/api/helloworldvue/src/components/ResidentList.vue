@@ -124,7 +124,6 @@ export default {
 
 <style scoped>
   .container {
-    z-index: -1;
     position: relative;
     top: 150px;
     left: 100px;

@@ -8,7 +8,7 @@
         <td></td>
         <td></td>
         <td style="text-align:right">
-          <button  style="cursor: pointer;" @click="showNewForm()">Add</button>
+          <button  style=" cursor: pointer;" @click="showNewForm()">Add</button>
         </td>
       </tr>
       </thead>
@@ -60,41 +60,42 @@ export default {
       // newFormFlag: false,
       toggle: false,
       list: [
-        // {
-        //   name: 'Noel',
-        //   phone: '01179123456',
-        //   address:'A',
-        //   email: 'noel.wester@gmail.com',
-        //   contact:'Carol Lamentably',
-        // },
-        // {
-        //   name: 'Noel',
-        //   phone: '355667564532',
-        //   address:'A',
-        //   email: 'noel.wes@gmail.com',
-        //   contact:'Carol Lamentably',
-        // },
-        // {
-        //   name: 'Noe',
-        //   phone: '465768778787',
-        //   address:'A',
-        //   email: 'noe.wester@gmail.com',
-        //   contact:'Carol Lamentably',
-        // },
-        // {
-        //   name: 'Noel',
-        //   phone: '01179123456',
-        //   address:'A',
-        //   email: 'noel.wester@gmail.com',
-        //   contact:'Carol Lamentably',
-        // },
-        // {
-        //   name: 'Nel',
-        //   phone: '0456667665',
-        //   address:'A',
-        //   email: 'nel.weser@gmail.com',
-        //   contact:'Carol Lamentably',
-        // }
+        {
+          Name: 'Noel',
+          PhoneNumber: '01179123456',
+          address:'A',
+          MainContact: 'noel.wester@gmail.com',
+          Email:'Carol Lamentably',
+        },
+        {
+          Name: 'Bill',
+          PhoneNumber: '01179123456',
+          address:'A',
+          MainContact: 'noel.wester@gmail.com',
+          Email:'Carol Lamentably',
+        },
+        {
+          Name: 'Amy',
+          PhoneNumber: '345456',
+          address:'A',
+          MainContact: 'noel.wester@gmail.com',
+          Email:'Carol Lamentably',
+        },
+        {
+          Name: "LIU",
+          PhoneNumber: '01142332456',
+          address:'A',
+          MainContact: 'noel.wester@gmail.com',
+          Email:'Carol Lamentably',
+        },
+        {
+          Name: 'WANG',
+          PhoneNumber: '01123123',
+          address:'A',
+          MainContact: 'noel.wester@gmail.com',
+          Email:'Carol Lamentably',
+        },
+
       ],
       search:"",
       sortOrder:'',
@@ -106,12 +107,7 @@ export default {
       return this.list.filter(organisation => {
         // return resident.name.toLowerCase().includes(this.search.toLowerCase());
         return (
-            organisation.Name.toLowerCase().includes(this.search.toLowerCase()) ||
-            organisation.PhoneNumber.toLowerCase().includes(this.search.toLowerCase()) ||
-            organisation.address.toLowerCase().includes(this.search.toLowerCase()) ||
-            organisation.Email.toLowerCase().includes(this.search.toLowerCase()) ||
-            organisation.MainContact.toLowerCase().includes(this.search.toLowerCase())||
-            organisation.postcode.toLowerCase().includes(this.search.toLowerCase())
+            organisation.Name.toLowerCase().includes(this.search.toLowerCase())
         );
       });
     }

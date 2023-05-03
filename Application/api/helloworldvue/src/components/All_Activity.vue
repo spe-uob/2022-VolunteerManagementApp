@@ -286,28 +286,28 @@ export default {
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto;
-  grid-gap: 0px;
+  grid-template-rows: auto;
+  grid-gap: 20px;
 }
 
 .grid-1 {
-  width: 700px;
+  grid-area: 1 / 1 / 4 / 2;
 }
 
 .grid-2 {
-  width: 550px;
+  grid-area: 1 / 2 / 4 / 3;
 }
 .grid-3{
-  width: 200px;
+  grid-area: 1 / col4-start / third-line / 6 ;
 }
 
 .left-table{
+  width: 100%;
   margin-left: 10px;
-  width: 840px;
 }
 
 .right-table{
-  width: 680px;
+  width: 100%;
 }
 
 .Action_FilterComponent{
@@ -330,34 +330,28 @@ export default {
 }
 
 @media screen and (max-width:1000px){
-
-  .grid-1{
-    grid-row: 1;
-  }
-
-  .grid-2 {
-    width: 700px;
-    grid-row: 2;
-    margin-top: 10px;
-  }
-  .right-table{
-    width: 820px;
-  }
-
-  .grid-3{
-    margin-left: 20px;
-    grid-area: 1 / col4-start / third-line ;
-  }
-
-  .right-table{
-    margin-left: 20px;
-  }
-
-  .wrapper{
+  .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
   }
+
+  .grid-1{
+    width: 700px;
+    grid-area: 1 / 1 / 2 / 4;
+  }
+
+  .grid-2 {
+    grid-area: 2 / 1 / 3 / 4;
+  }
+  .grid-3{
+    grid-area: 1 / 5 / third-line / 6 ;
+  }
+  .right-table{
+    margin-left: 10px;
+  }
+
 
 
 }

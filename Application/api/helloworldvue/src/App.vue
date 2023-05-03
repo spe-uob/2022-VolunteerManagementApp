@@ -165,7 +165,7 @@ body {
 
 .callbtn {
   /*position: fixed;*/
-  width: 100px;
+  width: 120px;
   height: 45px;
   /*right: 1vw;*/
   top: 100px;
