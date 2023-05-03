@@ -119,12 +119,10 @@ export default {
 
   background-color: transparent;
   position: relative;
-  width: 200px;
+  width: 400px;
   height: 500px;
   left: 85%;
   top: 0%;
-
-  background: transparent;
   border: none;
   border-radius: 5px;
 }

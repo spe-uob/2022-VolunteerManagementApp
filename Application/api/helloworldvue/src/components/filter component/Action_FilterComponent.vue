@@ -3,51 +3,16 @@
     <div class="f-title">Action Filters</div>
     <div>
       <label for="id7">
-        <input class="filter-head-input" id="id7" type="checkbox">
-        <div @click="setToggle1" class="filter-head">
+        <input @click="setToggle1" class="filter-head-input" id="id7" type="checkbox">
+        <div  class="filter-head">
           <i class="arrow-right"></i>
           Help Type
         </div>
         <div v-show="toggle1" class="filter-body">
           <div>
-            <label for="quan">
-              <input id="quan" type="checkbox" @click="checkAll($event)"> Select all
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Dog Walking" v-model="checkData">
-              Dog Walking
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Food Parcel" v-model="checkData">
-              Food Parcel
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Leafleting" v-model="checkData">
-              Leafleting
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Prescription" v-model="checkData">
-              Prescription
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="shopping" v-model="checkData">
-              Shopping
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Volunteer Assigned" v-model="checkData">
-              Volunteer Assigned
+            <label v-for="(helpType, index) in help_Types" :key="index">
+              <input class="checkItem" type="checkbox" v-model="selectedValues" :value="helpType">
+              {{helpType}}
             </label>
           </div>
         </div>
@@ -56,90 +21,51 @@
 
     <div>
       <label for="id8">
-        <input class="filter-head-input" id="id8" type="checkbox">
-        <div @click="setToggle2" class="filter-head">
+        <input @click="setToggle2" class="filter-head-input" id="id8" type="checkbox">
+        <div class="filter-head">
           <i class="arrow-right"></i>
           Status
         </div>
         <div v-show="toggle2" class="filter-body">
           <div>
-            <label for="select">
-              <input id="select" type="checkbox" @click="checkall($event)"> Select all
+            <label v-for="(status, index) in statuses" :key="index">
+              <input class="checkItem" type="checkbox" v-model="selectedValues" :value="status">
+              {{status}}
             </label>
           </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Shielded" v-model="checkdata">
-              Shielded
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Internet Access" v-model="checkdata">
-              Internet Access
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Smart Device" v-model="checkdata">
-              Smart Device
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Online Shopping" v-model="checkdata">
-              Online Shopping
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Online Comms" v-model="checkdata">
-              Online Comms
-            </label>
-          </div>
+
         </div>
       </label>
     </div>
 
     <!--          <div>-->
-<!--            <label>-->
-<!--              <input type="checkbox">-->
-<!--              sub type1-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <label>-->
-<!--              <input type="checkbox">-->
-<!--              sub type2-->
-<!--            </label>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </label>-->
-<!--    </div>-->
+    <!--            <label>-->
+    <!--              <input type="checkbox">-->
+    <!--              sub type1-->
+    <!--            </label>-->
+    <!--          </div>-->
+    <!--          <div>-->
+    <!--            <label>-->
+    <!--              <input type="checkbox">-->
+    <!--              sub type2-->
+    <!--            </label>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </label>-->
+    <!--    </div>-->
 
     <div>
       <label for="id9">
-        <input class="filter-head-input" id="id9" type="checkbox">
-        <div @click="setToggle3" class="filter-head">
+        <input @click="setToggle3" class="filter-head-input" id="id9" type="checkbox">
+        <div class="filter-head">
           <i class="arrow-right"></i>
           Priority
         </div>
         <div v-show="toggle3" class="filter-body">
           <div>
-            <label for="all">
-              <input id="all" type="checkbox" @click="Checkall($event)"> Select all
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="sub type1" v-model="Checkdata">
-              sub type1
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="sub type2" v-model="Checkdata">
-              sub type2
+            <label  v-for="(priority, index) in Priority" :key="index">
+              <input class="checkItem" type="checkbox" v-model="selectedValues" :value="priority">
+              {{priority}}
             </label>
           </div>
         </div>
@@ -149,6 +75,8 @@
 </template>
 
 <script>
+// import $ from "jquery";
+
 export default {
   data() {
     return {
@@ -158,9 +86,16 @@ export default {
       toggle1: false,
       toggle2: false,
       toggle3: false,
+      help_Types:["Shopping","Food parcel","Prescription","Call","Dog walk","Chores"],
+      statuses:["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
+      Priority: ["Low","Medium","High"],
+      selectedValues: [],
     }
   },
   watch: {
+    selectedValues(newValues) {
+      this.$emit('update', newValues)
+    },
     checkData: {
       handler() {
         if (this.checkData.length == 3) {
@@ -237,8 +172,89 @@ export default {
       }else {
         this.Checkdata = [];
       }
-    }
-  }
+    },
+  //   baseURL: function(){
+  //     return window.location.origin
+  //   },
+  //   getActions: async function () {
+  //     const csrftoken = this.getCookie('csrftoken')
+  //     const json = await $.ajax({
+  //       url: this.baseURL() + '/api/actions/',
+  //       beforeSend: function (xhr) {
+  //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+  //       },
+  //       method: "GET",
+  //       type: "GET",
+  //       contentType: 'application/json',
+  //       success: () => {
+  //         //this.$emit('removed-action', response)
+  //         console.log("success")
+  //       },
+  //       error: (err) => {
+  //         console.error(JSON.stringify(err))
+  //       },
+  //
+  //     }).catch((err) => {
+  //       console.err(JSON.stringify(err))
+  //     })
+  //     console.log(JSON.stringify(json))
+  //     return json;
+  //   },
+  //   getCookie: function (name) {
+  //     let cookieValue = null;
+  //     if (document.cookie && document.cookie !== '') {
+  //       const cookies = document.cookie.split(';');
+  //       for (let i = 0; i < cookies.length; i++) {
+  //         const cookie = cookies[i].trim();
+  //         // Does this cookie string begin with the name we want?
+  //         if (cookie.substring(0, name.length + 1) === (name + '=')) {
+  //           cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+  //           break;
+  //         }
+  //       }
+  //     }
+  //     return cookieValue;
+  //   },
+  //   getHelpTypeByID: async function(id){
+  //     const csrftoken = this.getCookie('csrftoken')
+  //     const json = await $.ajax({
+  //       url: this.baseURL() + '/api/helptypes/',
+  //       beforeSend: function (xhr) {
+  //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+  //       },
+  //       method: "GET",
+  //       type: "GET",
+  //       contentType: 'application/json',
+  //       success: () => {
+  //         //this.$emit('removed-action', response)
+  //         console.log("success")
+  //       },
+  //       error: (err) => {
+  //         console.error(JSON.stringify(err))
+  //       }
+  //     }).catch((err) => {
+  //       console.err(JSON.stringify(err))
+  //     })
+  //     console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+  //     return json.results.find(obj => obj.id === id).name;
+  //   },
+  //   getStatusByID: function(id){
+  //     return this.helpTypes[id - 1]
+  //   },
+  //   getPriorityByID: function(id){
+  //     return this.priority[id - 1]
+  //   },
+  // },
+  // async mounted() {
+  //
+  //   let response = await this.getActions();
+  //   response = response.results;
+  //   console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
+  //
+  //   this.help_Types = await Promise.all(response.map(async (result) => {
+  //     return await this.getHelpTypeByID(result.help_type);
+  //   }));
+  },
 }
 
 </script>

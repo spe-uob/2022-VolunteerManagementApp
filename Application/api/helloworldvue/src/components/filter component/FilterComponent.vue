@@ -3,27 +3,16 @@
     <div class="f-title">Referral Filters</div>
     <div>
       <label for="id4">
-        <input class="filter-head-input" id="id4" type="checkbox">
-        <div @click="setToggle1" class="filter-head">
+        <input @click="setToggle1" class="filter-head-input" id="id4" type="checkbox">
+        <div class="filter-head">
           <i class="arrow-right"></i>
           Referral Type
         </div>
         <div v-show="toggle1" class="filter-body">
           <div>
-            <label for="quan">
-              <input id="quan" type="checkbox" @click="checkAll($event)"> Select all
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="foodbank" v-model="checkData">
-              foodbank
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="gp" v-model="checkData">
-              gp
+            <label v-for="(referralType, index) in referralTypes" :key="index">
+              <input class="checkItem" type="checkbox" v-model="selectedValues1" :value="referralType">
+              {{ referralType }}
             </label>
           </div>
         </div>
@@ -49,47 +38,19 @@
 
     <div>
       <label for="id5">
-        <input class="filter-head-input" id="id5" type="checkbox">
-        <div @click="setToggle2" class="filter-head">
+        <input @click="setToggle2" class="filter-head-input" id="id5" type="checkbox">
+        <div class="filter-head">
           <i class="arrow-right"></i>
           Status
         </div>
         <div v-show="toggle2" class="filter-body">
           <div>
-            <label for="select">
-              <input id="select" type="checkbox" @click="checkall($event)"> Select all
+            <label v-for="(status, index) in statuses" :key="index">
+              <input class="checkItem" type="checkbox" v-model="selectedValues1" :value="status">
+              {{status}}
             </label>
           </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Shielded" v-model="checkdata">
-              Shielded
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Internet Access" v-model="checkdata">
-              Internet Access
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Smart Device" v-model="checkdata">
-              Smart Device
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Online Shopping" v-model="checkdata">
-              Online Shopping
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="Online Comms" v-model="checkdata">
-              Online Comms
-            </label>
-          </div>
+
         </div>
       </label>
     </div>
@@ -109,38 +70,11 @@
     <!--        </div>-->
     <!--      </label>-->
     <!--    </div>-->
-
-    <div>
-      <label for="id6">
-        <input class="filter-head-input" id="id6" type="checkbox">
-        <div @click="setToggle3" class="filter-head">
-          <i class="arrow-right"></i>
-          Conpleted
-        </div>
-        <div v-show="toggle3" class="filter-body">
-          <div>
-            <label for="all">
-              <input id="all" type="checkbox" @click="Checkall($event)"> Select all
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="sub type1" v-model="Checkdata">
-              sub type1
-            </label>
-          </div>
-          <div>
-            <label>
-              <input class="checkItem" type="checkbox" value="sub type2" v-model="Checkdata">
-              sub type2
-            </label>
-          </div>
-        </div>
-      </label>
-    </div>
   </div>
 </template>
 <script>
+import $ from "jquery";
+
 export default {
   data() {
     return {
@@ -150,9 +84,15 @@ export default {
       toggle1: false,
       toggle2: false,
       toggle3: false,
+      referralTypes:[],
+      statuses:["Complete", "Contacted", "Chosen"],
+      selectedValues1: [],
     }
   },
   watch: {
+    selectedValues1(newValues) {
+      this.$emit('updatereferral', newValues)
+    },
     checkData: {
       handler() {
         if (this.checkData.length == 3) {
@@ -194,18 +134,7 @@ export default {
     setToggle3() {
       this.toggle3 = !this.toggle3;
     },
-    checkAll(e){
-      var checkObj = document.querySelectorAll('.checkItem');
-      if(e.target.checked){
-        for(var i=0;i<checkObj.length;i++){
-          if(!checkObj[i].checked){
-            this.checkData.push(checkObj[i].value);
-          }
-        }
-      }else {
-        this.checkData = [];
-      }
-    },
+
     checkall(e){
       var checkObj = document.querySelectorAll('.checkItem');
       if(e.target.checked){
@@ -229,8 +158,81 @@ export default {
       }else {
         this.Checkdata = [];
       }
-    }
-  }
+    },
+    baseURL: function(){
+        return window.location.origin
+      },
+
+    getReferrals: async function () {
+        const csrftoken = this.getCookie('csrftoken')
+        const json = await $.ajax({
+          url: this.baseURL() + "/api/referrals/",
+          beforeSend: function (xhr) {
+            xhr.setRequestHeader('X-CSRFToken', csrftoken)
+          },
+          method: "GET",
+          type: "GET",
+          contentType: 'application/json',
+          success: () => {
+            //this.$emit('removed-action', response)
+            console.log("success")
+          },
+          error: (err) => {
+            console.error(JSON.stringify(err))
+          }
+        }).catch((err) => {
+          console.err(JSON.stringify(err))
+        })
+        console.log(JSON.stringify(json))
+        return json;
+      },
+    getCookie: function (name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      },
+    getReferralTypeByID: async function(id){
+      const csrftoken = this.getCookie('csrftoken')
+      const json = await $.ajax({
+        url: this.baseURL() + '/api/referraltypes/',
+        beforeSend: function (xhr) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        },
+        method: "GET",
+        type: "GET",
+        contentType: 'application/json',
+        success: () => {
+          //this.$emit('removed-action', response)
+          console.log("success")
+        },
+        error: (err) => {
+          console.error(JSON.stringify(err))
+        }
+      }).catch((err) => {
+        console.err(JSON.stringify(err))
+      })
+      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+      return json.results.find(obj => obj.id === id).name;
+    },
+  },
+  async mounted() {
+    let response = await this.getReferrals();
+    response = response.results;
+    console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
+    this.referralTypes = await Promise.all(response.map(async (result) => {
+      return await this.getReferralTypeByID(result.referral_type);
+    }));
+  },
 }
 
 </script>

@@ -3,8 +3,8 @@
     <div class="f-title">Filters</div>
     <div>
       <label for="id7">
-        <input class="filter-head-input" id="id7" type="checkbox">
-        <div @click="setToggle1" class="filter-head">
+        <input @click="setToggle1" class="filter-head-input" id="id7" type="checkbox">
+        <div class="filter-head">
           <i class="arrow-right"></i>
           Status
         </div>
@@ -50,8 +50,8 @@
 
     <div>
       <label for="id8">
-        <input class="filter-head-input" id="id8" type="checkbox">
-        <div @click="setToggle2" class="filter-head">
+        <input @click="setToggle2" class="filter-head-input" id="id8" type="checkbox">
+        <div class="filter-head">
           <i class="arrow-right"></i>
           Checks
         </div>
@@ -79,8 +79,8 @@
 
     <div>
       <label for="id9">
-        <input class="filter-head-input" id="id9" type="checkbox">
-        <div @click="setToggle3" class="filter-head">
+        <input @click="setToggle3" class="filter-head-input" id="id9" type="checkbox">
+        <div class="filter-head">
           <i class="arrow-right"></i>
           Account
         </div>

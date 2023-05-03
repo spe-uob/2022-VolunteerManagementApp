@@ -23,7 +23,7 @@
 
       <tbody>
 
-      <tr v-for="(item, index) in list" :class="'tr-color-' + index % 2" :key="index" @click="handleClick(item.id)">
+      <tr v-for="(item,index) in data" :key="index" :class="'tr-color-' + index % 2" @click="handleClick(1)">
         <td class="table_hover">{{item.help_type}}</td>
         <td class="table_hover">{{item.resident}}</td>
         <td class="table_hover">{{item.Due}}</td>
@@ -48,7 +48,7 @@
 
 <script>
 
-import $ from "jquery";
+// import $ from "jquery";
 
 export default {
   name: 'actionTable',
@@ -58,32 +58,19 @@ export default {
       // list: 12,
       emptyRows: 0,
       activeButton: -1,
-      list:
-      [
-        { help_type: "A", resident: 'John Doe', Due: '2021-01-01', status: 'Active' , assigned:'A' , priority: 'High' },
-        { help_type: 'X', resident: 'Amy', Due: '2020-02-01', status: 'Inactive', assigned:'B' , priority: 'Medium' },
-        { help_type: 'Y', resident: 'Annie', Due: '2019-02-01', status: 'Inactive' , assigned:'C' , priority: 'Low'},
-        { help_type: 'A', resident: 'Bill', Due: '2018-02-01', status: 'Inactive' , assigned:'D' , priority: 'Medium'},
-        { help_type: 'D', resident: 'Lin', Due: '2022-02-01', status: 'Inactive' , assigned:'E' , priority: 'Low'},
-        { help_type: 'C', resident: 'Skill', Due: '2014-02-01', status: 'Inactive' , assigned:'F' , priority: 'High'},
-        { help_type: 'E', resident: 'miss', Due: '2013-02-01', status: 'Inactive' , assigned:'G' , priority: 'Medium'},
-        { help_type: 'B', resident: 'doctor', Due: '2007-02-01', status: 'Inactive' , assigned:'H' , priority: 'Low'},
-      ],
       priority: ["High", "Medium", "Low"],
       helpTypes: ["Pending volunteer interest", "Volunteer interest", "Volunteer assigned", "Ongoing", "Completed", "Couldn't complete", "No longer needed"],
       sortOrder:'',
     }
   },
   props: {
-    containerSize: {
-      type: Number,
-      required: true
-    },
+    data: {
+      type: Array,
+      required: true,
+      default: () => [],
+    }
   },
 
-  created() {
-    this.tableData = this.$store.state.tableData
-  },
   methods: {
     toggleActive(index) {
       if (this.activeButton === index) {
@@ -96,154 +83,155 @@ export default {
     handleClick(id) {
       this.$router.push(`/action_page/${id}`)
     },
-    baseURL: function(){
-        return window.location.origin
-      },
+    // baseURL: function(){
+    //     return window.location.origin
+    //   },
     sortTable(sortKey) {
+      let sortedData = [...this.data];
       if (this.sortOrder === sortKey) {
-        this.list.reverse();
+        sortedData.reverse();
       } else {
         if (sortKey === 'Due') {
           this.toggleActive(2);
-          this.list.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
+          sortedData.sort((a, b) => new Date(a[sortKey]) - new Date(b[sortKey]));
         } else if (sortKey === 'help_type') {
           this.toggleActive(0);
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'resident') {
           this.toggleActive(1);
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'status') {
           this.toggleActive(3);
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'assigned'){
           this.toggleActive(4);
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'priority'){
           this.toggleActive(5);
-          this.list.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         }
         this.sortOrder = sortKey;
       }
+      this.$emit('request-sort',  sortedData);
     },
     toggleHide() {
       this.toggle = !this.toggle;
     },
-    getActions: async function () {
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: this.baseURL() + '/api/actions/',
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        },
-
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log(JSON.stringify(json))
-      return json;
-    },
-    getCookie: function (name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          // Does this cookie string begin with the name we want?
-          if (cookie.substring(0, name.length + 1) === (name + '=')) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
-        }
-      }
-      return cookieValue;
-    },
-    getResidentByID: async function(id){
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: this.baseURL() + '/api/residents/',
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
-      return json.results.find(obj => obj.id === id).first_name;
-    },
-    getHelpTypeByID: async function(id){
-      const csrftoken = this.getCookie('csrftoken')
-      const json = await $.ajax({
-        url: this.baseURL() + '/api/helptypes/',
-        beforeSend: function (xhr) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken)
-        },
-        method: "GET",
-        type: "GET",
-        contentType: 'application/json',
-        success: () => {
-          //this.$emit('removed-action', response)
-          console.log("success")
-        },
-        error: (err) => {
-          console.error(JSON.stringify(err))
-        }
-      }).catch((err) => {
-        console.err(JSON.stringify(err))
-      })
-      console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
-      return json.results.find(obj => obj.id === id).name;
-    },
-    formatDate(dateString) {
-      const date = new Date(dateString);
-      const year = date.getFullYear();
-      const month = date.toLocaleString('default', { month: 'long' });
-      const day = date.getDate();
-      return `${month} ${day}, ${year}`;
+    //   getActions: async function () {
+    //     const csrftoken = this.getCookie('csrftoken')
+    //     const json = await $.ajax({
+    //       url: this.baseURL() + '/api/actions/',
+    //       beforeSend: function (xhr) {
+    //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+    //       },
+    //       method: "GET",
+    //       type: "GET",
+    //       contentType: 'application/json',
+    //       success: () => {
+    //         //this.$emit('removed-action', response)
+    //         console.log("success")
+    //       },
+    //       error: (err) => {
+    //         console.error(JSON.stringify(err))
+    //       },
+    //
+    //     }).catch((err) => {
+    //       console.err(JSON.stringify(err))
+    //     })
+    //     console.log(JSON.stringify(json))
+    //     return json;
+    //   },
+    //   getCookie: function (name) {
+    //     let cookieValue = null;
+    //     if (document.cookie && document.cookie !== '') {
+    //       const cookies = document.cookie.split(';');
+    //       for (let i = 0; i < cookies.length; i++) {
+    //         const cookie = cookies[i].trim();
+    //         // Does this cookie string begin with the name we want?
+    //         if (cookie.substring(0, name.length + 1) === (name + '=')) {
+    //           cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+    //           break;
+    //         }
+    //       }
+    //     }
+    //     return cookieValue;
+    //   },
+    //   getResidentByID: async function(id){
+    //     const csrftoken = this.getCookie('csrftoken')
+    //     const json = await $.ajax({
+    //       url: this.baseURL() + '/api/residents/',
+    //       beforeSend: function (xhr) {
+    //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+    //       },
+    //       method: "GET",
+    //       type: "GET",
+    //       contentType: 'application/json',
+    //       success: () => {
+    //         //this.$emit('removed-action', response)
+    //         console.log("success")
+    //       },
+    //       error: (err) => {
+    //         console.error(JSON.stringify(err))
+    //       }
+    //     }).catch((err) => {
+    //       console.err(JSON.stringify(err))
+    //     })
+    //     console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).first_name)
+    //     return json.results.find(obj => obj.id === id).first_name;
+    //   },
+    //   getHelpTypeByID: async function(id){
+    //     const csrftoken = this.getCookie('csrftoken')
+    //     const json = await $.ajax({
+    //       url: this.baseURL() + '/api/helptypes/',
+    //       beforeSend: function (xhr) {
+    //         xhr.setRequestHeader('X-CSRFToken', csrftoken)
+    //       },
+    //       method: "GET",
+    //       type: "GET",
+    //       contentType: 'application/json',
+    //       success: () => {
+    //         //this.$emit('removed-action', response)
+    //         console.log("success")
+    //       },
+    //       error: (err) => {
+    //         console.error(JSON.stringify(err))
+    //       }
+    //     }).catch((err) => {
+    //       console.err(JSON.stringify(err))
+    //     })
+    //     console.log('GETRESIDENTBYIDCALL RETURN VALUE: ' + json.results.find(obj => obj.id === id).name)
+    //     return json.results.find(obj => obj.id === id).name;
+    //   },
+    //   formatDate(dateString) {
+    //     const date = new Date(dateString);
+    //     const year = date.getFullYear();
+    //     const month = date.toLocaleString('default', { month: 'long' });
+    //     const day = date.getDate();
+    //     return `${month} ${day}, ${year}`;
+    // },
+    //   getStatusByID: function(id){
+    //     return this.helpTypes[id - 1]
+    //   },
+    //   getPriorityByID: function(id){
+    //     return this.priority[id - 1]
+    //   }
   },
-    getStatusByID: function(id){
-      return this.helpTypes[id - 1]
-    },
-    getPriorityByID: function(id){
-      return this.priority[id - 1]
-    }
-  },
-  async mounted(){
-    let response = await this.getActions();
-    response = response.results;
-    console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
-    this.list = await Promise.all(response.map(async (result) => {
-    return {
-      id: result.id,
-      resident: await this.getResidentByID(result.resident),
-      help_type: await this.getHelpTypeByID(result.help_type),
-      Due: this.formatDate(result.requested_datetime),
-      assigned: result.assigned_volunteers,
-      status: this.getStatusByID(result.action_status),
-      priority: this.getPriorityByID(result.action_priority)
-    };
-    }));
-    
-  },
+  // async mounted(){
+  //   let response = await this.getActions();
+  //   response = response.results;
+  //   console.log("GETACTIONS RESPONSE: " + JSON.stringify(response));
+  //   this.list = await Promise.all(response.map(async (result) => {
+  //     return {
+  //       id: result.id,
+  //       resident: await this.getResidentByID(result.resident),
+  //       help_type: await this.getHelpTypeByID(result.help_type),
+  //       Due: this.formatDate(result.requested_datetime),
+  //       assigned: result.assigned_volunteers,
+  //       status: this.getStatusByID(result.action_status),
+  //       priority: this.getPriorityByID(result.action_priority)
+  //     };
+  //   }));
+  // },
 
 
 }
