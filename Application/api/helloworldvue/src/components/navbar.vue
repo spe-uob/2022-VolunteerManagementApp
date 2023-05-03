@@ -190,7 +190,7 @@
     .highlighted {
 
 
-        border: 2px solid #3A4857;
+        /*border: 2px solid #3A4857;*/
         /*border-radius: 50%;*/
 
 

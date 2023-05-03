@@ -318,8 +318,26 @@ td {
   height: 35px;
 }
 
-.mi1 input{
-  height: 10px;
+
+
+@media (max-width: 1350px) {
+  .FilterComponent_container1 {
+    display: none;
+  }
+  .mi1 input{
+    height: 10px;
+  }
+  .mi1 input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mi1 {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
 }
 
 /*.container1 {*/
