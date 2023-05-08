@@ -36,7 +36,7 @@
                         resident: 'John Doe',
                         Due: '2021-01-01',
                         status: 'Pending volunteer interest',
-                        assigned: 'A',
+                        assigned: '4',
                         priority: 'High'
                     },
                     {
@@ -44,7 +44,7 @@
                         resident: 'Amy',
                         Due: '2020-02-01',
                         status: 'Volunteer interest',
-                        assigned: 'B',
+                        assigned: '6',
                         priority: 'Medium'
                     },
                     {
@@ -52,7 +52,7 @@
                         resident: 'Annie',
                         Due: '2019-02-01',
                         status: 'Ongoing',
-                        assigned: 'C',
+                        assigned: '2',
                         priority: 'Low'
                     },
                     {
@@ -60,7 +60,7 @@
                         resident: 'Bill',
                         Due: '2018-02-01',
                         status: 'Ongoing',
-                        assigned: 'D',
+                        assigned: '12',
                         priority: 'Medium'
                     },
                     {
@@ -68,7 +68,7 @@
                         resident: 'Lin',
                         Due: '2022-02-01',
                         status: 'Volunteer assigned',
-                        assigned: 'E',
+                        assigned: '14',
                         priority: 'Low'
                     },
                     {
@@ -76,7 +76,7 @@
                         resident: 'Skill',
                         Due: '2014-02-01',
                         status: 'Volunteer interest',
-                        assigned: 'F',
+                        assigned: '9',
                         priority: 'High'
                     },
                     {
@@ -84,7 +84,7 @@
                         resident: 'miss',
                         Due: '2013-02-01',
                         status: 'Completed',
-                        assigned: 'G',
+                        assigned: '7',
                         priority: 'Medium'
                     },
                     {
@@ -92,7 +92,7 @@
                         resident: 'doctor',
                         Due: '2007-02-01',
                         status: 'Volunteer assigned',
-                        assigned: 'H',
+                        assigned: '11',
                         priority: 'Low'
                     },
                 ],
@@ -412,6 +412,13 @@
         top: 300px;
     }
 
+    @media screen and (min-width: 1000px) and (max-width: 1350px){
+      .grid-3{
+        display: none;
+      }
+    }
+
+
 
     @media screen and (max-width: 1000px) {
         .wrapper {
@@ -463,10 +470,6 @@
             .right-table {
                 margin-left: 10px;
             }
-
-          .FilterComponent_container1{
-            display: none;
-          }
 
         }
 

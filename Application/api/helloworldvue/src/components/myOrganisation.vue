@@ -274,6 +274,10 @@ th {
   cursor: pointer;
 }
 
+th:hover{
+  background-color: #dddddd;
+}
+
 
 td {
   padding: 0.75rem 2rem;

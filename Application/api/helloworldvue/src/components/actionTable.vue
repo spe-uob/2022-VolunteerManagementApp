@@ -517,6 +517,11 @@
         grid-row-end: third-line;
     }
 
+    th:hover{
+      background-color: #dddddd;
+    }
+
+
     .FilterComponent_container {
         grid-area: 1 / col4-start / third-line / 6;
     }
