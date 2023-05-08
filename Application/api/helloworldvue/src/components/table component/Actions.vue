@@ -105,7 +105,7 @@ export default {
           sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
         } else if (sortKey === 'assigned'){
           this.toggleActive(4);
-          sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
+          sortedData.sort((a, b) => a[sortKey] - b[sortKey]);
         } else if (sortKey === 'priority'){
           this.toggleActive(5);
           sortedData.sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
@@ -260,6 +260,7 @@ th,td{
   border: none;
 }
 
+
 .left_table th {
   background-color: rgba(234, 236, 239, 1);
   color: black;
@@ -268,6 +269,10 @@ th,td{
   padding: 0.5rem 1rem;
   border-bottom: 1px solid #ddd;
   cursor: pointer;
+}
+
+.left_table th:hover {
+  background-color: #dddddd;
 }
 
 
@@ -283,6 +288,8 @@ span.sortable1 {
   border-bottom: 4px solid #999;
   border-left: 4px solid transparent;
 }
+
+
 
 span.sortable1.active{
   transform: rotate(180deg);

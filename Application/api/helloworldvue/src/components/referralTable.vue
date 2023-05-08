@@ -270,9 +270,9 @@ export default {
       const day = date.getDate();
       return `${month} ${day}, ${year}`;
   },
-  getStatusByID: function(id){
-             return this.referralStatus[id - 1]
-     },
+    getStatusByID_referral: function (id) {
+      return this.referralStatus[id - 1]
+    },
   },
   async mounted(){
     let response = await this.getReferrals();
@@ -284,7 +284,7 @@ export default {
       resident: await this.getResidentByID(result.resident),
       type: await this.getReferralTypeByID(result.referral_type),
       created: this.formatDate(result.created_datetime),
-      status: this.getStatusByID(result.referral_status),
+      status: this.getStatusByID_referral(result.referral_status).name,
       organisation: await this.getOrganisationById(result.referral_organisation),
       completed: this.formatDate(result.completed_date)
     };

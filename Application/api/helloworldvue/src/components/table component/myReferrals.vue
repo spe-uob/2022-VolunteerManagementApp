@@ -399,6 +399,10 @@ th,td{
   cursor: pointer;
 }
 
+.right_table th:hover {
+  background-color: #dddddd;
+}
+
 td {
   padding: 0.75rem 2rem;
   border-bottom: 1px solid #ddd;
